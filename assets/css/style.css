@@ -527,6 +527,35 @@ html[lang="ru"] .hero-in h1 .t-lead{
          drop-shadow(0 0 34px rgba(232,182,96,.24));
 }
 
+.hero-in .lede{ margin:24px auto 0; max-width:none; }
+
+.hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:34px; }
+
+.hero-rail{
+  border-top:1px solid var(--line-soft);
+  max-width:var(--shell); margin-inline:auto; width:100%;
+  padding:15px var(--gut);
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:12px clamp(24px,5vw,64px);
+}
+.hero-rail span{
+  display:flex; align-items:baseline; gap:8px;
+  font-family:var(--caps); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--parch-far);
+}
+.hero-rail b{
+  font-family:var(--display); font-size:26px; font-weight:400;
+  letter-spacing:0; color:var(--amber);
+}
+.hero-rail em{ font-style:normal; }
+
+@media (min-width:981px) and (max-height:800px){
+  .hero h1:not(.fitted){ font-size:clamp(40px,5.6vw,92px); }
+  .hero-in .lede{ font-size:20px; margin-top:20px; }
+  .hero-act{ margin-top:26px; }
+  .hero .btn-lg{ height:54px; }
+}
+
 /* ══════════ ОБЩИЕ СЕКЦИИ ══════════ */
 
 .sec{ position:relative; padding:clamp(84px,11vw,168px) 0; }
