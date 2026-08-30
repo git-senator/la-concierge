@@ -330,7 +330,15 @@
 
     // Долю ширины берём из стилей: каллиграфию нельзя растягивать
     // во всю колонку — она становится тонкой и дешёвой.
-    var fill = parseFloat(getComputedStyle(heroTitle).getPropertyValue('--fit')) || 0.995;
+    var fill = parseFloat(getComputedStyle(heroTitle).getPropertyValue('--fit'));
+    if (isNaN(fill)) fill = 0.995;
+    // Ноль — отказ от подгонки: широкий дисплейный шрифт в одну строку
+    // даёт нечитаемо мелкий кегль, там композицию держит вёрстка.
+    if (fill <= 0) {
+      heroTitle.classList.remove('fitted');
+      heroTitle.style.fontSize = '';
+      return;
+    }
     var size = 100 * (avail / line) * fill;
     if (size < 34) {                     // узкий экран — пусть переносится
       heroTitle.classList.remove('fitted');
