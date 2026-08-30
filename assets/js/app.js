@@ -233,12 +233,12 @@
     rows.forEach(function (r) { if (r !== row) setRow(r, false); });
     setRow(row, true);
     current = row;
-    if (wide.matches) { paintStage(row); revealStage(); }
+    if (wide.matches) paintStage(row);
   }
 
   rows.forEach(function (row) {
     row.querySelector('.svc-head').addEventListener('click', function () {
-      if (wide.matches) { activate(row); return; }
+      if (wide.matches) { activate(row); revealStage(); return; }
 
       // узкий экран — обычная гармошка, одна открытая строка
       var open = row.classList.contains('on');
@@ -297,6 +297,20 @@
      размер обратно вёрстке.                                          */
   var heroTitle = document.querySelector('.hero-in h1');
 
+  /* Ширину меряем по самому тексту, а не по коробке: у блочной строки
+     коробка всегда во всю колонку и о длине фразы ничего не говорит.
+     По-русски заголовок в две строки — берём ту, что длиннее.        */
+  function widestLine(el) {
+    var parts = el.querySelectorAll('.t-lead, .t-tail');
+    var list = parts.length ? parts : [el];
+    var rng = document.createRange(), w = 0;
+    for (var i = 0; i < list.length; i++) {
+      rng.selectNodeContents(list[i]);
+      w = Math.max(w, rng.getBoundingClientRect().width);
+    }
+    return w;
+  }
+
   function fitHeroTitle() {
     if (!heroTitle) return;
     var box = heroTitle.parentElement;
@@ -307,7 +321,7 @@
 
     heroTitle.classList.add('fitted');
     heroTitle.style.fontSize = '100px';
-    var line = heroTitle.scrollWidth;
+    var line = widestLine(heroTitle);
     if (!line) {
       heroTitle.classList.remove('fitted');
       heroTitle.style.fontSize = '';

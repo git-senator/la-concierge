@@ -443,7 +443,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    сверху пустое небо. Ставим по центру кадра: строка ложится на
    чистое небо, а не на огни, и читается лучше.                 */
 .hero-in{ align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center; }
-.hero-in h1{ margin:22px auto 0; max-width:none; }
+.hero-in h1{ margin:0 auto; max-width:none; }
+/* Русский вариант в две строки: слово ВРЕМЯ отдельно сверху, под ним
+   остальная фраза. В прочих языках второй строки нет — заголовок
+   остаётся одной строкой, разметка та же.                          */
+.hero-in h1 .t-lead,
+.hero-in h1 .t-tail{ display:block; }
+.hero-in h1 .t-lead{
+  font-size:1.5em; letter-spacing:.1em; line-height:1.06;
+  margin-bottom:.06em;
+}
 /* Заголовок первого экрана — одна золотая строка во всю ширину.
    Размер подбирает скрипт: во всех пяти языках длина строки разная,
    а строка должна доходить ровно от края до края. Пока скрипт не
