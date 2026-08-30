@@ -37,10 +37,6 @@
      молча уезжал в системный Segoe UI и выпадал из набора. Commissioner
      подхватывает кириллицу той же плотности, латиница не меняется. */
   --sans:"Barlow","Commissioner",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  /* каллиграфия — редкий гость: только вторая строка первого экрана */
-  --script:"Great Vibes","Segoe Script",cursive;
-  /* геометрический дисплей для русского заголовка */
-  --ru-title:"Russo One","Unbounded","Montserrat",system-ui,sans-serif;
 
   --ease:cubic-bezier(.16,1,.3,1);
   --gut:clamp(20px,5vw,76px);
@@ -466,37 +462,8 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-size:1.5em; letter-spacing:.1em; line-height:1.06;
   margin-bottom:.06em;
 }
-/* Каллиграфия только на русском: в других языках это одна строка на
-   всё предложение, и рукописным она бы не читалась.
-   У Great Vibes длинные выносные — строке нужен воздух сверху и
-   снизу. Разрядку убираем: в рукописном она рвёт связки букв.     */
-html[lang="ru"] .hero-in h1{
-  /* Ноль — подгонку по ширине выключаем: Unbounded широкий, вся фраза
-     одной строкой сжалась бы до нечитаемого кегля. Здесь композицию
-     держит вёрстка: слово крупно, фраза под ним в две строки.      */
-  --fit:0;
-  font-family:var(--ru-title);
-  font-weight:700;
-  letter-spacing:-.005em;
-  line-height:1;
-  text-shadow:none;
-}
-/* Russo One существует в одном начертании: иерархию держим кеглем
-   и разрядкой, а не весом.                                        */
-html[lang="ru"] .hero-in h1 .t-lead{
-  font-size:clamp(60px,11.5vw,178px);
-  letter-spacing:.005em;
-  line-height:.96;
-  margin-bottom:.2em;
-}
-html[lang="ru"] .hero-in h1 .t-tail{
-  font-size:clamp(17px,2.4vw,37px);
-  letter-spacing:.008em;
-  line-height:1.22;
-  max-width:24ch;
-  margin-inline:auto;
-}
-
+/* Русский заголовок набран тем же Cormorant Garamond, что и заголовки
+   разделов, — один почерк на всю страницу. Отличается только золотом. */
 /* Настоящее золото — не один цвет, а металл: тёмная бронза по краям,
    светлый блик поперёк середины и отражённый тёплый свет снизу.
    Заливка идёт по форме букв, поэтому тень тоже даём через filter —
