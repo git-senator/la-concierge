@@ -489,6 +489,30 @@ html[lang="ru"] .hero-in h1 .t-tail{
 .hero-in .lede{ margin:24px auto 0; max-width:none; }
 
 .hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:34px; }
+/* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
+   даём двумя тенями: наружной по всем сторонам и внутренней, чтобы
+   рамка выглядела подсвеченной, а не обведённой.                   */
+.hero-act .btn{
+  background:transparent;
+  border-color:rgba(214,160,74,.52);
+  color:var(--parch);
+  box-shadow:
+    0 0 22px rgba(214,160,74,.16),
+    0 0 3px rgba(214,160,74,.22),
+    inset 0 0 20px rgba(214,160,74,.07);
+  transition:color .4s var(--ease), border-color .4s var(--ease),
+             box-shadow .5s var(--ease), transform .4s var(--ease);
+}
+.hero-act .btn:hover{
+  background:transparent;
+  border-color:var(--amber);
+  color:var(--parch);
+  box-shadow:
+    0 0 38px rgba(214,160,74,.30),
+    0 0 5px rgba(214,160,74,.34),
+    inset 0 0 26px rgba(214,160,74,.12);
+  transform:translateY(-2px);
+}
 
 .hero-rail{
   border-top:1px solid var(--line-soft);
