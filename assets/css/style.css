@@ -37,6 +37,8 @@
      молча уезжал в системный Segoe UI и выпадал из набора. Commissioner
      подхватывает кириллицу той же плотности, латиница не меняется. */
   --sans:"Barlow","Commissioner",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  /* каллиграфия — редкий гость: только вторая строка первого экрана */
+  --script:"Great Vibes","Segoe Script",cursive;
 
   --ease:cubic-bezier(.16,1,.3,1);
   --gut:clamp(20px,5vw,76px);
@@ -452,6 +454,46 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .hero-in h1 .t-lead{
   font-size:1.5em; letter-spacing:.1em; line-height:1.06;
   margin-bottom:.06em;
+}
+/* Каллиграфия только на русском: в других языках это одна строка на
+   всё предложение, и рукописным она бы не читалась.
+   У Great Vibes длинные выносные — строке нужен воздух сверху и
+   снизу. Разрядку убираем: в рукописном она рвёт связки букв.     */
+html[lang="ru"] .hero-in h1{
+  font-family:var(--script);
+  font-weight:400;
+  letter-spacing:0;
+}
+html[lang="ru"] .hero-in h1 .t-lead{
+  font-size:1.35em; letter-spacing:.02em; line-height:1.1;
+  margin-bottom:0;
+}
+html[lang="ru"] .hero-in h1 .t-tail{
+  line-height:1.3;
+  padding-bottom:.1em;
+}
+
+/* Настоящее золото — не один цвет, а металл: тёмная бронза по краям,
+   светлый блик поперёк середины и отражённый тёплый свет снизу.
+   Заливка идёт по форме букв, поэтому тень тоже даём через filter —
+   обычный text-shadow рисуется за коробкой, а не за глифом.        */
+html[lang="ru"] .hero-in h1 .t-lead,
+html[lang="ru"] .hero-in h1 .t-tail{
+  color:transparent;
+  background-image:linear-gradient(176deg,
+    #6E4610 0%,
+    #A87824 13%,
+    #E6C775 29%,
+    #FDF4CE 43%,
+    #EFCC79 52%,
+    #B8862B 66%,
+    #8A5E15 77%,
+    #CFA243 90%,
+    #F3E3AC 100%);
+  -webkit-background-clip:text; background-clip:text;
+  text-shadow:none;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.55))
+         drop-shadow(0 0 28px rgba(232,182,96,.22));
 }
 /* Заголовок первого экрана — одна золотая строка во всю ширину.
    Размер подбирает скрипт: во всех пяти языках длина строки разная,
