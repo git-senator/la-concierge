@@ -529,6 +529,10 @@ html[lang="ru"] .hero-in h1 .t-tail{
 .hero-rail b{
   font-family:var(--display); font-size:26px; font-weight:400;
   letter-spacing:0; color:var(--amber);
+  /* У Cormorant по умолчанию старостильные цифры: единица в них
+     выглядит как римская I. Просим обычные, на общей высоте.      */
+  font-variant-numeric:lining-nums;
+  font-feature-settings:"lnum" 1;
 }
 .hero-rail em{ font-style:normal; }
 
