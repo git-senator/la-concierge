@@ -328,7 +328,10 @@
       return;
     }
 
-    var size = 100 * (avail / line) * 0.995;
+    // Долю ширины берём из стилей: каллиграфию нельзя растягивать
+    // во всю колонку — она становится тонкой и дешёвой.
+    var fill = parseFloat(getComputedStyle(heroTitle).getPropertyValue('--fit')) || 0.995;
+    var size = 100 * (avail / line) * fill;
     if (size < 34) {                     // узкий экран — пусть переносится
       heroTitle.classList.remove('fitted');
       heroTitle.style.fontSize = '';
