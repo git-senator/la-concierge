@@ -62,7 +62,7 @@
     'hero.title': '<span class="t-tail">Time is the highest form of luxury, and we look after it</span>',
     'hero.lede': 'Everything you need, in one service.',
     'hero.cta': 'Request a concierge',
-    'hero.wa': 'WhatsApp',
+    'hero.wa': 'Contact a manager',
     'hero.note': 'The list of families we keep is short. That is the service.',
 
     'rail.attendance': 'attendance',
@@ -272,7 +272,7 @@
     'hero.title': '<span class="t-tail">O tempo é a forma mais alta de luxo, e nós cuidamos dele</span>',
     'hero.lede': 'Tudo o que você precisa, em um só serviço.',
     'hero.cta': 'Solicitar um concierge',
-    'hero.wa': 'WhatsApp',
+    'hero.wa': 'Falar com o gerente',
     'hero.note': 'A lista de famílias que atendemos é curta. É justamente esse o serviço.',
 
     'rail.attendance': 'atendimento',
@@ -482,7 +482,7 @@
     'hero.title': '<span class="t-tail">El tiempo es la forma más alta de lujo, y nosotros lo cuidamos</span>',
     'hero.lede': 'Todo lo que necesita, en un solo servicio.',
     'hero.cta': 'Solicitar un conserje',
-    'hero.wa': 'WhatsApp',
+    'hero.wa': 'Hablar con el gestor',
     'hero.note': 'La lista de familias que atendemos es corta. En eso consiste el servicio.',
 
     'rail.attendance': 'atención',
@@ -692,7 +692,7 @@
     'hero.title': '<span class="t-tail">Il tempo è la forma più alta di lusso, e noi ce ne occupiamo</span>',
     'hero.lede': 'Tutto ciò che serve, in un solo servizio.',
     'hero.cta': 'Richiedere un concierge',
-    'hero.wa': 'WhatsApp',
+    'hero.wa': 'Contattare il referente',
     'hero.note': 'La lista delle famiglie che seguiamo è corta. Il servizio è esattamente questo.',
 
     'rail.attendance': 'reperibilità',
