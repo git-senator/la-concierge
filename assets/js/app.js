@@ -1,0 +1,424 @@
+/* ══════════════════════════════════════════════════════════════════════
+   ВАРИАНТ №2 — поведение страницы.
+   Всё на нативном API: библиотек нет, страница открывается офлайн
+   и ничего не тянет со стороны.
+
+   1 плавный скролл (URL не меняется)   6 параллакс
+   2 шапка                              7 реестр услуг: сцена + раскрытие
+   3 активный пункт меню                8 счётчики
+   4 мобильная шторка                   9 год в подвале
+   5 появление блоков                  10 монтаж формы
+   ══════════════════════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+
+  /* ── 1. Плавный скролл ────────────────────────────────────────────
+     history не трогаем намеренно: сайт одностраничный, адрес должен
+     оставаться прежним, а «назад» — не листать секции.              */
+  function scrollToId(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight + 1;
+    window.scrollTo({ top: Math.max(top, 0), behavior: reduced ? 'auto' : 'smooth' });
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[data-scroll]');
+    if (!link) return;
+    var id = (link.getAttribute('href') || '').replace('#', '');
+    if (!id) return;
+    e.preventDefault();
+    closeDrawer();
+
+    // клик по «Request …» внутри услуги — подставляем услугу в форму
+    var prefill = link.getAttribute('data-prefill');
+    if (prefill) {
+      var sel = document.getElementById('concierge-request-service');
+      if (sel) {
+        Array.prototype.forEach.call(sel.options, function (o) {
+          if (o.value === prefill) sel.value = o.value;
+        });
+        sel.dispatchEvent(new Event('change'));
+      }
+    }
+    scrollToId(id);
+  });
+
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest('a[data-legal]');
+    if (!l) return;
+    e.preventDefault();
+    // подпись берём из самой ссылки — она уже на языке посетителя
+    var stub = window.I18N ? I18N.t('legal.stub', 'Документ «%s» пока не опубликован.')
+                            : 'Документ «%s» пока не опубликован.';
+    alert(stub.replace('%s', l.textContent));
+  });
+
+  /* ── 2. Шапка ─────────────────────────────────────────────────────── */
+  var floatWa = document.getElementById('floatWa');
+  var lastY = window.pageYOffset;
+
+  function onScroll() {
+    var y = window.pageYOffset;
+    nav.classList.toggle('solid', y > 40);
+    nav.classList.toggle('hide', y > 640 && y > lastY && !document.body.classList.contains('drawer-open'));
+    floatWa.classList.toggle('on', y > 720);
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── 3. Активный пункт меню ───────────────────────────────────────── */
+  var sections = ['home', 'services', 'destinations', 'concierge', 'request']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+
+  if (sections.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* ── 4. Мобильная шторка ──────────────────────────────────────────── */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+
+  function openDrawer() {
+    drawer.hidden = false;
+    requestAnimationFrame(function () { drawer.classList.add('open'); });
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('drawer-open');
+  }
+  function closeDrawer() {
+    if (drawer.hidden) return;
+    drawer.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    document.body.classList.remove('drawer-open');
+    setTimeout(function () { drawer.hidden = true; }, 420);
+  }
+  burger.addEventListener('click', function () {
+    drawer.hidden ? openDrawer() : closeDrawer();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+
+  /* ── 5. Появление блоков ──────────────────────────────────────────── */
+  var revealIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      revealIO.unobserve(en.target);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -7% 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealIO.observe(el); });
+
+  // Первый экран показываем сразу. Наблюдатель обрезает нижние 7% вьюпорта,
+  // и полоса с цифрами, стоящая ровно по нижнему краю, в эту слепую зону
+  // попадает и без прокрутки не проявляется вовсе.
+  requestAnimationFrame(function () {
+    document.querySelectorAll('.hero .reveal').forEach(function (el) {
+      revealIO.unobserve(el);
+      el.classList.add('in');
+    });
+  });
+
+  /* ── 5a. Видеофон первого экрана ──────────────────────────────────
+     Показываем ролик только когда он реально может играть, иначе под
+     ним остаётся снимок. При «уменьшить движение» ставим на паузу —
+     полноэкранное видео это ровно то, от чего такая настройка спасает. */
+  var heroVid = document.querySelector('.hero-bg video');
+  if (heroVid) {
+    if (reduced) {
+      heroVid.autoplay = false;
+      heroVid.pause();
+    } else {
+      var showVid = function () { heroVid.classList.add('on'); };
+      // Ролик, вшитый в страницу как data-URI, успевает догрузиться до того,
+      // как скрипт навесит слушателя, — тогда canplay уже не придёт.
+      if (heroVid.readyState >= 3) showVid();
+      heroVid.addEventListener('loadeddata', showVid);
+      heroVid.addEventListener('canplay', showVid);
+      // Safari на iOS иногда отказывает в автозапуске молча
+      var kick = heroVid.play();
+      if (kick && kick.catch) kick.catch(function () {});
+    }
+  }
+
+  /* ── 6. Параллакс ─────────────────────────────────────────────────── */
+  var parallaxNodes = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (parallaxNodes.length && !reduced) {
+    var ticking = false;
+    var move = function () {
+      var vh = window.innerHeight;
+      parallaxNodes.forEach(function (node) {
+        var host = node.parentElement.getBoundingClientRect();
+        if (host.bottom < -200 || host.top > vh + 200) return;
+        var depth = parseFloat(node.getAttribute('data-parallax')) || 0.2;
+        var progress = (host.top + host.height / 2 - vh / 2) / vh;
+        node.style.transform = 'translate3d(0,' + (progress * depth * 100).toFixed(2) + 'px,0)';
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(move);
+    }, { passive: true });
+    window.addEventListener('resize', move);
+    move();
+  }
+
+  /* ── 7. Реестр услуг ──────────────────────────────────────────────
+     Широкий экран: слева опись, справа прилипшая сцена. Клик по строке
+     переносит её описание на сцену — страница при этом не прыгает.
+     Узкий экран: сцены нет, описание раскрывается прямо под строкой.
+     Разметка одна, ветвится только поведение.                        */
+  var rows = Array.prototype.slice.call(document.querySelectorAll('[data-svc]'));
+  var stage = document.getElementById('svcStage');
+  var wide = window.matchMedia('(min-width: 981px)');
+  var current = rows.filter(function (r) { return r.hasAttribute('data-first'); })[0] || rows[0];
+
+  function paintStage(row) {
+    if (!stage || !row) return;
+    var src = row.querySelector('.svc-detail');
+    if (!src) return;
+    var copy = src.cloneNode(true);
+    var media = copy.querySelector('.svc-media');
+    var title = document.createElement('h4');
+    title.textContent = row.querySelector('.svc-name').textContent;
+    if (media && media.nextSibling) copy.insertBefore(title, media.nextSibling);
+    else copy.insertBefore(title, copy.firstChild);
+    stage.innerHTML = '';
+    stage.appendChild(copy);
+  }
+
+  function setRow(row, on) {
+    row.classList.toggle('on', on);
+    row.querySelector('.svc-head').setAttribute('aria-expanded', on ? 'true' : 'false');
+  }
+
+  /* Карточка обязана быть видна целиком. Если её низ уходит под край
+     экрана, подкручиваем страницу — но ровно настолько, чтобы сцена
+     прилипла к шапке, и ни пикселем больше: дальше двигать бесполезно,
+     прилипший блок всё равно останется на месте.                     */
+  function revealStage() {
+    if (!stage) return;
+    var box = stage.getBoundingClientRect();
+    var pinned = nav.offsetHeight + 26;
+    var need = box.bottom - (window.innerHeight - 16);
+    if (need <= 0) return;
+    var room = box.top - pinned;
+    if (room <= 1) return;
+    window.scrollTo({
+      top: window.pageYOffset + Math.min(need, room),
+      behavior: reduced ? 'auto' : 'smooth'
+    });
+  }
+
+  function activate(row) {
+    rows.forEach(function (r) { if (r !== row) setRow(r, false); });
+    setRow(row, true);
+    current = row;
+    if (wide.matches) { paintStage(row); revealStage(); }
+  }
+
+  rows.forEach(function (row) {
+    row.querySelector('.svc-head').addEventListener('click', function () {
+      if (wide.matches) { activate(row); return; }
+
+      // узкий экран — обычная гармошка, одна открытая строка
+      var open = row.classList.contains('on');
+      rows.forEach(function (r) { setRow(r, false); });
+      if (open) return;
+      setRow(row, true);
+      current = row;
+      setTimeout(function () {
+        var box = row.getBoundingClientRect();
+        if (box.top < nav.offsetHeight) {
+          window.scrollTo({
+            top: box.top + window.pageYOffset - nav.offsetHeight - 16,
+            behavior: reduced ? 'auto' : 'smooth'
+          });
+        }
+      }, 90);
+    });
+  });
+
+  // На широком экране сцена не должна быть пустой — открываем первую строку.
+  // На узком гармошка стартует закрытой: раскрытая по умолчанию строка
+  // отодвигает остальные семь за экран.
+  if (current && wide.matches) activate(current);
+
+  var onWide = function () {
+    if (wide.matches && current) activate(current);
+  };
+  if (wide.addEventListener) wide.addEventListener('change', onWide);
+  else if (wide.addListener) wide.addListener(onWide);
+
+  /* ── 8. Счётчики ──────────────────────────────────────────────────── */
+  var countIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var node = en.target;
+      var to = parseInt(node.getAttribute('data-count'), 10) || 0;
+      var t0 = performance.now(), dur = 1400;
+      (function step(now) {
+        var p = Math.min((now - t0) / dur, 1);
+        node.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+      countIO.unobserve(node);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(function (n) { countIO.observe(n); });
+
+  /* ── 8a. Заголовок первого экрана во всю ширину ──────────────────
+     Одна строка, и она должна доходить ровно до обоих краёв. Задать
+     размер в vw нельзя: в пяти языках фраза разной длины, и то, что
+     влезло по-русски, вылезет по-испански. Поэтому меряем строку и
+     считаем кегль под фактическую ширину колонки.
+
+     Если расчётный кегль выходит меньше порога — значит экран узкий и
+     одна строка была бы нечитаемой. Тогда отпускаем перенос и отдаём
+     размер обратно вёрстке.                                          */
+  var heroTitle = document.querySelector('.hero-in h1');
+
+  function fitHeroTitle() {
+    if (!heroTitle) return;
+    var box = heroTitle.parentElement;
+    var cs = getComputedStyle(box);
+    var avail = box.clientWidth -
+                parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (avail <= 0) return;
+
+    heroTitle.classList.add('fitted');
+    heroTitle.style.fontSize = '100px';
+    var line = heroTitle.scrollWidth;
+    if (!line) {
+      heroTitle.classList.remove('fitted');
+      heroTitle.style.fontSize = '';
+      return;
+    }
+
+    var size = 100 * (avail / line) * 0.995;
+    if (size < 34) {                     // узкий экран — пусть переносится
+      heroTitle.classList.remove('fitted');
+      heroTitle.style.fontSize = '';
+      return;
+    }
+    heroTitle.style.fontSize = Math.min(size, 150) + 'px';
+  }
+
+  fitHeroTitle();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeroTitle);
+  window.addEventListener('load', fitHeroTitle);
+  var fitTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(fitHeroTitle, 120);
+  });
+
+  /* ── 9. Год ───────────────────────────────────────────────────────── */
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ── 9a. Языки ────────────────────────────────────────────────────
+     При первом заходе показываем плашку выбора. Язык при этом уже
+     применён по данным браузера — посетитель читает её на своём и
+     либо соглашается, либо меняет. Выбор запоминается, при следующих
+     заходах плашка не появляется.                                   */
+  var gate = document.getElementById('langGate');
+  var langList = document.getElementById('langList');
+  var langCode = document.getElementById('langCode');
+  var ROMAN = ['I', 'II', 'III', 'IV', 'V'];
+
+  function paintLangList() {
+    if (!langList) return;
+    langList.innerHTML = '';
+    I18N.langs.forEach(function (l, i) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('data-lang', l.code);
+      if (l.code === I18N.current) b.setAttribute('aria-current', 'true');
+      b.innerHTML = '<em>' + ROMAN[i] + '</em><b>' + l.native + '</b><i>' + l.label + '</i>';
+      li.appendChild(b);
+      langList.appendChild(li);
+    });
+  }
+
+  function openGate() {
+    if (!gate) return;
+    paintLangList();
+    gate.hidden = false;
+    requestAnimationFrame(function () { gate.classList.add('on'); });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGate() {
+    if (!gate || gate.hidden) return;
+    gate.classList.remove('on');
+    document.body.style.overflow = '';
+    setTimeout(function () { gate.hidden = true; }, 600);
+  }
+
+  function setLang(code) {
+    I18N.apply(code);
+    if (langCode) langCode.textContent = code.toUpperCase();
+    paintLangList();
+  }
+
+  if (window.I18N) {
+    var stored = I18N.saved();
+    setLang(stored || I18N.guess());
+    if (!stored) setTimeout(openGate, 420);
+
+    if (gate) {
+      gate.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-lang]');
+        if (b) { setLang(b.getAttribute('data-lang')); closeGate(); return; }
+        if (e.target === gate) closeGate();   // клик по фону — принять текущий
+      });
+    }
+    ['langBtn', 'langBtnMob'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', function () { closeDrawer(); openGate(); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeGate();
+    });
+
+    // форма пересобирается на новом языке, введённое сохраняется
+    document.addEventListener('langchange', function () {
+      if (window.conciergeForm && window.conciergeForm.relang) window.conciergeForm.relang();
+      fitHeroTitle();
+    });
+  }
+
+  /* ── 10. Монтаж формы ─────────────────────────────────────────────
+     Транспорт по умолчанию — консоль: форма работает и данные видно,
+     но никуда не улетают. Бэкенд подключается заменой одной строки.  */
+  if (window.RequestForm) {
+    window.conciergeForm = RequestForm.mount('#request-form-mount', {
+      formId: 'concierge-request',
+      whatsappPhone: '5511968422222',
+      transport: RequestForm.transports.console()
+      // transport: RequestForm.transports.http('https://api.yourdomain.com/requests')
+      // transport: RequestForm.transports.telegramBot('BOT_TOKEN', 'CHAT_ID')
+    });
+  }
+})();
