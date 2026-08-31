@@ -613,7 +613,8 @@ html[lang="ru"] .hero-in h1 .t-lead{
 /* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
    даём двумя тенями: наружной по всем сторонам и внутренней, чтобы
    рамка выглядела подсвеченной, а не обведённой.                   */
-.hero-act .btn{
+.hero-act .btn,
+.final-in .btn{
   background:transparent;
   border-color:rgba(214,160,74,.52);
   color:var(--parch);
@@ -624,7 +625,8 @@ html[lang="ru"] .hero-in h1 .t-lead{
   transition:color .4s var(--ease), border-color .4s var(--ease),
              box-shadow .5s var(--ease), transform .4s var(--ease);
 }
-.hero-act .btn:hover{
+.hero-act .btn:hover,
+.final-in .btn:hover{
   background:transparent;
   border-color:var(--amber);
   color:var(--parch);
@@ -1116,7 +1118,66 @@ html[lang="ru"] .hero-in h1 .t-lead{
   position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:radial-gradient(ellipse 70% 66% at 50% 46%, transparent 26%, rgba(6,3,4,.6) 70%, #050304 100%);
 }
-.final-in h2{ font-size:clamp(38px,7vw,110px); line-height:.94; }
+/* Фирменный знак вместо заголовка. Три яруса: имя вразрядку, под ним
+   подпись между двух волосяных линий, ниже — обещание в рамке. Размеры
+   считаются от одного кегля --lk, поэтому знак масштабируется целиком
+   и пропорции не разъезжаются между телефоном и большим экраном.   */
+.lockup{
+  --lk:clamp(30px,6.2vw,86px);
+  --lk-line:rgba(239,230,214,.72);
+  display:flex; flex-direction:column; align-items:center;
+  font-family:var(--sans); color:var(--parch);
+  text-transform:uppercase; line-height:1;
+}
+.lk-name{
+  font-weight:300; font-size:var(--lk);
+  letter-spacing:.30em; text-indent:.30em;
+  white-space:nowrap;
+}
+/* Подпись с линиями по бокам: линии тянутся, текст держит свою ширину. */
+.lk-sub{
+  display:flex; align-items:center; justify-content:center;
+  gap:calc(var(--lk) * .30);
+  width:100%; margin-top:calc(var(--lk) * .26);
+}
+.lk-sub i{ flex:1 1 auto; height:1px; background:var(--lk-line); }
+.lk-sub em{
+  flex:none; font-style:normal; font-weight:300;
+  font-size:calc(var(--lk) * .245); letter-spacing:.34em; text-indent:.34em;
+  white-space:nowrap;
+}
+/* Обещание в рамке. Верхняя грань — не бордюр, а фон с прорехой по
+   центру: в неё садится точка, как в макете. Бордюром такого не
+   сделать, а закрасить прореху нечем — под знаком живая фотография. */
+.lk-claim{
+  position:relative;
+  margin-top:calc(var(--lk) * .52);
+  padding:calc(var(--lk) * .34) calc(var(--lk) * .5);
+  border:1px solid var(--lk-line); border-top:0;
+  background-image:linear-gradient(90deg,
+    var(--lk-line) 0 calc(50% - .55em), transparent calc(50% - .55em) calc(50% + .55em),
+    var(--lk-line) calc(50% + .55em) 100%);
+  background-size:100% 1px; background-repeat:no-repeat; background-position:top left;
+  display:flex; flex-direction:column; align-items:center;
+  gap:calc(var(--lk) * .16);
+}
+.lk-dot{
+  position:absolute; top:0; left:50%; translate:-50% -50%;
+  width:.34em; height:.34em; border-radius:50%; background:var(--lk-line);
+  font-size:calc(var(--lk) * .30);
+}
+.lk-claim b{
+  font-weight:300; font-size:calc(var(--lk) * .30);
+  letter-spacing:.10em; text-indent:.10em; line-height:1.25;
+}
+.lk-claim b.hard{ font-weight:600; }
+
+/* На телефоне линии по бокам подписи съедают её до нечитаемого —
+   даём знаку почти всю ширину и растим кегль относительно экрана. */
+@media (max-width:560px){
+  .lockup{ --lk:clamp(26px,8.4vw,42px); width:100%; }
+  .lk-claim{ padding-inline:calc(var(--lk) * .34); }
+}
 .final-in .btn{ margin-top:44px; }
 .final-note{
   margin:26px 0 0; font-family:var(--display); font-style:italic;

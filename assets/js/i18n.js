@@ -95,7 +95,8 @@
 
     'req.fine': 'Answered around the clock, every day of the year.',
 
-    'final.title': 'Brazil,<br><span class="em">without the friction.</span>',
+    'final.claim1': 'Everything you need in Brazil —',
+    'final.claim2': 'on a single phone number.',
     'final.cta': 'Request your private concierge',
     'final.note': 'One request. Everything else is ours.',
 
@@ -304,7 +305,8 @@
 
     'req.fine': 'Atendemos 24 horas, todos os dias do ano.',
 
-    'final.title': 'Brasil,<br><span class="em">sem atrito.</span>',
+    'final.claim1': 'Tudo o que você precisa no Brasil —',
+    'final.claim2': 'em um único número de telefone.',
     'final.cta': 'Solicitar o seu concierge privado',
     'final.note': 'Um pedido. Todo o resto é conosco.',
 
@@ -513,7 +515,8 @@
 
     'req.fine': 'Atendemos las veinticuatro horas, todos los días del año.',
 
-    'final.title': 'Brasil,<br><span class="em">sin fricción.</span>',
+    'final.claim1': 'Todo lo que necesita en Brasil —',
+    'final.claim2': 'en un solo número de teléfono.',
     'final.cta': 'Solicitar su conserje privado',
     'final.note': 'Una petición. Todo lo demás es nuestro.',
 
@@ -722,7 +725,8 @@
 
     'req.fine': 'Rispondiamo ventiquattro ore su ventiquattro, tutti i giorni dell’anno.',
 
-    'final.title': 'Brasile,<br><span class="em">senza attriti.</span>',
+    'final.claim1': 'Tutto ciò che le serve in Brasile —',
+    'final.claim2': 'su un unico numero di telefono.',
     'final.cta': 'Richiedere il suo concierge privato',
     'final.note': 'Una richiesta. Tutto il resto è nostro.',
 
