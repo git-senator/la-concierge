@@ -563,6 +563,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-variant-numeric:lining-nums;
   font-feature-settings:"lnum" 1;
 }
+/* «24» и «/7» — два соседних элемента, и флекс разводил их тем же
+   зазором, что цифру и слово. Гасим зазор только между цифрами:
+   заодно снимаем разрядку, которая висит справа от последнего знака. */
+.hero-rail b + b{ margin-left:calc(-8px - .06em); }
 .hero-rail em{ font-style:normal; }
 
 @media (min-width:981px) and (max-height:800px){
