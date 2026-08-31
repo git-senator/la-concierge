@@ -486,107 +486,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   50%{ transform:rotate(.35deg); }
 }
 
-/* Заголовок теперь в одну строку, и прижатый к низу блок оставлял
-   сверху пустое небо. Ставим по центру кадра: строка ложится на
-   чистое небо, а не на огни, и читается лучше.                 */
-/* Заголовок подгоняется по ширине колонки, поэтому «сделать крупнее»
-   значит дать колонке больше места, а не поднять кегль: кегль скрипт
-   всё равно пересчитает обратно. Колонка первого экрана шире общей
-   и с меньшими полями — на остальные разделы это не влияет.         */
-.hero-in{
-  align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center;
-  max-width:1400px; padding-inline:clamp(18px,4.4vw,68px);
-  /* Колонка — элемент грида, а заголовок в ней неразрывный. Без этого
-     она раздувается под длину строки, скрипт видит выросшую ширину и
-     поднимает кегль ещё — и так по кругу, пока текст не уедет за край.
-     Ограничитель разрывает эту петлю.                                */
-  min-width:0;
-}
-
-.hero-in h1{
-  margin:0 auto; max-width:none;
-  color:var(--amber);
-  letter-spacing:-.012em;
-  text-shadow:0 1px 0 rgba(0,0,0,.55), 0 0 70px rgba(214,160,74,.22);
-  text-wrap:balance;
-}
-/* Пока скрипт не подобрал кегль — обычный перенос. Как подобрал,
-   строка становится неразрывной и тянется ровно по ширине.       */
-.hero-in h1.fitted{ white-space:nowrap; text-wrap:normal; }
-/* Русский вариант в две строки: слово ВРЕМЯ отдельно сверху, под ним
-   остальная фраза. В прочих языках второй строки нет — заголовок
-   остаётся одной строкой, разметка та же.                          */
-.hero-in h1 .t-lead,
-.hero-in h1 .t-tail{ display:block; }
-/* Вторая строка набрана чуть плотнее по весу: на золотом градиенте
-   тонкая антиква на просвет выглядит блёклой рядом со словом ВРЕМЯ. */
-.hero-in h1 .t-tail{ font-weight:500; }
-.hero-in h1 .t-lead{
-  font-size:1.5em; letter-spacing:.1em; line-height:1.06;
-  margin-bottom:.06em;
-}
-/* Лучи из-за слова: очень слабые золотые клинья, погашенные к краям.
-   Их задача — намекнуть на блеск, а не нарисовать солнце.          */
-.hero-in h1{ position:relative; }
-.hero-in h1::before{
-  content:""; position:absolute; z-index:-1;
-  left:50%; top:26%; width:min(62%,760px); aspect-ratio:1; translate:-50% -50%;
-  pointer-events:none;
-  background:repeating-conic-gradient(from 0deg,
-    rgba(232,197,106,.032) 0deg 1.6deg, transparent 1.6deg 26deg);
-  -webkit-mask-image:radial-gradient(closest-side, transparent 12%, rgba(0,0,0,.75) 26%, transparent 54%);
-  mask-image:radial-gradient(closest-side, transparent 12%, rgba(0,0,0,.75) 26%, transparent 54%);
-  animation:rays 70s linear infinite;
-}
-@keyframes rays{ to{ rotate:360deg; } }
-
-/* Русский заголовок набран тем же Cormorant Garamond, что и заголовки
-   разделов, — один почерк на всю страницу. Отличается только золотом. */
-/* Настоящее золото — не один цвет, а металл: тёмная бронза по краям,
-   светлый блик поперёк середины и отражённый тёплый свет снизу.
-   Заливка идёт по форме букв, поэтому тень тоже даём через filter —
-   обычный text-shadow рисуется за коробкой, а не за глифом.        */
-html[lang="ru"] .hero-in h1 .t-lead,
-html[lang="ru"] .hero-in h1 .t-tail{
-  color:transparent;
-  background-image:linear-gradient(177deg,
-    #8E6119 0%,
-    #C99A3A 13%,
-    #F2DC9F 29%,
-    #FFF7D8 44%,
-    #EED184 56%,
-    #C6942F 70%,
-    #9C6C1C 84%,
-    #E0BA63 100%);
-  -webkit-background-clip:text; background-clip:text;
-  text-shadow:none;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))
-         drop-shadow(0 0 30px rgba(232,182,96,.20));
-}
-
-/* Блик по слову: поверх металла ходит светлая полоса. Проходит за
-   полторы секунды и потом долго ждёт — иначе заголовок мигает.    */
-html[lang="ru"] .hero-in h1 .t-lead{
-  background-image:
-    linear-gradient(102deg,
-      transparent 34%, rgba(255,251,236,.55) 44%,
-      rgba(255,255,255,.92) 50%, rgba(255,251,236,.55) 56%,
-      transparent 66%),
-    linear-gradient(177deg,
-      #8E6119 0%, #C99A3A 13%, #F2DC9F 29%, #FFF7D8 44%,
-      #EED184 56%, #C6942F 70%, #9C6C1C 84%, #E0BA63 100%);
-  background-size:250% 100%, 100% 100%;
-  background-position:-70% 0, 0 0;
-  animation:shine 8s ease-in-out infinite;
-}
-@keyframes shine{
-  0%{ background-position:-70% 0, 0 0; }
-  22%,100%{ background-position:170% 0, 0 0; }
-}
-@media (prefers-reduced-motion: reduce){
-  html[lang="ru"] .hero-in h1 .t-lead{ animation:none; background-position:170% 0, 0 0; }
-  .hero-in h1::before{ animation:none; }
-}
+/* Первый экран: знак стоит по центру кадра, а не прижат к низу —
+   строка ложится на чистое небо, а не на огни города.            */
+.hero-in{ align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center; }
+/* На первом экране знак чуть мельче, чем на финальном: под ним ещё
+   подзаголовок, кнопка и полоса цифр, и всё это должно поместиться. */
+.hero-in .lockup{ --lk:clamp(26px,5vw,68px); margin:0 auto; }
 
 /* Подзаголовок подчёркнут золотой неоновой линией: сама линия —
    градиент, который гаснет к краям, свечение — три тени разного
@@ -660,7 +565,7 @@ html[lang="ru"] .hero-in h1 .t-lead{
 .hero-rail em{ font-style:normal; }
 
 @media (min-width:981px) and (max-height:800px){
-  .hero h1:not(.fitted){ font-size:clamp(40px,5.6vw,92px); }
+  .hero-in .lockup{ --lk:clamp(24px,3.6vw,48px); }
   .hero-in .lede{ font-size:20px; margin-top:20px; }
   .hero-act{ margin-top:26px; }
   .hero .btn-lg{ height:54px; }
@@ -1276,7 +1181,6 @@ html[lang="ru"] .hero-in h1 .t-lead{
         rgba(6,3,4,.56) 44%, rgba(6,3,4,.74) 68%, rgba(6,3,4,.95) 100%);
   }
   .hero-bg .media{ object-position:center 62%; }
-  .hero-in h1{ max-width:none; }
   .hero-act{ flex-direction:column; align-items:stretch; }
   .btn-lg{ width:100%; padding-inline:18px; letter-spacing:.14em; }
   .hero-rail{ gap:10px 26px; }

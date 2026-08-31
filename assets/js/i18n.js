@@ -59,7 +59,6 @@
     'aria.legal': 'Legal',
 
     'hero.eyebrow': 'Brazil <em>·</em> Latin America <em>·</em> Answered at any hour',
-    'hero.title': '<span class="t-tail">Time is the highest form of luxury, and we look after it</span>',
     'hero.lede': 'Everything you need, in one service.',
     'hero.cta': 'Request a concierge',
     'hero.wa': 'Contact a manager',
@@ -269,7 +268,6 @@
     'aria.legal': 'Jurídico',
 
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Atendemos a qualquer hora',
-    'hero.title': '<span class="t-tail">O tempo é a forma mais alta de luxo, e nós cuidamos dele</span>',
     'hero.lede': 'Tudo o que você precisa, em um só serviço.',
     'hero.cta': 'Solicitar um concierge',
     'hero.wa': 'Falar com o gerente',
@@ -479,7 +477,6 @@
     'aria.legal': 'Legal',
 
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Respondemos a cualquier hora',
-    'hero.title': '<span class="t-tail">El tiempo es la forma más alta de lujo, y nosotros lo cuidamos</span>',
     'hero.lede': 'Todo lo que necesita, en un solo servicio.',
     'hero.cta': 'Solicitar un conserje',
     'hero.wa': 'Hablar con el gestor',
@@ -689,7 +686,6 @@
     'aria.legal': 'Note legali',
 
     'hero.eyebrow': 'Brasile <em>·</em> America Latina <em>·</em> Rispondiamo a qualsiasi ora',
-    'hero.title': '<span class="t-tail">Il tempo è la forma più alta di lusso, e noi ce ne occupiamo</span>',
     'hero.lede': 'Tutto ciò che serve, in un solo servizio.',
     'hero.cta': 'Richiedere un concierge',
     'hero.wa': 'Contattare il referente',

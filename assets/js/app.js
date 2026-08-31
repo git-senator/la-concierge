@@ -286,77 +286,6 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-count]').forEach(function (n) { countIO.observe(n); });
 
-  /* ── 8a. Заголовок первого экрана во всю ширину ──────────────────
-     Одна строка, и она должна доходить ровно до обоих краёв. Задать
-     размер в vw нельзя: в пяти языках фраза разной длины, и то, что
-     влезло по-русски, вылезет по-испански. Поэтому меряем строку и
-     считаем кегль под фактическую ширину колонки.
-
-     Если расчётный кегль выходит меньше порога — значит экран узкий и
-     одна строка была бы нечитаемой. Тогда отпускаем перенос и отдаём
-     размер обратно вёрстке.                                          */
-  var heroTitle = document.querySelector('.hero-in h1');
-
-  /* Ширину меряем по самому тексту, а не по коробке: у блочной строки
-     коробка всегда во всю колонку и о длине фразы ничего не говорит.
-     По-русски заголовок в две строки — берём ту, что длиннее.        */
-  function widestLine(el) {
-    var parts = el.querySelectorAll('.t-lead, .t-tail');
-    var list = parts.length ? parts : [el];
-    var rng = document.createRange(), w = 0;
-    for (var i = 0; i < list.length; i++) {
-      rng.selectNodeContents(list[i]);
-      w = Math.max(w, rng.getBoundingClientRect().width);
-    }
-    return w;
-  }
-
-  function fitHeroTitle() {
-    if (!heroTitle) return;
-    var box = heroTitle.parentElement;
-    var cs = getComputedStyle(box);
-    var avail = box.clientWidth -
-                parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-    if (avail <= 0) return;
-
-    heroTitle.classList.add('fitted');
-    heroTitle.style.fontSize = '100px';
-    var line = widestLine(heroTitle);
-    if (!line) {
-      heroTitle.classList.remove('fitted');
-      heroTitle.style.fontSize = '';
-      return;
-    }
-
-    // Долю ширины берём из стилей: каллиграфию нельзя растягивать
-    // во всю колонку — она становится тонкой и дешёвой.
-    var fill = parseFloat(getComputedStyle(heroTitle).getPropertyValue('--fit'));
-    if (isNaN(fill)) fill = 0.995;
-    // Ноль — отказ от подгонки: широкий дисплейный шрифт в одну строку
-    // даёт нечитаемо мелкий кегль, там композицию держит вёрстка.
-    if (fill <= 0) {
-      heroTitle.classList.remove('fitted');
-      heroTitle.style.fontSize = '';
-      return;
-    }
-    var size = 100 * (avail / line) * fill;
-    if (size < 34) {                     // узкий экран — пусть переносится
-      heroTitle.classList.remove('fitted');
-      heroTitle.style.fontSize = '';
-      return;
-    }
-    heroTitle.style.fontSize = Math.min(size, 150) + 'px';
-  }
-
-  fitHeroTitle();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeroTitle);
-  window.addEventListener('load', fitHeroTitle);
-  var fitTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(fitTimer);
-    fitTimer = setTimeout(fitHeroTitle, 120);
-  });
-
   /* ── 9. Год ───────────────────────────────────────────────────────── */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
@@ -430,7 +359,6 @@
     // форма пересобирается на новом языке, введённое сохраняется
     document.addEventListener('langchange', function () {
       if (window.conciergeForm && window.conciergeForm.relang) window.conciergeForm.relang();
-      fitHeroTitle();
     });
   }
 
