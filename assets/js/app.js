@@ -19,10 +19,17 @@
   /* ── 1. Плавный скролл ────────────────────────────────────────────
      history не трогаем намеренно: сайт одностраничный, адрес должен
      оставаться прежним, а «назад» — не листать секции.              */
+  var NAV_HIDES_AFTER = 640;   // та же граница, что и в обработчике прокрутки
+
   function scrollToId(id) {
     var target = document.getElementById(id);
     if (!target) return;
-    var top = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight + 1;
+    var abs = target.getBoundingClientRect().top + window.pageYOffset;
+    // Уйдёт ли шапка: она прячется только при движении вниз и только
+    // ниже своей границы. Если уйдёт — отступ под неё не оставляем,
+    // иначе в нём будет виден хвост предыдущего раздела.
+    var hides = abs > window.pageYOffset + 1 && abs > NAV_HIDES_AFTER;
+    var top = hides ? abs : abs - nav.offsetHeight + 1;
     window.scrollTo({ top: Math.max(top, 0), behavior: reduced ? 'auto' : 'smooth' });
   }
 
@@ -342,7 +349,7 @@
   var gate = document.getElementById('langGate');
   var langList = document.getElementById('langList');
   var langCode = document.getElementById('langCode');
-  var ROMAN = ['I', 'II', 'III', 'IV', 'V'];
+  var MARK = ['1', '2', '3', '4', '5'];
 
   function paintLangList() {
     if (!langList) return;
@@ -353,7 +360,7 @@
       b.type = 'button';
       b.setAttribute('data-lang', l.code);
       if (l.code === I18N.current) b.setAttribute('aria-current', 'true');
-      b.innerHTML = '<em>' + ROMAN[i] + '</em><b>' + l.native + '</b><i>' + l.label + '</i>';
+      b.innerHTML = '<em>' + MARK[i] + '</em><b>' + l.native + '</b><i>' + l.label + '</i>';
       li.appendChild(b);
       langList.appendChild(li);
     });
