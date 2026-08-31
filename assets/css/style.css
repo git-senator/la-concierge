@@ -491,7 +491,17 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 /* Первый экран: знак стоит по центру кадра, а не прижат к низу —
    строка ложится на чистое небо, а не на огни города.            */
-.hero-in{ align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center; }
+.hero-in{
+  position:relative; isolation:isolate;
+  align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center;
+}
+/* Затемнение по форме текста, а не по всему кадру. */
+.hero-in::before{
+  content:""; position:absolute; z-index:-1; pointer-events:none;
+  inset:-10% -14% -12%;
+  background:radial-gradient(ellipse 60% 56% at 50% 46%,
+    rgba(6,3,4,.60) 0%, rgba(6,3,4,.44) 44%, rgba(6,3,4,.18) 68%, rgba(6,3,4,0) 84%);
+}
 /* На первом экране знак чуть мельче, чем на финальном: под ним ещё
    подзаголовок, кнопка и полоса цифр, и всё это должно поместиться. */
 .hero-in .lockup{ --lk:clamp(26px,5vw,68px); margin:0 auto; }
