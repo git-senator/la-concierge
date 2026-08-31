@@ -491,18 +491,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   min-width:0;
 }
 
-/* Корона над заголовком. Размер привязан к ширине экрана, но с потолком:
-   на большом мониторе она не должна разрастаться и спорить со словом.
-   Тень — по форме короны, а не по коробке, поэтому drop-shadow.        */
-.crown{
-  display:block; width:clamp(76px,7.6vw,132px); height:auto;
-  margin:0 auto clamp(4px,1vh,12px);
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,.55))
-         drop-shadow(0 0 26px rgba(232,182,96,.20));
-}
-/* На низком экране первый экран и так тесный — корона уходит в мелкий
-   размер, чтобы заголовок и кнопка остались на месте.                  */
-@media (max-height:680px){ .crown{ width:clamp(58px,6vw,86px); } }
 .hero-in h1{
   margin:0 auto; max-width:none;
   color:var(--amber);
