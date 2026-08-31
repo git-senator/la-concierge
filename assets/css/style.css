@@ -493,28 +493,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    подзаголовок, кнопка и полоса цифр, и всё это должно поместиться. */
 .hero-in .lockup{ --lk:clamp(26px,5vw,68px); margin:0 auto; }
 
-/* Подзаголовок подчёркнут золотой неоновой линией: сама линия —
-   градиент, который гаснет к краям, свечение — три тени разного
-   радиуса. Строка становится inline-block, иначе линия тянулась бы
-   во всю колонку, а не по длине текста.                           */
-.hero-in .lede{
-  position:relative; display:inline-block;
-  margin:26px auto 0; max-width:none;
-  padding-bottom:.62em;
-}
-.hero-in .lede::after{
-  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+/* Сияющая белая черта под рамкой знака. Ширину берёт у самой рамки,
+   поэтому совпадает с ней на любом языке. Сама линия — градиент,
+   гаснущий к краям, свечение — три тени разного радиуса.          */
+.hero-in .lk-claim::after{
+  content:""; position:absolute; left:0; right:0; top:100%;
+  height:1px; margin-top:24px; pointer-events:none;
   background:linear-gradient(90deg,
-    transparent 0%, rgba(214,160,74,.35) 12%,
-    #E8C56A 34%, #F8EACA 50%, #E8C56A 66%,
-    rgba(214,160,74,.35) 88%, transparent 100%);
+    transparent 0%, rgba(255,255,255,.35) 12%,
+    #FFFFFF 34%, #FFFFFF 66%,
+    rgba(255,255,255,.35) 88%, transparent 100%);
   box-shadow:
-    0 0 4px rgba(232,197,106,.85),
-    0 0 12px rgba(214,160,74,.55),
-    0 0 26px rgba(214,160,74,.30);
+    0 0 4px rgba(255,255,255,.90),
+    0 0 12px rgba(255,255,255,.55),
+    0 0 26px rgba(255,255,255,.28);
 }
 
-.hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:34px; }
+.hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:54px; }
 /* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
    даём двумя тенями: наружной по всем сторонам и внутренней, чтобы
    рамка выглядела подсвеченной, а не обведённой.                   */
@@ -566,8 +561,8 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 @media (min-width:981px) and (max-height:800px){
   .hero-in .lockup{ --lk:clamp(24px,3.6vw,48px); }
-  .hero-in .lede{ font-size:20px; margin-top:20px; }
-  .hero-act{ margin-top:26px; }
+  .hero-in .lk-claim::after{ margin-top:18px; }
+  .hero-act{ margin-top:40px; }
   .hero .btn-lg{ height:54px; }
 }
 
