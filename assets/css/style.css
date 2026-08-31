@@ -23,9 +23,12 @@
   --amber:#D6A04A;        /* вольфрам, свет лампы */
   --amber-dim:#8A6C33;
 
-  --parch:#EFE6D6;        /* пергамент, основной текст */
-  --parch-dim:#A79C8B;
-  --parch-far:#6E6559;
+  /* Весь текст — чистый белый. Три ступени оставлены отдельными
+     переменными: если понадобится вернуть тише подписи или сноски,
+     это правка одной строки, а не двух сотен мест.              */
+  --parch:#FFFFFF;        /* основной текст */
+  --parch-dim:#FFFFFF;    /* второстепенный */
+  --parch-far:#FFFFFF;    /* подписи и сноски */
 
   --line:rgba(239,230,214,.11);
   --line-soft:rgba(239,230,214,.05);
@@ -1023,7 +1026,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    и пропорции не разъезжаются между телефоном и большим экраном.   */
 .lockup{
   --lk:clamp(30px,6.2vw,86px);
-  --lk-line:rgba(239,230,214,.72);
+  --lk-line:rgba(255,255,255,.75);
   display:flex; flex-direction:column; align-items:center;
   font-family:var(--caps); color:var(--parch);
   text-transform:uppercase; line-height:1;
