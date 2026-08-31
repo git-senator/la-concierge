@@ -236,8 +236,7 @@
 ['Florianópolis','Jurerê Internacional, forty-two beaches and the summer address of São Paulo money. Villas, beach clubs and a season that runs December to March.'],
 ['Rio de Janeiro','Leblon and Ipanema, helicopter transfers across the bay, and a city that has never once negotiated its own beauty. Carnival is booked a year ahead.'],
 ['São Paulo','Where the business is actually done. Itaim and Jardins, the largest civil helicopter fleet in the hemisphere, and the hospitals people fly in for.'],
-['Angra dos Reis','Three hundred and sixty-five islands, two thousand beaches, and a crewed yacht with your name already on the manifest. Two hours from Rio by road, twenty minutes by air.'],
-['Fernando de Noronha','Twenty-one islands under a daily visitor cap, and water that makes the rest of the Atlantic look ordinary. Permits, pousadas and boats arranged in advance — nothing here is walk-up.']
+['Balneário Camboriú','Towers standing right on the sand, the Barra Sul marina, and beaches you reach by cable car. An hour from Florianópolis by road, with a season that runs December to March.']
     ],
     step: [
 ['You ask','One message, at any hour, in your language. WhatsApp, Telegram, or the form below.'],
@@ -446,8 +445,7 @@
 ['Florianópolis','Jurerê Internacional, quarenta e duas praias e o endereço de verão do dinheiro paulista. Casas, beach clubs e uma temporada que vai de dezembro a março.'],
 ['Rio de Janeiro','Leblon e Ipanema, transferências de helicóptero sobre a baía e uma cidade que nunca negociou a própria beleza. O Carnaval se reserva com um ano de antecedência.'],
 ['São Paulo','Onde os negócios realmente acontecem. Itaim e Jardins, a maior frota civil de helicópteros do hemisfério e os hospitais pelos quais se atravessa o continente.'],
-['Angra dos Reis','Trezentas e sessenta e cinco ilhas, duas mil praias e um iate com o seu nome na lista de bordo. Duas horas do Rio por terra, vinte minutos pelo ar.'],
-['Fernando de Noronha','Vinte e uma ilhas com limite diário de visitantes e uma água que faz o resto do Atlântico parecer comum. Autorizações, pousadas e barcos com antecedência — aqui nada se resolve na hora.']
+['Balneário Camboriú','Torres coladas na areia, a marina da Barra Sul e praias a que se chega de bondinho. Uma hora de Florianópolis por terra, com temporada de dezembro a março.']
     ],
     step: [
 ['Você pede','Uma mensagem, a qualquer hora, no seu idioma. WhatsApp, Telegram ou o formulário abaixo.'],
@@ -656,8 +654,7 @@
 ['Florianópolis','Jurerê Internacional, cuarenta y dos playas y la dirección de verano del dinero paulista. Villas, beach clubs y una temporada que va de diciembre a marzo.'],
 ['Río de Janeiro','Leblon e Ipanema, traslados en helicóptero sobre la bahía y una ciudad que jamás ha negociado su propia belleza. El Carnaval se reserva con un año de antelación.'],
 ['São Paulo','Donde los negocios se hacen de verdad. Itaim y Jardins, la mayor flota civil de helicópteros del hemisferio y los hospitales por los que se cruza el continente.'],
-['Angra dos Reis','Trescientas sesenta y cinco islas, dos mil playas y un yate con su nombre en la lista de a bordo. Dos horas de Río por carretera, veinte minutos por aire.'],
-['Fernando de Noronha','Veintiuna islas con límite diario de visitantes y un agua que hace que el resto del Atlántico parezca corriente. Permisos, pousadas y barcos con antelación — aquí nada se resuelve sobre la marcha.']
+['Balneário Camboriú','Torres pegadas a la arena, la marina de Barra Sul y playas a las que se llega en teleférico. Una hora de Florianópolis por carretera, con temporada de diciembre a marzo.']
     ],
     step: [
 ['Usted pide','Un mensaje, a cualquier hora, en su idioma. WhatsApp, Telegram o el formulario de abajo.'],
@@ -866,8 +863,7 @@
 ['Florianópolis','Jurerê Internacional, quarantadue spiagge e l’indirizzo estivo del denaro di San Paolo. Ville, beach club e una stagione che va da dicembre a marzo.'],
 ['Rio de Janeiro','Leblon e Ipanema, transfer in elicottero sopra la baia e una città che non ha mai trattato sulla propria bellezza. Il Carnevale si prenota con un anno di anticipo.'],
 ['San Paolo','Dove gli affari si fanno davvero. Itaim e Jardins, la più grande flotta civile di elicotteri dell’emisfero e gli ospedali per cui si attraversa il continente.'],
-['Angra dos Reis','Trecentosessantacinque isole, duemila spiagge e uno yacht con il suo nome sulla lista di bordo. Due ore da Rio via terra, venti minuti in volo.'],
-['Fernando de Noronha','Ventuno isole con un tetto giornaliero di visitatori e un’acqua che fa sembrare ordinario tutto il resto dell’Atlantico. Permessi, pousadas e barche in anticipo — qui non si risolve nulla sul momento.']
+['Balneário Camboriú','Torri a ridosso della sabbia, la marina di Barra Sul e spiagge che si raggiungono in funivia. Un’ora da Florianópolis via terra, con stagione da dicembre a marzo.']
     ],
     step: [
 ['Lei chiede','Un messaggio, a qualsiasi ora, nella sua lingua. WhatsApp, Telegram o il modulo qui sotto.'],
