@@ -634,14 +634,14 @@ html[lang="ru"] .hero-in h1 .t-tail{
    а снимок забирает остаток. Что бы ни было в описании, карточка
    упирается в потолок, а не вылезает за него.                       */
 .svc-stage{
-  position:sticky; top:calc(var(--navh) + 26px);
+  position:sticky; top:calc(var(--navh) + 10px);
   border:1px solid var(--line);
   background:linear-gradient(180deg, rgba(31,22,21,.7), rgba(16,10,11,.7));
   padding:clamp(20px,2vw,28px);
   /* Не потолок, а точная высота: иначе снимку нечего заполнять и он
      схлопывается в полоску. Сверху ограничиваем, чтобы на большом
      мониторе карточка не превращалась в афишу.                      */
-  height:min(calc(100svh - var(--navh) - 52px), 760px);
+  height:min(calc(100svh - var(--navh) - 26px), 940px);
   display:flex; flex-direction:column;
   overflow:auto; overscroll-behavior:contain;
 }
@@ -649,12 +649,23 @@ html[lang="ru"] .hero-in h1 .t-tail{
   display:flex; flex-direction:column;
   flex:1 1 auto; min-height:0;
 }
+/* Подсветка была нужна пустой заглушке — тёмному градиенту. Как только
+   в плашке настоящий снимок, она его выжигает, поэтому включается
+   только при отсутствии картинки.                                  */
+.svc-stage .svc-media:not(:has(img)){ filter:brightness(1.5) saturate(1.15); }
+/* Снимки сняты в ясный полдень, а страница — тёмный кабинет. Гасим,
+   уводим в тёплое и снимаем лишнюю синеву, чтобы кадр не выпадал.  */
+.svc-media .media{
+  /* Главное на этих снимках стоит внизу кадра — машина, яхта, вертолёт.
+     Если плашка обрежет, пусть теряется небо, а не они.             */
+  object-position:center 62%;
+  filter:brightness(.82) contrast(1.06) saturate(.62) sepia(.16);
+}
 .svc-stage .svc-media{
   position:relative; width:100%;
   border:1px solid rgba(214,160,74,.16);
-  filter:brightness(1.5) saturate(1.15);
   /* снимок тянется и сжимается — он и есть запас высоты */
-  flex:1 1 auto; aspect-ratio:auto; min-height:120px;
+  flex:1 1 auto; aspect-ratio:auto; min-height:150px;
 }
 .svc-stage h4,
 .svc-stage .svc-text,
