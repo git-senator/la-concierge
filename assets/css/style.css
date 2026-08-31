@@ -205,10 +205,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))
          drop-shadow(0 0 14px rgba(214,160,74,.16));
 }
-.seal{ width:40px; }
-.foot-brand .seal{ width:34px; }
-.seal-lg{ width:78px; }
-.lang-seal{ width:58px; margin:0 auto 20px; }
+.seal{ width:44px; }
+.foot-brand .seal{ width:38px; }
+.seal-lg{ width:84px; }
+.lang-seal{ width:62px; margin:0 auto 20px; }
 .brand-txt{ display:flex; flex-direction:column; line-height:1.15; min-width:0; }
 .brand-txt b{
   font-family:var(--caps); font-weight:500; font-size:13px;
