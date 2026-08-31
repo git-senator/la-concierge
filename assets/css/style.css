@@ -601,7 +601,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .svc-grid > *{ min-width:0; }
 
-.svc-list{ border-top:1px solid var(--line); }
+/* Хвост под списком — запас хода для прилипшей карточки справа.
+   Без него на последних строках список кончается раньше, чем
+   карточка успевает встать под шапку, и её верх уходит под неё. */
+.svc-list{ border-top:1px solid var(--line); padding-bottom:34px; }
 .svc-row{ border-bottom:1px solid var(--line); }
 
 .svc-head{
@@ -1161,6 +1164,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
   /* сцены нет — описание раскрывается в строке */
   .svc-grid{ grid-template-columns:1fr; }
+  .svc-list{ padding-bottom:0; }
   .svc-stage{ display:none; }
   .svc-body{ display:grid; }
   .svc-row.on .svc-body{ grid-template-rows:1fr; }

@@ -211,22 +211,63 @@
     row.querySelector('.svc-head').setAttribute('aria-expanded', on ? 'true' : 'false');
   }
 
-  /* Карточка обязана быть видна целиком. Если её низ уходит под край
-     экрана, подкручиваем страницу — но ровно настолько, чтобы сцена
-     прилипла к шапке, и ни пикселем больше: дальше двигать бесполезно,
-     прилипший блок всё равно останется на месте.                     */
-  function revealStage() {
-    if (!stage) return;
-    var box = stage.getBoundingClientRect();
-    var pinned = nav.offsetHeight + 26;
-    var need = box.bottom - (window.innerHeight - 16);
-    if (need <= 0) return;
-    var room = box.top - pinned;
+  function scrollTo(top) {
+    window.scrollTo({ top: top, behavior: reduced ? 'auto' : 'smooth' });
+  }
+
+  /* Широкий экран. После выбора услуги страница подкручивается так, чтобы
+     выполнились два условия сразу: карточка справа видна целиком и
+     следующая строка списка показалась под выбранной. Второе и избавляет
+     от колеса — идя по списку сверху вниз, следующую кнопку не приходится
+     искать, она сама выходит на экран.
+
+     Двигаем ровно на нужное и не больше: выбранная строка не должна уйти
+     под шапку, по ней кликают повторно, чтобы вернуться.             */
+  function reachNext(row, again) {
+    var need = 0;
+
+    if (stage) {
+      var sb = stage.getBoundingClientRect();
+      need = sb.bottom - (window.innerHeight - 16);
+    }
+
+    var next = rows[rows.indexOf(row) + 1];
+    if (next) {
+      var nb = next.getBoundingClientRect();
+      need = Math.max(need, nb.bottom - (window.innerHeight - 18));
+    }
+    if (need <= 1) return;
+
+    var head = row.querySelector('.svc-head').getBoundingClientRect();
+    var room = head.top - (nav.offsetHeight + 12);
     if (room <= 1) return;
-    window.scrollTo({
-      top: window.pageYOffset + Math.min(need, room),
-      behavior: reduced ? 'auto' : 'smooth'
-    });
+
+    scrollTo(window.pageYOffset + Math.min(need, room));
+    if (again) setTimeout(function () { reachNext(row, false); }, 520);
+  }
+
+  /* Узкий экран. Ждём конца раскрытия и только потом считаем позицию:
+     гармошка едет 0,62 с, и мерить на полпути — значит промахнуться.
+     Раскрытая строка встаёт под шапку: так видно и описание, и то, что
+     идёт следом, а до следующей кнопки остаётся один короткий жест. */
+  function afterOpen(row, run) {
+    var body = row.querySelector('.svc-body');
+    var done = false;
+    function fire() {
+      if (done) return;
+      done = true;
+      if (body) body.removeEventListener('transitionend', onEnd);
+      run();
+    }
+    function onEnd(e) {
+      if (e.target === body && e.propertyName === 'grid-template-rows') fire();
+    }
+    if (body && !reduced) {
+      body.addEventListener('transitionend', onEnd);
+      setTimeout(fire, 780);        // страховка, если переход не доедет
+    } else {
+      setTimeout(fire, 40);
+    }
   }
 
   function activate(row) {
@@ -238,7 +279,7 @@
 
   rows.forEach(function (row) {
     row.querySelector('.svc-head').addEventListener('click', function () {
-      if (wide.matches) { activate(row); revealStage(); return; }
+      if (wide.matches) { activate(row); reachNext(row, true); return; }
 
       // узкий экран — обычная гармошка, одна открытая строка
       var open = row.classList.contains('on');
@@ -246,15 +287,18 @@
       if (open) return;
       setRow(row, true);
       current = row;
-      setTimeout(function () {
-        var box = row.getBoundingClientRect();
-        if (box.top < nav.offsetHeight) {
-          window.scrollTo({
-            top: box.top + window.pageYOffset - nav.offsetHeight - 16,
-            behavior: reduced ? 'auto' : 'smooth'
-          });
+      afterOpen(row, function () {
+        function place(again) {
+          var head = row.querySelector('.svc-head').getBoundingClientRect();
+          var target = window.pageYOffset + head.top - (nav.offsetHeight + 12);
+          target = Math.max(0, Math.min(target,
+            document.documentElement.scrollHeight - window.innerHeight));
+          if (Math.abs(target - window.pageYOffset) < 6) return;
+          scrollTo(target);
+          if (again) setTimeout(function () { place(false); }, 520);
         }
-      }, 90);
+        place(true);
+      });
     });
   });
 
