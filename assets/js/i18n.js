@@ -96,7 +96,7 @@
     'final.claim1': 'Everything you need in Brazil —',
     'final.claim2': 'on a single phone number.',
     'final.cta': 'Request your private concierge',
-    'final.note': 'One request. Everything else is ours.',
+    'final.note': 'One request.<br>The rest is ours.',
 
     'foot.brand': 'Brazil <em>·</em> LATAM',
     'foot.privacy': 'Privacy',
@@ -304,7 +304,7 @@
     'final.claim1': 'Tudo o que você precisa no Brasil —',
     'final.claim2': 'em um único número de telefone.',
     'final.cta': 'Solicitar o seu concierge privado',
-    'final.note': 'Um pedido. Todo o resto é conosco.',
+    'final.note': 'Um pedido.<br>O resto é conosco.',
 
     'foot.brand': 'Brasil <em>·</em> LATAM',
     'foot.privacy': 'Privacidade',
@@ -512,7 +512,7 @@
     'final.claim1': 'Todo lo que necesita en Brasil —',
     'final.claim2': 'en un solo número de teléfono.',
     'final.cta': 'Solicitar su conserje privado',
-    'final.note': 'Una petición. Todo lo demás es nuestro.',
+    'final.note': 'Una petición.<br>El resto es nuestro.',
 
     'foot.brand': 'Brasil <em>·</em> LATAM',
     'foot.privacy': 'Privacidad',
@@ -720,7 +720,7 @@
     'final.claim1': 'Tutto ciò che le serve in Brasile —',
     'final.claim2': 'su un unico numero di telefono.',
     'final.cta': 'Richiedere il suo concierge privato',
-    'final.note': 'Una richiesta. Tutto il resto è nostro.',
+    'final.note': 'Una richiesta.<br>Il resto è nostro.',
 
     'foot.brand': 'Brasile <em>·</em> LATAM',
     'foot.privacy': 'Privacy',

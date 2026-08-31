@@ -1074,20 +1074,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .lk-claim b.hard{ font-weight:600; }
 
-/* Русский знак остаётся на гротеске: Cinzel — латинская капитель, и на
-   кириллице его нет. Возвращаем и кегли с разрядкой — они были
-   подобраны под гротеск, а под капитель их пришлось поджать.       */
-html[lang="ru"] .lockup{ font-family:var(--sans); }
-html[lang="ru"] .lk-name{ font-weight:300; letter-spacing:.30em; text-indent:.30em; }
-html[lang="ru"] .lk-sub em{
-  font-weight:300; font-size:calc(var(--lk) * .245);
-  letter-spacing:.34em; text-indent:.34em;
-}
-html[lang="ru"] .lk-claim b{
-  font-weight:300; font-size:calc(var(--lk) * .30);
-  letter-spacing:.10em; text-indent:.10em; line-height:1.25;
-}
-html[lang="ru"] .lk-claim b.hard{ font-weight:600; }
 
 /* На телефоне линии по бокам подписи съедают её до нечитаемого —
    даём знаку почти всю ширину и растим кегль относительно экрана. */
@@ -1099,6 +1085,9 @@ html[lang="ru"] .lk-claim b.hard{ font-weight:600; }
 .final-note{
   margin:26px 0 0; font-family:var(--display); font-style:italic;
   font-size:17px; color:var(--parch-far);
+  /* Перенос задан разметкой, поэтому строкам нужен свой интерлиньяж —
+     по умолчанию у мелкой курсивной антиквы он слишком тесный.     */
+  line-height:1.45;
 }
 
 /* ══════════ ПОДВАЛ ══════════ */
