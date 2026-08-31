@@ -486,17 +486,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-size:1.5em; letter-spacing:.1em; line-height:1.06;
   margin-bottom:.06em;
 }
-/* Корона над заголовком. Нарисована своя: пять зубцов разной высоты,
-   средний выше прочих, жемчужины на остриях, узкий обод понизу.
-   Знак чужого бренда сюда ставить нельзя, а корона как символ —
-   общее место, и рисунок у неё может быть любой.                  */
-.crown{
-  display:block; line-height:0; margin:0 auto 6px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))
-         drop-shadow(0 0 18px rgba(232,197,106,.45));
-}
-.crown svg{ width:clamp(84px,10.5vw,168px); height:auto; }
-
 /* Лучи из-за слова: очень слабые золотые клинья, погашенные к краям.
    Их задача — намекнуть на блеск, а не нарисовать солнце.          */
 .hero-in h1{ position:relative; }
