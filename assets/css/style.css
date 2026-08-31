@@ -552,9 +552,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-family:var(--caps); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
   color:var(--parch);
 }
+/* Цифры набраны вровень с подписью: тот же кегль, тот же цвет, только
+   без разрядки — иначе «24 /7» распадается на отдельные знаки.
+   Выключка по базовой линии у родителя, поэтому строка ровная.    */
 .hero-rail b{
-  font-family:var(--display); font-size:26px; font-weight:400;
-  letter-spacing:0; color:var(--amber);
+  font-family:var(--caps); font-size:inherit; font-weight:500;
+  letter-spacing:.06em; color:var(--parch);
   /* У Cormorant по умолчанию старостильные цифры: единица в них
      выглядит как римская I. Просим обычные, на общей высоте.      */
   font-variant-numeric:lining-nums;
@@ -1185,7 +1188,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .hero-act{ flex-direction:column; align-items:stretch; }
   .btn-lg{ width:100%; padding-inline:18px; letter-spacing:.14em; }
   .hero-rail{ gap:10px 26px; }
-  .hero-rail b{ font-size:21px; }
 
   .rf-row{ grid-template-columns:1fr; }
   .rf-foot{ flex-direction:column; align-items:stretch; gap:16px; }
