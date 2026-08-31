@@ -493,6 +493,32 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-size:1.5em; letter-spacing:.1em; line-height:1.06;
   margin-bottom:.06em;
 }
+/* Корона над заголовком. Нарисована своя: пять зубцов разной высоты,
+   средний выше прочих, жемчужины на остриях, узкий обод понизу.
+   Знак чужого бренда сюда ставить нельзя, а корона как символ —
+   общее место, и рисунок у неё может быть любой.                  */
+.crown{
+  display:block; line-height:0; margin:0 auto 6px;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))
+         drop-shadow(0 0 18px rgba(232,197,106,.45));
+}
+.crown svg{ width:clamp(58px,7.4vw,116px); height:auto; }
+
+/* Лучи из-за слова: очень слабые золотые клинья, погашенные к краям.
+   Их задача — намекнуть на блеск, а не нарисовать солнце.          */
+.hero-in h1{ position:relative; }
+.hero-in h1::before{
+  content:""; position:absolute; z-index:-1;
+  left:50%; top:26%; width:min(62%,760px); aspect-ratio:1; translate:-50% -50%;
+  pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,
+    rgba(232,197,106,.032) 0deg 1.6deg, transparent 1.6deg 26deg);
+  -webkit-mask-image:radial-gradient(closest-side, transparent 12%, rgba(0,0,0,.75) 26%, transparent 54%);
+  mask-image:radial-gradient(closest-side, transparent 12%, rgba(0,0,0,.75) 26%, transparent 54%);
+  animation:rays 70s linear infinite;
+}
+@keyframes rays{ to{ rotate:360deg; } }
+
 /* Русский заголовок набран тем же Cormorant Garamond, что и заголовки
    разделов, — один почерк на всю страницу. Отличается только золотом. */
 /* Настоящее золото — не один цвет, а металл: тёмная бронза по краям,
@@ -517,7 +543,50 @@ html[lang="ru"] .hero-in h1 .t-tail{
          drop-shadow(0 0 30px rgba(232,182,96,.20));
 }
 
-.hero-in .lede{ margin:24px auto 0; max-width:none; }
+/* Блик по слову: поверх металла ходит светлая полоса. Проходит за
+   полторы секунды и потом долго ждёт — иначе заголовок мигает.    */
+html[lang="ru"] .hero-in h1 .t-lead{
+  background-image:
+    linear-gradient(102deg,
+      transparent 34%, rgba(255,251,236,.55) 44%,
+      rgba(255,255,255,.92) 50%, rgba(255,251,236,.55) 56%,
+      transparent 66%),
+    linear-gradient(177deg,
+      #8E6119 0%, #C99A3A 13%, #F2DC9F 29%, #FFF7D8 44%,
+      #EED184 56%, #C6942F 70%, #9C6C1C 84%, #E0BA63 100%);
+  background-size:250% 100%, 100% 100%;
+  background-position:-70% 0, 0 0;
+  animation:shine 8s ease-in-out infinite;
+}
+@keyframes shine{
+  0%{ background-position:-70% 0, 0 0; }
+  22%,100%{ background-position:170% 0, 0 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  html[lang="ru"] .hero-in h1 .t-lead{ animation:none; background-position:170% 0, 0 0; }
+  .hero-in h1::before{ animation:none; }
+}
+
+/* Подзаголовок подчёркнут золотой неоновой линией: сама линия —
+   градиент, который гаснет к краям, свечение — три тени разного
+   радиуса. Строка становится inline-block, иначе линия тянулась бы
+   во всю колонку, а не по длине текста.                           */
+.hero-in .lede{
+  position:relative; display:inline-block;
+  margin:26px auto 0; max-width:none;
+  padding-bottom:.62em;
+}
+.hero-in .lede::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:linear-gradient(90deg,
+    transparent 0%, rgba(214,160,74,.35) 12%,
+    #E8C56A 34%, #F8EACA 50%, #E8C56A 66%,
+    rgba(214,160,74,.35) 88%, transparent 100%);
+  box-shadow:
+    0 0 4px rgba(232,197,106,.85),
+    0 0 12px rgba(214,160,74,.55),
+    0 0 26px rgba(214,160,74,.30);
+}
 
 .hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:34px; }
 /* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
