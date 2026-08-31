@@ -197,7 +197,18 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 
 .brand{ display:flex; align-items:center; gap:13px; min-width:0; }
-.seal{ display:block; flex:none; line-height:0; }
+/* Знак — растровый, поэтому размер задаём по ширине, высоту оставляем
+   пропорции. Лёгкое золотое свечение отделяет тёмную эмаль знака от
+   такого же тёмного фона страницы.                                   */
+.seal,.seal-lg,.lang-seal{
+  display:block; flex:none; height:auto;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))
+         drop-shadow(0 0 14px rgba(214,160,74,.16));
+}
+.seal{ width:40px; }
+.foot-brand .seal{ width:34px; }
+.seal-lg{ width:78px; }
+.lang-seal{ width:58px; margin:0 auto 20px; }
 .brand-txt{ display:flex; flex-direction:column; line-height:1.15; min-width:0; }
 .brand-txt b{
   font-family:var(--caps); font-weight:500; font-size:13px;
@@ -894,7 +905,6 @@ html[lang="ru"] .hero-in h1 .t-lead{
 }
 
 .conc-sig{ display:flex; align-items:center; gap:18px; margin-top:38px; }
-.seal-lg{ flex:none; line-height:0; }
 .conc-sig-t{ display:flex; flex-direction:column; gap:5px; min-width:0; }
 .conc-sig-t b{
   font-family:var(--caps); font-weight:500; font-size:12px;
@@ -1280,8 +1290,6 @@ html[lang="ru"] .hero-in h1 .t-lead{
   from{ opacity:0; transform:translateY(22px); }
   to{ opacity:1; transform:none; }
 }
-.lang-seal{ display:block; line-height:0; margin:0 auto 18px; }
-.lang-seal svg{ width:52px; height:52px; }
 .lang-in h2{
   font-family:var(--display); font-weight:500;
   font-size:clamp(26px,3.4vw,36px); line-height:1.04;
