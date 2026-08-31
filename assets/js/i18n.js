@@ -70,7 +70,7 @@
 
     'sec.svc.label': 'Services',
     'sec.svc.h': 'What we arrange',
-    'sec.svc.lede': 'Twenty-three standing services. Anything outside them, ask anyway — the answer is usually yes.',
+    'sec.svc.lede': '20+ standing services. If you don’t see what you need on the list, ask — we will arrange it.',
     'sec.dest.label': 'Destinations',
     'sec.dest.h': 'Where we already stand',
     'sec.dest.lede': 'Not a map of everywhere. A short list of places where we know the doormen by name.',
@@ -278,7 +278,7 @@
 
     'sec.svc.label': 'Serviços',
     'sec.svc.h': 'O que organizamos',
-    'sec.svc.lede': 'Vinte e três serviços permanentes. Se precisar de algo fora da lista, pergunte mesmo assim — a resposta costuma ser sim.',
+    'sec.svc.lede': 'Mais de 20 serviços permanentes. Se não encontrar o que precisa na lista, peça — nós organizamos.',
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'Onde já estamos',
     'sec.dest.lede': 'Não é um mapa do mundo inteiro. É uma lista curta de lugares onde conhecemos os porteiros pelo nome.',
@@ -486,7 +486,7 @@
 
     'sec.svc.label': 'Servicios',
     'sec.svc.h': 'Lo que organizamos',
-    'sec.svc.lede': 'Veintitrés servicios permanentes. Si necesita algo que no está en la lista, pregúntelo igual — la respuesta suele ser sí.',
+    'sec.svc.lede': 'Más de 20 servicios permanentes. Si no encuentra lo que necesita en la lista, pídalo — lo organizamos.',
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'Donde ya estamos',
     'sec.dest.lede': 'No es un mapa del mundo entero. Es una lista corta de lugares donde conocemos a los porteros por su nombre.',
@@ -694,7 +694,7 @@
 
     'sec.svc.label': 'Servizi',
     'sec.svc.h': 'Che cosa organizziamo',
-    'sec.svc.lede': 'Ventitré servizi permanenti. Se le serve qualcosa che non è in elenco, lo chieda lo stesso — la risposta di solito è sì.',
+    'sec.svc.lede': 'Oltre 20 servizi permanenti. Se non trova ciò che le serve nell’elenco, lo chieda — ce ne occupiamo noi.',
     'sec.dest.label': 'Destinazioni',
     'sec.dest.h': 'Dove siamo già',
     'sec.dest.lede': 'Non è una mappa del mondo intero. È un elenco breve di luoghi dove conosciamo i portieri per nome.',
