@@ -772,10 +772,6 @@ html[lang="ru"] .hero-in h1 .t-tail{
   letter-spacing:.28em; color:#C0464A; margin-bottom:16px;
 }
 .band-in h3{ color:var(--parch); }
-.band-co{
-  margin:14px 0 0; font-family:var(--sans); font-size:11px;
-  letter-spacing:.24em; text-transform:uppercase; color:var(--amber);
-}
 .band-txt{ margin:18px 0 0; max-width:46ch; color:var(--parch-dim); font-size:15px; }
 
 /* ══════════ КОНСЬЕРЖ ══════════ */
