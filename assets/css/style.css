@@ -995,6 +995,44 @@ html[lang="ru"] .hero-in h1 .t-lead{
 .rf-field input::placeholder,
 .rf-field textarea::placeholder{ color:var(--parch-far); }
 
+/* ── Читаемость блока заявки ────────────────────────────────────────
+   Подписи полей и контактов были набраны приглушённым пергаментом:
+   на почти чёрной подложке формы 11 пикселей такого цвета не читаются.
+   Здесь они белые в полную силу — это единственное место на странице,
+   где человек должен разбирать текст, а не любоваться им.            */
+.req .label span,
+.req-fine,
+.direct-row em,
+.rf-field label{ color:#FFFFFF; }
+.rf-field label{ font-weight:600; }
+
+/* Значения полей и подсказки в них — тоже в белую сторону. Подсказка
+   светлее фона, но холоднее набранного текста, чтобы одно не путалось
+   с другим.                                                          */
+.rf-field input,
+.rf-field select,
+.rf-field textarea{ color:#FFFFFF; }
+.rf-field input::placeholder{ color:#FFFFFF; opacity:1; }
+/* «Что вам нужно» — сталь: пример длинный, и белым в полную силу он
+   спорил бы с настоящим ответом.                                     */
+.rf-field textarea::placeholder{ color:#C3CBD3; opacity:1; }
+.rf-field select option{ color:#FFFFFF; }
+
+/* Дата: у поля свой внутренний редактор, он красится отдельно.
+   color-scheme нужен, чтобы иконка календаря была светлой.           */
+.rf-field input[type="date"]{ color-scheme:dark; }
+.rf-field input[type="date"]::-webkit-datetime-edit,
+.rf-field input[type="date"]::-webkit-datetime-edit-text,
+.rf-field input[type="date"]::-webkit-datetime-edit-day-field,
+.rf-field input[type="date"]::-webkit-datetime-edit-month-field,
+.rf-field input[type="date"]::-webkit-datetime-edit-year-field{ color:#FFFFFF; }
+
+/* Стрелка селекта повторяет цвет подписи, иначе она одна остаётся тусклой. */
+.rf-field select{
+  background-image:linear-gradient(45deg,transparent 50%,#FFFFFF 50%),
+                   linear-gradient(135deg,#FFFFFF 50%,transparent 50%);
+}
+
 /* Стрелка селекта рисуется фоном: нативная в тёмной теме
    отрисовывается системным цветом и выбивается из палитры. */
 .rf-field.is-select{ position:relative; }
