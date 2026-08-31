@@ -796,7 +796,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .band-plate{
   position:relative; aspect-ratio:4/5; width:100%;
   max-height:min(56vh,480px);
-  filter:brightness(1.75) saturate(1.2);
+  overflow:hidden;
   border:1px solid rgba(214,160,74,.22);
   box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 0 90px rgba(0,0,0,.5);
 }
@@ -804,6 +804,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   display:block; font-family:var(--caps); font-size:11px;
   letter-spacing:.28em; color:#E8C56A; margin-bottom:16px;
 }
+/* Осветление — только для пустой рамки: градиентная заглушка без него
+   почти чёрная. Снимку те же +75% яркости выбелили бы небо.        */
+.band-plate:not(:has(img)){ filter:brightness(1.75) saturate(1.2); }
+.band-plate .media{ object-position:center 50%;
+  filter:brightness(.92) contrast(1.05) saturate(.78) sepia(.10); }
 .band-in h3{ color:var(--parch); }
 .band-txt{ margin:18px 0 0; max-width:46ch; color:var(--parch-dim); font-size:15px; }
 
