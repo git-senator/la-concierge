@@ -116,12 +116,99 @@
     document.body.classList.remove('drawer-open');
     setTimeout(function () { drawer.hidden = true; }, 420);
   }
+  var burgerHandled = false;    // выбор уже сделан ведением
+  var openedByPointer = false;  // шторку открыло нажатие, а не click
   burger.addEventListener('click', function () {
+    // Браузер шлёт click вслед за pointerup. Если шторку открыло само
+    // нажатие или ведение уже выполнило переход, click ничего не делает —
+    // иначе обычный тап открывал бы и тут же закрывал шторку.
+    if (burgerHandled) { burgerHandled = false; openedByPointer = false; return; }
+    if (openedByPointer) { openedByPointer = false; return; }
     drawer.hidden ? openDrawer() : closeDrawer();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeDrawer();
   });
+
+  /* Выбор пункта одним движением: палец кладут на значок меню, шторка
+     выезжает, и, не отрывая пальца, ведут вниз по списку. Пункт под
+     пальцем подсвечивается и растёт, отпустили — переход выполнен.
+
+     Почему указатели, а не touch: pointer-события одинаковы для пальца,
+     пера и мыши, а setPointerCapture гарантирует, что все move и up
+     придут значку, даже когда палец уже далеко за его пределами.     */
+  var dragHot = null;      // пункт под пальцем
+  var dragMoved = false;   // было ли движение — иначе это обычное нажатие
+
+  function markHot(node) {
+    if (dragHot === node) return;
+    if (dragHot) dragHot.classList.remove('hot');
+    dragHot = node;
+    if (dragHot) dragHot.classList.add('hot');
+  }
+
+  function itemAt(x, y) {
+    var el = document.elementFromPoint(x, y);
+    return el ? el.closest('.drawer-links a') : null;
+  }
+
+  burger.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragMoved = false;
+    markHot(null);
+    if (drawer.hidden) { openDrawer(); openedByPointer = true; }
+    try { burger.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+
+  burger.addEventListener('pointermove', function (e) {
+    if (!burger.hasPointerCapture || !burger.hasPointerCapture(e.pointerId)) return;
+    if (drawer.hidden) return;
+    dragMoved = true;
+    markHot(itemAt(e.clientX, e.clientY));
+    // Пока ведём по списку, страница под шторкой не должна прокручиваться.
+    if (dragHot) e.preventDefault();
+  });
+
+  function endDrag(e) {
+    try { burger.releasePointerCapture(e.pointerId); } catch (err) {}
+    var target = dragHot;
+    markHot(null);
+    // Просто нажали и отпустили на значке — обычное открытие шторки,
+    // её закрытие остаётся на click.
+    if (!target || !dragMoved) return;
+    e.preventDefault();
+    burgerHandled = true;    // click после этого не должен закрыть шторку
+    target.click();
+  }
+  burger.addEventListener('pointerup', endDrag);
+  burger.addEventListener('pointercancel', function (e) {
+    try { burger.releasePointerCapture(e.pointerId); } catch (err) {}
+    markHot(null);
+  });
+
+  /* То же движение работает и внутри самой шторки: её можно открыть
+     нажатием, а потом вести пальцем по списку с тем же откликом.    */
+  var links = document.querySelector('.drawer-links');
+  if (links) {
+    links.addEventListener('pointerdown', function (e) {
+      var it = itemAt(e.clientX, e.clientY);
+      if (!it) return;
+      markHot(it);
+      try { links.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    links.addEventListener('pointermove', function (e) {
+      if (!links.hasPointerCapture || !links.hasPointerCapture(e.pointerId)) return;
+      markHot(itemAt(e.clientX, e.clientY));
+    });
+    links.addEventListener('pointerup', function (e) {
+      if (!links.hasPointerCapture || !links.hasPointerCapture(e.pointerId)) return;
+      try { links.releasePointerCapture(e.pointerId); } catch (err) {}
+      var target = dragHot;
+      markHot(null);
+      if (target) { e.preventDefault(); target.click(); }
+    });
+    links.addEventListener('pointercancel', function () { markHot(null); });
+  }
 
   /* ── 5. Появление блоков ──────────────────────────────────────────── */
   var revealIO = new IntersectionObserver(function (entries) {
