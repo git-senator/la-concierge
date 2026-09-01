@@ -59,10 +59,62 @@
     var l = e.target.closest('a[data-legal]');
     if (!l) return;
     e.preventDefault();
-    // подпись берём из самой ссылки — она уже на языке посетителя
-    var stub = window.I18N ? I18N.t('legal.stub', 'Документ «%s» пока не опубликован.')
-                            : 'Документ «%s» пока не опубликован.';
-    alert(stub.replace('%s', l.textContent));
+    openLegal(l.getAttribute('data-legal'));
+  });
+
+
+  /* ── Правовые документы ───────────────────────────────────────────
+     Сайт одностраничный, поэтому «Условия» и «Политика» открываются
+     окном поверх страницы, а не отдельным адресом. Текст берётся из
+     legal.js на языке посетителя; если языка там нет — английский. */
+  var legalBox = null;
+
+  function openLegal(kind) {
+    if (!window.LEGAL) return;
+    var lang = (window.I18N && I18N.current) || 'ru';
+    var pack = LEGAL[lang] || LEGAL.en;
+    var doc = pack[kind];
+    if (!doc) return;
+
+    if (!legalBox) {
+      legalBox = document.createElement('div');
+      legalBox.className = 'legal-gate';
+      legalBox.setAttribute('role', 'dialog');
+      legalBox.setAttribute('aria-modal', 'true');
+      document.body.appendChild(legalBox);
+      legalBox.addEventListener('click', function (e) {
+        if (e.target === legalBox || e.target.closest('.legal-close')) closeLegal();
+      });
+    }
+
+    var html = '<div class="legal-in"><button class="legal-close" type="button" aria-label="' +
+               ((window.I18N && I18N.t('aria.close', 'Закрыть')) || 'Закрыть') + '">' +
+               '<span></span><span></span></button>' +
+               '<h2>' + doc.title + '</h2><p class="legal-upd">' + pack.upd + '</p>';
+    doc.lead.forEach(function (t) { html += '<p class="legal-lead">' + t + '</p>'; });
+    doc.s.forEach(function (sec) {
+      html += '<h3>' + sec[0] + '</h3>';
+      var body = (typeof sec[1] === 'string') ? [sec[1]] : sec[1];
+      body.forEach(function (t) {
+        html += '<p>' + t.split('\n').join('<br>') + '</p>';
+      });
+    });
+    html += '</div>';
+    legalBox.innerHTML = html;
+
+    legalBox.hidden = false;
+    requestAnimationFrame(function () { legalBox.classList.add('on'); });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLegal() {
+    if (!legalBox) return;
+    legalBox.classList.remove('on');
+    document.body.style.overflow = '';
+    setTimeout(function () { legalBox.hidden = true; }, 380);
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLegal();
   });
 
   /* ── 2. Шапка ─────────────────────────────────────────────────────── */

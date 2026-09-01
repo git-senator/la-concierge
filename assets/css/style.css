@@ -1223,6 +1223,54 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .foot-legal a:hover{ color:var(--amber); }
 
+/* ══════════ ПРАВОВЫЕ ДОКУМЕНТЫ ══════════
+   Сайт одностраничный: «Условия» и «Политика» открываются окном
+   поверх страницы. Ширина строки держится в районе 70 знаков —
+   длинный юридический текст иначе не читается.                */
+.legal-gate[hidden]{ display:none; }
+.legal-gate{
+  position:fixed; inset:0; z-index:1100;
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+  padding:clamp(56px,8vw,96px) clamp(18px,5vw,40px) clamp(40px,8vw,80px);
+  background:
+    radial-gradient(ellipse 70% 40% at 50% -4%, rgba(232,182,96,.14), transparent 62%),
+    radial-gradient(ellipse 60% 50% at 92% 96%, rgba(126,21,24,.26), transparent 68%),
+    #070405;
+  opacity:0; transition:opacity .38s var(--ease);
+}
+.legal-gate.on{ opacity:1; }
+.legal-in{
+  position:relative; width:100%; max-width:72ch; margin-inline:auto;
+  color:var(--parch);
+}
+.legal-in h2{
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(26px,4vw,40px); line-height:1.15; margin:0;
+}
+.legal-upd{
+  margin:10px 0 26px; font-family:var(--caps); font-size:10.5px;
+  letter-spacing:.2em; text-transform:uppercase; color:#DDBC73;
+}
+.legal-in h3{
+  font-family:var(--caps); font-weight:600;
+  font-size:clamp(13px,1.6vw,15px); letter-spacing:.1em;
+  margin:30px 0 8px; color:#FFFFFF;
+  padding-top:18px; border-top:1px solid var(--line);
+}
+.legal-in p{ margin:0 0 12px; font-size:15.5px; line-height:1.62; color:var(--parch-dim); }
+.legal-lead{ font-size:16.5px; color:var(--parch); }
+/* Крестик закрытия — тот же, что у бургера: две линии крест-накрест. */
+.legal-close{
+  position:fixed; top:clamp(14px,3vw,26px); right:clamp(14px,4vw,34px);
+  width:40px; height:40px; z-index:2;
+}
+.legal-close span{
+  position:absolute; left:10px; right:10px; top:19px; height:1px;
+  background:var(--parch);
+}
+.legal-close span:first-child{ transform:rotate(45deg); }
+.legal-close span:last-child{ transform:rotate(-45deg); }
+
 /* ══════════ ПЛАВАЮЩИЙ WHATSAPP ══════════ */
 
 .float-wa{
