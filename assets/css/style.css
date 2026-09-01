@@ -1203,10 +1203,30 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
       radial-gradient(ellipse 90% 34% at 50% 2%, rgba(232,182,96,.12), transparent 66%),
       radial-gradient(ellipse 70% 40% at 96% 92%, rgba(168,30,34,.24), transparent 68%),
       linear-gradient(180deg,
-        rgba(6,3,4,.70) 0%, rgba(6,3,4,.44) 18%,
-        rgba(6,3,4,.56) 44%, rgba(6,3,4,.74) 68%, rgba(6,3,4,.95) 100%);
+        rgba(6,3,4,.70) 0%, rgba(6,3,4,.40) 18%,
+        rgba(6,3,4,.50) 44%, rgba(6,3,4,.60) 70%, rgba(6,3,4,.84) 100%);
   }
-  .hero-bg .media{ object-position:center 62%; }
+  /* Экран телефона узкий и высокий, а снимок широкий: чтобы залить
+     его целиком, браузер увеличивал кадр почти втрое — отсюда
+     пиксели. Показываем снимок полосой поперёк экрана, близко к
+     родному масштабу, а края растворяем в подложке, чтобы полоса
+     не читалась как вставленный прямоугольник.                */
+  .hero-bg .media{
+    top:21%; bottom:auto; height:32%;
+    object-position:center 50%;
+    animation:none; transform:none;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 15%, #000 85%, transparent 100%);
+            mask-image:linear-gradient(180deg, transparent 0, #000 15%, #000 85%, transparent 100%);
+  }
+  /* Под резкой полосой — тот же кадр, растянутый и сильно размытый.
+     Он заполняет низ экрана цветом заката; размытие прячет то, что
+     разрешения там не хватает, и низ не выглядит пустым.        */
+  .hero-bg::after{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:url("../img/hero-m.jpg?v=72513508") center 58% / cover no-repeat;
+    filter:blur(30px) brightness(.66) saturate(1.05);
+    transform:scale(1.08);
+  }
   .hero-act{ flex-direction:column; align-items:stretch; }
   .btn-lg{ width:100%; padding-inline:18px; letter-spacing:.14em; }
   .hero-rail{ gap:10px 26px; }
