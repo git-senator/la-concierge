@@ -1213,14 +1213,30 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   position:fixed; right:clamp(16px,3vw,30px); bottom:clamp(16px,3vw,30px);
   z-index:850; width:52px; height:52px; border-radius:50%;
   display:grid; place-items:center;
-  background:var(--blood); color:var(--parch);
-  border:1px solid rgba(214,160,74,.32);
-  box-shadow:0 12px 34px rgba(0,0,0,.55);
+  color:#FFFFFF;
+  /* Кнопка повторяет знак: чёрная эмаль, толстое золотое кольцо по
+     краю и тонкая золотая линия внутри. Кольцо набрано градиентом
+     через border-box, иначе плоская заливка читается как жёлтая
+     обводка, а не как металл.                                   */
+  background:
+    linear-gradient(#0C0C0D, #0C0C0D) padding-box,
+    linear-gradient(150deg, #E6CE93 0%, #C39A46 26%, #A78239 52%,
+                            #DEBE75 74%, #A78239 100%) border-box;
+  border:2px solid transparent;
+  box-shadow:
+    inset 0 0 0 3px #0C0C0D,
+    inset 0 0 0 4px rgba(199,155,72,.65),
+    0 12px 34px rgba(0,0,0,.55);
   opacity:0; transform:translateY(14px) scale(.9); pointer-events:none;
   transition:opacity .45s var(--ease), transform .45s var(--ease), background-color .3s;
 }
 .float-wa.on{ opacity:1; transform:none; pointer-events:auto; }
-.float-wa:hover{ background:var(--scarlet); }
+/* При наведении подсвечиваем кольцо, а не заливаем кнопку. */
+.float-wa:hover{ box-shadow:
+    inset 0 0 0 3px #0C0C0D,
+    inset 0 0 0 4px rgba(222,190,117,.95),
+    0 12px 34px rgba(0,0,0,.55),
+    0 0 18px rgba(214,160,74,.35); }
 
 /* ══════════ ПОЯВЛЕНИЕ ══════════ */
 
