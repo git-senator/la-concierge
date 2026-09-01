@@ -283,13 +283,22 @@
     input.addEventListener('change', function () { self.clearError(f.name); });
 
     wrap.appendChild(label);
-    wrap.appendChild(input);
+    if (f.type === 'date') {
+      // Образец формата кладём поверх самого поля, а не поверх всей
+      // строки: иначе он вставал по нижнему краю блока и налезал на
+      // подпись. Обёртка даёт ему точную систему координат.
+      var box = el('span', { class:'rf-datebox' });
+      box.appendChild(input);
+      wrap.appendChild(box);
+    } else {
+      wrap.appendChild(input);
+    }
 
     /* Пустое поле даты браузеры показывают по-разному: Chrome рисует своё
        «дд.мм.гггг», Safari на телефоне — вообще ничего. Ставим свой образец
        формата и прячем его, как только дата выбрана. */
     if (f.type === 'date') {
-      wrap.appendChild(el('span', { class:'rf-ph', text: T('form.phDate', 'дд/мм/гггг') }));
+      input.parentNode.appendChild(el('span', { class:'rf-ph', text: T('form.phDate', 'дд/мм/гггг') }));
       // На компьютере нажатие по полю не открывает календарь само —
       // просим браузер показать его. Где метода нет, ничего не ломается.
       input.addEventListener('click', function () {

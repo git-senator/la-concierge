@@ -1141,12 +1141,17 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    color:transparent он не убирается — гасим сам этот слой.       */
 .rf-field.is-date:not(.has-val) input:not(:focus){ color:transparent; }
 .rf-field.is-date:not(.has-val) input:not(:focus)::-webkit-datetime-edit{ opacity:0; }
+/* Обёртка поля даты: подсказка ложится точно на него, с теми же
+   отступами, поэтому строка не наезжает на подпись.            */
+.rf-datebox{ position:relative; display:block; }
 .rf-ph{
-  position:absolute; left:0; bottom:6px; pointer-events:none;
-  font-family:var(--display); font-size:17px; color:var(--parch-far);
+  position:absolute; inset:0; pointer-events:none;
+  padding:1px 0 5px;
+  font-family:var(--display); font-size:17px; font-weight:300;
+  line-height:inherit; color:var(--parch-far);
 }
 .rf-field.is-date.has-val .rf-ph,
-.rf-field.is-date input:focus ~ .rf-ph{ display:none; }
+.rf-field.is-date input:focus + .rf-ph{ display:none; }
 
 .rf-field.has-error input,
 .rf-field.has-error select,
