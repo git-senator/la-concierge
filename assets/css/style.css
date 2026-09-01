@@ -544,8 +544,15 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
     filter:brightness(.35);
     animation:none;
     transform:none;
-    object-position:center center;
+    object-position:34.4% center;
   }
+}
+
+/* Шпиль должен стоять точно под буквой «Т» в MONTERO. Куда он попадёт,
+   зависит от пропорций окна: чем оно ниже, тем шире обрезаются бока.
+   Два значения покрывают весь парк мониторов — 16:10 выше, 16:9 здесь. */
+@media (min-width:721px) and (min-aspect-ratio:17/10){
+  .hero-bg .media{ object-position:27.8% center; }
   .hero:has(.media) .hero-vig{ background:none; }
 }
 
