@@ -203,38 +203,18 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Знак — растровый, поэтому размер задаём по ширине, высоту оставляем
    пропорции. Лёгкое золотое свечение отделяет тёмную эмаль знака от
    такого же тёмного фона страницы.                                   */
-.seal,.seal-lg,.lang-seal{
+.brand-mark,.seal,.seal-lg,.lang-seal{
   display:block; flex:none; height:auto;
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))
          drop-shadow(0 0 14px rgba(214,160,74,.16));
 }
+/* В шапке знак стоит один, без надписи рядом: имя набрано
+   внутри круга, и дублировать его словом было бы лишним. */
+.brand-mark{ width:54px; }
 .seal{ width:44px; }
 .foot-brand .seal{ width:38px; }
 .seal-lg{ width:84px; }
 .lang-seal{ width:62px; margin:0 auto 20px; }
-/* Логотип: имя антиквой, под ним золотая черта, под ней подпись
-   гротеском вразрядку. Три элемента выключены по центру друг друга —
-   так собран сам знак, и по левому краю он бы рассыпался.          */
-.brand-txt{
-  display:flex; flex-direction:column; align-items:center;
-  line-height:1; min-width:0;
-}
-.brand-txt b{
-  font-family:var(--display); font-weight:500; font-size:21px;
-  letter-spacing:.24em; text-transform:uppercase; color:var(--parch);
-  white-space:nowrap; text-indent:.24em;   /* компенсация разрядки справа */
-}
-/* Черта повторяет ширину подписи, а не имени: в знаке она короткая. */
-.brand-rule{
-  width:56%; height:1px; margin:5px 0 4px;
-  background:linear-gradient(90deg,
-    rgba(200,155,90,0) 0%, var(--amber) 22%, var(--amber) 78%, rgba(200,155,90,0) 100%);
-}
-.brand-txt i{
-  font-family:var(--sans); font-style:normal; font-weight:300; font-size:8px;
-  letter-spacing:.34em; text-transform:uppercase; color:var(--parch-dim);
-  white-space:nowrap; text-indent:.34em;
-}
 
 .nav-links{ display:flex; gap:clamp(18px,2.4vw,38px); }
 .nav-links a{
@@ -1239,9 +1219,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 @media (max-width:540px){
   .nav-in{ gap:12px; }
-  .brand{ gap:9px; }
-  .brand-txt b{ font-size:15px; }
-  .brand-txt i{ font-size:6px; letter-spacing:.20em; text-indent:.20em; }
+  .brand-mark{ width:48px; }
 }
 
 /* На самых узких экранах шапку делят эмблема, язык, кнопка и бургер —
@@ -1254,9 +1232,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .nav-right > .lang-btn{ display:none; }
 }
 
-@media (max-width:340px){
-  .brand-txt{ display:none; }
-}
 
 @media (max-width:420px){
   .svc-head{ grid-template-columns:32px 1fr auto; }
