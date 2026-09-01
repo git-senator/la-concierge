@@ -825,13 +825,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .conc-start b{ font-weight:500; color:var(--parch); }
 
 .conc-sig{ display:flex; align-items:center; gap:18px; margin-top:38px; }
-/* Подпись выключена по правому краю: строки разной длины, и при
-   выключке влево короткая последняя повисала бы в пустоте.
-   Переносы расставлены вручную, но на телефоне мешают — там
-   строка и так не помещается, и текст ложится сам.            */
+/* Подпись выключена по центру: три строки разной длины собираются
+   в симметричный блок, короткая последняя стоит под серединой.  */
 .conc-sig-t{
   display:flex; flex-direction:column; gap:5px;
-  min-width:0; align-items:flex-end; text-align:right;
+  min-width:0; align-items:center; text-align:center;
 }
 .conc-sig-t b{
   font-family:var(--caps); font-weight:500; font-size:12px; line-height:1.75;
