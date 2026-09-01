@@ -42,14 +42,14 @@
      отсюда. Чтобы добавить поле — допишите объект, больше ничего.      */
   var SCHEMA = [
     { name:'fullName', label:'Имя и фамилия', i18n:'form.fullName', type:'text', required:true, row:1,
-      autocomplete:'name',        placeholder:'Имя и фамилия', phI18n:'form.phName' },
+      autocomplete:'name',        placeholder:'' },
     { name:'whatsapp', label:'Номер WhatsApp', i18n:'form.whatsapp', type:'tel', required:true, row:1,
-      autocomplete:'tel',         placeholder:'+55 11 90000 0000', phI18n:'form.phPhone',
+      autocomplete:'tel',         placeholder:'',
       pattern:/^[+]?[\d\s().-]{7,20}$/, errI18n:'form.errPhone',
       patternMessage:'Укажите корректный номер с кодом страны.' },
 
     { name:'email',    label:'Электронная почта', i18n:'form.email', type:'email', required:true, row:2,
-      autocomplete:'email',       placeholder:'name@company.com', phI18n:'form.phEmail',
+      autocomplete:'email',       placeholder:'',
       pattern:/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, errI18n:'form.errEmail',
       patternMessage:'Укажите корректный адрес почты.' },
     { name:'country',  label:'Страна', i18n:'form.country', type:'text', required:true, row:2,
