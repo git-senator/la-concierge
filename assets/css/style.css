@@ -386,7 +386,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .hero-bg .media{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; object-position:center 72%;
-  filter:brightness(.94) contrast(1.08) saturate(.66) sepia(.14);
+  filter:brightness(.88) contrast(1.05) saturate(.80) sepia(.06);
   /* Медленный наезд: кадр живёт, но движение на грани заметности.
      Дорогой сайт двигается так, что вы замечаете это не сразу.
      Цикл 46 секунд, туда и обратно — стыка не видно.               */
@@ -449,7 +449,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
     radial-gradient(ellipse 46% 42% at 90% 88%, rgba(168,30,34,.24), transparent 66%),
     radial-gradient(ellipse 94% 90% at 50% 44%, transparent 24%, rgba(6,3,4,.52) 74%, rgba(5,3,4,.94) 100%),
     radial-gradient(ellipse 70% 46% at 50% 82%, rgba(6,3,4,.72), transparent 72%),
-    linear-gradient(180deg, rgba(6,3,4,.74) 0%, rgba(6,3,4,.16) 20%, rgba(6,3,4,.10) 40%, rgba(6,3,4,.58) 62%, rgba(6,3,4,.74) 78%, rgba(6,3,4,.96) 100%);
+    /* Подложка под именем: закатное небо светлее ночного, и белые
+       буквы на нём тонули. Пятно мягкое и широкое — читается как
+       глубина кадра, а не как плашка.                          */
+    radial-gradient(ellipse 54% 30% at 50% 40%, rgba(6,3,4,.42), transparent 78%),
+    linear-gradient(180deg, rgba(6,3,4,.78) 0%, rgba(6,3,4,.30) 20%, rgba(6,3,4,.34) 40%, rgba(6,3,4,.66) 62%, rgba(6,3,4,.78) 78%, rgba(6,3,4,.96) 100%);
 }
 /* над фотографией нити читаются как сор — почти гасим */
 .hero:has(.media) .strings span{ opacity:calc(var(--o) * .45); }
@@ -474,7 +478,13 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .hero-in{ align-self:center; padding-bottom:clamp(20px,3vh,38px); text-align:center; }
 /* На первом экране знак чуть мельче, чем на финальном: под ним ещё
    подзаголовок, кнопка и полоса цифр, и всё это должно поместиться. */
-.hero-in .lockup{ --lk:clamp(26px,5vw,68px); margin:0 auto; }
+/* Над закатом белым буквам нужна собственная тень: мягкий тёмный
+   ореол вокруг штрихов держит их читаемыми и не превращается в
+   плашку, как сплошная заливка.                              */
+.hero-in .lockup{
+  --lk:clamp(26px,5vw,68px); margin:0 auto;
+  text-shadow:0 1px 3px rgba(6,3,4,.9), 0 2px 16px rgba(6,3,4,.8), 0 0 44px rgba(6,3,4,.6);
+}
 
 /* Сияющая белая черта под рамкой знака. Ширину берёт у самой рамки,
    поэтому совпадает с ней на любом языке. Сама линия — градиент,
