@@ -290,6 +290,13 @@
        формата и прячем его, как только дата выбрана. */
     if (f.type === 'date') {
       wrap.appendChild(el('span', { class:'rf-ph', text: T('form.phDate', 'дд/мм/гггг') }));
+      // На компьютере нажатие по полю не открывает календарь само —
+      // просим браузер показать его. Где метода нет, ничего не ломается.
+      input.addEventListener('click', function () {
+        if (typeof input.showPicker === 'function') {
+          try { input.showPicker(); } catch (err) {}
+        }
+      });
       var sync = function () { wrap.classList.toggle('has-val', !!input.value); };
       input.addEventListener('input', sync);
       input.addEventListener('change', sync);

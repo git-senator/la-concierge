@@ -1117,6 +1117,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    и собственный образец формата поверх пустого поля.             */
 .rf-field.is-date{ position:relative; }
 .rf-field.is-date input{
+  /* Safari на iPhone не считает поле даты обычным блоком: без снятого
+     оформления и box-sizing оно берёт свою «родную» ширину и вылезает
+     за подчёркивание вместе со стрелкой.                          */
+  -webkit-appearance:none; appearance:none;
+  display:block; width:100%; min-width:0; max-width:100%;
+  box-sizing:border-box;
   padding-right:26px; cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,var(--parch-far) 50%),
                    linear-gradient(135deg,var(--parch-far) 50%,transparent 50%);
@@ -1124,11 +1130,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   background-size:5px 5px, 5px 5px;
   background-repeat:no-repeat;
 }
-/* Родной значок календаря растягиваем на всё поле и делаем прозрачным:
-   нажатие в любом месте открывает выбор, а видно нашу стрелку.    */
+/* Родной значок календаря убираем совсем: на iPhone он занимал место
+   и растягивал поле. Выбор открывается нажатием по самому полю —
+   на телефоне это поведение по умолчанию, на компьютере вызываем
+   showPicker() из скрипта.                                        */
 .rf-field.is-date input::-webkit-calendar-picker-indicator{
-  position:absolute; inset:0; width:auto; height:auto;
-  opacity:0; cursor:pointer;
+  display:none; -webkit-appearance:none; appearance:none;
 }
 /* Chrome рисует своё «дд.мм.гггг» отдельным внутренним слоем, и одним
    color:transparent он не убирается — гасим сам этот слой.       */
