@@ -351,35 +351,30 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .drawer.open{ opacity:1; }
 
-.drawer-lang{ align-self:flex-start; margin-bottom:22px; }
+.drawer-lang{ align-self:center; margin-bottom:22px; }
 
 /* Пункт под пальцем: подрастает, уходит в золото и получает лёгкую
    подложку слева. Меняем transform, а не кегль — от смены кегля
    строки прыгали бы, и палец терял бы цель.                     */
 .drawer-links a span{
-  display:inline-block; transform-origin:left center;
+  display:inline-block; transform-origin:center;
   transition:transform .22s var(--ease), color .22s var(--ease);
 }
-.drawer-links a em{ transition:color .22s var(--ease); }
 .drawer-links a.hot{
-  background:linear-gradient(90deg, rgba(214,160,74,.12), transparent 72%);
+  background:linear-gradient(90deg, transparent,
+    rgba(214,160,74,.14) 28%, rgba(214,160,74,.14) 72%, transparent);
 }
 .drawer-links a.hot span{ transform:scale(1.22); color:#E8C56A; }
-.drawer-links a.hot em{ color:#F3E2AE; }
 .drawer-links{ display:flex; flex-direction:column; gap:4px; }
 /* Пункты набраны как надпись на кнопке «Связь 24/7»: та же гарнитура,
    тот же кегль и разрядка. Место под палец держим отступами строки,
    а не размером букв — иначе по мелкому тексту трудно попасть.    */
 .drawer-links a{
-  display:flex; align-items:center; gap:18px;
+  display:flex; align-items:center; justify-content:center;
   font-family:var(--caps); font-size:10px; font-weight:500;
   letter-spacing:.18em; text-transform:uppercase;
   line-height:1.2; color:var(--parch);
   border-bottom:1px solid var(--line-soft); padding-block:17px;
-}
-.drawer-links em{
-  font-family:var(--caps); font-style:normal; font-size:10px;
-  letter-spacing:.16em; color:#E8C56A; flex:none; width:20px;
 }
 
 /* ══════════ СВЕТОВЫЕ ПОДЛОЖКИ ══════════
