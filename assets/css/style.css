@@ -577,8 +577,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
    даём двумя тенями: наружной по всем сторонам и внутренней, чтобы
    рамка выглядела подсвеченной, а не обведённой.                   */
-.hero-act .btn,
-.final-in .btn{
+.hero-act .btn{
   background:transparent;
   border-color:rgba(214,160,74,.52);
   color:var(--parch);
@@ -589,8 +588,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   transition:color .4s var(--ease), border-color .4s var(--ease),
              box-shadow .5s var(--ease), transform .4s var(--ease);
 }
-.hero-act .btn:hover,
-.final-in .btn:hover{
+.hero-act .btn:hover{
   background:transparent;
   border-color:var(--amber);
   color:var(--parch);
@@ -1247,14 +1245,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (max-width:560px){
   .lockup{ --lk:clamp(26px,8.4vw,42px); width:100%; }
   .lk-claim{ padding-inline:calc(var(--lk) * .34); }
-}
-.final-in .btn{ margin-top:44px; }
-.final-note{
-  margin:26px 0 0; font-family:var(--display); font-style:italic;
-  font-size:17px; color:var(--parch-far);
-  /* Перенос задан разметкой, поэтому строкам нужен свой интерлиньяж —
-     по умолчанию у мелкой курсивной антиквы он слишком тесный.     */
-  line-height:1.45;
 }
 
 /* ══════════ ПОДВАЛ ══════════ */
