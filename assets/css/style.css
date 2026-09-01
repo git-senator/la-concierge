@@ -46,15 +46,16 @@
   --shell:1300px;
   --navh:80px;
 }
-/* Русская версия набирается Alumni Sans — одной гарнитурой во всех
+/* Русская версия набирается Libertinus Serif — одной гарнитурой во всех
    ролях. Латинский логотип из этого исключён: MONTERO и Concierge
    Service одинаковы на всех языках и остаются на Cinzel.        */
 html[lang="ru"]{
-  --display:"Alumni Sans","Cormorant Garamond",Georgia,serif;
-  --caps:"Alumni Sans","Cormorant Garamond",Georgia,serif;
-  --sans:"Alumni Sans",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --display:"Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --caps:"Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --sans:"Libertinus Serif",Georgia,"Times New Roman",serif;
 }
-html[lang="ru"] .lockup{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
+html[lang="ru"] .lk-name,
+html[lang="ru"] .lk-sub{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
 
 *{ box-sizing:border-box; }
 
