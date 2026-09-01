@@ -1128,6 +1128,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   -webkit-appearance:none; appearance:none;
   display:block; width:100%; min-width:0; max-width:100%;
   box-sizing:border-box;
+  line-height:20px; min-height:26px;
   cursor:pointer;
 }
 /* Родной значок календаря убираем совсем: на iPhone он занимал место
@@ -1143,12 +1144,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .rf-field.is-date:not(.has-val) input:not(:focus)::-webkit-datetime-edit{ opacity:0; }
 /* Обёртка поля даты: подсказка ложится точно на него, с теми же
    отступами, поэтому строка не наезжает на подпись.            */
-.rf-datebox{ position:relative; display:block; }
+/* Safari на iPhone даёт пустому полю даты нулевую высоту — строка
+   схлопывалась, и подсказка налезала на следующую подпись. Задаём
+   обёртке и полю ту же высоту, что у обычного ввода: 20 на строку
+   плюс 1 и 5 на отступы — ровно 26, как у поля «Страна».        */
+.rf-datebox{ position:relative; display:block; min-height:26px; }
 .rf-ph{
   position:absolute; inset:0; pointer-events:none;
-  padding:1px 0 5px;
+  padding:1px 0 5px; overflow:hidden;
   font-family:var(--display); font-size:17px; font-weight:300;
-  line-height:inherit; color:var(--parch-far);
+  line-height:20px; color:var(--parch-far);
 }
 .rf-field.is-date.has-val .rf-ph,
 .rf-field.is-date input:focus + .rf-ph{ display:none; }
