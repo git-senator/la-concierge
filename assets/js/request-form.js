@@ -215,7 +215,7 @@
     this.opts = Object.assign({
       formId:'concierge-request',
       transport: transports.console(),
-      whatsappPhone:'5511968422222',
+      whatsappPhone:'5521977770800',
       onSuccess:null,
       onError:null
     }, options || {});
