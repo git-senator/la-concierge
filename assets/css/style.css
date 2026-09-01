@@ -974,10 +974,13 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Прямая связь — три круглых знака вместо строк с подписями. Каждый
    собран как фирменная печать: чёрная эмаль, толстое золотое кольцо
    и тонкая линия внутри. Значок белый.                            */
-.direct{ display:flex; gap:16px; margin-top:38px; }
+.direct{ display:flex; justify-content:center; gap:12px; margin-top:38px; }
 .direct-btn{
-  width:54px; height:54px; border-radius:50%;
-  display:grid; place-items:center; flex:none; color:#FFFFFF;
+  /* Овал, а не круг: три кнопки делят ширину поровну и
+     заканчиваются такими же полукружиями, с каких начинаются. */
+  flex:1 1 0; min-width:0; max-width:190px;
+  height:54px; border-radius:999px;
+  display:grid; place-items:center; color:#FFFFFF;
   background:
     linear-gradient(#0C0C0D, #0C0C0D) padding-box,
     linear-gradient(150deg, #E6CE93 0%, #C39A46 26%, #A78239 52%,
