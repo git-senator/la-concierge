@@ -1309,12 +1309,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   /* На узком экране снимок виден целиком и лезет прямо под заголовок.
      Своя заливка: плотнее в середине, где стоит текст.               */
   .hero:has(.media) .hero-vig{
-    background:
-      radial-gradient(ellipse 90% 34% at 50% 2%, rgba(232,182,96,.12), transparent 66%),
-      radial-gradient(ellipse 70% 40% at 96% 92%, rgba(168,30,34,.24), transparent 68%),
-      linear-gradient(180deg,
-        rgba(6,3,4,.70) 0%, rgba(6,3,4,.40) 18%,
-        rgba(6,3,4,.50) 44%, rgba(6,3,4,.60) 70%, rgba(6,3,4,.84) 100%);
+    background:linear-gradient(180deg,
+      rgba(6,3,4,.62) 0%, rgba(6,3,4,.12) 14%,
+      rgba(6,3,4,0) 40%, rgba(6,3,4,0) 62%,
+      rgba(6,3,4,.30) 84%, rgba(6,3,4,.72) 100%);
   }
   /* Для телефона свой снимок — вертикальный. Горизонтальный кадр
      пришлось бы раздувать почти втрое, чтобы закрыть высокий
@@ -1324,7 +1322,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .hero-bg .media{
     object-position:center 62%;
     animation:none; transform:none;
+    /* Снимок для телефона показываем как есть: ни гашения, ни сепии,
+       ни снятой насыщенности. Текст держится собственной тенью.   */
+    filter:none;
   }
+  /* Снимок не трогаем, поэтому читаемость держим на самих буквах:
+     плотный тёмный ореол вплотную к штрихам плюс широкий мягкий
+     подпор. Картинка при этом остаётся в своих цветах.        */
+  .hero-in .lockup{
+    text-shadow:
+      0 0 2px rgba(6,3,4,.95), 0 1px 3px rgba(6,3,4,.9),
+      0 2px 10px rgba(6,3,4,.85), 0 0 30px rgba(6,3,4,.7);
+  }
+  .hero-act .btn{
+    text-shadow:
+      0 0 2px rgba(6,3,4,.95), 0 1px 4px rgba(6,3,4,.9), 0 0 18px rgba(6,3,4,.7);
+  }
+  .hero-rail{ text-shadow:0 1px 4px rgba(6,3,4,.9); }
   .hero-act{ flex-direction:column; align-items:stretch; }
   .btn-lg{ width:100%; padding-inline:18px; letter-spacing:.14em; }
   .hero-rail{ gap:10px 26px; }
@@ -1353,7 +1367,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    башне смысла не имеет. Сдвиг только визуальный — полоса цифр под
    ним остаётся на месте.                                          */
 @media (max-width:560px){
-  .hero-in{ transform:translateY(calc(-1 * clamp(50px, 112px - 5.8svh, 86px))); }
+  /* Блок от MONTERO до кнопки поднят так, чтобы нижняя грань кнопки
+     встала над шпилем небоскрёба в кадре. Величина считается от
+     высоты экрана: шпиль в кадре смещается вместе с ней, потому
+     что снимок обрезан по бокам, а по высоте виден целиком.   */
+  .hero-in{ transform:translateY(calc(-1 * clamp(150px, 106px + 7.4svh, 195px))); }
 }
 
 @media (max-width:540px){
