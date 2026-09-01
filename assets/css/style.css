@@ -957,27 +957,31 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .req-grid > *{ min-width:0; }
 .req-say h2{ margin:20px 0 0; }
 
-.direct{ margin-top:38px; border-top:1px solid var(--line); }
-.direct-row{
-  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
-  padding:15px 0; border-bottom:1px solid var(--line);
-  transition:padding-left .45s var(--ease), border-color .45s var(--ease);
+/* Прямая связь — три круглых знака вместо строк с подписями. Каждый
+   собран как фирменная печать: чёрная эмаль, толстое золотое кольцо
+   и тонкая линия внутри. Значок белый.                            */
+.direct{ display:flex; gap:16px; margin-top:38px; }
+.direct-btn{
+  width:54px; height:54px; border-radius:50%;
+  display:grid; place-items:center; flex:none; color:#FFFFFF;
+  background:
+    linear-gradient(#0C0C0D, #0C0C0D) padding-box,
+    linear-gradient(150deg, #E6CE93 0%, #C39A46 26%, #A78239 52%,
+                            #DEBE75 74%, #A78239 100%) border-box;
+  border:2px solid transparent;
+  box-shadow:
+    inset 0 0 0 3px #0C0C0D,
+    inset 0 0 0 4px rgba(199,155,72,.65),
+    0 8px 22px rgba(0,0,0,.45);
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
 }
-.direct-row em{
-  font-family:var(--caps); font-style:normal; font-size:10px;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--parch-far);
-  flex:none;
-}
-.direct-row span{
-  font-family:var(--display); font-size:19px; color:var(--parch);
-  text-align:right; min-width:0; overflow-wrap:anywhere;
-}
-.direct-row:hover{ padding-left:12px; border-bottom-color:var(--line-red); }
-.direct-row:hover span{ color:var(--amber); }
-
-.req-fine{
-  margin:20px 0 0; font-size:12px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--parch-far);
+.direct-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 0 0 3px #0C0C0D,
+    inset 0 0 0 4px rgba(222,190,117,.95),
+    0 10px 26px rgba(0,0,0,.5),
+    0 0 18px rgba(214,160,74,.35);
 }
 
 /* ── Форма ─────────────────────────────────────────────────────────── */
@@ -1024,8 +1028,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    Здесь они белые в полную силу — это единственное место на странице,
    где человек должен разбирать текст, а не любоваться им.            */
 .req .label span,
-.req-fine,
-.direct-row em,
 .rf-field label{ color:#FFFFFF; }
 .rf-field label{ font-weight:600; }
 
@@ -1314,8 +1316,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .rf-consent{ max-width:none; }
   .rf-submit{ width:100%; padding-inline:14px; letter-spacing:.14em; }
 
-  .direct-row{ flex-direction:column; align-items:flex-start; gap:4px; }
-  .direct-row span{ text-align:left; }
 
   .band{ padding-block:clamp(40px,9vw,64px); }
   .band-in{ grid-template-columns:1fr; }

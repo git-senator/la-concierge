@@ -92,7 +92,6 @@
     'direct.tg': 'Telegram',
     'direct.tel': 'Telephone',
 
-    'req.fine': 'Answered around the clock, every day of the year.',
 
     'final.claim1': 'Everything you need in Brazil —',
     'final.claim2': 'on a single phone number.',
@@ -303,7 +302,6 @@
     'direct.tg': 'Telegram',
     'direct.tel': 'Telefone',
 
-    'req.fine': 'Atendemos 24 horas, todos os dias do ano.',
 
     'final.claim1': 'Tudo o que você precisa no Brasil —',
     'final.claim2': 'em um único número de telefone.',
@@ -514,7 +512,6 @@
     'direct.tg': 'Telegram',
     'direct.tel': 'Teléfono',
 
-    'req.fine': 'Atendemos las veinticuatro horas, todos los días del año.',
 
     'final.claim1': 'Todo lo que necesita en Brasil —',
     'final.claim2': 'en un solo número de teléfono.',
@@ -725,7 +722,6 @@
     'direct.tg': 'Telegram',
     'direct.tel': 'Telefono',
 
-    'req.fine': 'Rispondiamo ventiquattro ore su ventiquattro, tutti i giorni dell’anno.',
 
     'final.claim1': 'Tutto ciò che le serve in Brasile —',
     'final.claim2': 'su un unico numero di telefono.',
