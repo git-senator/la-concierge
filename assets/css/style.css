@@ -825,11 +825,22 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .conc-start b{ font-weight:500; color:var(--parch); }
 
 .conc-sig{ display:flex; align-items:center; gap:18px; margin-top:38px; }
-.conc-sig-t{ display:flex; flex-direction:column; gap:5px; min-width:0; }
+/* Подпись выключена по правому краю: строки разной длины, и при
+   выключке влево короткая последняя повисала бы в пустоте.
+   Переносы расставлены вручную, но на телефоне мешают — там
+   строка и так не помещается, и текст ложится сам.            */
+.conc-sig-t{
+  display:flex; flex-direction:column; gap:5px;
+  min-width:0; align-items:flex-end; text-align:right;
+}
 .conc-sig-t b{
-  font-family:var(--caps); font-weight:500; font-size:12px;
+  font-family:var(--caps); font-weight:500; font-size:12px; line-height:1.75;
   letter-spacing:.18em; text-transform:uppercase; color:var(--parch);
 }
+.conc-sig-t .sl{ display:block; }
+/* На телефоне ручные переносы только мешают: строка и так не
+   помещается по ширине, и текст лучше ложится сам.          */
+@media (max-width:720px){ .conc-sig-t .sl{ display:inline; } }
 .conc-sig-t i{
   font-style:normal; font-size:10.5px; letter-spacing:.2em;
   text-transform:uppercase; color:var(--parch-far);
