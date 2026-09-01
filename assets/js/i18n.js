@@ -70,7 +70,7 @@
 
     'sec.svc.label': 'Services',
     'sec.svc.h': 'What we arrange',
-    'sec.svc.lede': '20+ standing services. If you don’t see what you need on the list, ask — we will arrange it.',
+    'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “Can you?” is YES, WE CAN!',
     'sec.dest.label': 'Destinations',
     'sec.dest.h': 'Where we already stand',
     'sec.dest.lede': 'Not a map of everywhere. A short list of places where we know the doormen by name.',
@@ -278,7 +278,7 @@
 
     'sec.svc.label': 'Serviços',
     'sec.svc.h': 'O que organizamos',
-    'sec.svc.lede': 'Mais de 20 serviços permanentes. Se não encontrar o que precisa na lista, peça — nós organizamos.',
+    'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “Vocês conseguem?” é SIM, CONSEGUIMOS!',
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'Onde já estamos',
     'sec.dest.lede': 'Não é um mapa do mundo inteiro. É uma lista curta de lugares onde conhecemos os porteiros pelo nome.',
@@ -486,7 +486,7 @@
 
     'sec.svc.label': 'Servicios',
     'sec.svc.h': 'Lo que organizamos',
-    'sec.svc.lede': 'Más de 20 servicios permanentes. Si no encuentra lo que necesita en la lista, pídalo — lo organizamos.',
+    'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Pueden?» es SÍ, PODEMOS!',
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'Donde ya estamos',
     'sec.dest.lede': 'No es un mapa del mundo entero. Es una lista corta de lugares donde conocemos a los porteros por su nombre.',
@@ -694,7 +694,7 @@
 
     'sec.svc.label': 'Servizi',
     'sec.svc.h': 'Che cosa organizziamo',
-    'sec.svc.lede': 'Oltre 20 servizi permanenti. Se non trova ciò che le serve nell’elenco, lo chieda — ce ne occupiamo noi.',
+    'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Potete?» è SÌ, POSSIAMO!',
     'sec.dest.label': 'Destinazioni',
     'sec.dest.h': 'Dove siamo già',
     'sec.dest.lede': 'Non è una mappa del mondo intero. È un elenco breve di luoghi dove conosciamo i portieri per nome.',
