@@ -911,9 +911,26 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Раздел выключен по центру целиком. У врезки алая черта переехала
    с левого края наверх и стала короткой чертой по оси — при центре
    боковая линия читалась бы как случайный обрубок.               */
-#concierge .sec-head{ text-align:center; margin-inline:auto; }
-/* Подпись раздела набрана флексом, поэтому центрируется не текстом. */
-#concierge .label{ justify-content:center; }
+/* Шапки всех разделов собраны одинаково: подпись, заголовок прописными
+   и вводный абзац стоят по центру своей колонки.                   */
+#services .sec-head,
+#destinations .sec-head,
+#concierge .sec-head,
+#request .req-say{ text-align:center; margin-inline:auto; }
+/* Подпись набрана флексом, поэтому центрируется не текстом. */
+#services .label,
+#destinations .label,
+#concierge .label,
+#request .label{ justify-content:center; }
+#services .sec-head h2,
+#destinations .sec-head h2,
+#request .req-say h2{ text-transform:uppercase; letter-spacing:.02em; }
+/* Прописные шире строчных примерно на треть, поэтому прежний кегль
+   заголовков перестал помещаться: у «Заявки» текст вылезал под форму,
+   у «Направлений» — за свою колонку. Уменьшаем ровно эти три.     */
+#services .sec-head h2,
+#destinations .sec-head h2{ font-size:clamp(28px,4.2vw,58px); }
+#request .req-say h2{ font-size:clamp(26px,2.9vw,44px); }
 /* Заголовок обязан стоять ровно в две строки. Каждая половина —
    отдельный блок без переносов, а кегль считается от ширины экрана,
    чтобы длинная строка помещалась на любом языке. Ограничение в
