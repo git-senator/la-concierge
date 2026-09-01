@@ -82,7 +82,6 @@
     'conc.p2': 'You simply hand the task to your concierge. We arrange everything else and carry it through to the result.',
     'conc.p3': 'Confidential. Personal. No extra calls, no message threads, no wasted time.',
     'conc.p4': '<b>It all starts with one message.</b><br>Tell us what you need. Even if you do not yet know who could solve it — that part is already our job.',
-    'conc.wa': 'WhatsApp',
     'conc.signName': 'Latin America Private Concierge',
     'conc.signSub': 'Brazil · LATAM · Twenty-four hours',
 
@@ -293,7 +292,6 @@
     'conc.p2': 'Você apenas passa a tarefa ao seu concierge. Nós organizamos todo o resto e levamos a questão até o resultado.',
     'conc.p3': 'Confidencial. Pessoal. Sem ligações extras, sem trocas de mensagens, sem perda de tempo.',
     'conc.p4': '<b>Tudo começa com uma mensagem.</b><br>Diga o que precisa. Mesmo que ainda não saiba quem pode resolver — isso já é tarefa nossa.',
-    'conc.wa': 'WhatsApp',
     'conc.signName': 'América Latina · Concierge Privado',
     'conc.signSub': 'Brasil · LATAM · Vinte e quatro horas',
 
@@ -504,7 +502,6 @@
     'conc.p2': 'Usted simplemente le da la tarea a su conserje. Nosotros organizamos todo lo demás y llevamos el asunto hasta el resultado.',
     'conc.p3': 'Confidencial. Personal. Sin llamadas de más, sin cadenas de mensajes, sin pérdida de tiempo.',
     'conc.p4': '<b>Todo empieza con un mensaje.</b><br>Cuéntenos qué necesita. Aunque todavía no sepa quién puede resolverlo — eso ya es asunto nuestro.',
-    'conc.wa': 'WhatsApp',
     'conc.signName': 'América Latina · Conserjería Privada',
     'conc.signSub': 'Brasil · LATAM · Veinticuatro horas',
 
@@ -715,7 +712,6 @@
     'conc.p2': 'Lei affida semplicemente il compito al suo concierge. Noi organizziamo tutto il resto e portiamo la questione al risultato.',
     'conc.p3': 'Riservato. Personale. Senza telefonate in più, senza scambi di messaggi, senza perdite di tempo.',
     'conc.p4': '<b>Tutto comincia con un messaggio.</b><br>Ci dica di cosa ha bisogno. Anche se non sa ancora chi possa risolverlo — quello è già compito nostro.',
-    'conc.wa': 'WhatsApp',
     'conc.signName': 'America Latina · Concierge Privato',
     'conc.signSub': 'Brasile · LATAM · Ventiquattro ore',
 
