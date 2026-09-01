@@ -621,9 +621,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   line-height:1.06; color:#FFFFFF;
   transition:color .4s var(--ease);
 }
+/* Описание под названием набрано золотом самого знака: тона сняты с
+   кольца вокруг монограммы — от глубокого #A78239 до светлого блика
+   #DEBE75. Плоская заливка читалась бы как жёлтая краска, поэтому по
+   высоте строки идёт переход, как на металле. Обычный color задан
+   первым: если браузер не умеет обрезать заливку по буквам, текст
+   останется золотым, а не пропадёт.                              */
 .svc-tag{
   grid-column:2; font-size:11px; letter-spacing:.16em;
-  text-transform:uppercase; color:#FFFFFF;
+  text-transform:uppercase; color:#DDBC73;
+}
+@supports (-webkit-background-clip:text) or (background-clip:text){
+  .svc-tag{
+    background:linear-gradient(180deg,
+      #F3E2AE 0%, #E0C179 26%, #C39A46 58%, #A78239 82%, #E6CE93 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
 }
 .svc-mark{
   grid-row:1; grid-column:3; align-self:center;
