@@ -75,7 +75,7 @@
     'sec.dest.h': 'Where we work',
     'sec.dest.lede': 'We also provide remote support and settle many matters across South and Central America.',
     'sec.conc.label': 'The Concierge',
-    'sec.conc.h': 'One request.<br>We handle the rest.',
+    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln">The rest is our business</span>',
 
     'conc.pull': 'One contact for anything you need in Brazil.',
     'conc.p1': 'From a simple everyday errand to a complex matter involving lawyers, brokers, drivers or other specialists — you never have to find the people or coordinate them yourself.',
@@ -285,7 +285,7 @@
     'sec.dest.h': 'A geografia do nosso trabalho',
     'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em toda a América do Sul e Central.',
     'sec.conc.label': 'O Concierge',
-    'sec.conc.h': 'Um pedido.<br>Do resto cuidamos nós.',
+    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln">O restante é conosco</span>',
 
     'conc.pull': 'Um único contato para qualquer necessidade no Brasil.',
     'conc.p1': 'De um pedido simples do dia a dia a uma questão complexa que envolve advogados, corretores, motoristas ou outros especialistas — você não precisa procurar os executores nem coordená-los sozinho.',
@@ -495,7 +495,7 @@
     'sec.dest.h': 'La geografía de nuestro trabajo',
     'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en toda América del Sur y Central.',
     'sec.conc.label': 'El Conserje',
-    'sec.conc.h': 'Una petición.<br>Del resto nos ocupamos nosotros.',
+    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln">El resto es cosa nuestra</span>',
 
     'conc.pull': 'Un solo contacto para cualquier asunto en Brasil.',
     'conc.p1': 'Desde una petición cotidiana hasta un asunto complejo que requiere abogados, corredores, choferes u otros especialistas — usted no tiene que buscar a los ejecutores ni coordinarlos.',
@@ -705,7 +705,7 @@
     'sec.dest.h': 'La geografia del nostro lavoro',
     'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutta l’America del Sud e Centrale.',
     'sec.conc.label': 'Il Concierge',
-    'sec.conc.h': 'Una richiesta.<br>Del resto ci occupiamo noi.',
+    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln">Il resto è affar nostro</span>',
 
     'conc.pull': 'Un solo contatto per qualsiasi esigenza in Brasile.',
     'conc.p1': 'Da una richiesta quotidiana a una questione complessa che richiede avvocati, broker, autisti o altri specialisti — non deve cercare gli esecutori né coordinarli da solo.',
