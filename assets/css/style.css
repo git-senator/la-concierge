@@ -911,26 +911,30 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Раздел выключен по центру целиком. У врезки алая черта переехала
    с левого края наверх и стала короткой чертой по оси — при центре
    боковая линия читалась бы как случайный обрубок.               */
-/* Шапки всех разделов собраны одинаково: подпись, заголовок прописными
-   и вводный абзац стоят по центру своей колонки.                   */
-#services .sec-head,
-#destinations .sec-head,
-#concierge .sec-head,
-#request .req-say{ text-align:center; margin-inline:auto; }
+/* Раздел «Консьерж» собран по центру на всех экранах — так решено
+   отдельно и раньше остальных.                                  */
+#concierge .sec-head{ text-align:center; margin-inline:auto; }
 /* Подпись набрана флексом, поэтому центрируется не текстом. */
-#services .label,
-#destinations .label,
-#concierge .label,
-#request .label{ justify-content:center; }
-#services .sec-head h2,
-#destinations .sec-head h2,
-#request .req-say h2{ text-transform:uppercase; letter-spacing:.02em; }
-/* Прописные шире строчных примерно на треть, поэтому прежний кегль
-   заголовков перестал помещаться: у «Заявки» текст вылезал под форму,
-   у «Направлений» — за свою колонку. Уменьшаем ровно эти три.     */
-#services .sec-head h2,
-#destinations .sec-head h2{ font-size:clamp(28px,4.2vw,58px); }
-#request .req-say h2{ font-size:clamp(26px,2.9vw,44px); }
+#concierge .label{ justify-content:center; }
+
+/* Остальные три раздела пока выравниваем по центру только на телефоне:
+   на широком экране их шапки остаются слева, как были.            */
+@media (max-width:720px){
+  #services .sec-head,
+  #destinations .sec-head,
+  #request .req-say{ text-align:center; margin-inline:auto; }
+  #services .label,
+  #destinations .label,
+  #request .label{ justify-content:center; }
+  /* Прописные шире строчных примерно на треть — кегль убавляем,
+     иначе заголовок ломается на слишком много строк.          */
+  #services .sec-head h2,
+  #destinations .sec-head h2,
+  #request .req-say h2{
+    text-transform:uppercase; letter-spacing:.02em;
+    font-size:clamp(24px,7vw,34px);
+  }
+}
 /* Заголовок обязан стоять ровно в две строки. Каждая половина —
    отдельный блок без переносов, а кегль считается от ширины экрана,
    чтобы длинная строка помещалась на любом языке. Ограничение в
