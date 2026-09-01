@@ -72,8 +72,8 @@
     'sec.svc.h': 'What we arrange',
     'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “Can you?” is YES, WE CAN!',
     'sec.dest.label': 'Destinations',
-    'sec.dest.h': 'Where we already stand',
-    'sec.dest.lede': 'Not a map of everywhere. A short list of places where we know the doormen by name.',
+    'sec.dest.h': 'Where we work',
+    'sec.dest.lede': 'We also provide remote support and settle many matters across South and Central America.',
     'sec.conc.label': 'The Concierge',
     'sec.conc.h': 'One request.<br>We handle the rest.',
 
@@ -280,8 +280,8 @@
     'sec.svc.h': 'O que organizamos',
     'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “Vocês conseguem?” é SIM, CONSEGUIMOS!',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'Onde já estamos',
-    'sec.dest.lede': 'Não é um mapa do mundo inteiro. É uma lista curta de lugares onde conhecemos os porteiros pelo nome.',
+    'sec.dest.h': 'A geografia do nosso trabalho',
+    'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em toda a América do Sul e Central.',
     'sec.conc.label': 'O Concierge',
     'sec.conc.h': 'Um pedido.<br>Do resto cuidamos nós.',
 
@@ -488,8 +488,8 @@
     'sec.svc.h': 'Lo que organizamos',
     'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Pueden?» es SÍ, PODEMOS!',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'Donde ya estamos',
-    'sec.dest.lede': 'No es un mapa del mundo entero. Es una lista corta de lugares donde conocemos a los porteros por su nombre.',
+    'sec.dest.h': 'La geografía de nuestro trabajo',
+    'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en toda América del Sur y Central.',
     'sec.conc.label': 'El Conserje',
     'sec.conc.h': 'Una petición.<br>Del resto nos ocupamos nosotros.',
 
@@ -696,8 +696,8 @@
     'sec.svc.h': 'Che cosa organizziamo',
     'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Potete?» è SÌ, POSSIAMO!',
     'sec.dest.label': 'Destinazioni',
-    'sec.dest.h': 'Dove siamo già',
-    'sec.dest.lede': 'Non è una mappa del mondo intero. È un elenco breve di luoghi dove conosciamo i portieri per nome.',
+    'sec.dest.h': 'La geografia del nostro lavoro',
+    'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutta l’America del Sud e Centrale.',
     'sec.conc.label': 'Il Concierge',
     'sec.conc.h': 'Una richiesta.<br>Del resto ci occupiamo noi.',
 
