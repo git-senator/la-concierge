@@ -60,7 +60,7 @@
 
     'hero.eyebrow': 'Brazil <em>·</em> Latin America <em>·</em> Answered at any hour',
     'hero.cta': 'Request a concierge',
-    'hero.wa': 'Contact a manager',
+    'hero.wa': 'Contact us',
     'hero.note': 'The list of families we keep is short. That is the service.',
 
     'rail.attendance': 'attendance',
@@ -268,7 +268,7 @@
 
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Atendemos a qualquer hora',
     'hero.cta': 'Solicitar um concierge',
-    'hero.wa': 'Falar com o gerente',
+    'hero.wa': 'Fale conosco',
     'hero.note': 'A lista de famílias que atendemos é curta. É justamente esse o serviço.',
 
     'rail.attendance': 'atendimento',
@@ -476,7 +476,7 @@
 
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Respondemos a cualquier hora',
     'hero.cta': 'Solicitar un conserje',
-    'hero.wa': 'Hablar con el gestor',
+    'hero.wa': 'Contáctenos',
     'hero.note': 'La lista de familias que atendemos es corta. En eso consiste el servicio.',
 
     'rail.attendance': 'atención',
@@ -684,7 +684,7 @@
 
     'hero.eyebrow': 'Brasile <em>·</em> America Latina <em>·</em> Rispondiamo a qualsiasi ora',
     'hero.cta': 'Richiedere un concierge',
-    'hero.wa': 'Contattare il referente',
+    'hero.wa': 'Contattaci',
     'hero.note': 'La lista delle famiglie che seguiamo è corta. Il servizio è esattamente questo.',
 
     'rail.attendance': 'reperibilità',
