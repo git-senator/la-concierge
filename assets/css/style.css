@@ -889,7 +889,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .band-plate .media{ object-position:center 50%;
   filter:brightness(.92) contrast(1.05) saturate(.78) sepia(.10); }
 .band-in h3{ color:var(--parch); }
-.band-txt{ margin:18px 0 0; max-width:46ch; color:var(--parch-dim); font-size:15px; }
+/* Номер, название и описание направления выключены по центру своей
+   колонки: рядом стоит кадр, и симметричный столбик держится с ним
+   лучше, чем текст, прижатый к левому краю.                    */
+.band-col{ text-align:center; }
+.band-txt{ margin:18px auto 0; max-width:46ch; color:var(--parch-dim); font-size:15px; }
 
 /* ══════════ КОНСЬЕРЖ ══════════ */
 
