@@ -1140,7 +1140,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Строка согласия снята — кнопка встала на её место и занимает всю
    ширину формы: так до неё труднее промахнуться пальцем.      */
 .rf-foot{ display:flex; margin-top:16px; padding-top:18px; border-top:1px solid var(--line); }
-.rf-submit{ flex:1 1 auto; width:100%; }
+.rf-submit{
+  flex:1 1 auto; width:100%;
+  /* Главное действие страницы набрано золотом знака: тем же переходом
+     от глубокого #A78239 к светлому блику, что и кольцо у эмблемы.
+     Буквы тёмные — на золоте белое читается плохо.               */
+  background:linear-gradient(150deg, #E6CE93 0%, #D4B267 22%, #C39A46 48%,
+                                     #E0C179 72%, #B8893C 100%);
+  border-color:transparent; color:#0C0C0D;
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+}
+.rf-submit:hover{
+  background:linear-gradient(150deg, #F3E2AE 0%, #E0C179 22%, #D4AF52 48%,
+                                     #F0DCA4 72%, #C39A46 100%);
+  border-color:transparent; color:#0C0C0D;
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,0,0,.5), 0 0 22px rgba(214,160,74,.3);
+}
 .rf-failure{ display:block; }
 
 .rf-done{
