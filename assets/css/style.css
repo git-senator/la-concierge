@@ -265,10 +265,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 .burger{ display:none; width:34px; height:34px; position:relative; }
 .burger span{
-  position:absolute; left:6px; right:6px; height:1px; background:var(--parch);
+  position:absolute; left:9px; right:9px; height:1px; background:var(--parch);
   transition:transform .4s var(--ease), opacity .3s;
 }
-.burger span:first-child{ top:14px; }
+.burger span:first-child{ top:15px; }
 .burger span:last-child{ top:20px; }
 .burger[aria-expanded="true"] span:first-child{ transform:translateY(3px) rotate(45deg); }
 .burger[aria-expanded="true"] span:last-child{ transform:translateY(-3px) rotate(-45deg); }
@@ -290,16 +290,21 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .drawer.open{ opacity:1; }
 
+.drawer-lang{ align-self:flex-start; margin-bottom:22px; }
 .drawer-links{ display:flex; flex-direction:column; gap:4px; }
+/* Пункты набраны как надпись на кнопке «Связь 24/7»: та же гарнитура,
+   тот же кегль и разрядка. Место под палец держим отступами строки,
+   а не размером букв — иначе по мелкому тексту трудно попасть.    */
 .drawer-links a{
-  display:flex; align-items:baseline; gap:18px;
-  font-family:var(--display); font-size:clamp(32px,10vw,54px);
-  line-height:1.25; color:var(--parch);
-  border-bottom:1px solid var(--line-soft); padding-block:10px;
+  display:flex; align-items:center; gap:18px;
+  font-family:var(--caps); font-size:10px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  line-height:1.2; color:var(--parch);
+  border-bottom:1px solid var(--line-soft); padding-block:17px;
 }
 .drawer-links em{
-  font-family:var(--caps); font-style:normal; font-size:11px;
-  letter-spacing:.16em; color:#E8C56A; flex:none; width:34px;
+  font-family:var(--caps); font-style:normal; font-size:10px;
+  letter-spacing:.16em; color:#E8C56A; flex:none; width:20px;
 }
 .drawer-foot{
   display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:44px;
@@ -1302,12 +1307,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .lang-btn:hover{ color:var(--parch); border-color:var(--amber-dim); }
 .lang-btn:hover svg{ transform:translateY(1px); }
 
-.drawer-lang{
-  font-family:inherit; font-size:12px; letter-spacing:.12em;
-  text-transform:uppercase; color:var(--parch-far);
-  border-bottom:1px solid var(--line-soft); padding-bottom:2px;
-}
-.drawer-lang:hover{ color:var(--amber); }
 
 /* ── Плашка выбора ───────────────────────────────────────────────────
    Открывается при первом заходе. Тот же кабинет, что и весь сайт:
