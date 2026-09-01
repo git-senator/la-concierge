@@ -208,6 +208,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-size:16px; color:var(--parch-dim);
   max-width:52ch; margin:22px 0 0;
 }
+/* Лид раздела услуг выключен по центру — он читается как заявление,
+   а не как вводный абзац, и по левому краю висел бы неровно.   */
+#services .sec-lede{ text-align:center; margin-inline:auto; }
 
 /* ══════════ КНОПКИ ══════════ */
 
