@@ -1094,27 +1094,13 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .rf-field input[type="date"]::-webkit-datetime-edit-month-field,
 .rf-field input[type="date"]::-webkit-datetime-edit-year-field{ color:#FFFFFF; }
 
-/* Стрелка селекта повторяет цвет подписи, иначе она одна остаётся тусклой. */
-.rf-field select{
-  background-image:linear-gradient(45deg,transparent 50%,#FFFFFF 50%),
-                   linear-gradient(135deg,#FFFFFF 50%,transparent 50%);
-}
-
-/* Стрелка селекта рисуется фоном: нативная в тёмной теме
-   отрисовывается системным цветом и выбивается из палитры. */
 .rf-field.is-select{ position:relative; }
-.rf-field select{
-  appearance:none; -webkit-appearance:none; padding-right:26px; cursor:pointer;
-  background-image:linear-gradient(45deg,transparent 50%,var(--parch-far) 50%),
-                   linear-gradient(135deg,var(--parch-far) 50%,transparent 50%);
-  background-position:calc(100% - 11px) calc(50% + 2px), calc(100% - 6px) calc(50% + 2px);
-  background-size:5px 5px, 5px 5px;
-  background-repeat:no-repeat;
-}
+/* Стрелок у полей выбора нет по решению владельца: список открывается
+   нажатием по самой строке.                                        */
+.rf-field select{ appearance:none; -webkit-appearance:none; cursor:pointer; }
 .rf-field select option{ background:var(--surface-2); color:var(--parch); }
 
-/* Дата: та же стрелка, что у списков, чтобы поле читалось как выбор,
-   и собственный образец формата поверх пустого поля.             */
+/* Дата: собственный образец формата поверх пустого поля. */
 .rf-field.is-date{ position:relative; }
 .rf-field.is-date input{
   /* Safari на iPhone не считает поле даты обычным блоком: без снятого
@@ -1123,12 +1109,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   -webkit-appearance:none; appearance:none;
   display:block; width:100%; min-width:0; max-width:100%;
   box-sizing:border-box;
-  padding-right:26px; cursor:pointer;
-  background-image:linear-gradient(45deg,transparent 50%,var(--parch-far) 50%),
-                   linear-gradient(135deg,var(--parch-far) 50%,transparent 50%);
-  background-position:calc(100% - 11px) calc(50% + 1px), calc(100% - 6px) calc(50% + 1px);
-  background-size:5px 5px, 5px 5px;
-  background-repeat:no-repeat;
+  cursor:pointer;
 }
 /* Родной значок календаря убираем совсем: на iPhone он занимал место
    и растягивал поле. Выбор открывается нажатием по самому полю —
