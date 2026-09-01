@@ -99,7 +99,7 @@
     'final.cta': 'Request your private concierge',
     'final.note': 'One request.<br>The rest is ours.',
 
-    'foot.brand': 'Brazil <em>·</em> LATAM',
+    'foot.brand': 'Time <em>—</em> the highest form of luxury, and we look after it',
     'foot.privacy': 'Privacy',
     'foot.terms': 'Terms',
 
@@ -308,7 +308,7 @@
     'final.cta': 'Solicitar o seu concierge privado',
     'final.note': 'Um pedido.<br>O resto é conosco.',
 
-    'foot.brand': 'Brasil <em>·</em> LATAM',
+    'foot.brand': 'O tempo <em>—</em> a forma mais alta de luxo, e nós cuidamos dele',
     'foot.privacy': 'Privacidade',
     'foot.terms': 'Termos',
 
@@ -517,7 +517,7 @@
     'final.cta': 'Solicitar su conserje privado',
     'final.note': 'Una petición.<br>El resto es nuestro.',
 
-    'foot.brand': 'Brasil <em>·</em> LATAM',
+    'foot.brand': 'El tiempo <em>—</em> la forma más alta de lujo, y nosotros lo cuidamos',
     'foot.privacy': 'Privacidad',
     'foot.terms': 'Términos',
 
@@ -726,7 +726,7 @@
     'final.cta': 'Richiedere il suo concierge privato',
     'final.note': 'Una richiesta.<br>Il resto è nostro.',
 
-    'foot.brand': 'Brasile <em>·</em> LATAM',
+    'foot.brand': 'Il tempo <em>—</em> la forma più alta di lusso, e noi ce ne occupiamo',
     'foot.privacy': 'Privacy',
     'foot.terms': 'Termini',
 
