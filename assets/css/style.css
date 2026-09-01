@@ -536,7 +536,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    Виньетка снята: на светлом снимке её пятна читались плашкой.
    Работает от 721 px, телефон живёт по своим правилам.          */
 @media (min-width:721px){
-  .hero-bg .media{ filter:brightness(.42); }
+  /* Кадр стоит неподвижно. Наезд снят, увеличение снято — снимок
+     показывается один к одному. Шпиль в файле лежит на 0.498 ширины,
+     поэтому выравнивание по центру ставит башню строго посередине
+     на любом мониторе: обрезаются поровну левый и правый край.      */
+  .hero-bg .media{
+    filter:brightness(.42);
+    animation:none;
+    transform:none;
+    object-position:center center;
+  }
   .hero:has(.media) .hero-vig{ background:none; }
 }
 
