@@ -429,6 +429,18 @@
 
       // узкий экран — обычная гармошка, одна открытая строка
       var open = row.classList.contains('on');
+
+      /* Отступ сверху решаем здесь, по картинке, которую видит человек в
+         момент нажатия, а не после раскрытия: гармошка успевает сдвинуть
+         строку, и замер «после» давал ложный ответ. Если строка уходит
+         вниз и лежит ниже 640px, шапка при прокрутке спрячется сама —
+         значит место под неё не нужно, и строка встаёт вплотную к верху.
+         Раньше из-за зарезервированных 82px над карточкой оставался хвост
+         предыдущего блока, и она не помещалась в экран.               */
+      var atClick = row.querySelector('.svc-head').getBoundingClientRect().top;
+      var absTop = window.pageYOffset + atClick;
+      var pad = (atClick > 1 && absTop > NAV_HIDES_AFTER) ? 6 : nav.offsetHeight + 12;
+
       rows.forEach(function (r) { setRow(r, false); });
       if (open) return;
       setRow(row, true);
@@ -436,7 +448,7 @@
       afterOpen(row, function () {
         function place(again) {
           var head = row.querySelector('.svc-head').getBoundingClientRect();
-          var target = window.pageYOffset + head.top - (nav.offsetHeight + 12);
+          var target = window.pageYOffset + head.top - pad;
           target = Math.max(0, Math.min(target,
             document.documentElement.scrollHeight - window.innerHeight));
           if (Math.abs(target - window.pageYOffset) < 6) return;
