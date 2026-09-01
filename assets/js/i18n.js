@@ -77,9 +77,12 @@
     'sec.conc.label': 'The Concierge',
     'sec.conc.h': 'One request.<br>We handle the rest.',
 
-    'conc.pull': 'You should never have to explain the same thing twice, to four different people, in a language you do not speak.',
-    'conc.p1': 'A single named concierge takes your request and stays with it until it is finished. They hold the vendors, the drivers, the lawyers and the captains. You hold one number.',
-    'conc.p2': 'Everything is arranged quietly. No brochures, no group departures, no name on a list that anyone else can read.',
+    'conc.pull': 'One contact for anything you need in Brazil.',
+    'conc.p1': 'From a simple everyday errand to a complex matter involving lawyers, brokers, drivers or other specialists — you never have to find the people or coordinate them yourself.',
+    'conc.p2': 'You simply hand the task to your concierge. We arrange everything else and carry it through to the result.',
+    'conc.p3': 'Confidential. Personal. No extra calls, no message threads, no wasted time.',
+    'conc.p4': '<b>It all starts with one message.</b><br>Tell us what you need. Even if you do not yet know who could solve it — that part is already our job.',
+    'conc.wa': 'WhatsApp',
     'conc.signName': 'Latin America Private Concierge',
     'conc.signSub': 'Brazil · LATAM · Twenty-four hours',
 
@@ -285,9 +288,12 @@
     'sec.conc.label': 'O Concierge',
     'sec.conc.h': 'Um pedido.<br>Do resto cuidamos nós.',
 
-    'conc.pull': 'Você nunca deveria ter de explicar a mesma coisa duas vezes, a quatro pessoas diferentes, num idioma que não fala.',
-    'conc.p1': 'Um concierge com nome e sobrenome assume o seu pedido e fica com ele até o fim. Ele segura os fornecedores, os motoristas, os advogados e os comandantes. Você segura um número.',
-    'conc.p2': 'Tudo é organizado em silêncio. Sem folhetos, sem saídas em grupo, sem o seu nome numa lista que qualquer outra pessoa possa ler.',
+    'conc.pull': 'Um único contato para qualquer necessidade no Brasil.',
+    'conc.p1': 'De um pedido simples do dia a dia a uma questão complexa que envolve advogados, corretores, motoristas ou outros especialistas — você não precisa procurar os executores nem coordená-los sozinho.',
+    'conc.p2': 'Você apenas passa a tarefa ao seu concierge. Nós organizamos todo o resto e levamos a questão até o resultado.',
+    'conc.p3': 'Confidencial. Pessoal. Sem ligações extras, sem trocas de mensagens, sem perda de tempo.',
+    'conc.p4': '<b>Tudo começa com uma mensagem.</b><br>Diga o que precisa. Mesmo que ainda não saiba quem pode resolver — isso já é tarefa nossa.',
+    'conc.wa': 'WhatsApp',
     'conc.signName': 'América Latina · Concierge Privado',
     'conc.signSub': 'Brasil · LATAM · Vinte e quatro horas',
 
@@ -493,9 +499,12 @@
     'sec.conc.label': 'El Conserje',
     'sec.conc.h': 'Una petición.<br>Del resto nos ocupamos nosotros.',
 
-    'conc.pull': 'Usted no debería tener que explicar lo mismo dos veces, a cuatro personas distintas, en un idioma que no habla.',
-    'conc.p1': 'Un conserje con nombre y apellido asume su petición y se queda con ella hasta el final. Él sostiene a los proveedores, los choferes, los abogados y los capitanes. Usted sostiene un número.',
-    'conc.p2': 'Todo se organiza en silencio. Sin folletos, sin salidas en grupo, sin su nombre en una lista que pueda leer cualquier otro.',
+    'conc.pull': 'Un solo contacto para cualquier asunto en Brasil.',
+    'conc.p1': 'Desde una petición cotidiana hasta un asunto complejo que requiere abogados, corredores, choferes u otros especialistas — usted no tiene que buscar a los ejecutores ni coordinarlos.',
+    'conc.p2': 'Usted simplemente le da la tarea a su conserje. Nosotros organizamos todo lo demás y llevamos el asunto hasta el resultado.',
+    'conc.p3': 'Confidencial. Personal. Sin llamadas de más, sin cadenas de mensajes, sin pérdida de tiempo.',
+    'conc.p4': '<b>Todo empieza con un mensaje.</b><br>Cuéntenos qué necesita. Aunque todavía no sepa quién puede resolverlo — eso ya es asunto nuestro.',
+    'conc.wa': 'WhatsApp',
     'conc.signName': 'América Latina · Conserjería Privada',
     'conc.signSub': 'Brasil · LATAM · Veinticuatro horas',
 
@@ -701,9 +710,12 @@
     'sec.conc.label': 'Il Concierge',
     'sec.conc.h': 'Una richiesta.<br>Del resto ci occupiamo noi.',
 
-    'conc.pull': 'Non dovrebbe mai capitarle di spiegare la stessa cosa due volte, a quattro persone diverse, in una lingua che non parla.',
-    'conc.p1': 'Un concierge con nome e cognome prende in carico la sua richiesta e la segue fino in fondo. Lui tiene i fornitori, gli autisti, gli avvocati e i comandanti. Lei tiene un numero.',
-    'conc.p2': 'Tutto viene organizzato in silenzio. Niente brochure, niente partenze di gruppo, nessun suo nome su una lista che qualcun altro possa leggere.',
+    'conc.pull': 'Un solo contatto per qualsiasi esigenza in Brasile.',
+    'conc.p1': 'Da una richiesta quotidiana a una questione complessa che richiede avvocati, broker, autisti o altri specialisti — non deve cercare gli esecutori né coordinarli da solo.',
+    'conc.p2': 'Lei affida semplicemente il compito al suo concierge. Noi organizziamo tutto il resto e portiamo la questione al risultato.',
+    'conc.p3': 'Riservato. Personale. Senza telefonate in più, senza scambi di messaggi, senza perdite di tempo.',
+    'conc.p4': '<b>Tutto comincia con un messaggio.</b><br>Ci dica di cosa ha bisogno. Anche se non sa ancora chi possa risolverlo — quello è già compito nostro.',
+    'conc.wa': 'WhatsApp',
     'conc.signName': 'America Latina · Concierge Privato',
     'conc.signSub': 'Brasile · LATAM · Ventiquattro ore',
 

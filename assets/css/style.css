@@ -840,6 +840,27 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   max-width:24ch;
 }
 
+/* Переход к действию: строка с призывом набирается плотнее, чтобы
+   отделиться от абзацев, а кнопка ниже — узкая, по ширине слова. */
+.conc-start{ margin-top:26px; }
+.conc-start b{ font-weight:500; color:var(--parch); }
+.conc-wa{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:22px; height:46px; padding:0 24px;
+  background:transparent; border-color:rgba(214,160,74,.52); color:var(--parch);
+  box-shadow:0 0 22px rgba(214,160,74,.16), 0 0 3px rgba(214,160,74,.22),
+             inset 0 0 20px rgba(214,160,74,.07);
+}
+.conc-wa:hover{
+  border-color:var(--amber);
+  box-shadow:0 0 38px rgba(214,160,74,.30), 0 0 5px rgba(214,160,74,.34),
+             inset 0 0 26px rgba(214,160,74,.12);
+}
+/* Стрелка чуть опускается на наведении — намёк, что дальше вниз. */
+.conc-wa svg{ flex:none; transition:transform .4s var(--ease); }
+.conc-wa:hover svg{ transform:translateY(3px); }
+@media (prefers-reduced-motion: reduce){ .conc-wa:hover svg{ transform:none; } }
+
 .conc-sig{ display:flex; align-items:center; gap:18px; margin-top:38px; }
 .conc-sig-t{ display:flex; flex-direction:column; gap:5px; min-width:0; }
 .conc-sig-t b{
