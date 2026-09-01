@@ -82,7 +82,7 @@
     'conc.p2': 'You simply hand the task to your concierge. We arrange everything else and carry it through to the result.',
     'conc.p3': 'Confidential. Personal. No extra calls, no message threads, no wasted time.',
     'conc.p4': '<b>It all starts with one message.</b><br>Tell us what you need. Even if you do not yet know who could solve it — that part is already our job.',
-    'conc.signName': '<span class="sl">No. 1 concierge service from North</span> <span class="sl">to South America, only for those</span> <span class="sl">who value quality</span>',
+    'conc.signName': '<span class="sl">No. 1 concierge service</span> <span class="sl">from North to South America</span>',
 
     'sec.req.label': 'The Request',
     'sec.req.h': 'Let us take care of everything.',
@@ -291,7 +291,7 @@
     'conc.p2': 'Você apenas passa a tarefa ao seu concierge. Nós organizamos todo o resto e levamos a questão até o resultado.',
     'conc.p3': 'Confidencial. Pessoal. Sem ligações extras, sem trocas de mensagens, sem perda de tempo.',
     'conc.p4': '<b>Tudo começa com uma mensagem.</b><br>Diga o que precisa. Mesmo que ainda não saiba quem pode resolver — isso já é tarefa nossa.',
-    'conc.signName': '<span class="sl">Serviço de concierge nº 1 da América</span> <span class="sl">do Norte à América do Sul, apenas</span> <span class="sl">para quem valoriza a qualidade</span>',
+    'conc.signName': '<span class="sl">Serviço de concierge nº 1</span> <span class="sl">da América do Norte à América do Sul</span>',
 
     'sec.req.label': 'A Solicitação',
     'sec.req.h': 'Deixe que cuidemos de tudo.',
@@ -500,7 +500,7 @@
     'conc.p2': 'Usted simplemente le da la tarea a su conserje. Nosotros organizamos todo lo demás y llevamos el asunto hasta el resultado.',
     'conc.p3': 'Confidencial. Personal. Sin llamadas de más, sin cadenas de mensajes, sin pérdida de tiempo.',
     'conc.p4': '<b>Todo empieza con un mensaje.</b><br>Cuéntenos qué necesita. Aunque todavía no sepa quién puede resolverlo — eso ya es asunto nuestro.',
-    'conc.signName': '<span class="sl">Servicio de conserjería n.º 1 de América</span> <span class="sl">del Norte a América del Sur, solo</span> <span class="sl">para quienes valoran la calidad</span>',
+    'conc.signName': '<span class="sl">Servicio de conserjería n.º 1</span> <span class="sl">de América del Norte a América del Sur</span>',
 
     'sec.req.label': 'La Petición',
     'sec.req.h': 'Permítanos ocuparnos de todo.',
@@ -709,7 +709,7 @@
     'conc.p2': 'Lei affida semplicemente il compito al suo concierge. Noi organizziamo tutto il resto e portiamo la questione al risultato.',
     'conc.p3': 'Riservato. Personale. Senza telefonate in più, senza scambi di messaggi, senza perdite di tempo.',
     'conc.p4': '<b>Tutto comincia con un messaggio.</b><br>Ci dica di cosa ha bisogno. Anche se non sa ancora chi possa risolverlo — quello è già compito nostro.',
-    'conc.signName': '<span class="sl">Servizio di concierge n. 1 dall’America</span> <span class="sl">del Nord all’America del Sud, solo</span> <span class="sl">per chi tiene alla qualità</span>',
+    'conc.signName': '<span class="sl">Servizio di concierge n. 1</span> <span class="sl">dall’America del Nord all’America del Sud</span>',
 
     'sec.req.label': 'La Richiesta',
     'sec.req.h': 'Ci lasci pensare a tutto.',
