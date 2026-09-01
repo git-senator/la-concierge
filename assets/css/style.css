@@ -1455,26 +1455,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .lang-list{
   list-style:none; margin:clamp(20px,3vw,30px) 0 0; padding:0;
   border-top:1px solid var(--line);
-  text-align:left;
+  text-align:center;
 }
 .lang-list li{ border-bottom:1px solid var(--line); }
+/* Нумерация снята, строки выключены по центру: имя языка и его
+   английское название стоят друг под другом по оси окна.     */
 .lang-list button{
   position:relative; width:100%;
-  display:grid; grid-template-columns:30px 1fr auto;
-  align-items:baseline; gap:14px;
-  padding:12px 0; text-align:left;
-  transition:padding-left .5s var(--ease);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:14px 0; text-align:center;
 }
 .lang-list button::before{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(90deg, rgba(126,21,24,.30), rgba(126,21,24,0) 78%);
+  background:linear-gradient(90deg, transparent,
+    rgba(126,21,24,.30) 26%, rgba(126,21,24,.30) 74%, transparent);
   opacity:0; transition:opacity .45s var(--ease);
 }
 .lang-list button > *{ position:relative; }
-.lang-list em{
-  font-family:var(--caps); font-style:normal; font-size:10px; font-weight:600;
-  letter-spacing:.08em; color:#E8C56A;
-}
 .lang-list b{
   font-family:var(--display); font-weight:600;
   font-size:clamp(19px,2vw,22px); color:var(--parch-dim);
@@ -1484,12 +1481,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-style:normal; font-size:9.5px; font-weight:500; letter-spacing:.18em;
   text-transform:uppercase; color:var(--parch-far);
 }
-.lang-list button:hover{ padding-left:16px; }
 .lang-list button:hover::before{ opacity:.75; }
 .lang-list button:hover b{ color:var(--parch); }
-.lang-list button:hover em{ color:var(--amber); }
 .lang-list button[aria-current="true"] b{ color:var(--parch); }
-.lang-list button[aria-current="true"] em{ color:#E8C56A; }
 
 @media (prefers-reduced-motion: reduce){
   .lang-in{ animation:none; }

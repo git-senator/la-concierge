@@ -436,18 +436,17 @@
   var gate = document.getElementById('langGate');
   var langList = document.getElementById('langList');
   var langCode = document.getElementById('langCode');
-  var MARK = ['1', '2', '3', '4', '5'];
 
   function paintLangList() {
     if (!langList) return;
     langList.innerHTML = '';
-    I18N.langs.forEach(function (l, i) {
+    I18N.langs.forEach(function (l) {
       var li = document.createElement('li');
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('data-lang', l.code);
       if (l.code === I18N.current) b.setAttribute('aria-current', 'true');
-      b.innerHTML = '<em>' + MARK[i] + '</em><b>' + l.native + '</b><i>' + l.label + '</i>';
+      b.innerHTML = '<b>' + l.native + '</b><i>' + l.label + '</i>';
       li.appendChild(b);
       langList.appendChild(li);
     });
