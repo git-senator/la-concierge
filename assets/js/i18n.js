@@ -87,8 +87,8 @@
     'conc.signSub': 'Brazil · LATAM · Twenty-four hours',
 
     'sec.req.label': 'The Request',
-    'sec.req.h': 'Tell us what you need.',
-    'sec.req.lede': 'The more precise you are, the faster it moves. A city and a date are enough to begin.',
+    'sec.req.h': 'Let us take care of everything.',
+    'sec.req.lede': 'Tell us your preferences and your plans — we will take care of the rest.<br><br>Give us the city, the dates and a few details that matter to you. We will study them closely and propose solutions that match your level of comfort, taste and expectations.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -298,8 +298,8 @@
     'conc.signSub': 'Brasil · LATAM · Vinte e quatro horas',
 
     'sec.req.label': 'A Solicitação',
-    'sec.req.h': 'Conte o que você precisa.',
-    'sec.req.lede': 'Quanto mais preciso for, mais rápido anda. Uma cidade e uma data já bastam para começar.',
+    'sec.req.h': 'Deixe que cuidemos de tudo.',
+    'sec.req.lede': 'Conte-nos suas preferências e seus planos — do resto cuidamos nós.<br><br>Informe a cidade, as datas e alguns detalhes importantes para você. Vamos analisá-los com atenção e propor soluções à altura do seu conforto, do seu gosto e das suas expectativas.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -509,8 +509,8 @@
     'conc.signSub': 'Brasil · LATAM · Veinticuatro horas',
 
     'sec.req.label': 'La Petición',
-    'sec.req.h': 'Díganos qué necesita.',
-    'sec.req.lede': 'Cuanto más preciso sea, más rápido avanza. Con una ciudad y una fecha ya es suficiente para empezar.',
+    'sec.req.h': 'Permítanos ocuparnos de todo.',
+    'sec.req.lede': 'Cuéntenos sus preferencias y sus planes — del resto nos ocupamos nosotros.<br><br>Indíquenos la ciudad, las fechas y algunos detalles importantes para usted. Los estudiaremos con atención y le propondremos soluciones acordes con su nivel de confort, su gusto y sus expectativas.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -720,8 +720,8 @@
     'conc.signSub': 'Brasile · LATAM · Ventiquattro ore',
 
     'sec.req.label': 'La Richiesta',
-    'sec.req.h': 'Ci dica di che cosa ha bisogno.',
-    'sec.req.lede': 'Più è preciso, più in fretta si muove. Una città e una data bastano già per cominciare.',
+    'sec.req.h': 'Ci lasci pensare a tutto.',
+    'sec.req.lede': 'Ci racconti le sue preferenze e i suoi programmi — al resto pensiamo noi.<br><br>Indichi la città, le date e qualche dettaglio che conta per lei. Li esamineremo con attenzione e proporremo soluzioni all’altezza del suo comfort, del suo gusto e delle sue aspettative.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
