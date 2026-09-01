@@ -79,7 +79,6 @@ html[lang="ru"] .hero-rail b,
 html[lang="ru"] .hero-in .lk-claim,
 html[lang="ru"] .conc-sig-t b,
 html[lang="ru"] .foot-brand,
-html[lang="ru"] .foot-links a,
 html[lang="ru"] .foot-legal a,
 html[lang="ru"] .rf-field label,
 html[lang="ru"] .rf-field input,
@@ -366,13 +365,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-family:var(--caps); font-style:normal; font-size:10px;
   letter-spacing:.16em; color:#E8C56A; flex:none; width:20px;
 }
-.drawer-foot{
-  display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:44px;
-  font-size:12px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--parch-far);
-}
-.drawer-foot a{ transition:color .3s; }
-.drawer-foot a:hover{ color:var(--amber); }
 
 /* ══════════ СВЕТОВЫЕ ПОДЛОЖКИ ══════════
    Вместо фотографий — свет. Каждая сцена это один тёплый источник
@@ -1204,16 +1196,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-family:var(--caps); font-size:10.5px; letter-spacing:.24em;
   text-transform:uppercase; color:var(--parch-dim);
 }
-.foot-links,.foot-legal{ display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+.foot-legal{ display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
 /* Круглая кнопка WhatsApp закреплена в правом нижнем углу экрана и
    накрывала год в правовой строке — она стоит последней на странице.
    Отводим строке место под кнопку на любой ширине.               */
 .foot-legal{ padding-right:74px; }
-.foot-links a,.foot-legal a,.foot-c{
+.foot-legal a,.foot-c{
   font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--parch-far);
   transition:color .3s;
 }
-.foot-links a:hover,.foot-legal a:hover{ color:var(--amber); }
+.foot-legal a:hover{ color:var(--amber); }
 
 /* ══════════ ПЛАВАЮЩИЙ WHATSAPP ══════════ */
 
