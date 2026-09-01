@@ -42,7 +42,7 @@
      отсюда. Чтобы добавить поле — допишите объект, больше ничего.      */
   var SCHEMA = [
     { name:'fullName', label:'Имя и фамилия', i18n:'form.fullName', type:'text', required:true, row:1,
-      autocomplete:'name',        placeholder:'' },
+      autocomplete:'name',        placeholder:'Имя и фамилия', phI18n:'form.phName' },
     { name:'whatsapp', label:'Номер WhatsApp', i18n:'form.whatsapp', type:'tel', required:true, row:1,
       autocomplete:'tel',         placeholder:'+55 11 90000 0000', phI18n:'form.phPhone',
       pattern:/^[+]?[\d\s().-]{7,20}$/, errI18n:'form.errPhone',
@@ -53,7 +53,7 @@
       pattern:/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, errI18n:'form.errEmail',
       patternMessage:'Укажите корректный адрес почты.' },
     { name:'country',  label:'Страна', i18n:'form.country', type:'text', required:true, row:2,
-      autocomplete:'country-name', placeholder:'' },
+      autocomplete:'country-name', placeholder:'Бразилия', phI18n:'form.phCountry' },
 
     { name:'service',  label:'Услуга', i18n:'form.service', type:'select', required:true, row:3,
       options:[{ v:'Armored Vehicle Rental', k:'svc.0.name' },
@@ -261,7 +261,7 @@
 
     var input;
     if (f.type === 'textarea') {
-      input = el('textarea', { id:id, name:f.name, rows:'5',
+      input = el('textarea', { id:id, name:f.name, rows:'3',
         placeholder: f.phI18n ? T(f.phI18n, f.placeholder || '') : (f.placeholder || '') });
     } else if (f.type === 'select') {
       input = el('select', { id:id, name:f.name });
