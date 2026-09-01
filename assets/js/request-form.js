@@ -48,12 +48,12 @@
       pattern:/^[+]?[\d\s().-]{7,20}$/, errI18n:'form.errPhone',
       patternMessage:'Укажите корректный номер с кодом страны.' },
 
-    { name:'email',    label:'Электронная почта', i18n:'form.email', type:'email', required:true, row:2,
+    { name:'email',    label:'Электронная почта', i18n:'form.email', type:'email', required:false, row:2,
       autocomplete:'email',       placeholder:'',
       pattern:/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, errI18n:'form.errEmail',
       patternMessage:'Укажите корректный адрес почты.' },
     { name:'country',  label:'Страна', i18n:'form.country', type:'text', required:true, row:2,
-      autocomplete:'country-name', placeholder:'Бразилия', phI18n:'form.phCountry' },
+      autocomplete:'country-name', placeholder:'' },
 
     { name:'service',  label:'Услуга', i18n:'form.service', type:'select', required:true, row:3,
       options:[{ v:'Armored Vehicle Rental', k:'svc.0.name' },
@@ -101,7 +101,6 @@
      иначе при смене языка форма осталась бы на старом.              */
   function COPY() {
     return {
-      consent:  T('form.consent',  'Отправляя заявку, вы соглашаетесь, что мы свяжемся с вами по ней. Ваши данные не передаются третьим лицам и не используются для рассылок.'),
       submit:   T('form.submit',   'Отправить заявку'),
       sending:  T('form.sending',  'Отправляем…'),
       doneTitle:T('form.doneTitle','Заявка принята'),
@@ -240,10 +239,7 @@
     var submit = el('button', { class:'btn btn-fill rf-submit', type:'submit' },
       [el('span', { text:COPY().submit })]);
 
-    form.appendChild(el('div', { class:'rf-foot' }, [
-      el('p', { class:'rf-consent', text:COPY().consent }),
-      submit
-    ]));
+    form.appendChild(el('div', { class:'rf-foot' }, [submit]));
 
     form.addEventListener('submit', function (e) { self.onSubmit(e); });
     this.form = form;
@@ -254,7 +250,8 @@
   RequestForm.prototype.buildField = function (f) {
     var self = this;
     var id = this.opts.formId + '-' + f.name;
-    var wrap = el('div', { class:'rf-field' + (f.type === 'select' ? ' is-select' : '') });
+    var extra = f.type === 'select' ? ' is-select' : (f.type === 'date' ? ' is-date' : '');
+    var wrap = el('div', { class:'rf-field' + extra });
 
     var caption = f.i18n ? T(f.i18n, f.label) : f.label;
     var label = el('label', { for:id, html: caption + (f.required ? ' <span class="req">*</span>' : '') });
@@ -287,6 +284,18 @@
 
     wrap.appendChild(label);
     wrap.appendChild(input);
+
+    /* Пустое поле даты браузеры показывают по-разному: Chrome рисует своё
+       «дд.мм.гггг», Safari на телефоне — вообще ничего. Ставим свой образец
+       формата и прячем его, как только дата выбрана. */
+    if (f.type === 'date') {
+      wrap.appendChild(el('span', { class:'rf-ph', text: T('form.phDate', 'дд/мм/гггг') }));
+      var sync = function () { wrap.classList.toggle('has-val', !!input.value); };
+      input.addEventListener('input', sync);
+      input.addEventListener('change', sync);
+      sync();
+    }
+
     wrap.appendChild(error);
 
     this.fields[f.name] = { def:f, wrap:wrap, input:input, error:error };

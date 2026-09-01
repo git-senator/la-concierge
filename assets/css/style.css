@@ -1038,7 +1038,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Между подписью и полем воздуха было столько же, сколько между
    самими полями, и форма читалась как набор пустот. Подпись теперь
    прижата к своему полю, а дышат между собой сами поля.        */
-.rf-field{ display:flex; flex-direction:column; gap:3px; padding-block:6px; min-width:0; }
+.rf-field{ display:flex; flex-direction:column; gap:2px; padding-block:5px; min-width:0; }
 .rf-field label{
   font-family:var(--caps); font-size:9.5px; font-weight:500;
   letter-spacing:.22em; text-transform:uppercase; color:var(--parch-far);
@@ -1052,7 +1052,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-family:var(--display); font-size:17px; font-weight:300;
   color:var(--parch); background:transparent;
   border:0; border-bottom:1px solid var(--line);
-  padding:2px 0 6px; border-radius:0;
+  padding:1px 0 5px; border-radius:0;
   transition:border-color .4s var(--ease);
 }
 .rf-field textarea{ resize:vertical; min-height:74px; line-height:1.4; }
@@ -1113,6 +1113,34 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .rf-field select option{ background:var(--surface-2); color:var(--parch); }
 
+/* Дата: та же стрелка, что у списков, чтобы поле читалось как выбор,
+   и собственный образец формата поверх пустого поля.             */
+.rf-field.is-date{ position:relative; }
+.rf-field.is-date input{
+  padding-right:26px; cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--parch-far) 50%),
+                   linear-gradient(135deg,var(--parch-far) 50%,transparent 50%);
+  background-position:calc(100% - 11px) calc(50% + 1px), calc(100% - 6px) calc(50% + 1px);
+  background-size:5px 5px, 5px 5px;
+  background-repeat:no-repeat;
+}
+/* Родной значок календаря растягиваем на всё поле и делаем прозрачным:
+   нажатие в любом месте открывает выбор, а видно нашу стрелку.    */
+.rf-field.is-date input::-webkit-calendar-picker-indicator{
+  position:absolute; inset:0; width:auto; height:auto;
+  opacity:0; cursor:pointer;
+}
+/* Chrome рисует своё «дд.мм.гггг» отдельным внутренним слоем, и одним
+   color:transparent он не убирается — гасим сам этот слой.       */
+.rf-field.is-date:not(.has-val) input:not(:focus){ color:transparent; }
+.rf-field.is-date:not(.has-val) input:not(:focus)::-webkit-datetime-edit{ opacity:0; }
+.rf-ph{
+  position:absolute; left:0; bottom:6px; pointer-events:none;
+  font-family:var(--display); font-size:17px; color:var(--parch-far);
+}
+.rf-field.is-date.has-val .rf-ph,
+.rf-field.is-date input:focus ~ .rf-ph{ display:none; }
+
 .rf-field.has-error input,
 .rf-field.has-error select,
 .rf-field.has-error textarea{ border-bottom-color:var(--ember); }
@@ -1121,13 +1149,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   font-size:11.5px; letter-spacing:.04em; color:var(--ember);
 }
 
-.rf-foot{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:20px; margin-top:16px; padding-top:18px;
-  border-top:1px solid var(--line);
-}
-.rf-consent{ margin:0; font-size:11.5px; line-height:1.55; color:var(--parch-far); max-width:38ch; }
-.rf-submit{ flex:none; }
+/* Строка согласия снята — кнопка встала на её место и занимает всю
+   ширину формы: так до неё труднее промахнуться пальцем.      */
+.rf-foot{ display:flex; margin-top:16px; padding-top:18px; border-top:1px solid var(--line); }
+.rf-submit{ flex:1 1 auto; width:100%; }
 .rf-failure{ display:block; }
 
 .rf-done{
@@ -1425,8 +1450,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .hero-rail{ gap:10px 26px; }
 
   .rf-row{ grid-template-columns:1fr; }
-  .rf-foot{ flex-direction:column; align-items:stretch; gap:16px; }
-  .rf-consent{ max-width:none; }
   .rf-submit{ width:100%; padding-inline:14px; letter-spacing:.14em; }
 
 
