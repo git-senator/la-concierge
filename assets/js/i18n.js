@@ -50,7 +50,7 @@
     'nav.destinations': 'Destinations',
     'nav.concierge': 'Concierge',
     'nav.request': 'Request',
-    'nav.cta': 'Request',
+    'nav.cta': '24/7 contact',
 
     'aria.home': 'Home',
     'aria.sections': 'Sections',
@@ -258,7 +258,7 @@
     'nav.destinations': 'Destinos',
     'nav.concierge': 'Concierge',
     'nav.request': 'Solicitar',
-    'nav.cta': 'Solicitar',
+    'nav.cta': 'Contato 24/7',
 
     'aria.home': 'Início',
     'aria.sections': 'Seções',
@@ -466,7 +466,7 @@
     'nav.destinations': 'Destinos',
     'nav.concierge': 'Conserjería',
     'nav.request': 'Solicitar',
-    'nav.cta': 'Solicitar',
+    'nav.cta': 'Contacto 24/7',
 
     'aria.home': 'Inicio',
     'aria.sections': 'Secciones',
@@ -674,7 +674,7 @@
     'nav.destinations': 'Destinazioni',
     'nav.concierge': 'Concierge',
     'nav.request': 'Richiesta',
-    'nav.cta': 'Richiesta',
+    'nav.cta': 'Contatto 24/7',
 
     'aria.home': 'Home',
     'aria.sections': 'Sezioni',
