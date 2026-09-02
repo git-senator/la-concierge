@@ -2405,3 +2405,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-palm.jpg?v=487e62af"); } }
 
 @media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-palm2.jpg?v=9ef82d31"); } }
+
+/* Слоган и часы опущены к нижнему краю фотографии. */
+@media (min-width:981px){
+  .lp-band{ display:flex; align-items:flex-end; }
+  .lp-band-in{ width:100%; margin-top:auto; transform:translateY(58px); }
+}
