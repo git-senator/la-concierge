@@ -448,14 +448,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   padding:calc(var(--navh) + 30px) 0 0;
   overflow:hidden;
 }
-.hero-bg{
-  position:absolute; inset:-12% 0; z-index:-2;
-  background:
-    radial-gradient(ellipse 74% 46% at 44% -4%, rgba(232,182,96,.40), transparent 62%),
-    radial-gradient(ellipse 50% 46% at 86% 84%, rgba(162,30,34,.34), transparent 64%),
-    radial-gradient(ellipse 58% 55% at 6% 74%, rgba(52,16,14,.6), transparent 70%),
-    linear-gradient(180deg,#0C0708 0%,#150C0C 44%,#080506 100%);
-}
+/* Первый экран стоит на сплошном чёрном. Ни подсветки, ни отсветов,
+   ни перехода — владелец попросил ровный чёрный фон.            */
+.hero-bg{ position:absolute; inset:-12% 0; z-index:-2; background:#000000; }
 /* Снимок гримируем под палитру: гасим, уводим в тёплое, снимаем лишнюю
    насыщенность. Ночной город должен стать сценой, а не открыткой.
    Градиент под ним остаётся и работает, пока файл грузится.          */
@@ -497,23 +492,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Дыхание лампы: свет над городом медленно набирает и отпускает.
    Один слой, 17 секунд — этого хватает, чтобы экран не выглядел
    застывшей картинкой.                                            */
-.hero-glow{
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:radial-gradient(ellipse 62% 40% at 46% 4%, rgba(232,182,96,.15), transparent 64%);
-  animation:heroBreath 17s ease-in-out infinite;
-}
+/* Дыхание лампы снято вместе с остальным светом первого экрана. */
+.hero-glow{ display:none; }
 @keyframes heroBreath{
   0%,100%{ opacity:.5; }
   50%    { opacity:1; }
 }
 
 /* виньетка — то, что превращает градиент в кадр */
-.hero-vig{
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:
-    radial-gradient(ellipse 80% 76% at 48% 38%, transparent 26%, rgba(6,3,4,.5) 72%, #050304 100%),
-    linear-gradient(180deg, rgba(6,3,4,.42) 0%, transparent 22%, transparent 58%, rgba(6,3,4,.9) 100%);
-}
+/* Виньетка не нужна: затемнять ровный чёрный нечем и незачем. */
+.hero-vig{ display:none; }
 
 /* Когда снимок есть, кадру нужна другая выдержка: тёмная колонка слева
    под заголовок, опора под полосой цифр и виньетка глубже. Без снимка
@@ -563,7 +551,8 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 /* Нити: тонкие вертикальные лучи от верхнего края. Театральный
    задник, не иллюстрация — держим их почти на пороге видимости.   */
-.strings{ position:absolute; inset:0 0 auto; height:60vh; z-index:-1; pointer-events:none; }
+/* Нити сняты — на чёрном они читались как сор. */
+.strings{ display:none; }
 .strings span{
   position:absolute; top:0; left:var(--x); width:1px; height:var(--h);
   opacity:var(--o);
@@ -589,18 +578,8 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Сияющая белая черта под рамкой знака. Ширину берёт у самой рамки,
    поэтому совпадает с ней на любом языке. Сама линия — градиент,
    гаснущий к краям, свечение — три тени разного радиуса.          */
-.hero-in .lk-claim::after{
-  content:""; position:absolute; left:0; right:0; top:100%;
-  height:1px; margin-top:24px; pointer-events:none;
-  background:linear-gradient(90deg,
-    transparent 0%, rgba(255,255,255,.35) 12%,
-    #FFFFFF 34%, #FFFFFF 66%,
-    rgba(255,255,255,.35) 88%, transparent 100%);
-  box-shadow:
-    0 0 4px rgba(255,255,255,.90),
-    0 0 12px rgba(255,255,255,.55),
-    0 0 26px rgba(255,255,255,.28);
-}
+/* Сияющая черта под рамкой знака снята — это был последний блик. */
+.hero-in .lk-claim::after{ display:none; }
 
 .hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:54px; }
 /* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
@@ -610,21 +589,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   background:transparent;
   border-color:rgba(214,160,74,.52);
   color:var(--parch);
-  box-shadow:
-    0 0 22px rgba(214,160,74,.16),
-    0 0 3px rgba(214,160,74,.22),
-    inset 0 0 20px rgba(214,160,74,.07);
+  /* Свечение вокруг рамки снято: на чёрном фоне первого экрана
+     не должно быть ни бликов, ни ореолов.                     */
+  box-shadow:none;
   transition:color .4s var(--ease), border-color .4s var(--ease),
-             box-shadow .5s var(--ease), transform .4s var(--ease);
+             transform .4s var(--ease);
 }
 .hero-act .btn:hover{
   background:transparent;
   border-color:var(--amber);
   color:var(--parch);
-  box-shadow:
-    0 0 38px rgba(214,160,74,.30),
-    0 0 5px rgba(214,160,74,.34),
-    inset 0 0 26px rgba(214,160,74,.12);
   transform:translateY(-2px);
 }
 
