@@ -658,10 +658,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   #services .label{ justify-content:center; margin:0; }
   /* Метка стоит над заголовком, заголовок — одной строкой. */
   #services .sec-head h2{ margin:12px 0 0; white-space:nowrap; }
-  /* Лид вдвое крупнее прежнего: это заявление, а не сноска. */
+  /* Лид идёт одной строкой во всю ширину колонки. Кегль привязан к
+     ширине окна и упирается в 26px: по замерам самый длинный из пяти
+     языков — португальский — при этом ещё помещается целиком.     */
   #services .sec-lede{
-    margin:26px auto 0; max-width:36ch;
-    font-size:clamp(30px,2.6vw,50px); line-height:1.24;
+    margin:26px auto 0; max-width:none;
+    white-space:nowrap; font-size:min(1.78vw, 23px); line-height:1.3;
   }
 }
 
