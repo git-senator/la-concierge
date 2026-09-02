@@ -43,6 +43,12 @@
     var services = document.getElementById('services');
     if (!services || reduced) return;
     var busy = 0;
+    // Откуда и куда перескакивать, когда раздел дочитан до конца.
+    var HOPS = [
+      ['services',    'destinations'],
+      ['destinations', 'concierge'],
+      ['concierge',    'request']
+    ];
 
     window.addEventListener('wheel', function (e) {
       if (e.ctrlKey) return;                       // масштабирование не трогаем
@@ -57,10 +63,32 @@
         e.preventDefault();
         busy = Date.now() + 900;                   // пока едем — колесо молчит
         scrollToId('services');
-      } else if (e.deltaY < 0 && y > 0 && y <= svcTop + 40) {  // вверх из услуг
+        return;
+      }
+      if (e.deltaY < 0 && y > 0 && y <= svcTop + 40) {  // вверх из услуг
         e.preventDefault();
         busy = Date.now() + 900;
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      /* Дочитал раздел до конца — одно движение колеса, и мы в следующем.
+         Условие простое: нижняя граница раздела уже вошла в экран, значит
+         листать внутри него больше нечего. Пока не вошла, колесо работает
+         как обычно, иначе длинный список услуг было бы не прокрутить.  */
+      if (e.deltaY > 0) {
+        for (var i = 0; i < HOPS.length; i++) {
+          var from = document.getElementById(HOPS[i][0]);
+          var to   = document.getElementById(HOPS[i][1]);
+          if (!from || !to) continue;
+          var box = from.getBoundingClientRect();
+          if (box.top < 0 && box.bottom > 0 && box.bottom <= window.innerHeight + 40) {
+            e.preventDefault();
+            busy = Date.now() + 900;
+            scrollToId(HOPS[i][1]);
+            return;
+          }
+        }
       }
     }, { passive: false });
   })();
