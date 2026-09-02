@@ -2228,3 +2228,15 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-txt{ font-size:min(.92vw, 1.9svh, 16px); }
   .lp-sign{ font-size:11px; }
 }
+
+
+/* Часы под слоганом: время идёт, двоеточие мигает раз в секунду. */
+.lp-clock{
+  margin:clamp(14px,1.4vw,22px) 0 0;
+  font-family:var(--caps); font-size:clamp(15px,1.15vw,20px);
+  letter-spacing:.18em; color:var(--parch);
+}
+.lp-clock b{ font-weight:400; }
+.lp-clock i{ font-style:normal; transition:opacity .18s linear; }
+.lp-clock.tick i{ opacity:.15; }
+@media (min-width:981px) and (max-height:1000px){ .lp-clock{ margin-top:clamp(5px,.7vh,10px); } }

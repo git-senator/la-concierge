@@ -101,6 +101,22 @@
     }, { passive: false });
   })();
 
+  /* Часы в полосе со слоганом: текущее время посетителя, двоеточие
+     гаснет на каждый второй такт — как на электронном табло.    */
+  (function () {
+    var box = document.getElementById('lpClock');
+    if (!box) return;
+    var hh = document.getElementById('lpH'), mm = document.getElementById('lpM');
+    function tick() {
+      var d = new Date();
+      hh.textContent = ('0' + d.getHours()).slice(-2);
+      mm.textContent = ('0' + d.getMinutes()).slice(-2);
+      box.classList.toggle('tick', d.getSeconds() % 2 === 1);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[data-scroll]');
     if (!link) return;
