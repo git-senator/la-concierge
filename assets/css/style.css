@@ -2189,3 +2189,31 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (max-width:980px){
   #showcase{ display:none !important; }
 }
+
+
+/* Первый экран — только белое: подпись, линии, точка, рамка, кнопка
+   и обе кнопки шапки. Золота здесь нет.                          */
+.hero-in .lockup{ --lk-line:rgba(255,255,255,.7); }
+.hero-in .lk-sub em{ color:#FFFFFF; }
+.hero-in .lk-dot{ background:#FFFFFF; }
+.hero-in .lk-claim{ border-color:rgba(255,255,255,.6); }
+.hero-act .btn::after{
+  background:linear-gradient(90deg,
+    transparent 0%, rgba(255,255,255,.45) 14%,
+    #FFFFFF 36%, #FFFFFF 64%,
+    rgba(255,255,255,.45) 86%, transparent 100%);
+  box-shadow:
+    0 0 4px rgba(255,255,255,.95),
+    0 0 14px rgba(255,255,255,.7),
+    0 0 30px rgba(255,255,255,.4);
+}
+.hero-act .btn:hover::after{
+  box-shadow:
+    0 0 5px rgba(255,255,255,1),
+    0 0 20px rgba(255,255,255,.9),
+    0 0 44px rgba(255,255,255,.55);
+}
+.nav-right > .lang-btn,
+.nav-right > .btn{ border-color:rgba(255,255,255,.35); color:#FFFFFF; }
+.nav-right > .lang-btn:hover,
+.nav-right > .btn:hover{ border-color:#FFFFFF; color:#FFFFFF; }
