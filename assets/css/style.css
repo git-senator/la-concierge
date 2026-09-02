@@ -2249,3 +2249,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 
 .lp-clock{ color:var(--amber); }
+
+.lp-h{ line-height:1.05; }
