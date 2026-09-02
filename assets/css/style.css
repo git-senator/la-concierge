@@ -269,9 +269,15 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   display:block; flex:none; height:auto;
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));
 }
+/* Чёрная эмаль знака и почти чёрный фон страницы различаются на
+   несколько тонов, и грань квадрата тонула. Волосяной светлый кант
+   очерчивает её — форма читается, золота при этом нет.          */
+.brand-mark,.seal,.seal-lg,.lang-seal{ border:1px solid rgba(232,225,209,.20); }
 /* В шапке знак стоит один, без надписи рядом: имя набрано
-   внутри круга, и дублировать его словом было бы лишним. */
-.brand-mark{ width:54px; }
+   внутри квадрата, и дублировать его словом было бы лишним.
+   72 пикселя вместо прежних 54 — на них разбирается и подпись
+   «Private Concierge» под именем.                          */
+.brand-mark{ width:72px; }
 .seal{ width:44px; }
 .foot-brand .seal{ width:38px; }
 .seal-lg{ width:84px; }
@@ -1427,6 +1433,8 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .nav-links{ display:none; }
   .burger{ display:block; }
   :root{ --navh:70px; }
+  /* Шапка здесь ниже на десять пикселей, и знак в 72 из неё вылезал. */
+  .brand-mark{ width:60px; }
 
   /* сцены нет — описание раскрывается в строке */
   .svc-grid{ grid-template-columns:1fr; }
@@ -1492,7 +1500,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    вместо того, чтобы обрезаться флексом. */
 @media (max-width:540px){
   .nav-in{ gap:12px; }
-  .brand-mark{ width:48px; }
+  .brand-mark{ width:60px; }
 }
 
 /* На самых узких экранах шапку делят эмблема, язык, кнопка и бургер —
