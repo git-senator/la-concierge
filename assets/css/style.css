@@ -2288,3 +2288,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 
 @media (min-width:981px){ .lp-services .lp-list{ flex:0 0 auto; align-content:start; margin-top:auto; } .lp-name{ font-size:min(.8vw, 1.7svh, 13.5px); } }
+
+@media (min-width:981px){ .lp-services{ justify-content:flex-end; } .lp-services .lp-list{ margin-top:0; } }
