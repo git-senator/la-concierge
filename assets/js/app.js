@@ -33,6 +33,38 @@
     window.scrollTo({ top: Math.max(top, 0), behavior: reduced ? 'auto' : 'smooth' });
   }
 
+  /* ── Первый экран: один оборот колеса — и мы в «Услугах» ──────────
+     Посетитель прочитал первый экран целиком; листать его по пикселю
+     незачем. Пока страница стоит на первом экране, первое же движение
+     колеса вниз уводит сразу к разделу услуг, движение вверх с начала
+     услуг возвращает наверх. Дальше по странице прокрутка обычная.
+     Трогаем только мышь: на телефоне палец листает как листал.     */
+  (function () {
+    var services = document.getElementById('services');
+    if (!services || reduced) return;
+    var busy = 0;
+
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) return;                       // масштабирование не трогаем
+      if (window.innerWidth < 721) return;         // телефон листает сам
+      if (Date.now() < busy) { e.preventDefault(); return; }
+      if (Math.abs(e.deltaY) < 4) return;
+
+      var y = window.pageYOffset;
+      var svcTop = services.getBoundingClientRect().top + y;
+
+      if (e.deltaY > 0 && y < svcTop - 40) {       // вниз с первого экрана
+        e.preventDefault();
+        busy = Date.now() + 900;                   // пока едем — колесо молчит
+        scrollToId('services');
+      } else if (e.deltaY < 0 && y > 0 && y <= svcTop + 40) {  // вверх из услуг
+        e.preventDefault();
+        busy = Date.now() + 900;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, { passive: false });
+  })();
+
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[data-scroll]');
     if (!link) return;
