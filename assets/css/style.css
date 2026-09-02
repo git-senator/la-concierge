@@ -2391,3 +2391,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-band > *{ position:relative; z-index:1; }
   .lp-grid{ position:relative; z-index:1; }
 }
+
+@media (min-width:981px){ .lp-band::before{ transform:translateY(-1cm); } }
