@@ -2304,3 +2304,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-num { font-size:min(.78vw, 1.6svh, 13px); }
   .lp-list a{ padding-block:clamp(6px,1.1vh,14px); }
 }
+
+@media (min-width:981px){ .lp-services .lp-list{ transform:translateY(5%); } }
