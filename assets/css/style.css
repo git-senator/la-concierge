@@ -2290,3 +2290,17 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-services .lp-list{ flex:0 0 auto; align-content:start; margin-top:auto; } .lp-name{ font-size:min(.8vw, 1.7svh, 13.5px); } }
 
 @media (min-width:981px){ .lp-services{ justify-content:flex-end; } .lp-services .lp-list{ margin-top:0; } }
+
+
+/* Блок услуг растянут от верхней до нижней черты панели: список
+   занимает всю оставшуюся высоту, строки распределены поровну.  */
+@media (min-width:981px){
+  .lp-services{ justify-content:flex-start; }
+  .lp-services .lp-list{
+    flex:1 1 auto; align-content:space-between; margin-top:clamp(6px,1vh,12px);
+    row-gap:0;
+  }
+  .lp-name{ font-size:min(1.05vw, 2.1svh, 17px); }
+  .lp-num { font-size:min(.78vw, 1.6svh, 13px); }
+  .lp-list a{ padding-block:clamp(6px,1.1vh,14px); }
+}
