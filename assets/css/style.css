@@ -306,8 +306,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .nav-links a{
   transition:color .35s var(--ease), text-shadow .35s var(--ease);
 }
-.nav-links a:hover,
-.nav-links a.active{
+/* Свечение только под курсором: текущий раздел не подсвечивается,
+   иначе один пункт горит постоянно.                            */
+.nav-links a:hover{
   color:#FFFFFF;
   text-shadow:
     0 0 4px rgba(255,255,255,.95),
