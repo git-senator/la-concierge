@@ -300,12 +300,20 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   padding-block:6px;
   transition:color .35s var(--ease);
 }
-.nav-links a::after{
-  content:""; position:absolute; left:0; right:100%; bottom:0; height:1px;
-  background:var(--scarlet); transition:right .45s var(--ease);
+/* Алая черта под пунктом снята. Наведение и текущий раздел даёт
+   белое неоновое свечение самих букв — тем же светом, что горит
+   под кнопкой на первом экране.                                */
+.nav-links a{
+  transition:color .35s var(--ease), text-shadow .35s var(--ease);
 }
-.nav-links a:hover,.nav-links a.active{ color:var(--parch); }
-.nav-links a.active::after{ right:0; }
+.nav-links a:hover,
+.nav-links a.active{
+  color:#FFFFFF;
+  text-shadow:
+    0 0 4px rgba(255,255,255,.95),
+    0 0 14px rgba(255,255,255,.7),
+    0 0 30px rgba(255,255,255,.4);
+}
 
 .nav-right{ display:flex; align-items:center; gap:10px; }
 
