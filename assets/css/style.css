@@ -2375,7 +2375,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 /* Полоса: исходный PNG без сжатия, без затемняющей вуали. */
 @media (min-width:981px){
-  .lp-band{ background:#000 url("../img/band.png?v=f4745bab") center center / cover no-repeat; }
+  .lp-band{ background:#000 url("../img/band.png?v=15ea551f") center center / cover no-repeat; }
   .lp-band::after{ display:none; }
 }
 
@@ -2385,7 +2385,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-band{ position:relative; background:#000; overflow:visible; }
   .lp-band::before{
     content:''; position:absolute; left:0; right:0; top:0; bottom:min(-98px,-9svh);
-    background:url("../img/band.png?v=f4745bab") center center / cover no-repeat;
+    background:url("../img/band.png?v=15ea551f") center center / cover no-repeat;
     z-index:0; pointer-events:none;
   }
   .lp-band > *{ position:relative; z-index:1; }
