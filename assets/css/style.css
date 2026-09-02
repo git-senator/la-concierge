@@ -2338,3 +2338,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-services .lp-label{ display:block; visibility:hidden; } }
 
 @media (min-width:981px){ .lp-name{ font-size:min(.92vw, 1.85svh, 15px); } }
+
+/* Под названием услуги вернулась строка-описание. */
+@media (min-width:981px){
+  .lp-tag{ display:block; font-size:min(.66vw,1.3svh,11px); letter-spacing:.06em;
+           color:rgba(255,255,255,.5); margin-top:3px; white-space:nowrap; }
+  .lp-list a{ padding-block:clamp(4px,.7vh,9px); }
+}
