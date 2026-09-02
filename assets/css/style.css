@@ -2332,3 +2332,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-services .lp-label{ transform:none; margin-bottom:clamp(8px,1vh,14px); }
   .lp-services .lp-list{ margin-top:clamp(6px,1vh,12px); }
 }
+
+@media (min-width:981px){ .lp-services .lp-label{ display:none; } }
