@@ -2336,3 +2336,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-services .lp-label{ display:none; } }
 
 @media (min-width:981px){ .lp-services .lp-label{ display:block; visibility:hidden; } }
+
+@media (min-width:981px){ .lp-name{ font-size:min(.92vw, 1.85svh, 15px); } }
