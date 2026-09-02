@@ -2118,3 +2118,67 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-one-txt{ font-size:min(.68vw, 1.4svh, 12px); }
   .lp-foot-claim em{ margin-top:3px; }
 }
+
+
+/* ══════════ ГЛАВНАЯ ПО МАКЕТУ ══════════
+   Золото возвращено туда, где оно стоит на макете: подпись под именем
+   и линии по её бокам, рамка заявления с точкой, подсветка кнопки,
+   рамки в шапке, перегородки между иконками и рамка «Один номер».  */
+
+/* Тёплая подложка вместо чистого чёрного — как на макете. */
+.hero-bg{
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(58,38,20,.34), transparent 62%),
+    radial-gradient(ellipse 60% 50% at 92% 96%, rgba(52,30,14,.28), transparent 66%),
+    #050403;
+}
+.lp{ background:
+  radial-gradient(ellipse 70% 90% at 6% 50%, rgba(46,30,16,.30), transparent 64%),
+  radial-gradient(ellipse 60% 80% at 96% 60%, rgba(46,30,16,.26), transparent 66%),
+  #050403; }
+
+/* Первый экран: золотая подпись, линии, рамка и точка. */
+.hero-in .lockup{ --lk-line:rgba(214,172,96,.55); }
+.hero-in .lk-sub em{ color:var(--amber); }
+.hero-in .lk-dot{ background:var(--amber); }
+.hero-in .lk-claim{ border-color:rgba(214,172,96,.55); }
+.hero-in .lk-claim b{ color:#F4EFE4; }
+
+/* Кнопка первого экрана: золотая подсветка снизу, как на макете. */
+.hero-act .btn::after{
+  background:linear-gradient(90deg,
+    transparent 0%, rgba(232,197,106,.5) 14%,
+    #E8C56A 36%, #E8C56A 64%,
+    rgba(232,197,106,.5) 86%, transparent 100%);
+  box-shadow:
+    0 0 4px rgba(232,197,106,.9),
+    0 0 14px rgba(232,197,106,.6),
+    0 0 30px rgba(232,197,106,.3);
+}
+.hero-act .btn:hover::after{
+  box-shadow:
+    0 0 5px rgba(240,214,150,1),
+    0 0 20px rgba(232,197,106,.85),
+    0 0 44px rgba(232,197,106,.5);
+}
+
+/* Шапка: обе кнопки в золотой рамке. */
+.nav-right > .lang-btn,
+.nav-right > .btn{
+  border-color:rgba(214,172,96,.45);
+  color:#EDE6D8;
+}
+.nav-right > .lang-btn:hover,
+.nav-right > .btn:hover{ border-color:var(--amber); color:#FFFFFF; }
+
+/* Витрина: перегородки между иконками и золотая рамка «Один номер». */
+.lp-icons li + li{ border-left:1px solid rgba(214,172,96,.22); }
+.lp-icons li{ padding-inline:clamp(6px,.8vw,14px); }
+.lp-one{ border-color:rgba(214,172,96,.34); }
+.lp-one-btn{ border-color:rgba(214,172,96,.55); color:#EDE6D8; }
+.lp-one-btn:hover{ border-color:var(--amber); color:#FFFFFF; }
+.lp-foot-cta{ border-bottom-color:rgba(214,172,96,.5); }
+.lp-foot-cta:hover{ border-bottom-color:var(--amber); }
+.lp-list li{ border-bottom-color:rgba(214,172,96,.14); }
+.lp-band{ border-bottom-color:rgba(214,172,96,.18); }
+.lp-foot{ border-top-color:rgba(214,172,96,.18); }
