@@ -687,6 +687,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
      на широком экране 15 пикселей под заголовком в 60 читались
      сноской. Ширину колонки задаём в em, чтобы при росте кегля
      строка не растягивалась через весь экран.                  */
+  /* Консьерж: обе колонки набраны одним кеглем — слева рассказ,
+     справа четыре шага. Прежде правая была на пиксель мельче левой
+     и читалась подписью к ней.                                  */
+  #concierge .conc-say > p,
+  #concierge .steps p{ font-size:min(1.5vw, 20px); line-height:1.5; }
+  #concierge .conc-say > p{ max-width:34em; }
+  #concierge .steps p{ max-width:26em; }
+
   #destinations .band-txt{
     font-size:min(2.4vw, 32px); line-height:1.32;
     max-width:22em; margin-top:22px;
