@@ -2286,3 +2286,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   /* Подписи под иконками направлений слипались — дали им воздух. */
   .lp-icons li{ padding-inline:clamp(8px,1vw,18px); }
 }
+
+@media (min-width:981px){ .lp-services .lp-list{ flex:0 0 auto; align-content:start; margin-top:auto; } .lp-name{ font-size:min(.8vw, 1.7svh, 13.5px); } }
