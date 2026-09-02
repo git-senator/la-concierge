@@ -411,11 +411,9 @@
     var src = row.querySelector('.svc-detail');
     if (!src) return;
     var copy = src.cloneNode(true);
-    var media = copy.querySelector('.svc-media');
-    var title = document.createElement('h4');
-    title.textContent = row.querySelector('.svc-name').textContent;
-    if (media && media.nextSibling) copy.insertBefore(title, media.nextSibling);
-    else copy.insertBefore(title, copy.firstChild);
+    /* Заголовок в карточку не ставим: то же название только что нажато
+       в списке слева, и повторять его внутри незачем — освободившееся
+       место отдано снимку.                                          */
     stage.innerHTML = '';
     stage.appendChild(copy);
   }
