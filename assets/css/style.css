@@ -2349,3 +2349,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-tag{ font-size:min(.76vw,1.5svh,12.5px); color:#FFFFFF; } }
 
 @media (min-width:981px){ .lp-tag{ font-size:min(.85vw,1.7svh,14px); } }
+
+/* В правой колонке сняты крупная «04» и подпись над ней. */
+@media (min-width:981px){
+  .lp-dest > .lp-label{ display:none; }
+  .lp-dest .lp-big{ display:none; }
+}
