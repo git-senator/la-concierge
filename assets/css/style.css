@@ -2319,3 +2319,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-services .lp-list > li:nth-child(-n+4){ transform:translateY(10%); } }
 
 @media (min-width:981px){ .lp-services .lp-list > li:nth-child(-n+4){ transform:translateY(20%); } }
+
+/* Заголовок колонки прижат вплотную к строке 01. */
+@media (min-width:981px){
+  .lp-services .lp-label{ margin-bottom:0; }
+  .lp-services .lp-list{ margin-top:0; }
+}
+
+@media (min-width:981px){ .lp-services .lp-label{ transform:translateY(40px); } }
