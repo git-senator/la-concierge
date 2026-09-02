@@ -2411,3 +2411,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-band{ display:flex; align-items:flex-end; }
   .lp-band-in{ width:100%; margin-top:auto; transform:translateY(58px); }
 }
+
+@media (min-width:981px){ .lp-clock{ margin-top:2px; } }
