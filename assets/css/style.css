@@ -672,10 +672,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   /* Лид идёт одной строкой во всю ширину колонки. Кегль привязан к
      ширине окна и упирается в 22px: по замерам самая длинная из
      десяти строк — русская в «Направлениях» — при этом помещается. */
-  #services .sec-lede,
-  #destinations .sec-lede{
+  #services .sec-lede{
     margin:26px auto 0; max-width:none;
     white-space:nowrap; font-size:min(1.7vw, 22px); line-height:1.3;
+  }
+  /* В «Направлениях» лид ложится в две строки и набран крупнее:
+     ширина ограничена так, чтобы во всех пяти языках выходило
+     ровно две строки, а не одна длинная и одна короткая.      */
+  #destinations .sec-lede{
+    margin:26px auto 0; max-width:28em;
+    white-space:normal; font-size:min(2.4vw, 32px); line-height:1.32;
   }
 }
 
