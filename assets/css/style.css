@@ -683,6 +683,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
     margin:26px auto 0; max-width:28em;
     white-space:normal; font-size:min(2.4vw, 32px); line-height:1.32;
   }
+  /* Описания направлений набраны тем же кеглем, что и лид раздела:
+     на широком экране 15 пикселей под заголовком в 60 читались
+     сноской. Ширину колонки задаём в em, чтобы при росте кегля
+     строка не растягивалась через весь экран.                  */
+  #destinations .band-txt{
+    font-size:min(2.4vw, 32px); line-height:1.32;
+    max-width:22em; margin-top:22px;
+  }
 }
 
 .services{ background:
