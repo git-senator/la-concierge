@@ -655,8 +655,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   /* Пустоты сверху было на треть экрана — разделы начинаются сразу.
      Снизу столько же: между последней услугой и «Направлениями»
      оставался пустой экран, и стык разделов провисал.          */
-  #services{ padding-top:clamp(30px,3vw,48px); padding-bottom:clamp(30px,3vw,48px); }
-  #destinations{ padding-top:clamp(30px,3vw,48px); }
+  #services,#destinations,#concierge,#request{
+    padding-top:clamp(30px,3vw,48px);
+    padding-bottom:clamp(30px,3vw,48px);
+  }
   /* Хвост под последней строкой списка ровно на столько опускал
      правую карточку ниже списка — снимаем, нижние края сходятся. */
   #services .svc-list{ padding-bottom:0; }
@@ -701,7 +703,16 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   #request .req-head{ max-width:none; margin:0 auto 34px; text-align:center; }
   #request .req-head .label{ justify-content:center; margin:0; }
   #request .req-head h2{ margin:12px 0 0; }
-  #request .req-say{ text-align:center; }
+  /* Колонки заявки тянутся до одной высоты, а кнопка «Отправить» и
+     три знака связи прижаты к их низу — с одинаковым отступом, равным
+     внутреннему полю формы. Так обе кнопки стоят на одной линии при
+     любой длине текста, а не только на русском.                   */
+  #request .req-grid{ align-items:stretch; }
+  #request .req-say{ text-align:center; display:flex; flex-direction:column; }
+  #request .direct{ margin-top:auto; margin-bottom:clamp(20px,2.4vw,34px); }
+  #request .req-form{ display:flex; }
+  #request .rf{ flex:1 1 auto; }
+  #request .rf-foot{ margin-top:auto; }
   #request .req-say .sec-lede{
     margin:0 auto; max-width:24em;
     font-size:min(1.95vw, 26px); line-height:1.45;
@@ -1147,7 +1158,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   padding:1px 0 5px; border-radius:0;
   transition:border-color .4s var(--ease);
 }
-.rf-field textarea{ resize:vertical; min-height:74px; line-height:1.4; }
+.rf-field textarea{ resize:vertical; min-height:54px; line-height:1.4; }
 .rf-field input:focus,
 .rf-field select:focus,
 .rf-field textarea:focus{
