@@ -2268,3 +2268,21 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-services .lp-label{ margin-top:auto; margin-bottom:clamp(8px,1vh,14px); } .lp-services .lp-list{ margin-top:0; } }
 
 @media (min-width:981px){ .lp-services .lp-label{ padding-left:40px; } }
+
+
+/* Список услуг растянут во всю высоту колонки — от верхней черты до
+   нижней, строки распределены поровну. Кегль названий взят от блока
+   «Один номер…».                                                */
+@media (min-width:981px){
+  .lp-services .lp-label{ margin-top:0; }
+  .lp-services .lp-list{
+    flex:1 1 auto; align-content:space-between;
+  }
+  .lp-name{
+    font-size:min(.9vw, 1.9svh, 15px);
+    letter-spacing:.1em; line-height:1.4;
+  }
+  .lp-num{ font-size:13px; }
+  /* Подписи под иконками направлений слипались — дали им воздух. */
+  .lp-icons li{ padding-inline:clamp(8px,1vw,18px); }
+}
