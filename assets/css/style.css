@@ -2217,3 +2217,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .nav-right > .btn{ border-color:rgba(255,255,255,.35); color:#FFFFFF; }
 .nav-right > .lang-btn:hover,
 .nav-right > .btn:hover{ border-color:#FFFFFF; color:#FFFFFF; }
+
+
+/* Философия прижата к низу колонки — по линии, отмеченной владельцем,
+   и набрана чуть крупнее.                                        */
+@media (min-width:981px){
+  .lp-philosophy{ align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end; }
+  .lp-philosophy .lp-label{ margin-bottom:auto; }
+  .lp-h{ font-size:min(1.75vw, 3.4svh, 30px); }
+  .lp-txt{ font-size:min(.92vw, 1.9svh, 16px); }
+  .lp-sign{ font-size:11px; }
+}
