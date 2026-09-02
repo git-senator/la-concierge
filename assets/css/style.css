@@ -652,8 +652,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    это заявление, а не сноска. Телефон живёт по своим правилам —
    там шапка уже выключена по центру и набрана прописными.       */
 @media (min-width:721px){
-  /* Пустоты сверху было на треть экрана — раздел начинается сразу. */
-  #services{ padding-top:clamp(30px,3vw,48px); }
+  /* Пустоты сверху было на треть экрана — раздел начинается сразу.
+     Снизу столько же: между последней услугой и «Направлениями»
+     оставался пустой экран, и стык разделов провисал.          */
+  #services{ padding-top:clamp(30px,3vw,48px); padding-bottom:clamp(30px,3vw,48px); }
+  #destinations{ padding-top:clamp(30px,3vw,48px); }
+  /* Хвост под последней строкой списка ровно на столько опускал
+     правую карточку ниже списка — снимаем, нижние края сходятся. */
+  #services .svc-list{ padding-bottom:0; }
   #services .sec-head{ max-width:none; margin-inline:auto; text-align:center; }
   #services .label{ justify-content:center; margin:0; }
   /* Метка стоит над заголовком, заголовок — одной строкой. */
@@ -1431,7 +1437,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
   /* сцены нет — описание раскрывается в строке */
   .svc-grid{ grid-template-columns:1fr; }
-  .svc-list{ padding-bottom:0; }
+  #services .svc-list{ padding-bottom:0; }
   .svc-stage{ display:none; }
   .svc-body{ display:grid; }
   .svc-row.on .svc-body{ grid-template-rows:1fr; }
