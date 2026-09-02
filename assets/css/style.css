@@ -2240,3 +2240,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .lp-clock i{ font-style:normal; transition:opacity .18s linear; }
 .lp-clock.tick i{ opacity:.15; }
 @media (min-width:981px) and (max-height:1000px){ .lp-clock{ margin-top:clamp(5px,.7vh,10px); } }
+
+
+/* «Философия Montero» стоит вплотную над заголовком, а не в верху
+   колонки: весь блок держится единым куском внизу.             */
+@media (min-width:981px){
+  .lp-philosophy .lp-label{ margin-bottom:clamp(8px,1vh,14px); }
+}
