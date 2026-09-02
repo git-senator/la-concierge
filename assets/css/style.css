@@ -2399,3 +2399,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-band::before{ transform:translateY(-.8cm); } }
 
 @media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-city.png?v=15ea551f"); } }
+
+@media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-city2.png?v=fd4ad993"); } }
