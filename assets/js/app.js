@@ -77,12 +77,20 @@
          листать внутри него больше нечего. Пока не вошла, колесо работает
          как обычно, иначе длинный список услуг было бы не прокрутить.  */
       if (e.deltaY > 0) {
-        for (var i = 0; i < HOPS.length; i++) {
+        /* Идём снизу вверх: на стыке двух разделов условию отвечают оба,
+           и уводить надо от нижнего — иначе прыжок вернёт туда, где мы
+           уже стоим.                                                */
+        for (var i = HOPS.length - 1; i >= 0; i--) {
           var from = document.getElementById(HOPS[i][0]);
           var to   = document.getElementById(HOPS[i][1]);
           if (!from || !to) continue;
           var box = from.getBoundingClientRect();
-          if (box.top < 0 && box.bottom > 0 && box.bottom <= window.innerHeight + 40) {
+          /* Раздел дочитан: его нижняя граница уже в экране, а верх ушёл
+             выше середины окна. Второе условие нужно для коротких
+             разделов, которые помещаются целиком: без него прыжок
+             срабатывал бы, едва раздел появился снизу.            */
+          if (box.bottom > 0 && box.bottom <= window.innerHeight + 40 &&
+              box.top < window.innerHeight * 0.5) {
             e.preventDefault();
             busy = Date.now() + 900;
             scrollToId(HOPS[i][1]);
