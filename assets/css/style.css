@@ -2251,3 +2251,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .lp-clock{ color:var(--amber); }
 
 .lp-h{ line-height:1.05; }
+
+@media (min-width:981px){ .lp-philosophy .lp-txt{ margin-top:6px; } }
