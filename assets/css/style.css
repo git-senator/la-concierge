@@ -2372,3 +2372,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px) and (max-width:1750px) and (min-height:1040px){ .lp-band{ min-height:min(200px,19svh); } }
 @media (min-width:981px) and (max-width:1500px) and (max-height:939px){ .lp-band{ min-height:min(120px,13svh); } }
 @media (min-width:981px) and (max-width:1500px) and (max-height:820px){ .lp-band{ min-height:min(85px,11.5svh); } }
+
+/* Полоса: исходный PNG без сжатия, без затемняющей вуали. */
+@media (min-width:981px){
+  .lp-band{ background:#000 url("../img/band.png?v=f4745bab") center center / cover no-repeat; }
+  .lp-band::after{ display:none; }
+}
