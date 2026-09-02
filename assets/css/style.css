@@ -2253,3 +2253,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .lp-h{ line-height:1.05; }
 
 @media (min-width:981px){ .lp-philosophy .lp-txt{ margin-top:6px; } }
+
+
+/* В списке остаются только названия: подписи под ними сняты, а сам
+   список прижат к нижней черте колонки.                        */
+@media (min-width:981px){
+  .lp-tag{ display:none; }
+  .lp-services{ align-self:stretch; display:flex; flex-direction:column; }
+  .lp-services .lp-list{ margin-top:auto; }
+}
