@@ -646,6 +646,25 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .sec-head{ max-width:44ch; }
 .sec-head h2{ margin:20px 0 0; }
 
+/* ── Услуги: шапка раздела одной строкой, по центру ────────────────
+   На компьютере «I · Услуги» и «Что мы устраиваем» стоят в одну
+   линию по центру, заголовок не переносится. Лид под ними крупнее:
+   это заявление, а не сноска. Телефон живёт по своим правилам —
+   там шапка уже выключена по центру и набрана прописными.       */
+@media (min-width:721px){
+  #services .sec-head{
+    max-width:none; margin-inline:auto;
+    display:flex; flex-wrap:wrap; align-items:baseline;
+    justify-content:center; gap:0 26px; text-align:center;
+  }
+  #services .label{ margin:0; }
+  #services .sec-head h2{ margin:0; white-space:nowrap; }
+  #services .sec-lede{
+    flex-basis:100%; margin-top:26px;
+    font-size:clamp(19px,1.5vw,25px); max-width:62ch;
+  }
+}
+
 .services{ background:
   radial-gradient(ellipse 80% 40% at 50% 0%, rgba(214,160,74,.055), transparent 62%),
   var(--ink); }
