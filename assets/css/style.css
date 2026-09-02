@@ -281,7 +281,17 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .seal-lg{ width:84px; }
 .lang-seal{ width:62px; margin:0 auto 20px; }
 
+/* Меню стоит ровно по центру шапки — под серединой имени MONTERO,
+   а не там, куда его двигают знак слева и кнопки справа. Абсолютная
+   привязка к середине: длина пунктов и языка на неё не влияет.   */
 .nav-links{ display:flex; gap:clamp(18px,2.4vw,38px); }
+/* От 1200 пикселей меню встаёт ровно по центру шапки — под серединой
+   имени MONTERO, а не там, куда его двигают знак слева и кнопки
+   справа. Ниже 1200 места между ними нет, и меню остаётся в потоке,
+   иначе оно наезжает на кнопку языка.                            */
+@media (min-width:1200px){
+  .nav-links{ position:absolute; left:50%; transform:translateX(-50%); }
+}
 .nav-links a{
   position:relative;
   font-family:var(--caps); font-size:10.5px; font-weight:400;
@@ -304,6 +314,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .nav-right > .lang-btn,
 .nav-right > .btn{
   height:32px; box-sizing:border-box;
+  /* Язык и «Связь 24/7» — одного размера: 118 пикселей покрывают
+     самую длинную из пяти подписей кнопки связи (испанскую).   */
+  min-width:118px;
   display:inline-flex; align-items:center; justify-content:center;
   padding:0 11px;
   font-size:9px; letter-spacing:.16em;
