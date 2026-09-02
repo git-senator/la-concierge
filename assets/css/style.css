@@ -652,7 +652,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    это заявление, а не сноска. Телефон живёт по своим правилам —
    там шапка уже выключена по центру и набрана прописными.       */
 @media (min-width:721px){
-  /* Пустоты сверху было на треть экрана — раздел начинается сразу.
+  /* Пустоты сверху было на треть экрана — разделы начинаются сразу.
      Снизу столько же: между последней услугой и «Направлениями»
      оставался пустой экран, и стык разделов провисал.          */
   #services{ padding-top:clamp(30px,3vw,48px); padding-bottom:clamp(30px,3vw,48px); }
@@ -660,16 +660,22 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   /* Хвост под последней строкой списка ровно на столько опускал
      правую карточку ниже списка — снимаем, нижние края сходятся. */
   #services .svc-list{ padding-bottom:0; }
-  #services .sec-head{ max-width:none; margin-inline:auto; text-align:center; }
-  #services .label{ justify-content:center; margin:0; }
-  /* Метка стоит над заголовком, заголовок — одной строкой. */
-  #services .sec-head h2{ margin:12px 0 0; white-space:nowrap; }
+
+  /* Шапки «Услуг» и «Направлений» набраны одинаково: метка над
+     заголовком, всё по центру, заголовок одной строкой.        */
+  #services .sec-head,
+  #destinations .sec-head{ max-width:none; margin-inline:auto; text-align:center; }
+  #services .label,
+  #destinations .label{ justify-content:center; margin:0; }
+  #services .sec-head h2,
+  #destinations .sec-head h2{ margin:12px 0 0; white-space:nowrap; }
   /* Лид идёт одной строкой во всю ширину колонки. Кегль привязан к
-     ширине окна и упирается в 26px: по замерам самый длинный из пяти
-     языков — португальский — при этом ещё помещается целиком.     */
-  #services .sec-lede{
+     ширине окна и упирается в 22px: по замерам самая длинная из
+     десяти строк — русская в «Направлениях» — при этом помещается. */
+  #services .sec-lede,
+  #destinations .sec-lede{
     margin:26px auto 0; max-width:none;
-    white-space:nowrap; font-size:min(1.78vw, 23px); line-height:1.3;
+    white-space:nowrap; font-size:min(1.7vw, 22px); line-height:1.3;
   }
 }
 
