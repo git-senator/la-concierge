@@ -584,13 +584,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    --lk здесь больше нет — берётся общий из .lockup. Тень тоже
    снята вместе со снимком: на ровном фоне она только пачкала
    штрихи.                                                    */
-/* Имя на первом экране крупнее: владелец задал ширину примерно
-   в половину экрана. Кегль считается от ширины окна, потолок 130 —
-   выше слово начинает спорить с шапкой. Насыщенность на ступень
-   плотнее: при таком размере волосяные штрихи Cormorant выглядели
-   бледно, 500 держит букву, оставаясь тем же начертанием.      */
-.hero-in .lockup{ margin:0 auto; --lk:clamp(30px,7.5vw,150px); }
-.hero-in .lk-name{ font-weight:500; }
+.hero-in .lockup{ margin:0 auto; }
 
 /* Сияющая белая черта под рамкой знака. Ширину берёт у самой рамки,
    поэтому совпадает с ней на любом языке. Сама линия — градиент,
@@ -598,34 +592,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* Сияющая черта под рамкой знака снята — это был последний блик. */
 .hero-in .lk-claim::after{ display:none; }
 
-.hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:100px; }
-/* Кнопка первого экрана без рамки: золото снято, читаемость держит
-   белая полоса под словами с мягкой подсветкой — её видно как
-   кнопку, но на чёрном она не спорит с именем сверху.          */
+.hero-act{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:54px; }
+/* Обе кнопки первого экрана — золотые рамки без заливки. Свечение
+   снято: на чёрном фоне первого экрана не должно быть ореолов.  */
 .hero-act .btn{
-  position:relative;
   background:transparent;
-  border:0;
+  border-color:rgba(214,160,74,.52);
   color:var(--parch);
   box-shadow:none;
-  transition:color .4s var(--ease), transform .4s var(--ease);
-}
-.hero-act .btn::after{
-  content:""; position:absolute; left:14px; right:14px; bottom:12px;
-  height:1px; pointer-events:none;
-  background:linear-gradient(90deg,
-    transparent 0%, rgba(255,255,255,.45) 14%,
-    #FFFFFF 36%, #FFFFFF 64%,
-    rgba(255,255,255,.45) 86%, transparent 100%);
-  box-shadow:0 0 10px rgba(255,255,255,.45);
-  transition:box-shadow .4s var(--ease), opacity .4s var(--ease);
+  transition:color .4s var(--ease), border-color .4s var(--ease),
+             transform .4s var(--ease);
 }
 .hero-act .btn:hover{
   background:transparent;
+  border-color:var(--amber);
   color:var(--parch);
   transform:translateY(-2px);
 }
-.hero-act .btn:hover::after{ box-shadow:0 0 18px rgba(255,255,255,.75); }
 
 .hero-rail{
   border-top:1px solid var(--line-soft);
