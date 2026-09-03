@@ -2480,3 +2480,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-one-txt{ font-size:16px; line-height:1.55; } }
 
 @media (min-width:981px){ .lp-one-txt{ margin-top:6px; } }
+
+@media (min-width:981px){ .lp-dest{ padding-top:54px; } }
