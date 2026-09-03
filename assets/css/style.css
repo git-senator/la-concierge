@@ -2423,3 +2423,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .hero-act{ display:none; } }
 
 @media (min-width:981px){ .hero-act{ display:flex; visibility:hidden; } }
+
+/* Вместо длинной стрелки — маленький треугольник, как в календаре. */
+@media (min-width:981px){
+  .lp-arrow{ width:9px; height:9px; margin-top:0; align-self:center; }
+  .lp-arrow::before{ display:none; }
+  .lp-arrow::after{
+    left:0; top:0; width:0; height:0; border:none;
+    border-left:4.5px solid transparent; border-right:4.5px solid transparent;
+    border-top:5px solid #FFFFFF; transform:none; background:none;
+  }
+}
