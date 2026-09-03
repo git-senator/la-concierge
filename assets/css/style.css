@@ -2468,3 +2468,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 
 @media (min-width:981px){ .lp-dest{ align-self:center; } }
+
+@media (min-width:981px){ .lp-dest{ align-self:start; padding-top:60px; } }
