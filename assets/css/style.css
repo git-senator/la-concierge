@@ -2429,3 +2429,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .hero-act{ transform:translateY(64px); } }
 
 @media (min-width:981px){ .hero .hero-act{ top:64px; } }
+
+@media (min-width:981px){ .hero{ overflow:visible; } }
