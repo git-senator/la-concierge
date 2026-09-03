@@ -2419,15 +2419,3 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-band-in{ transform:translateY(calc(58px + 4mm)); } }
 
 @media (min-width:981px){ .lp-clock{ transform:translateY(-2mm); } }
-
-/* Кнопка «Связаться с нами» лежит поверх фотополосы. */
-@media (min-width:981px){ .hero-act{ position:relative; z-index:5; } }
-
-@media (min-width:981px){ .hero{ position:relative; z-index:6; } }
-
-/* Кнопка лежит поверх фотографии; сама фотография не меняется. */
-@media (min-width:981px){ .hero-act{ transform:translateY(64px); } }
-
-@media (min-width:981px){ .hero .hero-act{ top:64px; } }
-
-@media (min-width:981px){ .hero{ overflow:visible; } }
