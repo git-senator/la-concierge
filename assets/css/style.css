@@ -2501,3 +2501,6 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-one-txt{ font-size:min(.78vw, 1.7svh, 14px); line-height:1.55; margin-top:clamp(8px,1.2vh,18px); }
   .lp-dest{ padding-top:60px; }
 }
+
+@media (min-width:981px){ .lp-one-h span[data-i18n="lp.one.h2"]{ display:none; }
+  .lp-one-h br + br{ display:none; } }
