@@ -2407,13 +2407,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 @media (min-width:981px){ .lp-band::before{ transform:translateY(-.8cm); } }
 
-@media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-city.png?v=15ea551f"); } }
-
-@media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-city2.png?v=fd4ad993"); } }
-
-@media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-palm.jpg?v=487e62af"); } }
-
-@media (min-width:981px){ .lp-band::before{ background-image:url("../img/band-palm2.jpg?v=9ef82d31"); } }
+/* Прежние варианты полосы-снимка сняты вместе с самим элементом:
+   витрина стоит на цельной фотографии (.lp::before). Файлы обрезков
+   унесены в _archive/band-strips.                                */
 
 /* Слоган и часы опущены к нижнему краю фотографии. */
 @media (min-width:981px){
@@ -2589,8 +2585,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    прямой линией. Теперь она стоит фоном всей витрины: входит из
    черноты сразу под рамкой заявления, накрывает полосу со слоганом и
    три колонки и обрывается ровно на верхней черте нижней строки.
-   Кадр не пересобран — тот же снимок, просто открыт целиком, поэтому
-   пальмы, дома, птицы, небо и море остаются на месте.
+   Снимок взят целиком (band-full.jpg, 2400x1500), а не обрезанной
+   полосой: по ширине он ложится всегда полностью, поэтому дом,
+   пальмы, обе птицы и горизонт не срезаются ни при какой ширине
+   окна. Кадр поднят по вертикали — за это отвечает 74.5% в
+   background-position: тёмная нижняя часть снимка встаёт под белый
+   текст витрины, а закат остаётся сверху.
    Слой только фоновый: разметка не двигается ни на пиксель.      */
 @media (min-width:981px){
   .lp-band::before{ display:none; }
@@ -2604,7 +2604,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
     background:
       linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.22) 34%,
                               rgba(0,0,0,.62) 66%, rgba(0,0,0,.88) 100%),
-      url("../img/band-palm2.jpg?v=9ef82d31") center center / cover no-repeat;
+      url("../img/band-full.jpg?v=a36153e3") center 74.5% / cover no-repeat;
     /* Растворение сверху: ступени вручную, иначе на большой площади
        ровный градиент даёт видимые полосы.                       */
     /* Долгое растворение сверху: снимок проступает из черноты на
