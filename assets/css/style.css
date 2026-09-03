@@ -2522,3 +2522,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){
   .lp-services .lp-list > li:nth-child(-n+4){ transform:none; }
 }
+
+/* Строка «Философия Montero» снята. Убрана видимостью, а не разметкой:
+   место под строкой сохранено, поэтому заголовок «Ваше время. Ваша
+   роскошь.», абзац и подпись остаются точно там же, где стояли, и
+   соседние колонки не двигаются.                                */
+.lp-philosophy .lp-label{ visibility:hidden; }
