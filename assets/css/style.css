@@ -20,8 +20,8 @@
   --scarlet-lit:#C93030;  /* ховер */
   --ember:#E8564A;        /* редкая горячая точка */
 
-  --amber:#D6A04A;        /* вольфрам, свет лампы */
-  --amber-dim:#8A6C33;
+  --amber:#E0C179;        /* вольфрам, свет лампы */
+  --amber-dim:#E0C179;
 
   /* Весь текст — чистый белый. Три ступени оставлены отдельными
      переменными: если понадобится вернуть тише подписи или сноски,
@@ -155,14 +155,14 @@ h1{
   letter-spacing:-.022em;
   /* лёгкое тиснение: тёплый верх, тень снизу — как свет лампы на бумаге */
   color:var(--parch);
-  text-shadow:0 1px 0 rgba(0,0,0,.7), 0 0 60px rgba(214,160,74,.10);
+  text-shadow:0 1px 0 rgba(0,0,0,.7), 0 0 60px rgba(224,193,121,.10);
 }
 h1 .em{
   display:inline-block;
   font-style:italic;
   font-weight:300;
   color:transparent;
-  background-image:linear-gradient(96deg,#F3EADA 0%,#E5CFA4 34%,#D6A04A 62%,#E8DCC4 100%);
+  background-image:linear-gradient(96deg,#F3EADA 0%,#E5CFA4 34%,#E0C179 62%,#E8DCC4 100%);
   -webkit-background-clip:text; background-clip:text;
 }
 
@@ -170,7 +170,7 @@ h2{ font-size:clamp(34px,5.2vw,78px); }
 h2 .em{
   font-style:italic; font-weight:300;
   color:transparent;
-  background-image:linear-gradient(96deg,#F3EADA 0%,#E5CFA4 38%,#D6A04A 66%,#E8DCC4 100%);
+  background-image:linear-gradient(96deg,#F3EADA 0%,#E5CFA4 38%,#E0C179 66%,#E8DCC4 100%);
   -webkit-background-clip:text; background-clip:text;
 }
 h3{ font-size:clamp(30px,4.6vw,62px); }
@@ -197,10 +197,10 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .eyebrow em,.foot-brand em{ color:var(--amber-dim); font-style:normal; }
 
-.label{ display:flex; align-items:center; gap:14px; color:#E8C56A; }
+.label{ display:flex; align-items:center; gap:14px; color:#E0C179; }
 .label i{
   font-family:var(--caps); font-style:normal; font-size:11px;
-  color:#E8C56A; letter-spacing:.1em;
+  color:#E0C179; letter-spacing:.1em;
   padding-right:14px; border-right:1px solid var(--line-red);
 }
 
@@ -372,7 +372,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   display:flex; flex-direction:column; justify-content:center;
   padding:calc(var(--navh) + 30px) var(--gut) 40px;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(214,160,74,.14), transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(224,193,121,.14), transparent 60%),
     radial-gradient(ellipse 70% 60% at 80% 100%, rgba(126,21,24,.30), transparent 68%),
     var(--void);
   opacity:0; transition:opacity .42s var(--ease);
@@ -390,9 +390,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .drawer-links a.hot{
   background:linear-gradient(90deg, transparent,
-    rgba(214,160,74,.14) 28%, rgba(214,160,74,.14) 72%, transparent);
+    rgba(224,193,121,.14) 28%, rgba(224,193,121,.14) 72%, transparent);
 }
-.drawer-links a.hot span{ transform:scale(1.22); color:#E8C56A; }
+.drawer-links a.hot span{ transform:scale(1.22); color:#E0C179; }
 .drawer-links{ display:flex; flex-direction:column; gap:4px; }
 /* Пункты набраны как надпись на кнопке «Связь 24/7»: та же гарнитура,
    тот же кегль и разрядка. Место под палец держим отступами строки,
@@ -410,7 +410,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    и один холодный или багровый отблеск на противоходе.              */
 
 .sc-night{ background:
-  radial-gradient(ellipse 70% 55% at 26% 12%, rgba(214,160,74,.20), transparent 62%),
+  radial-gradient(ellipse 70% 55% at 26% 12%, rgba(224,193,121,.20), transparent 62%),
   radial-gradient(ellipse 60% 55% at 84% 88%, rgba(126,21,24,.34), transparent 66%),
   linear-gradient(160deg,#150E0E 0%,#0B0708 60%,#080506 100%); }
 
@@ -421,11 +421,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 .sc-sea{ background:
   radial-gradient(ellipse 60% 50% at 30% 82%, rgba(30,72,78,.42), transparent 66%),
-  radial-gradient(ellipse 60% 50% at 78% 14%, rgba(214,160,74,.18), transparent 62%),
+  radial-gradient(ellipse 60% 50% at 78% 14%, rgba(224,193,121,.18), transparent 62%),
   linear-gradient(165deg,#0D1618 0%,#0B0E10 58%,#080607 100%); }
 
 .sc-sky{ background:
-  radial-gradient(ellipse 70% 46% at 52% 4%, rgba(226,178,96,.26), transparent 60%),
+  radial-gradient(ellipse 70% 46% at 52% 4%, rgba(224,193,121,.26), transparent 60%),
   radial-gradient(ellipse 60% 60% at 12% 96%, rgba(126,21,24,.24), transparent 68%),
   linear-gradient(180deg,#1A1210 0%,#0E0A0A 62%,#080606 100%); }
 
@@ -435,7 +435,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   linear-gradient(155deg,#171414 0%,#0D0B0B 60%,#070606 100%); }
 
 .sc-amber{ background:
-  radial-gradient(ellipse 66% 50% at 40% 14%, rgba(226,170,84,.30), transparent 62%),
+  radial-gradient(ellipse 66% 50% at 40% 14%, rgba(224,193,121,.30), transparent 62%),
   radial-gradient(ellipse 58% 56% at 88% 90%, rgba(110,26,24,.32), transparent 66%),
   linear-gradient(160deg,#20160F 0%,#120C0A 58%,#090606 100%); }
 
@@ -529,7 +529,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    при наличии картинки.                                              */
 .hero:has(.media) .hero-vig{
   background:
-    radial-gradient(ellipse 66% 40% at 44% -8%, rgba(232,182,96,.14), transparent 62%),
+    radial-gradient(ellipse 66% 40% at 44% -8%, rgba(224,193,121,.14), transparent 62%),
     radial-gradient(ellipse 46% 42% at 90% 88%, rgba(168,30,34,.24), transparent 66%),
     radial-gradient(ellipse 94% 90% at 50% 44%, transparent 24%, rgba(6,3,4,.52) 74%, rgba(5,3,4,.94) 100%),
     radial-gradient(ellipse 70% 46% at 50% 82%, rgba(6,3,4,.72), transparent 72%),
@@ -576,7 +576,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .strings span{
   position:absolute; top:0; left:var(--x); width:1px; height:var(--h);
   opacity:var(--o);
-  background:linear-gradient(180deg, rgba(214,160,74,.9), rgba(168,29,34,.5) 55%, transparent 100%);
+  background:linear-gradient(180deg, rgba(224,193,121,.9), rgba(168,29,34,.5) 55%, transparent 100%);
   transform-origin:top center;
   animation:sway 14s ease-in-out infinite; animation-delay:var(--d);
 }
@@ -803,7 +803,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 
 .services{ background:
-  radial-gradient(ellipse 80% 40% at 50% 0%, rgba(214,160,74,.055), transparent 62%),
+  radial-gradient(ellipse 80% 40% at 50% 0%, rgba(224,193,121,.055), transparent 62%),
   var(--ink); }
 
 /* ══════════ УСЛУГИ — реестр и сцена ══════════
@@ -857,7 +857,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    останется золотым, а не пропадёт.                              */
 .svc-tag{
   grid-column:2; font-size:11px; letter-spacing:.16em;
-  text-transform:uppercase; color:#DDBC73;
+  text-transform:uppercase; color:#E0C179;
 }
 @supports (-webkit-background-clip:text) or (background-clip:text){
   .svc-tag{
@@ -932,7 +932,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .svc-stage .svc-media{
   position:relative; width:100%;
-  border:1px solid rgba(214,160,74,.16);
+  border:1px solid rgba(224,193,121,.16);
   /* снимок тянется и сжимается — он и есть запас высоты */
   flex:1 1 auto; aspect-ratio:auto; min-height:150px;
 }
@@ -1045,12 +1045,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   position:relative; aspect-ratio:4/5; width:100%;
   max-height:min(56vh,480px);
   overflow:hidden;
-  border:1px solid rgba(214,160,74,.22);
+  border:1px solid rgba(224,193,121,.22);
   box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 0 90px rgba(0,0,0,.5);
 }
 .band-num{
   display:block; font-family:var(--caps); font-size:11px;
-  letter-spacing:.28em; color:#E8C56A; margin-bottom:16px;
+  letter-spacing:.28em; color:#E0C179; margin-bottom:16px;
 }
 /* Осветление — только для пустой рамки: градиентная заглушка без него
    почти чёрная. Снимку те же +75% яркости выбелили бы небо.        */
@@ -1068,7 +1068,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 .conc{ background:
   radial-gradient(ellipse 60% 44% at 84% 8%, rgba(126,21,24,.20), transparent 64%),
-  radial-gradient(ellipse 56% 44% at 8% 92%, rgba(214,160,74,.07), transparent 66%),
+  radial-gradient(ellipse 56% 44% at 8% 92%, rgba(224,193,121,.07), transparent 66%),
   var(--ink); }
 
 .conc-grid{
@@ -1144,7 +1144,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .conc-sig-t b{
   font-family:var(--caps); font-weight:500; font-size:12px; line-height:1.75;
-  letter-spacing:.18em; text-transform:uppercase; color:#E8C56A;
+  letter-spacing:.18em; text-transform:uppercase; color:#E0C179;
 }
 .conc-sig-t .sl{ display:block; }
 /* На телефоне ручные переносы только мешают: строка и так не
@@ -1169,7 +1169,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   position:absolute; left:calc(-1 * clamp(34px,4vw,54px)); top:-1px;
   width:23px; text-align:center;
   font-family:var(--caps); font-size:10px; letter-spacing:.06em;
-  color:#E8C56A; background:var(--ink); padding-block:4px;
+  color:#E0C179; background:var(--ink); padding-block:4px;
 }
 .steps h4{ color:var(--parch); }
 .steps p{ margin:9px 0 0; color:var(--parch-dim); font-size:14.5px; max-width:42ch; }
@@ -1177,7 +1177,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 /* ══════════ ЗАЯВКА ══════════ */
 
 #request{ background:
-  radial-gradient(ellipse 62% 46% at 12% 6%, rgba(214,160,74,.08), transparent 64%),
+  radial-gradient(ellipse 62% 46% at 12% 6%, rgba(224,193,121,.08), transparent 64%),
   var(--void); }
 
 .req-grid{
@@ -1206,7 +1206,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   border:2px solid transparent;
   box-shadow:
     inset 0 0 0 3px #0C0C0D,
-    inset 0 0 0 4px rgba(199,155,72,.65),
+    inset 0 0 0 4px rgba(224,193,121,.65),
     0 8px 22px rgba(0,0,0,.45);
   transition:transform .4s var(--ease), box-shadow .4s var(--ease);
 }
@@ -1214,9 +1214,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   transform:translateY(-2px);
   box-shadow:
     inset 0 0 0 3px #0C0C0D,
-    inset 0 0 0 4px rgba(222,190,117,.95),
+    inset 0 0 0 4px rgba(224,193,121,.95),
     0 10px 26px rgba(0,0,0,.5),
-    0 0 18px rgba(214,160,74,.35);
+    0 0 18px rgba(224,193,121,.35);
 }
 
 /* ── Форма ─────────────────────────────────────────────────────────── */
@@ -1358,7 +1358,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
                                      #F0DCA4 72%, #C39A46 100%);
   border-color:transparent; color:#0C0C0D;
   transform:translateY(-2px);
-  box-shadow:0 12px 30px rgba(0,0,0,.5), 0 0 22px rgba(214,160,74,.3);
+  box-shadow:0 12px 30px rgba(0,0,0,.5), 0 0 22px rgba(224,193,121,.3);
 }
 .rf-failure{ display:block; }
 
@@ -1485,7 +1485,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   overflow-y:auto; -webkit-overflow-scrolling:touch;
   padding:clamp(56px,8vw,96px) clamp(18px,5vw,40px) clamp(40px,8vw,80px);
   background:
-    radial-gradient(ellipse 70% 40% at 50% -4%, rgba(232,182,96,.14), transparent 62%),
+    radial-gradient(ellipse 70% 40% at 50% -4%, rgba(224,193,121,.14), transparent 62%),
     radial-gradient(ellipse 60% 50% at 92% 96%, rgba(126,21,24,.26), transparent 68%),
     #070405;
   opacity:0; transition:opacity .38s var(--ease);
@@ -1501,7 +1501,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 }
 .legal-upd{
   margin:10px 0 26px; font-family:var(--caps); font-size:10.5px;
-  letter-spacing:.2em; text-transform:uppercase; color:#DDBC73;
+  letter-spacing:.2em; text-transform:uppercase; color:#E0C179;
 }
 .legal-in h3{
   font-family:var(--caps); font-weight:600;
@@ -1689,7 +1689,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   display:grid; place-items:center;
   padding:clamp(24px,6vw,64px);
   background:
-    radial-gradient(ellipse 70% 44% at 50% -6%, rgba(232,182,96,.20), transparent 62%),
+    radial-gradient(ellipse 70% 44% at 50% -6%, rgba(224,193,121,.20), transparent 62%),
     radial-gradient(ellipse 52% 46% at 88% 92%, rgba(168,30,34,.30), transparent 66%),
     radial-gradient(ellipse 60% 55% at 6% 74%, rgba(52,16,14,.6), transparent 70%),
     #070405;
@@ -2147,50 +2147,50 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   #050403; }
 
 /* Первый экран: золотая подпись, линии, рамка и точка. */
-.hero-in .lockup{ --lk-line:rgba(214,172,96,.55); }
+.hero-in .lockup{ --lk-line:rgba(224,193,121,.55); }
 .hero-in .lk-sub em{ color:var(--amber); }
 .hero-in .lk-dot{ background:var(--amber); }
-.hero-in .lk-claim{ border-color:rgba(214,172,96,.55); }
+.hero-in .lk-claim{ border-color:rgba(224,193,121,.55); }
 .hero-in .lk-claim b{ color:#F4EFE4; }
 
 /* Кнопка первого экрана: золотая подсветка снизу, как на макете. */
 .hero-act .btn::after{
   background:linear-gradient(90deg,
-    transparent 0%, rgba(232,197,106,.5) 14%,
-    #E8C56A 36%, #E8C56A 64%,
-    rgba(232,197,106,.5) 86%, transparent 100%);
+    transparent 0%, rgba(224,193,121,.5) 14%,
+    #E0C179 36%, #E0C179 64%,
+    rgba(224,193,121,.5) 86%, transparent 100%);
   box-shadow:
-    0 0 4px rgba(232,197,106,.9),
-    0 0 14px rgba(232,197,106,.6),
-    0 0 30px rgba(232,197,106,.3);
+    0 0 4px rgba(224,193,121,.9),
+    0 0 14px rgba(224,193,121,.6),
+    0 0 30px rgba(224,193,121,.3);
 }
 .hero-act .btn:hover::after{
   box-shadow:
     0 0 5px rgba(240,214,150,1),
-    0 0 20px rgba(232,197,106,.85),
-    0 0 44px rgba(232,197,106,.5);
+    0 0 20px rgba(224,193,121,.85),
+    0 0 44px rgba(224,193,121,.5);
 }
 
 /* Шапка: обе кнопки в золотой рамке. */
 .nav-right > .lang-btn,
 .nav-right > .btn{
-  border-color:rgba(214,172,96,.45);
+  border-color:rgba(224,193,121,.45);
   color:#EDE6D8;
 }
 .nav-right > .lang-btn:hover,
 .nav-right > .btn:hover{ border-color:var(--amber); color:#FFFFFF; }
 
 /* Витрина: перегородки между иконками и золотая рамка «Один номер». */
-.lp-icons li + li{ border-left:1px solid rgba(214,172,96,.22); }
+.lp-icons li + li{ border-left:1px solid rgba(224,193,121,.22); }
 .lp-icons li{ padding-inline:clamp(6px,.8vw,14px); }
-.lp-one{ border-color:rgba(214,172,96,.34); }
-.lp-one-btn{ border-color:rgba(214,172,96,.55); color:#EDE6D8; }
+.lp-one{ border-color:rgba(224,193,121,.34); }
+.lp-one-btn{ border-color:rgba(224,193,121,.55); color:#EDE6D8; }
 .lp-one-btn:hover{ border-color:var(--amber); color:#FFFFFF; }
-.lp-foot-cta{ border-bottom-color:rgba(214,172,96,.5); }
+.lp-foot-cta{ border-bottom-color:rgba(224,193,121,.5); }
 .lp-foot-cta:hover{ border-bottom-color:var(--amber); }
-.lp-list li{ border-bottom-color:rgba(214,172,96,.14); }
-.lp-band{ border-bottom-color:rgba(214,172,96,.18); }
-.lp-foot{ border-top-color:rgba(214,172,96,.18); }
+.lp-list li{ border-bottom-color:rgba(224,193,121,.14); }
+.lp-band{ border-bottom-color:rgba(224,193,121,.18); }
+.lp-foot{ border-top-color:rgba(224,193,121,.18); }
 
 
 /* Витрина — только для компьютера. На телефоне и планшете её нет:
