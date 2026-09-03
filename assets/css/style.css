@@ -2476,3 +2476,5 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .lp-one{ text-align:right; }
   .lp-one-txt{ margin-left:auto; }
 }
+
+@media (min-width:981px){ .lp-one-txt{ font-size:16px; line-height:1.55; } }
