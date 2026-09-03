@@ -2513,3 +2513,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 
 @media (min-width:981px){ .lp-one-h span[data-i18n="lp.one.h2"]{ display:none; }
   .lp-one-h br + br{ display:none; } }
+
+
+/* Равный шаг строк услуг. Отдельный сдвиг первых четырёх строк
+   опускал 01–04 на 20% высоты строки, а 05 и 06 оставлял на месте —
+   просвет между 03/04 и 05/06 выходил уже остальных. Сдвиг снят:
+   шаг между всеми тремя строками теперь один и тот же.          */
+@media (min-width:981px){
+  .lp-services .lp-list > li:nth-child(-n+4){ transform:none; }
+}
