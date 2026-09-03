@@ -2482,3 +2482,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (min-width:981px){ .lp-one-txt{ margin-top:6px; } }
 
 @media (min-width:981px){ .lp-dest{ padding-top:54px; } }
+
+/* Откат: текст правого блока вернулся к прежнему кеглю. */
+@media (min-width:981px){
+  .lp-one-txt{ font-size:min(.78vw, 1.7svh, 14px); line-height:1.55; margin-top:clamp(8px,1.2vh,18px); }
+  .lp-dest{ padding-top:60px; }
+}
