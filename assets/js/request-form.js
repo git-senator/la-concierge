@@ -72,7 +72,6 @@
                { v:'Investment Property & Deal Support', k:'svc.13.name' },
                { v:'Investment Accounts', k:'svc.14.name' },
                { v:'Currency Exchange', k:'svc.15.name' },
-               { v:'Transfer São Paulo – Florianópolis', k:'svc.16.name' },
                { v:'Transfers Across Brazil', k:'svc.17.name' },
                { v:'Travel Guide', k:'svc.18.name' },
                { v:'Full Travel Services', k:'svc.19.name' },
