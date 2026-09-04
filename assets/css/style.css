@@ -3068,18 +3068,135 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    знаком и полоса цифр остаются на своих местах.                */
 @media (max-width:980px){
   .hero-in .hero-act .btn{
-    border:1px solid rgba(199,163,105,.55);
+    /* Рамки нет вообще. Разобрал образец по пикселям: сверху и слева
+       заливка переходит в фон без всякой линии, а тёплая черта идёт
+       только по низу и правому боку — это не бордюр, а тень со
+       смещением вправо-вниз и отрицательным разбросом. Обводка,
+       которую я поставил раньше, — как раз то, чего быть не должно. */
+    border:0;
     border-radius:999px;
-    background:linear-gradient(180deg,
-      rgba(255,255,255,.062) 0%, rgba(255,255,255,.022) 100%);
-    box-shadow:0 8px 22px rgba(0,0,0,.45);
+    background:#181B1E;
+    box-shadow:2px 2px 4px -2px #828065;
   }
   .hero-in .hero-act .btn:hover{
-    border-color:rgba(216,182,124,.75);
-    background:linear-gradient(180deg,
-      rgba(255,255,255,.085) 0%, rgba(255,255,255,.032) 100%);
+    background:#1D2124;
+    box-shadow:2px 2px 5px -2px #9B9878;
   }
   .hero-in .hero-act .btn::after,
   .hero-in .hero-act .btn:hover::after{ display:none; }
+}
+
+/* ══════════ ТЕЛЕФОН: ЕДИНОЕ СЛИВОЧНОЕ ЗОЛОТО ══════════
+
+   Владелец прислал образец и попросил перевести на него всё золото и
+   всю желтизну телефонной версии. Цвет снят с картинки на глаз —
+   #F0E3B4. Компьютер не трогаем: правило целиком внутри медиазапроса.
+
+   Основная масса золота идёт через --amber (двадцать пять мест:
+   рубрики разделов, номера услуг, ссылки «подробнее», цифры в полосе
+   направлений, подписи). Достаточно переопределить переменную.
+
+   Отдельно ниже перекрыты места, где золото вписано числом: там оно
+   набрано градиентом «светлый блик — глубокая тень», и одной
+   переменной их не достать. Металлическую структуру сохранил, просто
+   сдвинул всю семью в сливочную сторону: если захочется плоского
+   цвета без перелива — скажи, уберу переходы.                    */
+@media (max-width:980px){
+  :root{ --amber:#F0E3B4; --amber-dim:#F0E3B4; }
+
+  /* Подпись под названием услуги */
+  .svc-tag{ color:#F0E3B4; }
+  @supports (-webkit-background-clip:text) or (background-clip:text){
+    .svc-tag{
+      background:linear-gradient(180deg,
+        #FBF4DC 0%, #F0E3B4 26%, #DCCB92 58%, #C7B67C 82%, #F5EBC6 100%);
+    }
+  }
+
+  /* Кнопка отправки заявки — главное действие страницы */
+  .rf-submit{
+    background:linear-gradient(150deg, #F7EDCB 0%, #F0E3B4 22%, #DCCB92 48%,
+                                       #F0E3B4 72%, #CBBA80 100%);
+  }
+  .rf-submit:hover{
+    background:linear-gradient(150deg, #FDF8E6 0%, #F5EBC6 22%, #E6D8A6 48%,
+                                       #F7EDCB 72%, #DCCB92 100%);
+  }
+
+  /* Три круглые кнопки прямой связи: кольцо набрано градиентом */
+  .direct-btn{
+    background:
+      linear-gradient(#0C0C0D, #0C0C0D) padding-box,
+      linear-gradient(150deg, #F5EBC6 0%, #DCCB92 26%, #C7B67C 52%,
+                              #F0E3B4 74%, #C7B67C 100%) border-box;
+    box-shadow:
+      inset 0 0 0 3px #0C0C0D,
+      inset 0 0 0 4px rgba(240,227,180,.65),
+      0 8px 22px rgba(0,0,0,.45);
+  }
+  .direct-btn:hover{
+    box-shadow:
+      inset 0 0 0 3px #0C0C0D,
+      inset 0 0 0 4px rgba(240,227,180,.95),
+      0 10px 26px rgba(0,0,0,.5),
+      0 0 18px rgba(240,227,180,.35);
+  }
+
+  /* Рамка снимка в полосе направлений */
+  .band-plate{ border-color:rgba(240,227,180,.22); }
+
+  /* Рамка заявления на первом экране и точка на её верхней грани */
+  .hero-in .lk-claim{
+    --lk-line:#F0E3B4;
+    border-color:#F0E3B4;
+    box-shadow:0 0 20px rgba(240,227,180,.20),
+               inset 0 0 26px rgba(240,227,180,.05);
+  }
+  .hero-in .lk-dot{ box-shadow:0 0 10px rgba(240,227,180,.7); }
+
+  /* Кнопка «Связь 24/7» в шапке — по прямой просьбе владельца */
+  .nav-right > .btn,
+  .nav-right > .btn span,
+  .nav-right > .btn:hover,
+  .nav-right > .btn:hover span{ color:#F0E3B4; }
+  .nav-right > .btn{ border-color:rgba(240,227,180,.55); }
+  .nav-right > .btn:hover{ border-color:#F0E3B4; }
+}
+
+/* Продолжение сливочного золота: места, где цвет вписан числом, а не
+   переменной. Собраны отдельным блоком, чтобы видеть их списком. */
+@media (max-width:980px){
+  .label,
+  .label i,
+  .band-num,
+  .conc-sig-t b,
+  .st-n,
+  .legal-upd,
+  .drawer-links a.hot span{ color:#F0E3B4; }
+
+  /* Курсивные вставки в заголовках набраны золотым переливом */
+  h1 .em{ background-image:linear-gradient(96deg,
+    #FBF6E6 0%, #F5EBC6 34%, #F0E3B4 62%, #FAF4E2 100%); }
+  h2 .em{ background-image:linear-gradient(96deg,
+    #FBF6E6 0%, #F5EBC6 38%, #F0E3B4 66%, #FAF4E2 100%); }
+}
+
+/* ══════════ ТЕЛЕФОН: CONCIERGE SERVICE КРУПНЕЕ И ПЛОТНЕЕ ══════════
+
+   Строка под названием была набрана 7.7px при экране 390 — мельче
+   всего на первом экране. Поднимаем кегль на 30% и переводим в
+   полужирное: у Cinzel начертание 600 настоящее, оно подгружается
+   вместе с обычным, поэтому браузеру не приходится подделывать.
+
+   Интерлиньяж делим ровно на тот же коэффициент: строчное поле
+   остаётся прежней высоты, а значит высота знака не меняется —
+   буква M над ним и просвет до кнопки стоят на месте. Прописным
+   тесно не станет: капитель занимает семь десятых кегля.        */
+@media (max-width:980px){
+  .hero-in .lk-sub em{
+    font-size:calc(var(--lk) * .3055);
+    line-height:.769;
+    font-weight:600;
+  }
 }
 
