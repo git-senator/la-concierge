@@ -103,6 +103,11 @@
     'sec.dest.label': 'Destinations',
     'sec.dest.h': 'Where we <span class="h-cap">work</span>',
     'sec.dest.lede': 'We also provide remote support and settle many matters across the whole South American continent.',
+    'dest.country.br': 'Brazil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'The Concierge',
     'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln">The rest is our business</span>',
 
@@ -259,8 +264,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, forty-two beaches and the summer address of São Paulo money. Villas, beach clubs and a season that runs December to March.'],
 ['Rio de Janeiro','Leblon and Ipanema, helicopter transfers across the bay, and a city that has never once negotiated its own beauty. Carnival is booked a year ahead.'],
-['São Paulo','Where the business is actually done. Itaim and Jardins, the largest civil helicopter fleet in the hemisphere, and the hospitals people fly in for.'],
-['Balneário Camboriú','Towers standing right on the sand, the Barra Sul marina, and beaches you reach by cable car. An hour from Florianópolis by road, with a season that runs December to March.']
+['São Paulo','Where the business is actually done. Itaim and Jardins, the largest civil helicopter fleet in the hemisphere, and the hospitals people fly in for.']
     ],
     step: [
 ['You ask','One message, at any hour, in your language. WhatsApp, Telegram, or the form below.'],
@@ -336,6 +340,11 @@
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'A geografia do nosso <span class="h-cap">trabalho</span>',
     'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em todo o continente sul-americano.',
+    'dest.country.br': 'Brasil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguai',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Assunção',
     'sec.conc.label': 'O Concierge',
     'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln">O restante é conosco</span>',
 
@@ -492,8 +501,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, quarenta e duas praias e o endereço de verão do dinheiro paulista. Casas, beach clubs e uma temporada que vai de dezembro a março.'],
 ['Rio de Janeiro','Leblon e Ipanema, transferências de helicóptero sobre a baía e uma cidade que nunca negociou a própria beleza. O Carnaval se reserva com um ano de antecedência.'],
-['São Paulo','Onde os negócios realmente acontecem. Itaim e Jardins, a maior frota civil de helicópteros do hemisfério e os hospitais pelos quais se atravessa o continente.'],
-['Balneário Camboriú','Torres coladas na areia, a marina da Barra Sul e praias a que se chega de bondinho. Uma hora de Florianópolis por terra, com temporada de dezembro a março.']
+['São Paulo','Onde os negócios realmente acontecem. Itaim e Jardins, a maior frota civil de helicópteros do hemisfério e os hospitais pelos quais se atravessa o continente.']
     ],
     step: [
 ['Você pede','Uma mensagem, a qualquer hora, no seu idioma. WhatsApp, Telegram ou o formulário abaixo.'],
@@ -569,6 +577,11 @@
     'sec.dest.label': 'Destinos',
     'sec.dest.h': 'La geografía de nuestro <span class="h-cap">trabajo</span>',
     'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en todo el continente sudamericano.',
+    'dest.country.br': 'Brasil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'El Conserje',
     'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln">El resto es cosa nuestra</span>',
 
@@ -725,8 +738,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, cuarenta y dos playas y la dirección de verano del dinero paulista. Villas, beach clubs y una temporada que va de diciembre a marzo.'],
 ['Río de Janeiro','Leblon e Ipanema, traslados en helicóptero sobre la bahía y una ciudad que jamás ha negociado su propia belleza. El Carnaval se reserva con un año de antelación.'],
-['São Paulo','Donde los negocios se hacen de verdad. Itaim y Jardins, la mayor flota civil de helicópteros del hemisferio y los hospitales por los que se cruza el continente.'],
-['Balneário Camboriú','Torres pegadas a la arena, la marina de Barra Sul y playas a las que se llega en teleférico. Una hora de Florianópolis por carretera, con temporada de diciembre a marzo.']
+['São Paulo','Donde los negocios se hacen de verdad. Itaim y Jardins, la mayor flota civil de helicópteros del hemisferio y los hospitales por los que se cruza el continente.']
     ],
     step: [
 ['Usted pide','Un mensaje, a cualquier hora, en su idioma. WhatsApp, Telegram o el formulario de abajo.'],
@@ -802,6 +814,11 @@
     'sec.dest.label': 'Destinazioni',
     'sec.dest.h': 'La geografia del nostro <span class="h-cap">lavoro</span>',
     'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutto il continente sudamericano.',
+    'dest.country.br': 'Brasile',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'Il Concierge',
     'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln">Il resto è affar nostro</span>',
 
@@ -959,7 +976,6 @@
 ['Florianópolis','Jurerê Internacional, quarantadue spiagge e l’indirizzo estivo del denaro di San Paolo. Ville, beach club e una stagione che va da dicembre a marzo.'],
 ['Rio de Janeiro','Leblon e Ipanema, transfer in elicottero sopra la baia e una città che non ha mai trattato sulla propria bellezza. Il Carnevale si prenota con un anno di anticipo.'],
 ['San Paolo','Dove gli affari si fanno davvero. Itaim e Jardins, la più grande flotta civile di elicotteri dell’emisfero e gli ospedali per cui si attraversa il continente.'],
-['Balneário Camboriú','Torri a ridosso della sabbia, la marina di Barra Sul e spiagge che si raggiungono in funivia. Un’ora da Florianópolis via terra, con stagione da dicembre a marzo.']
     ],
     step: [
 ['Lei chiede','Un messaggio, a qualsiasi ora, nella sua lingua. WhatsApp, Telegram o il modulo qui sotto.'],
