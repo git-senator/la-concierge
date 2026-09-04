@@ -3326,3 +3326,14 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .band-num{ text-transform:uppercase; }
 .band-col-two h3{ text-transform:uppercase; }
 .band-col-two .band-num-2{ margin-top:clamp(30px,2.6vw,34px); }
+
+/* Кадр Аргентина + Парагвай — диптих: два города, разделённые золотой
+   диагональю, и подписи в углах. Стандартная рамка направлений режет
+   его по вертикали и срезает и обелиск, и подписи, поэтому у этой
+   одной карточки рамка живёт в пропорциях самого снимка.          */
+#destinations .band-plate-arpy{ aspect-ratio:1408/768; max-height:none; }
+/* Карточка с этим кадром ниже соседних: на широком экране выравниваем
+   её по середине ряда, иначе под текстом остаётся провал.        */
+@media (min-width:721px){
+  #destinations .band:has(.band-plate-arpy){ align-self:center; }
+}
