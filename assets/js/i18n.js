@@ -101,8 +101,8 @@
     'sec.svc.h': 'What we <span class="h-cap">deliver</span>',
     'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “What can you do?” is WE CAN DO ALMOST ANYTHING!',
     'sec.dest.label': 'Destinations',
-    'sec.dest.h': 'Where we work',
-    'sec.dest.lede': 'We also provide remote support and settle many matters across South and Central America.',
+    'sec.dest.h': 'Where we <span class="h-cap">work</span>',
+    'sec.dest.lede': 'We also provide remote support and settle many matters across the whole South American continent.',
     'sec.conc.label': 'The Concierge',
     'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln">The rest is our business</span>',
 
@@ -334,8 +334,8 @@
     'lp.foot.geo': 'Brasil · América do Sul',
     'lp.foot.cta': 'Solicitar<br>concierge',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'A geografia do nosso trabalho',
-    'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em toda a América do Sul e Central.',
+    'sec.dest.h': 'A geografia do nosso <span class="h-cap">trabalho</span>',
+    'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em todo o continente sul-americano.',
     'sec.conc.label': 'O Concierge',
     'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln">O restante é conosco</span>',
 
@@ -567,8 +567,8 @@
     'lp.foot.geo': 'Brasil · Sudamérica',
     'lp.foot.cta': 'Solicitar<br>concierge',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'La geografía de nuestro trabajo',
-    'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en toda América del Sur y Central.',
+    'sec.dest.h': 'La geografía de nuestro <span class="h-cap">trabajo</span>',
+    'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en todo el continente sudamericano.',
     'sec.conc.label': 'El Conserje',
     'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln">El resto es cosa nuestra</span>',
 
@@ -800,8 +800,8 @@
     'lp.foot.geo': 'Brasile · Sud America',
     'lp.foot.cta': 'Richiedi<br>concierge',
     'sec.dest.label': 'Destinazioni',
-    'sec.dest.h': 'La geografia del nostro lavoro',
-    'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutta l’America del Sud e Centrale.',
+    'sec.dest.h': 'La geografia del nostro <span class="h-cap">lavoro</span>',
+    'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutto il continente sudamericano.',
     'sec.conc.label': 'Il Concierge',
     'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln">Il resto è affar nostro</span>',
 
