@@ -3274,8 +3274,13 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
      подчёркнутое слово. Правило только для этого раздела: рубрики
      и заголовки остальных разделов остаются белыми. */
   .services .sec-head h2{ color:#F0E3B4; }
+  /* Слово стоит отдельной строкой под «Что мы» — так было в макете
+     до всех правок, владелец просил вернуть именно этот разрыв.
+     width:fit-content нужен, чтобы блок обнимал слово: иначе
+     подчёркивание растянулось бы во всю ширину заголовка. */
   .services .sec-head h2 .h-cap{
-    display:inline-block; position:relative;
+    display:block; width:fit-content; margin:0 auto;
+    position:relative;
     color:#F0E3B4;
   }
   .services .sec-head h2 .h-cap::after{
