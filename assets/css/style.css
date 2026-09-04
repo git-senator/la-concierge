@@ -2737,7 +2737,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   .hero-in .lockup::before{
     content:'';
     position:absolute; bottom:100%; left:50%; translate:-50% 0;
-    width:min(77.4vw, 46.8svh); aspect-ratio:432 / 352;   /* на 10% меньше по просьбе владельца */
+    width:min(73.5vw, 44.5svh); aspect-ratio:432 / 352;   /* размер подобран владельцем: −10%, затем ещё −5% */
     margin-bottom:2svh;
     background:url("../img/mark-letter.png?v=23e12377") center / contain no-repeat;
     pointer-events:none;
