@@ -99,7 +99,7 @@
     'lp.foot.cta': 'Request<br>concierge',
     'sec.svc.label': 'Services',
     'sec.svc.h': 'What we <span class="h-cap">deliver</span>',
-    'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “Can you?” is YES, WE CAN!',
+    'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “What can you do?” is WE CAN DO ALMOST ANYTHING!',
     'sec.dest.label': 'Destinations',
     'sec.dest.h': 'Where we work',
     'sec.dest.lede': 'We also provide remote support and settle many matters across South and Central America.',
@@ -303,7 +303,7 @@
 
     'sec.svc.label': 'Serviços',
     'sec.svc.h': 'O que <span class="h-cap">realizamos</span>',
-    'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “Vocês conseguem?” é SIM, CONSEGUIMOS!',
+    'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “O que vocês conseguem?” é CONSEGUIMOS PRATICAMENTE TUDO!',
 
     'lp.slogan1': 'Seu tempo.',
     'lp.slogan2': 'Nossa responsabilidade.',
@@ -536,7 +536,7 @@
 
     'sec.svc.label': 'Servicios',
     'sec.svc.h': 'Lo que <span class="h-cap">realizamos</span>',
-    'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Pueden?» es SÍ, PODEMOS!',
+    'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Qué pueden hacer?» es ¡PODEMOS PRÁCTICAMENTE TODO!',
 
     'lp.slogan1': 'Su tiempo.',
     'lp.slogan2': 'Nuestra responsabilidad.',
@@ -769,7 +769,7 @@
 
     'sec.svc.label': 'Servizi',
     'sec.svc.h': 'Che cosa <span class="h-cap">realizziamo</span>',
-    'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Potete?» è SÌ, POSSIAMO!',
+    'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Che cosa potete fare?» è POSSIAMO PRATICAMENTE TUTTO!',
 
     'lp.slogan1': 'Il vostro tempo.',
     'lp.slogan2': 'La nostra responsabilità.',
