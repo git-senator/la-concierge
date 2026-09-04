@@ -1,0 +1,153 @@
+/* ════════════════════════════════════════════════════════════════
+   ВАРИАНТ №3 — визуальный язык ROSSA & CO
+   ════════════════════════════════════════════════════════════════
+
+   Слой поверх style.css: разметка и содержание те же, что у второго
+   варианта, меняется только оформление. Так вариант можно править и
+   выбрасывать, не трогая работающий v2.
+
+   Значения не подобраны на глаз — сняты с brashouse.com: цвета и
+   градиент через getComputedStyle, шрифты обходом узлов страницы.
+   ════════════════════════════════════════════════════════════════ */
+
+:root{
+  --r-gold:#C0A161;                 /* плоское золото эталона        */
+  --r-gold-lt:#FFF3B0;              /* светлый конец градиента       */
+  --r-grad:linear-gradient(86.76deg, #C0A161 34%, #FFF3B0 100%);
+  --r-ink:#050505;                  /* текст на золотой заливке      */
+  --r-bg:#0A0B0C;                   /* фон страницы                  */
+  --r-panel:#181B1E;                /* капсула и карточки            */
+  --r-text:#B8BCC2;                 /* основной текст, холодный серый*/
+  --r-white:#F5F5F5;                /* заголовки                     */
+  --r-line:rgba(192,161,97,.24);    /* золотой волосок               */
+  --r-sans:"Figtree", system-ui, sans-serif;
+  --r-serif:"Cormorant Infant", "Cormorant Garamond", Georgia, serif;
+}
+
+body{ background:var(--r-bg); }
+
+/* ── Капсула вместо шапки ────────────────────────────────────────
+   Эталон: радиус 300px, фон #181B1E, размытие подложки, волосяная
+   рамка. Прозрачность добавлена своя — под капсулой должен читаться
+   фон, иначе размытие бессмысленно.                              */
+.nav{ background:none; border-bottom:0; backdrop-filter:none; padding:14px 16px 0; }
+.nav-in{
+  max-width:1380px; margin:0 auto;
+  background:rgba(24,27,30,.78);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+          backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--r-line); border-radius:300px;
+  padding:11px 14px 11px 26px;
+  box-shadow:0 20px 55px rgba(0,0,0,.55);
+}
+.nav-links a{ font-family:var(--r-sans); font-weight:400; font-size:13.5px;
+  letter-spacing:.01em; text-transform:none; color:var(--r-text); }
+.nav-links a:hover{ color:var(--r-white); }
+.lang-btn{ font-family:var(--r-sans); color:var(--r-text); border:0; }
+
+/* ── Кнопки ──────────────────────────────────────────────────────
+   Главная — золотая заливка-градиент с тёмным текстом. Вторичная —
+   прозрачная с тем же золотым волоском. Обе пилюли.             */
+.btn-gold, .nav-right .btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--r-sans); font-weight:600; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase;
+  border-radius:999px; border:0; white-space:nowrap;
+}
+.btn-gold{ background-image:var(--r-grad); color:var(--r-ink);
+  height:52px; padding:0 34px; }
+.nav-right .btn{ background-image:var(--r-grad); color:var(--r-ink);
+  height:44px; padding:0 26px; }
+.nav-right .btn::after{ display:none; }
+.btn-wire{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:52px; padding:0 32px; border-radius:999px;
+  border:1px solid var(--r-line); color:var(--r-white); background:rgba(24,27,30,.6);
+  font-family:var(--r-sans); font-weight:500; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase;
+}
+.btn-wire:hover{ border-color:var(--r-gold); }
+
+/* ── Первый экран ────────────────────────────────────────────────
+   Надзаголовок золотыми капсами с чертой под ними, заголовок в две
+   строки — белая и золотая, подводка холодным серым, две кнопки. */
+.hero{ background:var(--r-bg); }
+.hero-in{ text-align:center; }
+.r-eyebrow{
+  font-family:var(--r-sans); font-weight:500; font-size:12px;
+  letter-spacing:.42em; text-indent:.42em; text-transform:uppercase;
+  color:var(--r-gold); margin:0;
+}
+.r-eyebrow::after{
+  content:''; display:block; width:104px; height:1px; margin:16px auto 0;
+  background:var(--r-gold); opacity:.75;
+}
+.r-title{
+  font-family:var(--r-serif); font-weight:700;
+  font-size:clamp(38px, 6.6vw, 92px); line-height:1.03;
+  color:var(--r-white); margin:clamp(26px,4vh,48px) 0 0;
+  letter-spacing:0;
+}
+.r-title .ln{ display:block; }
+/* Золотая строка залита тем же градиентом, что и кнопка, — заливка
+   идёт по самим буквам, поэтому текст остаётся текстом.          */
+.r-title .gold{
+  background-image:var(--r-grad);
+  -webkit-background-clip:text; background-clip:text;
+  color:transparent;
+}
+.r-lede{
+  font-family:var(--r-sans); font-weight:300; font-size:clamp(15px,1.15vw,18px);
+  line-height:1.65; color:var(--r-text);
+  max-width:56ch; margin:clamp(18px,2.6vh,30px) auto 0;
+}
+.hero-act{ margin-top:clamp(26px,4vh,46px); gap:14px; }
+
+/* ── Полоса цифр под первым экраном ──────────────────────────── */
+.hero-rail{ border-top:1px solid var(--r-line); }
+.hero-rail b{ font-family:var(--r-serif); font-weight:700; color:var(--r-gold); }
+.hero-rail em, .hero-rail span{ font-family:var(--r-sans); color:var(--r-text);
+  text-transform:uppercase; letter-spacing:.16em; font-size:11px; }
+
+/* ── Телефон ─────────────────────────────────────────────────── */
+@media (max-width:980px){
+  .nav{ padding:10px 10px 0; }
+  .nav-in{ padding:9px 10px 9px 16px; border-radius:300px; }
+  .btn-gold, .btn-wire{ width:100%; }
+  .hero-act{ flex-direction:column; align-items:stretch; }
+}
+
+/* ── Развязка с наследством второго варианта ─────────────────────
+   В v2 первый экран и витрина склеены в одно полотно высотой в окно,
+   а кнопки под заголовком показывались только на телефоне. Третьему
+   варианту нужен полноэкранный герой в языке эталона, поэтому склейку
+   распускаем, кнопки открываем на всех экранах, а витрину убираем —
+   её место займёт свой раздел.                                    */
+@media (min-width:981px){
+  .home-canvas{ min-height:0; display:block; }
+  .hero{ min-height:100svh; display:grid; grid-template-rows:1fr auto;
+         padding:calc(var(--navh) + 40px) 0 0; align-content:normal; }
+  .hero-in{ align-self:center; }
+  .hero-act{ display:flex; }
+  .lp{ display:none; }
+}
+.hero-act{ display:flex; justify-content:center; flex-wrap:wrap; }
+
+/* Знак в капсуле: у v2 он рассчитан на широкую шапку, в пилюле его
+   надо ужать, иначе он распирает её по высоте.                    */
+.nav .brand-mark{ width:46px; height:46px; }
+.nav-in{ align-items:center; }
+
+/* v2 прячет кнопку первого экрана на широком экране не только через
+   display, но и через visibility — снимаем и её.                  */
+.hero-act, .btn-gold, .btn-wire{ visibility:visible; }
+
+/* Заголовок эталона набран узкой колонкой, и золотой градиент на нём
+   успевает дойти до светлого конца. У нас строка во всю ширину, и
+   исходный градиент держал бы первую треть в тёмной бронзе — строка
+   читалась бы грязной. Берём тот же диапазон, но с несколькими
+   остановками, чтобы блеск шёл по всей длине.                    */
+.r-title .gold{
+  background-image:linear-gradient(92deg,
+    #B8892F 0%, #C9A44C 14%, #EBD9A4 38%, #FFF3B0 54%, #EBD9A4 72%, #C9A44C 92%, #B8892F 100%);
+}
