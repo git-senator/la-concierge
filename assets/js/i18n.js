@@ -122,7 +122,7 @@
     'direct.tel': 'Telephone',
 
 
-    'final.claim1': 'Everything you need in Brazil, Argentina and Paraguay —',
+    'final.claim1': 'Everything you need in Brazil, Argentina and Paraguay',
     'final.claim2': 'on a single phone number.',
 
     'foot.brand': 'Time <em>—</em> the highest form of luxury, and we look after it',
@@ -355,7 +355,7 @@
     'direct.tel': 'Telefone',
 
 
-    'final.claim1': 'Tudo o que você precisa no Brasil, na Argentina e no Paraguai —',
+    'final.claim1': 'Tudo o que você precisa no Brasil, na Argentina e no Paraguai',
     'final.claim2': 'em um único número de telefone.',
 
     'foot.brand': 'O tempo <em>—</em> a forma mais alta de luxo, e nós cuidamos dele',
@@ -588,7 +588,7 @@
     'direct.tel': 'Teléfono',
 
 
-    'final.claim1': 'Todo lo que necesita en Brasil, Argentina y Paraguay —',
+    'final.claim1': 'Todo lo que necesita en Brasil, Argentina y Paraguay',
     'final.claim2': 'en un solo número de teléfono.',
 
     'foot.brand': 'El tiempo <em>—</em> la forma más alta de lujo, y nosotros lo cuidamos',
@@ -821,7 +821,7 @@
     'direct.tel': 'Telefono',
 
 
-    'final.claim1': 'Tutto ciò che le serve in Brasile, Argentina e Paraguay —',
+    'final.claim1': 'Tutto ciò che le serve in Brasile, Argentina e Paraguay',
     'final.claim2': 'su un unico numero di telefono.',
 
     'foot.brand': 'Il tempo <em>—</em> la forma più alta di lusso, e noi ce ne occupiamo',
