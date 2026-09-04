@@ -2812,15 +2812,23 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    на 320, 390 и 430.                                              */
 @media (max-width:980px){
   .hero-in .lk-claim{
-    padding-block:calc(var(--lk) * .3672);
-    padding-inline:calc(var(--lk) * .54);
-    gap:calc(var(--lk) * .1728);
-    margin-top:calc(var(--lk) * .4568);
-    margin-bottom:calc(var(--lk) * -.0632);
+    padding-block:calc(var(--lk) * .3856);
+    padding-inline:calc(var(--lk) * .567);
+    gap:calc(var(--lk) * .1814);
+    /* Прирост высоты гасим не поровну, а 40% сверху и 60% снизу: над
+       рамкой всего пятнадцать пикселей до строки CONCIERGE SERVICE, а
+       под ней до надписи на кнопке — двадцать четыре. Сумма поправок
+       по-прежнему равна приросту, поэтому высота знака не меняется. */
+    margin-top:calc(var(--lk) * .4084);
+    margin-bottom:calc(var(--lk) * -.1674);
   }
-  .hero-in .lk-claim b{ font-size:calc(var(--lk) * .3078); }
-  .hero-in .lk-dot{ font-size:calc(var(--lk) * .324); }
+  /* Кегль строки поднят ещё на 8% сверх общего увеличения рамки, а цвет
+     сменён с пергаментного на чистый белый — тот же, что у надписи на
+     кнопке «Связаться с нами». Насыщенность у них и так одинаковая,
+     600; плотнее кнопка выглядела именно за счёт размера и белизны. */
+  .hero-in .lk-claim b{ font-size:calc(var(--lk) * .349); color:#fff; }
+  .hero-in .lk-dot{ font-size:calc(var(--lk) * .3402); }
 }
 @media (max-width:560px){
-  .hero-in .lk-claim{ padding-inline:calc(var(--lk) * .3672); }
+  .hero-in .lk-claim{ padding-inline:calc(var(--lk) * .3856); }
 }
