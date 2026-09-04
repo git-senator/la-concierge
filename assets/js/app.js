@@ -658,3 +658,57 @@
     });
   }
 })();
+
+/* ── Верх стеклянной полосы витрины ─────────────────────────────
+   Полоса начинается по верху прописных в заголовке «Ваше время».
+   Расстояние от края сетки до этой линии складывается из скрытой
+   строки рубрики и полудюжины clamp'ов — в CSS его не выразить,
+   поэтому считаем здесь и отдаём в --lp-glass-top.
+
+   Берём offsetTop, а не getBoundingClientRect: он измеряет саму
+   раскладку и не зависит ни от прокрутки, ни от transform, которым
+   колонки выезжают при появлении. Отсчёт у offsetTop идёт от
+   padding-box ближайшего позиционированного предка — это .lp-grid,
+   то есть ровно та же система координат, что у top псевдоэлемента.
+
+   .155em — путь от верха строки до верха прописных: половина
+   интерлиньяжа плюс просвет над капителью, снято с метрик шрифта. */
+(function(){
+  var grid = document.querySelector('.lp-grid');
+  var head = document.querySelector('.lp-philosophy .lp-h');
+  if (!grid || !head) return;
+  var last = null;
+  function place(){
+    if (window.innerWidth < 981){
+      if (last !== null){ grid.style.removeProperty('--lp-glass-top'); last = null; }
+      return;
+    }
+    var fs = parseFloat(getComputedStyle(head).fontSize) || 0;
+    var v = Math.round((head.offsetTop + fs * 0.155) * 10) / 10;
+    if (v !== last){ last = v; grid.style.setProperty('--lp-glass-top', v + 'px'); }
+  }
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  /* Раскладка витрины устаканивается не сразу: примерно через
+     секунду после загрузки содержимое колонки сдвигается вниз на
+     десяток пикселей — колонка выстроена флексом со свободным
+     местом, и оно перераспределяется, когда доигрывает появление.
+     Ни высота колонки, ни высота заголовка при этом не меняются,
+     поэтому ResizeObserver молчит: ловим переход и добираем
+     несколькими отложенными замерами. */
+  grid.addEventListener('transitionend', place);
+  [400, 1200, 2500].forEach(function(ms){ setTimeout(place, ms); });
+  /* Смотрим не только за сеткой, но и за самим заголовком. Когда
+     подгружается начертание, его высота меняется, и место внутри
+     колонки перераспределяется: у рубрики margin-bottom:auto, и
+     заголовок съезжает вниз на десяток пикселей. Высота колонки при
+     этом не меняется — наблюдения за одной сеткой не хватает. */
+  if (window.ResizeObserver){
+    var ro = new ResizeObserver(place);
+    ro.observe(grid); ro.observe(head);
+    var col = head.closest('.lp-col'); if (col) ro.observe(col);
+  }
+})();
+
