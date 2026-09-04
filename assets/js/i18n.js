@@ -98,7 +98,7 @@
     'lp.foot.geo': 'Brazil · South America',
     'lp.foot.cta': 'Request<br>concierge',
     'sec.svc.label': 'Services',
-    'sec.svc.h': 'What we arrange',
+    'sec.svc.h': 'What we <span class="h-cap">deliver</span>',
     'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “Can you?” is YES, WE CAN!',
     'sec.dest.label': 'Destinations',
     'sec.dest.h': 'Where we work',
@@ -302,7 +302,7 @@
     'rail.number': 'número',
 
     'sec.svc.label': 'Serviços',
-    'sec.svc.h': 'O que organizamos',
+    'sec.svc.h': 'O que <span class="h-cap">realizamos</span>',
     'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “Vocês conseguem?” é SIM, CONSEGUIMOS!',
 
     'lp.slogan1': 'Seu tempo.',
@@ -535,7 +535,7 @@
     'rail.number': 'número',
 
     'sec.svc.label': 'Servicios',
-    'sec.svc.h': 'Lo que organizamos',
+    'sec.svc.h': 'Lo que <span class="h-cap">realizamos</span>',
     'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Pueden?» es SÍ, PODEMOS!',
 
     'lp.slogan1': 'Su tiempo.',
@@ -768,7 +768,7 @@
     'rail.number': 'numero',
 
     'sec.svc.label': 'Servizi',
-    'sec.svc.h': 'Che cosa organizziamo',
+    'sec.svc.h': 'Che cosa <span class="h-cap">realizziamo</span>',
     'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Potete?» è SÌ, POSSIAMO!',
 
     'lp.slogan1': 'Il vostro tempo.',
