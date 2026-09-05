@@ -947,9 +947,12 @@
    Шрифт обязан быть загружен, иначе canvas вернёт метрики подменного
    шрифта: пересчитываем после fonts.ready и по смене языка.      */
 (function () {
+  /* Линия висит на самом заголовке — подчёркнут весь текст. В
+     «Консьерже» заголовок в две строки, там линия только под
+     нижней, поэтому целью остаётся .h-cap. */
   var caps = [].slice.call(document.querySelectorAll(
-    '.services .sec-head h2 .h-cap, #destinations .sec-head h2 .h-cap, ' +
-    '#concierge .sec-head h2 .h-cap, #request .sec-head h2 .h-cap'));
+    '.services .sec-head h2, #destinations .sec-head h2, ' +
+    '#request .sec-head h2, #concierge .sec-head h2 .h-cap'));
   if (!caps.length) return;
 
   var GAP = .045;            /* просвет под буквами, доля кегля      */
