@@ -276,7 +276,10 @@ html[lang="ru"] .hero-rail b{ font-family:"Playfair Display", Georgia, serif; }
    семистах обнуляется: там знак и так почти касается слогана, и
    опускать его дальше значило бы наехать на витрину.             */
 @media (min-width:981px){
-  .hero-in .lockup{ translate:0 clamp(0px, calc((100svh - 700px) * .5), 2cm); }
+  /* 2cm — это 75.59px, дробная величина: знак вставал между
+     экранными точками и буквы теряли штрихи. Округлено до 76px,
+     дальше сдвиг уточняет скрипт по сетке экрана. */
+  .hero-in .lockup{ translate:0 clamp(0px, calc((100svh - 700px) * .5), 76px); }
 }
 
 /* ══════════ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА БЕЗ РАМКИ ══════════
@@ -476,7 +479,8 @@ body{
   }
   .hero-in .lk-claim::before{
     content:''; position:absolute; inset:0; pointer-events:none;
-    border:1px solid var(--lk-line);
+    /* --hair задаёт скрипт: целое число физических точек экрана */
+    border:var(--hair, 1px) solid var(--lk-line);
     border-radius:inherit;
     -webkit-mask-image:radial-gradient(circle at 50% 0, #0000 0 .55em, #000 .55em);
             mask-image:radial-gradient(circle at 50% 0, #0000 0 .55em, #000 .55em);

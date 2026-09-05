@@ -830,6 +830,102 @@
   }
 })();
 
+/* ── Первый экран по пиксельной сетке ────────────────────────────
+   Владелец увидел ступеньки на скруглениях рамки и рваные буквы.
+   Причина не в скруглении, а в дробных координатах: сдвиг знака
+   задан в сантиметрах (2cm = 75.59px), поля рамки — в долях кегля,
+   ширина — по тексту. Рамка вставала на 409.94 при ширине 1100.13,
+   то есть каждая её грань ложилась между экранными точками и
+   размазывалась на две с половинной яркостью. Дуга из таких точек и
+   читается ступеньками, а текст внутри теряет штрихи.
+
+   Здесь всё, что рисует первый экран, кладётся на сетку экрана:
+   сдвиг знака, ширина, высота и левый верхний угол рамки округляются
+   до целого числа физических точек (в дробном масштабе Windows —
+   125% или 150% — это не целый пиксель CSS, поэтому делим на
+   devicePixelRatio). Толщина волоска тоже приводится к целому числу
+   точек: при 125% это .8px CSS, ровно одна точка, и линия перестаёт
+   быть полупрозрачной.
+
+   Размеры снимаем после сброса прежних значений, иначе замер вернёт
+   уже округлённое и ошибка накопится. Пересчёт — на всех событиях,
+   которые меняют раскладку: поворот, зум (меняет dpr), подгрузка
+   шрифтов, смена языка (следим за размером самой строки).
+
+   Только компьютер: на телефоне рамка своя, её не трогаем.      */
+(function () {
+  var lock  = document.querySelector('.hero-in .lockup');
+  var claim = document.querySelector('.hero-in .lk-claim');
+  if (!lock || !claim) return;
+
+  var SHIFT = 76;            /* два сантиметра, приведённые к целому */
+  var rules = [].slice.call(lock.querySelectorAll('.lk-sub i'));
+  var on = false;
+
+  function clear() {
+    lock.style.removeProperty('translate');
+    lock.style.removeProperty('--hair');
+    claim.style.removeProperty('translate');
+    claim.style.removeProperty('width');
+    claim.style.removeProperty('height');
+    rules.forEach(function (i) {
+      i.style.removeProperty('translate');
+      i.style.removeProperty('height');
+    });
+    on = false;
+  }
+
+  function snap() {
+    if (window.innerWidth < 981) { if (on) clear(); return; }
+    on = true;
+
+    var dpr = window.devicePixelRatio || 1;
+    var q = function (v) { return Math.round(v * dpr) / dpr; };
+
+    /* Волосок — целым числом физических точек */
+    var hair = Math.max(1, Math.round(dpr)) / dpr;
+    lock.style.setProperty('--hair', hair + 'px');
+
+    /* Сдвиг знака: та же формула, что в CSS, но по сетке */
+    var shift = Math.min(SHIFT, Math.max(0, (window.innerHeight - 700) / 2));
+    lock.style.translate = '0 ' + q(shift) + 'px';
+
+    /* Рамка: сперва сброс, потом замер, потом округление */
+    claim.style.removeProperty('translate');
+    claim.style.removeProperty('width');
+    claim.style.removeProperty('height');
+    var r = claim.getBoundingClientRect();
+    claim.style.width  = q(r.width)  + 'px';
+    claim.style.height = q(r.height) + 'px';
+
+    var r2 = claim.getBoundingClientRect();
+    claim.style.translate = (q(r2.left) - r2.left).toFixed(4) + 'px '
+                          + (q(r2.top)  - r2.top ).toFixed(4) + 'px';
+
+    /* Волоски по бокам подписи: высота — целое число точек, верх —
+       на границе точки. Иначе линия в одну точку размазывается на
+       две ряда вполсилы и рядом со свечением читается грязной. */
+    rules.forEach(function (i) {
+      i.style.removeProperty('translate');
+      i.style.height = hair + 'px';
+      var ri = i.getBoundingClientRect();
+      i.style.translate = '0 ' + (q(ri.top) - ri.top).toFixed(4) + 'px';
+    });
+  }
+
+  snap();
+  window.addEventListener('resize', snap, { passive:true });
+  window.addEventListener('load', snap);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(snap, ms); });
+  if (window.ResizeObserver) {
+    /* За высотой рамки следить нельзя — мы её сами задаём. Следим за
+       строкой внутри: она меняется при смене языка и подгрузке шрифта. */
+    var line = claim.querySelector('b');
+    if (line) new ResizeObserver(snap).observe(line);
+  }
+})();
+
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
    Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
    рамки в полосу слогана меняется с высотой окна. Считаем зазор
