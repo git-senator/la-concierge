@@ -61,8 +61,6 @@
     'hero.eyebrow': 'Brazil <em>·</em> Latin America <em>·</em> Answered at any hour',
     'hero.cta': 'Request a concierge',
     'hero.wa': 'Contact us',
-    'v3.eyebrow': 'Brazil · South America',
-    'v3.lede': 'A private concierge for people whose time is the scarce part. Transport, aviation, yachts, residences, papers and protection — one request, and it is arranged.',
     'hero.note': 'The list of families we keep is short. That is the service.',
 
     'rail.attendance': 'attendance',
@@ -100,13 +98,18 @@
     'lp.foot.geo': 'Brazil · South America',
     'lp.foot.cta': 'Request<br>concierge',
     'sec.svc.label': 'Services',
-    'sec.svc.h': 'What we arrange',
-    'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “Can you?” is YES, WE CAN!',
+    'sec.svc.h': 'What we <span class="h-cap">deliver</span>',
+    'sec.svc.lede': 'Our services are limitless. In 99% of cases the answer to “What can you do?” is WE CAN DO ALMOST ANYTHING!',
     'sec.dest.label': 'Destinations',
-    'sec.dest.h': 'Where we work',
-    'sec.dest.lede': 'We also provide remote support and settle many matters across South and Central America.',
+    'sec.dest.h': 'Where we <span class="h-cap">work</span>',
+    'sec.dest.lede': 'We also provide remote support and settle many matters across the whole South American continent.',
+    'dest.country.br': 'Brazil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'The Concierge',
-    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln">The rest is our business</span>',
+    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln"><span class="h-cap">The rest is our business</span></span>',
 
     'conc.pull': 'One contact for anything you need in Brazil.',
     'conc.p1': 'From a simple everyday errand to a complex matter involving lawyers, brokers, drivers or other specialists — you never have to find the people or coordinate them yourself.',
@@ -116,16 +119,20 @@
     'conc.signName': '<span class="sl">Concierge service across</span> <span class="sl">the entire continent of</span> <span class="sl">South America</span>',
 
     'sec.req.label': 'The Request',
-    'sec.req.h': 'Let us take care of everything.',
-    'sec.req.lede': 'Tell us your preferences and your plans — we will take care of the rest.<br><br>Give us the city, the dates and a few details that matter to you. We will study them closely and propose solutions that match your level of comfort, taste and expectations.',
+    'sec.req.h': 'Let us take care of <span class="h-cap">everything.</span>',
+    'sec.req.lede': 'Send us your request and we will be in touch.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
     'direct.tel': 'Telephone',
 
 
-    'final.claim1': 'Everything you need in Brazil —',
+    'final.claim1': 'Everything you need in Brazil, Argentina and Paraguay',
     'final.claim2': 'on a single phone number.',
+    'v3.eyebrow': 'Brazil · South America',
+    'v3.lede': 'A private concierge for people whose time is the scarce part. Transport, aviation, yachts, residences, papers and protection — one request, and it is arranged.',
+    'v3.claim1': 'Everything you need in Brazil —',
+    'v3.claim2': 'on a single phone number.',
 
     'foot.brand': 'Time <em>—</em> the highest form of luxury, and we look after it',
     'foot.privacy': 'Privacy',
@@ -137,10 +144,10 @@
     'lang.sub': 'You can change it at any time — the switch sits in the header.',
     'lang.btn': 'Language',
 
-    'form.fullName': 'Full name',
-    'form.whatsapp': 'WhatsApp number',
+    'form.fullName': 'Name',
+    'form.whatsapp': 'WhatsApp/Telegram number',
     'form.email': 'Email',
-    'form.country': 'Country',
+    'form.country': 'Location',
     'form.service': 'Service',
     'form.location': 'Preferred location',
     'form.date': 'Preferred date',
@@ -160,6 +167,7 @@
     'form.errEmail': 'Enter a valid email address.',
     'form.other': 'Something else',
     'form.loc.brazil': 'Elsewhere in Brazil',
+    'form.loc.custom': 'Custom request',
     'form.loc.latam': 'Elsewhere in LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Not decided yet',
@@ -261,8 +269,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, forty-two beaches and the summer address of São Paulo money. Villas, beach clubs and a season that runs December to March.'],
 ['Rio de Janeiro','Leblon and Ipanema, helicopter transfers across the bay, and a city that has never once negotiated its own beauty. Carnival is booked a year ahead.'],
-['São Paulo','Where the business is actually done. Itaim and Jardins, the largest civil helicopter fleet in the hemisphere, and the hospitals people fly in for.'],
-['Balneário Camboriú','Towers standing right on the sand, the Barra Sul marina, and beaches you reach by cable car. An hour from Florianópolis by road, with a season that runs December to March.']
+['São Paulo','Where the business is actually done. Itaim and Jardins, the largest civil helicopter fleet in the hemisphere, and the hospitals people fly in for.']
     ],
     step: [
 ['You ask','One message, at any hour, in your language. WhatsApp, Telegram, or the form below.'],
@@ -296,8 +303,6 @@
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Atendemos a qualquer hora',
     'hero.cta': 'Solicitar um concierge',
     'hero.wa': 'Fale conosco',
-    'v3.eyebrow': 'Brasil · América do Sul',
-    'v3.lede': 'Um concierge privado para quem valoriza o próprio tempo. Transporte, aviação, iates, residências, documentos e segurança — um pedido, e tudo fica resolvido.',
     'hero.note': 'A lista de famílias que atendemos é curta. É justamente esse o serviço.',
 
     'rail.attendance': 'atendimento',
@@ -306,8 +311,8 @@
     'rail.number': 'número',
 
     'sec.svc.label': 'Serviços',
-    'sec.svc.h': 'O que organizamos',
-    'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “Vocês conseguem?” é SIM, CONSEGUIMOS!',
+    'sec.svc.h': 'O que <span class="h-cap">realizamos</span>',
+    'sec.svc.lede': 'Nossos serviços são ilimitados. Em 99% dos casos, a resposta para “O que vocês conseguem?” é CONSEGUIMOS PRATICAMENTE TUDO!',
 
     'lp.slogan1': 'Seu tempo.',
     'lp.slogan2': 'Nossa responsabilidade.',
@@ -338,10 +343,15 @@
     'lp.foot.geo': 'Brasil · América do Sul',
     'lp.foot.cta': 'Solicitar<br>concierge',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'A geografia do nosso trabalho',
-    'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em toda a América do Sul e Central.',
+    'sec.dest.h': 'A geografia do nosso <span class="h-cap">trabalho</span>',
+    'sec.dest.lede': 'Também oferecemos suporte remoto e resolvemos muitas questões em todo o continente sul-americano.',
+    'dest.country.br': 'Brasil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguai',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Assunção',
     'sec.conc.label': 'O Concierge',
-    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln">O restante é conosco</span>',
+    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln"><span class="h-cap">O restante é conosco</span></span>',
 
     'conc.pull': 'Um único contato para qualquer necessidade no Brasil.',
     'conc.p1': 'De um pedido simples do dia a dia a uma questão complexa que envolve advogados, corretores, motoristas ou outros especialistas — você não precisa procurar os executores nem coordená-los sozinho.',
@@ -351,16 +361,20 @@
     'conc.signName': '<span class="sl">Serviço de concierge em</span> <span class="sl">todo o continente</span> <span class="sl">sul-americano</span>',
 
     'sec.req.label': 'A Solicitação',
-    'sec.req.h': 'Deixe que cuidemos de tudo.',
-    'sec.req.lede': 'Conte-nos suas preferências e seus planos — do resto cuidamos nós.<br><br>Informe a cidade, as datas e alguns detalhes importantes para você. Vamos analisá-los com atenção e propor soluções à altura do seu conforto, do seu gosto e das suas expectativas.',
+    'sec.req.h': 'Deixe que cuidemos de <span class="h-cap">tudo.</span>',
+    'sec.req.lede': 'Envie sua solicitação e entraremos em contato.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
     'direct.tel': 'Telefone',
 
 
-    'final.claim1': 'Tudo o que você precisa no Brasil —',
+    'final.claim1': 'Tudo o que você precisa no Brasil, na Argentina e no Paraguai',
     'final.claim2': 'em um único número de telefone.',
+    'v3.eyebrow': 'Brasil · América do Sul',
+    'v3.lede': 'Um concierge privado para quem valoriza o próprio tempo. Transporte, aviação, iates, residências, documentos e segurança — um pedido, e tudo fica resolvido.',
+    'v3.claim1': 'Tudo o que você precisa no Brasil —',
+    'v3.claim2': 'em um único número de telefone.',
 
     'foot.brand': 'O tempo <em>—</em> a forma mais alta de luxo, e nós cuidamos dele',
     'foot.privacy': 'Privacidade',
@@ -372,10 +386,10 @@
     'lang.sub': 'Pode mudar a qualquer momento — o seletor fica no topo.',
     'lang.btn': 'Idioma',
 
-    'form.fullName': 'Nome completo',
-    'form.whatsapp': 'Número de WhatsApp',
+    'form.fullName': 'Nome',
+    'form.whatsapp': 'Número de WhatsApp/Telegram',
     'form.email': 'E-mail',
-    'form.country': 'País',
+    'form.country': 'Localização',
     'form.service': 'Serviço',
     'form.location': 'Local de preferência',
     'form.date': 'Data de preferência',
@@ -395,6 +409,7 @@
     'form.errEmail': 'Informe um e-mail válido.',
     'form.other': 'Outro',
     'form.loc.brazil': 'Outro lugar no Brasil',
+    'form.loc.custom': 'Pedido personalizado',
     'form.loc.latam': 'Outro país da LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Ainda não decidi',
@@ -496,8 +511,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, quarenta e duas praias e o endereço de verão do dinheiro paulista. Casas, beach clubs e uma temporada que vai de dezembro a março.'],
 ['Rio de Janeiro','Leblon e Ipanema, transferências de helicóptero sobre a baía e uma cidade que nunca negociou a própria beleza. O Carnaval se reserva com um ano de antecedência.'],
-['São Paulo','Onde os negócios realmente acontecem. Itaim e Jardins, a maior frota civil de helicópteros do hemisfério e os hospitais pelos quais se atravessa o continente.'],
-['Balneário Camboriú','Torres coladas na areia, a marina da Barra Sul e praias a que se chega de bondinho. Uma hora de Florianópolis por terra, com temporada de dezembro a março.']
+['São Paulo','Onde os negócios realmente acontecem. Itaim e Jardins, a maior frota civil de helicópteros do hemisfério e os hospitais pelos quais se atravessa o continente.']
     ],
     step: [
 ['Você pede','Uma mensagem, a qualquer hora, no seu idioma. WhatsApp, Telegram ou o formulário abaixo.'],
@@ -531,8 +545,6 @@
     'hero.eyebrow': 'Brasil <em>·</em> América Latina <em>·</em> Respondemos a cualquier hora',
     'hero.cta': 'Solicitar un conserje',
     'hero.wa': 'Contáctenos',
-    'v3.eyebrow': 'Brasil · América del Sur',
-    'v3.lede': 'Un conserje privado para quien valora su tiempo. Transporte, aviación, yates, residencias, documentos y seguridad: una petición y todo queda resuelto.',
     'hero.note': 'La lista de familias que atendemos es corta. En eso consiste el servicio.',
 
     'rail.attendance': 'atención',
@@ -541,8 +553,8 @@
     'rail.number': 'número',
 
     'sec.svc.label': 'Servicios',
-    'sec.svc.h': 'Lo que organizamos',
-    'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Pueden?» es SÍ, PODEMOS!',
+    'sec.svc.h': 'Lo que <span class="h-cap">realizamos</span>',
+    'sec.svc.lede': 'Nuestros servicios son ilimitados. En el 99% de los casos, la respuesta a «¿Qué pueden hacer?» es ¡PODEMOS PRÁCTICAMENTE TODO!',
 
     'lp.slogan1': 'Su tiempo.',
     'lp.slogan2': 'Nuestra responsabilidad.',
@@ -573,10 +585,15 @@
     'lp.foot.geo': 'Brasil · Sudamérica',
     'lp.foot.cta': 'Solicitar<br>concierge',
     'sec.dest.label': 'Destinos',
-    'sec.dest.h': 'La geografía de nuestro trabajo',
-    'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en toda América del Sur y Central.',
+    'sec.dest.h': 'La geografía de nuestro <span class="h-cap">trabajo</span>',
+    'sec.dest.lede': 'También ofrecemos apoyo remoto y resolvemos muchos asuntos en todo el continente sudamericano.',
+    'dest.country.br': 'Brasil',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'El Conserje',
-    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln">El resto es cosa nuestra</span>',
+    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln"><span class="h-cap">El resto es cosa nuestra</span></span>',
 
     'conc.pull': 'Un solo contacto para cualquier asunto en Brasil.',
     'conc.p1': 'Desde una petición cotidiana hasta un asunto complejo que requiere abogados, corredores, choferes u otros especialistas — usted no tiene que buscar a los ejecutores ni coordinarlos.',
@@ -586,16 +603,20 @@
     'conc.signName': '<span class="sl">Servicio de conserjería en</span> <span class="sl">todo el continente</span> <span class="sl">sudamericano</span>',
 
     'sec.req.label': 'La Petición',
-    'sec.req.h': 'Permítanos ocuparnos de todo.',
-    'sec.req.lede': 'Cuéntenos sus preferencias y sus planes — del resto nos ocupamos nosotros.<br><br>Indíquenos la ciudad, las fechas y algunos detalles importantes para usted. Los estudiaremos con atención y le propondremos soluciones acordes con su nivel de confort, su gusto y sus expectativas.',
+    'sec.req.h': 'Permítanos ocuparnos de <span class="h-cap">todo.</span>',
+    'sec.req.lede': 'Envíenos su solicitud y nos pondremos en contacto.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
     'direct.tel': 'Teléfono',
 
 
-    'final.claim1': 'Todo lo que necesita en Brasil —',
+    'final.claim1': 'Todo lo que necesita en Brasil, Argentina y Paraguay',
     'final.claim2': 'en un solo número de teléfono.',
+    'v3.eyebrow': 'Brasil · América del Sur',
+    'v3.lede': 'Un conserje privado para quien valora su tiempo. Transporte, aviación, yates, residencias, documentos y seguridad: una petición y todo queda resuelto.',
+    'v3.claim1': 'Todo lo que necesita en Brasil —',
+    'v3.claim2': 'en un solo número de teléfono.',
 
     'foot.brand': 'El tiempo <em>—</em> la forma más alta de lujo, y nosotros lo cuidamos',
     'foot.privacy': 'Privacidad',
@@ -607,10 +628,10 @@
     'lang.sub': 'Puede cambiarlo en cualquier momento — el selector está arriba.',
     'lang.btn': 'Idioma',
 
-    'form.fullName': 'Nombre completo',
-    'form.whatsapp': 'Número de WhatsApp',
+    'form.fullName': 'Nombre',
+    'form.whatsapp': 'Número de WhatsApp/Telegram',
     'form.email': 'Correo electrónico',
-    'form.country': 'País',
+    'form.country': 'Ubicación',
     'form.service': 'Servicio',
     'form.location': 'Lugar preferido',
     'form.date': 'Fecha preferida',
@@ -630,6 +651,7 @@
     'form.errEmail': 'Indique un correo válido.',
     'form.other': 'Otro',
     'form.loc.brazil': 'Otro lugar de Brasil',
+    'form.loc.custom': 'Solicitud personalizada',
     'form.loc.latam': 'Otro país de LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Aún no lo he decidido',
@@ -731,8 +753,7 @@
     dest: [
 ['Florianópolis','Jurerê Internacional, cuarenta y dos playas y la dirección de verano del dinero paulista. Villas, beach clubs y una temporada que va de diciembre a marzo.'],
 ['Río de Janeiro','Leblon e Ipanema, traslados en helicóptero sobre la bahía y una ciudad que jamás ha negociado su propia belleza. El Carnaval se reserva con un año de antelación.'],
-['São Paulo','Donde los negocios se hacen de verdad. Itaim y Jardins, la mayor flota civil de helicópteros del hemisferio y los hospitales por los que se cruza el continente.'],
-['Balneário Camboriú','Torres pegadas a la arena, la marina de Barra Sul y playas a las que se llega en teleférico. Una hora de Florianópolis por carretera, con temporada de diciembre a marzo.']
+['São Paulo','Donde los negocios se hacen de verdad. Itaim y Jardins, la mayor flota civil de helicópteros del hemisferio y los hospitales por los que se cruza el continente.']
     ],
     step: [
 ['Usted pide','Un mensaje, a cualquier hora, en su idioma. WhatsApp, Telegram o el formulario de abajo.'],
@@ -766,8 +787,6 @@
     'hero.eyebrow': 'Brasile <em>·</em> America Latina <em>·</em> Rispondiamo a qualsiasi ora',
     'hero.cta': 'Richiedere un concierge',
     'hero.wa': 'Contattaci',
-    'v3.eyebrow': 'Brasile · America del Sud',
-    'v3.lede': 'Un concierge privato per chi tiene al proprio tempo. Trasporti, aviazione, yacht, residenze, documenti e sicurezza: una richiesta, e tutto è organizzato.',
     'hero.note': 'La lista delle famiglie che seguiamo è corta. Il servizio è esattamente questo.',
 
     'rail.attendance': 'reperibilità',
@@ -776,8 +795,8 @@
     'rail.number': 'numero',
 
     'sec.svc.label': 'Servizi',
-    'sec.svc.h': 'Che cosa organizziamo',
-    'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Potete?» è SÌ, POSSIAMO!',
+    'sec.svc.h': 'Che cosa <span class="h-cap">realizziamo</span>',
+    'sec.svc.lede': 'I nostri servizi sono illimitati. Nel 99% dei casi la risposta a «Che cosa potete fare?» è POSSIAMO PRATICAMENTE TUTTO!',
 
     'lp.slogan1': 'Il vostro tempo.',
     'lp.slogan2': 'La nostra responsabilità.',
@@ -808,10 +827,15 @@
     'lp.foot.geo': 'Brasile · Sud America',
     'lp.foot.cta': 'Richiedi<br>concierge',
     'sec.dest.label': 'Destinazioni',
-    'sec.dest.h': 'La geografia del nostro lavoro',
-    'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutta l’America del Sud e Centrale.',
+    'sec.dest.h': 'La geografia del nostro <span class="h-cap">lavoro</span>',
+    'sec.dest.lede': 'Offriamo anche assistenza a distanza e risolviamo molte questioni in tutto il continente sudamericano.',
+    'dest.country.br': 'Brasile',
+    'dest.country.ar': 'Argentina',
+    'dest.country.py': 'Paraguay',
+    'dest.ar.city': 'Buenos Aires',
+    'dest.py.city': 'Asunción',
     'sec.conc.label': 'Il Concierge',
-    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln">Il resto è affar nostro</span>',
+    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln"><span class="h-cap">Il resto è affar nostro</span></span>',
 
     'conc.pull': 'Un solo contatto per qualsiasi esigenza in Brasile.',
     'conc.p1': 'Da una richiesta quotidiana a una questione complessa che richiede avvocati, broker, autisti o altri specialisti — non deve cercare gli esecutori né coordinarli da solo.',
@@ -821,16 +845,20 @@
     'conc.signName': '<span class="sl">Servizio di concierge in</span> <span class="sl">tutto il continente</span> <span class="sl">sudamericano</span>',
 
     'sec.req.label': 'La Richiesta',
-    'sec.req.h': 'Ci lasci pensare a tutto.',
-    'sec.req.lede': 'Ci racconti le sue preferenze e i suoi programmi — al resto pensiamo noi.<br><br>Indichi la città, le date e qualche dettaglio che conta per lei. Li esamineremo con attenzione e proporremo soluzioni all’altezza del suo comfort, del suo gusto e delle sue aspettative.',
+    'sec.req.h': 'Ci lasci pensare a <span class="h-cap">tutto.</span>',
+    'sec.req.lede': 'Inviateci la vostra richiesta e vi contatteremo.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
     'direct.tel': 'Telefono',
 
 
-    'final.claim1': 'Tutto ciò che le serve in Brasile —',
+    'final.claim1': 'Tutto ciò che le serve in Brasile, Argentina e Paraguay',
     'final.claim2': 'su un unico numero di telefono.',
+    'v3.eyebrow': 'Brasile · America del Sud',
+    'v3.lede': 'Un concierge privato per chi tiene al proprio tempo. Trasporti, aviazione, yacht, residenze, documenti e sicurezza: una richiesta, e tutto è organizzato.',
+    'v3.claim1': 'Tutto ciò che le serve in Brasile —',
+    'v3.claim2': 'su un unico numero di telefono.',
 
     'foot.brand': 'Il tempo <em>—</em> la forma più alta di lusso, e noi ce ne occupiamo',
     'foot.privacy': 'Privacy',
@@ -842,10 +870,10 @@
     'lang.sub': 'Può cambiarla in qualsiasi momento — il selettore è in alto.',
     'lang.btn': 'Lingua',
 
-    'form.fullName': 'Nome e cognome',
-    'form.whatsapp': 'Numero WhatsApp',
+    'form.fullName': 'Nome',
+    'form.whatsapp': 'Numero WhatsApp/Telegram',
     'form.email': 'Email',
-    'form.country': 'Paese',
+    'form.country': 'Località',
     'form.service': 'Servizio',
     'form.location': 'Località preferita',
     'form.date': 'Data preferita',
@@ -865,6 +893,7 @@
     'form.errEmail': 'Inserisca un indirizzo email valido.',
     'form.other': 'Altro',
     'form.loc.brazil': 'Un altro luogo in Brasile',
+    'form.loc.custom': 'Richiesta personalizzata',
     'form.loc.latam': 'Un altro paese LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Non ho ancora deciso',
@@ -967,7 +996,6 @@
 ['Florianópolis','Jurerê Internacional, quarantadue spiagge e l’indirizzo estivo del denaro di San Paolo. Ville, beach club e una stagione che va da dicembre a marzo.'],
 ['Rio de Janeiro','Leblon e Ipanema, transfer in elicottero sopra la baia e una città che non ha mai trattato sulla propria bellezza. Il Carnevale si prenota con un anno di anticipo.'],
 ['San Paolo','Dove gli affari si fanno davvero. Itaim e Jardins, la più grande flotta civile di elicotteri dell’emisfero e gli ospedali per cui si attraversa il continente.'],
-['Balneário Camboriú','Torri a ridosso della sabbia, la marina di Barra Sul e spiagge che si raggiungono in funivia. Un’ora da Florianópolis via terra, con stagione da dicembre a marzo.']
     ],
     step: [
 ['Lei chiede','Un messaggio, a qualsiasi ora, nella sua lingua. WhatsApp, Telegram o il modulo qui sotto.'],

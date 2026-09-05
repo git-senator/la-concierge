@@ -23,7 +23,7 @@
      meta: { formId, submittedAt, locale, timezone, source, userAgent, referrer },
      lead: {
        fullName, whatsapp, email, country,
-       service, location, date, message
+       service, location, message
      }
    }
    ══════════════════════════════════════════════════════════════════════ */
@@ -41,18 +41,18 @@
      Один источник правды: и разметка, и валидация, и payload строятся
      отсюда. Чтобы добавить поле — допишите объект, больше ничего.      */
   var SCHEMA = [
-    { name:'fullName', label:'Имя и фамилия', i18n:'form.fullName', type:'text', required:true, row:1,
+    { name:'fullName', label:'Имя', i18n:'form.fullName', type:'text', required:true, row:1,
       autocomplete:'name',        placeholder:'' },
-    { name:'whatsapp', label:'Номер WhatsApp', i18n:'form.whatsapp', type:'tel', required:true, row:1,
+    { name:'whatsapp', label:'Номер WhatsApp/Telegram', i18n:'form.whatsapp', type:'tel', required:true, row:1,
       autocomplete:'tel',         placeholder:'',
       pattern:/^[+]?[\d\s().-]{7,20}$/, errI18n:'form.errPhone',
       patternMessage:'Укажите корректный номер с кодом страны.' },
 
-    { name:'email',    label:'Электронная почта', i18n:'form.email', type:'email', required:false, row:2,
+    { name:'email',    label:'Электронная почта', i18n:'form.email', type:'email', required:true, row:2,
       autocomplete:'email',       placeholder:'',
       pattern:/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, errI18n:'form.errEmail',
       patternMessage:'Укажите корректный адрес почты.' },
-    { name:'country',  label:'Страна', i18n:'form.country', type:'text', required:true, row:2,
+    { name:'country',  label:'Локация', i18n:'form.country', type:'text', required:true, row:2,
       autocomplete:'country-name', placeholder:'' },
 
     { name:'service',  label:'Услуга', i18n:'form.service', type:'select', required:true, row:3,
@@ -78,17 +78,17 @@
                { v:'Personal Companion', k:'svc.20.name' },
                { v:'Executive Protection', k:'svc.21.name' },
                { v:'Family & Maternity', k:'svc.22.name' },
-               { v:'Something else', k:'form.other' }] },
+               { v:'Something else', k:'form.other', ru:'Другое' }] },
     { name:'location', label:'Предпочтительное место', i18n:'form.location', type:'select', required:false, row:3,
-      options:[{ v:'São Paulo', k:'dest.2.name' },
+      options:[{ v:'Custom request', k:'form.loc.custom', ru:'Индивидуальный запрос' },
+               { v:'São Paulo', k:'dest.2.name' },
                { v:'Rio de Janeiro', k:'dest.1.name' },
                { v:'Florianópolis', k:'dest.0.name' },
-               { v:'Balneário Camboriú', k:'dest.3.name' },
-               { v:'Elsewhere in Brazil', k:'form.loc.brazil' },
-               { v:'Elsewhere in LATAM', k:'form.loc.latam' },
-               { v:'Not decided yet', k:'form.loc.undecided' }] },
+               { v:'Balneário Camboriú', k:'form.loc.camboriu', ru:'Балнеариу-Камбориу' },
+               { v:'Elsewhere in Brazil', k:'form.loc.brazil', ru:'Другой город Бразилии' },
+               { v:'Elsewhere in LATAM', k:'form.loc.latam', ru:'Другая страна Латинской Америки' },
+               { v:'Not decided yet', k:'form.loc.undecided', ru:'Пока не решено' }] },
 
-    { name:'date',     label:'Предпочтительная дата', i18n:'form.date', type:'date', required:false, row:4 },
     { name:'message',  label:'Что вам нужно?', i18n:'form.message', type:'textarea', required:true, row:5,
       phI18n:'form.phMessage',
       placeholder:'Бронированный внедорожник к 4:00 к моему отелю в Сан-Паулу, водитель со знанием английского.' }
@@ -146,7 +146,6 @@
           '*Country:* ' + l.country,
           '*Service:* ' + l.service,
           '*Location:* ' + (l.location || '—'),
-          '*Date:* ' + (l.date || '—'),
           '',
           l.message
         ].join('\n');
@@ -171,7 +170,6 @@
           'Country: ' + l.country,
           'Service: ' + l.service,
           'Location: ' + (l.location || '—'),
-          'Date: ' + (l.date || '—'),
           '',
           l.message
         ].join('\n');
@@ -265,7 +263,7 @@
         text: f.required ? COPY().select : COPY().noPref }));
       // значение всегда английское — оно уходит в заявку; переводится подпись
       f.options.forEach(function (o) {
-        input.appendChild(el('option', { value:o.v, text: o.k ? T(o.k, o.v) : o.v }));
+        input.appendChild(el('option', { value:o.v, text: o.k ? T(o.k, o.ru || o.v) : (o.ru || o.v) }));
       });
     } else {
       input = el('input', {

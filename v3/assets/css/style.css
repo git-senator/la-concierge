@@ -2832,3 +2832,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (max-width:560px){
   .hero-in .lk-claim{ padding-inline:calc(var(--lk) * .3856); }
 }
+
+/* ── Направления: в слоте номера страна ────────────────────────────
+   Перенесено из второго варианта вместе с содержанием: место цифр
+   «01…04» занято названиями стран, а четвёртая карточка называет две
+   страны сразу. Разрядка каптеля рассчитана на прописные.        */
+.band-num{ text-transform:uppercase; }
+.band-col-two h3{ text-transform:uppercase; }
+.band-col-two .band-num-2{ margin-top:clamp(30px,2.6vw,34px); }
