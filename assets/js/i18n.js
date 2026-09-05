@@ -109,7 +109,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'The Concierge',
-    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln">The rest is our business</span>',
+    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln"><span class="h-cap">The rest is our business</span></span>',
 
     'conc.pull': 'One contact for anything you need in Brazil.',
     'conc.p1': 'From a simple everyday errand to a complex matter involving lawyers, brokers, drivers or other specialists — you never have to find the people or coordinate them yourself.',
@@ -119,7 +119,7 @@
     'conc.signName': '<span class="sl">Concierge service across</span> <span class="sl">the entire continent of</span> <span class="sl">South America</span>',
 
     'sec.req.label': 'The Request',
-    'sec.req.h': 'Let us take care of everything.',
+    'sec.req.h': 'Let us take care of <span class="h-cap">everything.</span>',
     'sec.req.lede': 'Tell us your preferences and your plans — we will take care of the rest.<br><br>Give us the city, the dates and a few details that matter to you. We will study them closely and propose solutions that match your level of comfort, taste and expectations.',
 
     'direct.wa': 'WhatsApp',
@@ -140,10 +140,10 @@
     'lang.sub': 'You can change it at any time — the switch sits in the header.',
     'lang.btn': 'Language',
 
-    'form.fullName': 'Full name',
-    'form.whatsapp': 'WhatsApp number',
+    'form.fullName': 'Name',
+    'form.whatsapp': 'WhatsApp/Telegram number',
     'form.email': 'Email',
-    'form.country': 'Country',
+    'form.country': 'Location',
     'form.service': 'Service',
     'form.location': 'Preferred location',
     'form.date': 'Preferred date',
@@ -163,6 +163,7 @@
     'form.errEmail': 'Enter a valid email address.',
     'form.other': 'Something else',
     'form.loc.brazil': 'Elsewhere in Brazil',
+    'form.loc.custom': 'Custom request',
     'form.loc.latam': 'Elsewhere in LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Not decided yet',
@@ -346,7 +347,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Assunção',
     'sec.conc.label': 'O Concierge',
-    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln">O restante é conosco</span>',
+    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln"><span class="h-cap">O restante é conosco</span></span>',
 
     'conc.pull': 'Um único contato para qualquer necessidade no Brasil.',
     'conc.p1': 'De um pedido simples do dia a dia a uma questão complexa que envolve advogados, corretores, motoristas ou outros especialistas — você não precisa procurar os executores nem coordená-los sozinho.',
@@ -356,7 +357,7 @@
     'conc.signName': '<span class="sl">Serviço de concierge em</span> <span class="sl">todo o continente</span> <span class="sl">sul-americano</span>',
 
     'sec.req.label': 'A Solicitação',
-    'sec.req.h': 'Deixe que cuidemos de tudo.',
+    'sec.req.h': 'Deixe que cuidemos de <span class="h-cap">tudo.</span>',
     'sec.req.lede': 'Conte-nos suas preferências e seus planos — do resto cuidamos nós.<br><br>Informe a cidade, as datas e alguns detalhes importantes para você. Vamos analisá-los com atenção e propor soluções à altura do seu conforto, do seu gosto e das suas expectativas.',
 
     'direct.wa': 'WhatsApp',
@@ -377,10 +378,10 @@
     'lang.sub': 'Pode mudar a qualquer momento — o seletor fica no topo.',
     'lang.btn': 'Idioma',
 
-    'form.fullName': 'Nome completo',
-    'form.whatsapp': 'Número de WhatsApp',
+    'form.fullName': 'Nome',
+    'form.whatsapp': 'Número de WhatsApp/Telegram',
     'form.email': 'E-mail',
-    'form.country': 'País',
+    'form.country': 'Localização',
     'form.service': 'Serviço',
     'form.location': 'Local de preferência',
     'form.date': 'Data de preferência',
@@ -400,6 +401,7 @@
     'form.errEmail': 'Informe um e-mail válido.',
     'form.other': 'Outro',
     'form.loc.brazil': 'Outro lugar no Brasil',
+    'form.loc.custom': 'Pedido personalizado',
     'form.loc.latam': 'Outro país da LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Ainda não decidi',
@@ -583,7 +585,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'El Conserje',
-    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln">El resto es cosa nuestra</span>',
+    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln"><span class="h-cap">El resto es cosa nuestra</span></span>',
 
     'conc.pull': 'Un solo contacto para cualquier asunto en Brasil.',
     'conc.p1': 'Desde una petición cotidiana hasta un asunto complejo que requiere abogados, corredores, choferes u otros especialistas — usted no tiene que buscar a los ejecutores ni coordinarlos.',
@@ -593,7 +595,7 @@
     'conc.signName': '<span class="sl">Servicio de conserjería en</span> <span class="sl">todo el continente</span> <span class="sl">sudamericano</span>',
 
     'sec.req.label': 'La Petición',
-    'sec.req.h': 'Permítanos ocuparnos de todo.',
+    'sec.req.h': 'Permítanos ocuparnos de <span class="h-cap">todo.</span>',
     'sec.req.lede': 'Cuéntenos sus preferencias y sus planes — del resto nos ocupamos nosotros.<br><br>Indíquenos la ciudad, las fechas y algunos detalles importantes para usted. Los estudiaremos con atención y le propondremos soluciones acordes con su nivel de confort, su gusto y sus expectativas.',
 
     'direct.wa': 'WhatsApp',
@@ -614,10 +616,10 @@
     'lang.sub': 'Puede cambiarlo en cualquier momento — el selector está arriba.',
     'lang.btn': 'Idioma',
 
-    'form.fullName': 'Nombre completo',
-    'form.whatsapp': 'Número de WhatsApp',
+    'form.fullName': 'Nombre',
+    'form.whatsapp': 'Número de WhatsApp/Telegram',
     'form.email': 'Correo electrónico',
-    'form.country': 'País',
+    'form.country': 'Ubicación',
     'form.service': 'Servicio',
     'form.location': 'Lugar preferido',
     'form.date': 'Fecha preferida',
@@ -637,6 +639,7 @@
     'form.errEmail': 'Indique un correo válido.',
     'form.other': 'Otro',
     'form.loc.brazil': 'Otro lugar de Brasil',
+    'form.loc.custom': 'Solicitud personalizada',
     'form.loc.latam': 'Otro país de LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Aún no lo he decidido',
@@ -820,7 +823,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'Il Concierge',
-    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln">Il resto è affar nostro</span>',
+    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln"><span class="h-cap">Il resto è affar nostro</span></span>',
 
     'conc.pull': 'Un solo contatto per qualsiasi esigenza in Brasile.',
     'conc.p1': 'Da una richiesta quotidiana a una questione complessa che richiede avvocati, broker, autisti o altri specialisti — non deve cercare gli esecutori né coordinarli da solo.',
@@ -830,7 +833,7 @@
     'conc.signName': '<span class="sl">Servizio di concierge in</span> <span class="sl">tutto il continente</span> <span class="sl">sudamericano</span>',
 
     'sec.req.label': 'La Richiesta',
-    'sec.req.h': 'Ci lasci pensare a tutto.',
+    'sec.req.h': 'Ci lasci pensare a <span class="h-cap">tutto.</span>',
     'sec.req.lede': 'Ci racconti le sue preferenze e i suoi programmi — al resto pensiamo noi.<br><br>Indichi la città, le date e qualche dettaglio che conta per lei. Li esamineremo con attenzione e proporremo soluzioni all’altezza del suo comfort, del suo gusto e delle sue aspettative.',
 
     'direct.wa': 'WhatsApp',
@@ -851,10 +854,10 @@
     'lang.sub': 'Può cambiarla in qualsiasi momento — il selettore è in alto.',
     'lang.btn': 'Lingua',
 
-    'form.fullName': 'Nome e cognome',
-    'form.whatsapp': 'Numero WhatsApp',
+    'form.fullName': 'Nome',
+    'form.whatsapp': 'Numero WhatsApp/Telegram',
     'form.email': 'Email',
-    'form.country': 'Paese',
+    'form.country': 'Località',
     'form.service': 'Servizio',
     'form.location': 'Località preferita',
     'form.date': 'Data preferita',
@@ -874,6 +877,7 @@
     'form.errEmail': 'Inserisca un indirizzo email valido.',
     'form.other': 'Altro',
     'form.loc.brazil': 'Un altro luogo in Brasile',
+    'form.loc.custom': 'Richiesta personalizzata',
     'form.loc.latam': 'Un altro paese LATAM',
     'form.loc.camboriu': 'Balneário Camboriú',
     'form.loc.undecided': 'Non ho ancora deciso',

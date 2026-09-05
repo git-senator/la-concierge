@@ -3281,13 +3281,17 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
      width:fit-content нужен, чтобы блок обнимал слово: иначе
      подчёркивание растянулось бы во всю ширину заголовка. */
   .services .sec-head h2 .h-cap,
-  #destinations .sec-head h2 .h-cap{
+  #destinations .sec-head h2 .h-cap,
+  #concierge .sec-head h2 .h-cap,
+  #request .sec-head h2 .h-cap{
     display:block; width:fit-content; margin:0 auto;
     position:relative;
     color:#F0E3B4;
   }
   .services .sec-head h2 .h-cap::after,
-  #destinations .sec-head h2 .h-cap::after{
+  #destinations .sec-head h2 .h-cap::after,
+  #concierge .sec-head h2 .h-cap::after,
+  #request .sec-head h2 .h-cap::after{
     content:''; position:absolute; pointer-events:none;
     /* По три пикселя в каждую сторону сверх прежнего — владелец
        просил удлинить подчёркивание примерно на шесть. В em, чтобы
@@ -3336,4 +3340,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    её по середине ряда, иначе под текстом остаётся провал.        */
 @media (min-width:721px){
   #destinations .band:has(.band-plate-arpy){ align-self:center; }
+}
+
+/* «Консьерж» и «Заявка» просили только подчеркнуть — цвет заголовка
+   там остаётся прежним, золотой берёт на себя одна дуга.          */
+@media (max-width:980px){
+  #concierge .sec-head h2 .h-cap,
+  #request .sec-head h2 .h-cap{ color:inherit; }
 }
