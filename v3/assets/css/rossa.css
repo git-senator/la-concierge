@@ -623,15 +623,29 @@ h2 .em{ background-image:linear-gradient(96deg,
   #concierge .sec-head h2,
   #request .sec-head h2{ color:#F0E3B4; }
 
-  .services .sec-head h2,
+  /* Селекторы через id: у style.css заголовки «Услуг» и «Направлений»
+     заданы правилом #services .sec-head h2{margin:12px 0 0}, и запись
+     через класс ему проигрывала — заголовок уезжал влево. Здесь та же
+     сила селектора, но правило идёт позже, поэтому побеждает. Верхнее
+     поле не трогаем: переопределяем только боковые. */
+  #services .sec-head h2,
   #destinations .sec-head h2,
   #request .sec-head h2{
-    width:fit-content; margin-inline:auto; position:relative;
+    width:fit-content; margin-left:auto; margin-right:auto; position:relative;
   }
+
+  /* Кегль заголовков — на одну ступень меньше по просьбе владельца:
+     78px было при 1920, стало 68; у «Консьержа» 54 → 47. Доля от
+     ширины окна убавлена в той же пропорции, чтобы на узких экранах
+     заголовок уменьшался так же плавно, как раньше. */
+  #services .sec-head h2,
+  #destinations .sec-head h2,
+  #request .sec-head h2{ font-size:clamp(30px, 4.55vw, 68px); }
+  #concierge .sec-head h2{ font-size:min(4.7vw, 47px); }
 
   #concierge .sec-head h2 .h-cap{ position:relative; }
 
-  .services .sec-head h2::after,
+  #services .sec-head h2::after,
   #destinations .sec-head h2::after,
   #request .sec-head h2::after,
   #concierge .sec-head h2 .h-cap::after{

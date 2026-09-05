@@ -951,7 +951,7 @@
      «Консьерже» заголовок в две строки, там линия только под
      нижней, поэтому целью остаётся .h-cap. */
   var caps = [].slice.call(document.querySelectorAll(
-    '.services .sec-head h2, #destinations .sec-head h2, ' +
+    '#services .sec-head h2, #destinations .sec-head h2, ' +
     '#request .sec-head h2, #concierge .sec-head h2 .h-cap'));
   if (!caps.length) return;
 
