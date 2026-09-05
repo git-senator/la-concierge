@@ -842,7 +842,7 @@
   var slog  = document.querySelector('.lp-slogan');
   if (!band || !claim || !slog) return;
 
-  var GAP = 34, last = null;
+  var GAP = 16, last = null;   /* было 34 — владелец просил ближе к рамке */
 
   function place() {
     if (window.innerWidth < 981) {
