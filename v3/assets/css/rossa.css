@@ -368,7 +368,7 @@ body{
   .lp-services .lp-list{ position:relative; }
   .lp-services .lp-list::before{
     content:''; position:absolute; z-index:-1; pointer-events:none;
-    inset:-26px -28px 0 12px;
+    top:var(--cg-y, -26px); right:-28px; bottom:0; left:12px;
     border-radius:20px;
     background:linear-gradient(180deg,
       rgba(126,146,166,.17) 0%, rgba(110,130,150,.10) 55%,

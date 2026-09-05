@@ -714,23 +714,31 @@
 
 
 
-/* ── Стеклянные панели боковых блоков витрины ────────────────────
-   Панели под «Ваше время. Ваша роскошь.» и «Один номер. Один
-   консьерж.» должны быть одного размера. Ширина колонок и длина строк
-   в них разные, поэтому размер считаем здесь: берём истинные границы
-   набора (по текстовым узлам, а не по блокам — блок всегда во всю
-   колонку), выбираем максимум по ширине и объединение по высоте.
-   Одни и те же --sg-w и --sg-h уходят в обе колонки, а --sg-x и
-   --sg-y ставят панель на место внутри своей.                     */
+/* ── Стеклянные панели витрины ───────────────────────────────────
+   Три панели — под левым блоком, под списком услуг и под правым —
+   стоят на одной верхней и одной нижней линии.
+
+   Нижняя линия — низ списка услуг: под ним всего несколько пикселей
+   до нижней строки витрины, ниже опускаться некуда. Верхняя — самый
+   высокий набор из трёх колонок минус поле; выше всех обычно левый
+   блок, поэтому по нему всё и равняется.
+
+   Ширину боковых панелей берём одинаковую: наибольшая из двух колонок
+   плюс поля. В CSS этого не выразить — колонки разной ширины, строки
+   разной длины, и на разных окнах шире оказывается то левая, то
+   правая.                                                          */
 (function () {
   var grid = document.querySelector('.lp-grid');
   var ph   = document.querySelector('.lp-philosophy');
   var de   = document.querySelector('.lp-dest');
-  if (!grid || !ph || !de) return;
+  var list = document.querySelector('.lp-services .lp-list');
+  if (!grid || !ph || !de || !list) return;
 
   var PAD = 26;
   var last = '';
 
+  /* Истинные границы набора: по строкам текста, а не по блокам —
+     блок всегда во всю колонку и ничего о наборе не говорит.      */
   function ink(root) {
     var l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
     var walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
@@ -739,9 +747,9 @@
       if (!n.textContent.trim()) continue;
       var rg = document.createRange();
       rg.selectNodeContents(n);
-      var list = rg.getClientRects();
-      for (var i = 0; i < list.length; i++) {
-        var q = list[i];
+      var boxes = rg.getClientRects();
+      for (var i = 0; i < boxes.length; i++) {
+        var q = boxes[i];
         if (!q.width || !q.height) continue;
         if (q.left   < l) l = q.left;
         if (q.top    < t) t = q.top;
@@ -759,6 +767,7 @@
       el.style.removeProperty('--sg-x');
       el.style.removeProperty('--sg-y');
     });
+    list.style.removeProperty('--cg-y');
   }
 
   function place() {
@@ -768,18 +777,22 @@
     }
     var a = ink(ph), c = ink(de);
     if (!a || !c) return;
+    var lb = list.getBoundingClientRect();
 
+    var top = Math.min(a.t, c.t, lb.top) - PAD;
+    var bottom = lb.bottom;
+    var h = Math.round(bottom - top);
     var w = Math.round(Math.max(a.r - a.l, c.r - c.l) + PAD * 2);
-    var top = Math.min(a.t, c.t) - PAD;
-    var h = Math.round(Math.max(a.b, c.b) + PAD - top);
 
     var pb = ph.getBoundingClientRect(), db = de.getBoundingClientRect();
-    var px = Math.round(a.l - PAD - pb.left), py = Math.round(top - pb.top);
+    var px = Math.round(a.l - PAD - pb.left);
     /* Правая панель прижата к правому краю своего набора, левая — к
-       левому: так обе смотрят наружу, к краям страницы.           */
-    var dx = Math.round(c.r + PAD - w - db.left), dy = Math.round(top - db.top);
+       левому: обе смотрят наружу, к краям страницы.               */
+    var dx = Math.round(c.r + PAD - w - db.left);
+    var py = Math.round(top - pb.top), dy = Math.round(top - db.top);
+    var cy = Math.round(top - lb.top);
 
-    var key = [w, h, px, py, dx, dy].join('|');
+    var key = [w, h, px, py, dx, dy, cy].join('|');
     if (key === last) return;
     last = key;
 
@@ -791,6 +804,7 @@
     de.style.setProperty('--sg-h', h + 'px');
     de.style.setProperty('--sg-x', dx + 'px');
     de.style.setProperty('--sg-y', dy + 'px');
+    list.style.setProperty('--cg-y', cy + 'px');
   }
 
   place();
@@ -801,10 +815,9 @@
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
   if (window.ResizeObserver) {
     var ro = new ResizeObserver(place);
-    ro.observe(grid); ro.observe(ph); ro.observe(de);
+    ro.observe(grid); ro.observe(ph); ro.observe(de); ro.observe(list);
   }
 })();
-
 
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
    Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
