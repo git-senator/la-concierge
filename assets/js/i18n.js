@@ -120,7 +120,7 @@
 
     'sec.req.label': 'The Request',
     'sec.req.h': 'Let us take care of <span class="h-cap">everything.</span>',
-    'sec.req.lede': 'Tell us your preferences and your plans — we will take care of the rest.<br><br>Give us the city, the dates and a few details that matter to you. We will study them closely and propose solutions that match your level of comfort, taste and expectations.',
+    'sec.req.lede': 'Send us your request and we will be in touch.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -358,7 +358,7 @@
 
     'sec.req.label': 'A Solicitação',
     'sec.req.h': 'Deixe que cuidemos de <span class="h-cap">tudo.</span>',
-    'sec.req.lede': 'Conte-nos suas preferências e seus planos — do resto cuidamos nós.<br><br>Informe a cidade, as datas e alguns detalhes importantes para você. Vamos analisá-los com atenção e propor soluções à altura do seu conforto, do seu gosto e das suas expectativas.',
+    'sec.req.lede': 'Envie sua solicitação e entraremos em contato.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -596,7 +596,7 @@
 
     'sec.req.label': 'La Petición',
     'sec.req.h': 'Permítanos ocuparnos de <span class="h-cap">todo.</span>',
-    'sec.req.lede': 'Cuéntenos sus preferencias y sus planes — del resto nos ocupamos nosotros.<br><br>Indíquenos la ciudad, las fechas y algunos detalles importantes para usted. Los estudiaremos con atención y le propondremos soluciones acordes con su nivel de confort, su gusto y sus expectativas.',
+    'sec.req.lede': 'Envíenos su solicitud y nos pondremos en contacto.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
@@ -834,7 +834,7 @@
 
     'sec.req.label': 'La Richiesta',
     'sec.req.h': 'Ci lasci pensare a <span class="h-cap">tutto.</span>',
-    'sec.req.lede': 'Ci racconti le sue preferenze e i suoi programmi — al resto pensiamo noi.<br><br>Indichi la città, le date e qualche dettaglio che conta per lei. Li esamineremo con attenzione e proporremo soluzioni all’altezza del suo comfort, del suo gusto e delle sue aspettative.',
+    'sec.req.lede': 'Inviateci la vostra richiesta e vi contatteremo.',
 
     'direct.wa': 'WhatsApp',
     'direct.tg': 'Telegram',
