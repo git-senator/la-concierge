@@ -736,6 +736,7 @@
 
   var PAD = 26;      /* поля по бокам                             */
   var PAD_TOP = 10;  /* сверху меньше: владелец просил ниже панели */
+  var PAD_BOT = 6;   /* столько же снизу у боковых                 */
   var last = '';
 
   /* Истинные границы набора: по строкам текста, а не по блокам —
@@ -746,6 +747,12 @@
     var n;
     while ((n = walk.nextNode())) {
       if (!n.textContent.trim()) continue;
+      /* Рубрика «Философия Montero» стоит в разметке, но погашена
+         через visibility:hidden — место занимает, чернил не даёт.
+         Панель считалась вместе с ней и начиналась на три десятка
+         пикселей выше видимого текста. Такие узлы пропускаем.     */
+      var host = n.parentElement;
+      if (host && getComputedStyle(host).visibility !== 'visible') continue;
       var rg = document.createRange();
       rg.selectNodeContents(n);
       var boxes = rg.getClientRects();
@@ -781,7 +788,10 @@
     var lb = list.getBoundingClientRect();
 
     var top = Math.min(a.t, c.t, lb.top) - PAD_TOP;
-    var bottom = lb.bottom;
+    /* Нижняя линия — по самому низкому из трёх наборов. Списку хватает
+       его собственного края, боковым добавляем маленькое поле, иначе
+       последняя строка упиралась бы в грань.                       */
+    var bottom = Math.max(lb.bottom, a.b + PAD_BOT, c.b + PAD_BOT);
     var h = Math.round(bottom - top);
     var w = Math.round(Math.max(a.r - a.l, c.r - c.l) + PAD * 2);
 
