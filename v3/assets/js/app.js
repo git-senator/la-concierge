@@ -712,3 +712,134 @@
   }
 })();
 
+
+
+/* ── Стеклянные панели боковых блоков витрины ────────────────────
+   Панели под «Ваше время. Ваша роскошь.» и «Один номер. Один
+   консьерж.» должны быть одного размера. Ширина колонок и длина строк
+   в них разные, поэтому размер считаем здесь: берём истинные границы
+   набора (по текстовым узлам, а не по блокам — блок всегда во всю
+   колонку), выбираем максимум по ширине и объединение по высоте.
+   Одни и те же --sg-w и --sg-h уходят в обе колонки, а --sg-x и
+   --sg-y ставят панель на место внутри своей.                     */
+(function () {
+  var grid = document.querySelector('.lp-grid');
+  var ph   = document.querySelector('.lp-philosophy');
+  var de   = document.querySelector('.lp-dest');
+  if (!grid || !ph || !de) return;
+
+  var PAD = 26;
+  var last = '';
+
+  function ink(root) {
+    var l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
+    var walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var n;
+    while ((n = walk.nextNode())) {
+      if (!n.textContent.trim()) continue;
+      var rg = document.createRange();
+      rg.selectNodeContents(n);
+      var list = rg.getClientRects();
+      for (var i = 0; i < list.length; i++) {
+        var q = list[i];
+        if (!q.width || !q.height) continue;
+        if (q.left   < l) l = q.left;
+        if (q.top    < t) t = q.top;
+        if (q.right  > r) r = q.right;
+        if (q.bottom > b) b = q.bottom;
+      }
+    }
+    return (l === Infinity) ? null : { l:l, t:t, r:r, b:b };
+  }
+
+  function clear() {
+    [ph, de].forEach(function (el) {
+      el.style.removeProperty('--sg-w');
+      el.style.removeProperty('--sg-h');
+      el.style.removeProperty('--sg-x');
+      el.style.removeProperty('--sg-y');
+    });
+  }
+
+  function place() {
+    if (window.innerWidth < 981) {
+      if (last !== 'off') { clear(); last = 'off'; }
+      return;
+    }
+    var a = ink(ph), c = ink(de);
+    if (!a || !c) return;
+
+    var w = Math.round(Math.max(a.r - a.l, c.r - c.l) + PAD * 2);
+    var top = Math.min(a.t, c.t) - PAD;
+    var h = Math.round(Math.max(a.b, c.b) + PAD - top);
+
+    var pb = ph.getBoundingClientRect(), db = de.getBoundingClientRect();
+    var px = Math.round(a.l - PAD - pb.left), py = Math.round(top - pb.top);
+    /* Правая панель прижата к правому краю своего набора, левая — к
+       левому: так обе смотрят наружу, к краям страницы.           */
+    var dx = Math.round(c.r + PAD - w - db.left), dy = Math.round(top - db.top);
+
+    var key = [w, h, px, py, dx, dy].join('|');
+    if (key === last) return;
+    last = key;
+
+    ph.style.setProperty('--sg-w', w + 'px');
+    ph.style.setProperty('--sg-h', h + 'px');
+    ph.style.setProperty('--sg-x', px + 'px');
+    ph.style.setProperty('--sg-y', py + 'px');
+    de.style.setProperty('--sg-w', w + 'px');
+    de.style.setProperty('--sg-h', h + 'px');
+    de.style.setProperty('--sg-x', dx + 'px');
+    de.style.setProperty('--sg-y', dy + 'px');
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  grid.addEventListener('transitionend', place);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(place);
+    ro.observe(grid); ro.observe(ph); ro.observe(de);
+  }
+})();
+
+
+/* ── Слоган витрины под рамкой заявления ─────────────────────────
+   Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
+   рамки в полосу слогана меняется с высотой окна. Считаем зазор
+   здесь: ставим полосу в ноль, меряем, и сдвигаем ровно настолько,
+   чтобы от нижней грани рамки до первой строки слогана осталось
+   тридцать четыре пикселя.                                        */
+(function () {
+  var band  = document.querySelector('.lp-band-in');
+  var claim = document.querySelector('.hero-in .lk-claim');
+  var slog  = document.querySelector('.lp-slogan');
+  if (!band || !claim || !slog) return;
+
+  var GAP = 34, last = null;
+
+  function place() {
+    if (window.innerWidth < 981) {
+      if (last !== null) { band.style.removeProperty('--band-y'); last = null; }
+      return;
+    }
+    band.style.setProperty('--band-y', '0px');
+    var y = Math.round(claim.getBoundingClientRect().bottom + GAP
+                       - slog.getBoundingClientRect().top);
+    if (y === last) { band.style.setProperty('--band-y', y + 'px'); return; }
+    last = y;
+    band.style.setProperty('--band-y', y + 'px');
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(place);
+    ro.observe(band); ro.observe(claim);
+  }
+})();
