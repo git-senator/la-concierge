@@ -734,7 +734,8 @@
   var list = document.querySelector('.lp-services .lp-list');
   if (!grid || !ph || !de || !list) return;
 
-  var PAD = 26;
+  var PAD = 26;      /* поля по бокам                             */
+  var PAD_TOP = 10;  /* сверху меньше: владелец просил ниже панели */
   var last = '';
 
   /* Истинные границы набора: по строкам текста, а не по блокам —
@@ -779,7 +780,7 @@
     if (!a || !c) return;
     var lb = list.getBoundingClientRect();
 
-    var top = Math.min(a.t, c.t, lb.top) - PAD;
+    var top = Math.min(a.t, c.t, lb.top) - PAD_TOP;
     var bottom = lb.bottom;
     var h = Math.round(bottom - top);
     var w = Math.round(Math.max(a.r - a.l, c.r - c.l) + PAD * 2);
