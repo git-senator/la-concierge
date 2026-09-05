@@ -3275,7 +3275,9 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
      подчёркнутое слово. Правило только для этого раздела: рубрики
      и заголовки остальных разделов остаются белыми. */
   .services .sec-head h2,
-  #destinations .sec-head h2{ color:#F0E3B4; }
+  #destinations .sec-head h2,
+  #concierge .sec-head h2,
+  #request .sec-head h2{ color:#F0E3B4; }
   /* Слово стоит отдельной строкой под «Что мы» — так было в макете
      до всех правок, владелец просил вернуть именно этот разрыв.
      width:fit-content нужен, чтобы блок обнимал слово: иначе
@@ -3340,11 +3342,4 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
    её по середине ряда, иначе под текстом остаётся провал.        */
 @media (min-width:721px){
   #destinations .band:has(.band-plate-arpy){ align-self:center; }
-}
-
-/* «Консьерж» и «Заявка» просили только подчеркнуть — цвет заголовка
-   там остаётся прежним, золотой берёт на себя одна дуга.          */
-@media (max-width:980px){
-  #concierge .sec-head h2 .h-cap,
-  #request .sec-head h2 .h-cap{ color:inherit; }
 }
