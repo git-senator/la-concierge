@@ -864,7 +864,7 @@
 
   function clear() {
     lock.style.removeProperty('translate');
-    lock.style.removeProperty('--hair');
+    document.documentElement.style.removeProperty('--hair');
     claim.style.removeProperty('translate');
     claim.style.removeProperty('width');
     claim.style.removeProperty('height');
@@ -884,7 +884,7 @@
 
     /* Волосок — целым числом физических точек */
     var hair = Math.max(1, Math.round(dpr)) / dpr;
-    lock.style.setProperty('--hair', hair + 'px');
+    document.documentElement.style.setProperty('--hair', hair + 'px');
 
     /* Сдвиг знака: та же формула, что в CSS, но по сетке */
     var shift = Math.min(SHIFT, Math.max(0, (window.innerHeight - 700) / 2));
@@ -1007,6 +1007,122 @@
   if (window.ResizeObserver) {
     var ro = new ResizeObserver(place);
     caps.forEach(function (c) { ro.observe(c); });
+  }
+})();
+
+/* ── Карточки направлений по пиксельной сетке ────────────────────
+   Сетка делит свободную ширину на четыре доли, и при окне 1920
+   колонка выходила 434.5px — половина точки. Кант карточки на таком
+   краю размазывается, а скругление читается ступеньками, ровно как
+   было у рамки заявления.
+
+   Считаем колонку сами: берём ширину полосы, вычитаем поля и три
+   промежутка, делим на четыре и округляем вниз до целой точки
+   экрана. Остаток отдаём боковым полям поровну — карточки остаются
+   по центру. Высоту снимка задаём числом: 4/5 от целой ширины опять
+   давало половину точки на стыке с текстом.
+
+   Высоту карточек равняем по самой высокой и тоже кладём на сетку,
+   чтобы нижний кант был сплошной линией, а не серой полосой.
+
+   Исходные поля полосы запоминаем один раз: если брать их заново
+   после того, как мы их переписали, счёт пойдёт от собственного
+   результата и колонка поедет с каждым пересчётом.
+
+   Число колонок не зашито: читаем его у самой сетки, поэтому на
+   промежуточных ширинах, где колонок меньше, счёт остаётся верным. */
+(function () {
+  var bands = document.querySelector('#destinations .bands');
+  if (!bands) return;
+  var ins = [].slice.call(bands.querySelectorAll('.band-in'));
+  if (!ins.length) return;
+
+  var base = getComputedStyle(bands);
+  var PAD_L = parseFloat(base.paddingLeft)  || 0;
+  var PAD_R = parseFloat(base.paddingRight) || 0;
+  var GAP   = parseFloat(base.columnGap)    || 0;
+  var on = false, last = '';
+
+  function clear() {
+    bands.style.removeProperty('grid-template-columns');
+    bands.style.removeProperty('column-gap');
+    bands.style.removeProperty('padding-left');
+    bands.style.removeProperty('padding-right');
+    ins.forEach(function (el) {
+      el.style.removeProperty('height');
+      var pl = el.querySelector('.band-plate');
+      if (pl) pl.style.removeProperty('height');
+    });
+    on = false; last = '';
+  }
+
+  function place() {
+    if (window.innerWidth < 981) { if (on) clear(); return; }
+    on = true;
+
+    var dpr = window.devicePixelRatio || 1;
+    var q  = function (v) { return Math.round(v * dpr) / dpr; };
+    var qd = function (v) { return Math.floor(v * dpr) / dpr; };
+
+    var n = getComputedStyle(bands).gridTemplateColumns.split(' ').filter(Boolean).length;
+    var total = bands.getBoundingClientRect().width;   /* от полей не зависит */
+    if (n < 1 || !(total > 0)) return;
+
+    /* Промежуток тоже кладём на сетку: при масштабе 125% тридцать
+       пикселей CSS — это 37.5 точки, и вторая, третья и четвёртая
+       карточки вставали на половину точки.
+
+       Шаг берём не в одну точку, а в наименьший, который заодно
+       представим в 1/64 пикселя CSS — с такой точностью браузер
+       хранит раскладку. При 125% это четыре пикселя CSS (пять
+       точек): иначе ширину 284.8 он округлит до 284.796875, и к
+       четвёртой карточке набежит смещение. */
+    var m = 1;
+    while (m < 64 && ((m * 64) / dpr) % 1 !== 0) m++;
+    var step = m / dpr;
+    var qs = function (v) { return Math.floor(v / step) * step; };
+
+    var gap  = qs(GAP);
+    var col  = qs((total - PAD_L - PAD_R - gap * (n - 1)) / n);
+    if (!(col > 0)) return;
+    var side = q((total - (col * n + gap * (n - 1))) / 2);
+
+    var sig = n + ':' + col + ':' + side + ':' + gap + ':' + dpr;
+    if (sig !== last) {
+      last = sig;
+      bands.style.gridTemplateColumns = 'repeat(' + n + ', ' + col + 'px)';
+      bands.style.columnGap = gap + 'px';
+      bands.style.paddingLeft  = side + 'px';
+      bands.style.paddingRight = side + 'px';
+
+      /* Снимок: высота числом, чтобы стык с текстом лёг на точку */
+      ins.forEach(function (el) {
+        var pl = el.querySelector('.band-plate');
+        if (!pl) return;
+        var ar = getComputedStyle(pl).aspectRatio.split('/');
+        var k = (ar.length === 2 && +ar[1] && +ar[0]) ? (+ar[1] / +ar[0]) : 1.25;
+        pl.style.height = q(col * k) + 'px';
+      });
+    }
+
+    /* Высота карточек — по самой высокой, целым числом точек.
+       Пишем только при изменении: наблюдатель за размером иначе
+       будил бы сам себя по кругу. */
+    ins.forEach(function (el) { el.style.removeProperty('height'); });
+    var h = 0;
+    ins.forEach(function (el) { h = Math.max(h, el.getBoundingClientRect().height); });
+    h = Math.ceil(h * dpr) / dpr;
+    ins.forEach(function (el) { el.style.height = h + 'px'; });
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(place);
+    ro.observe(bands);
   }
 })();
 
