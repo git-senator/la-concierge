@@ -926,6 +926,87 @@
   }
 })();
 
+/* ── Подчёркивание в заголовках разделов ─────────────────────────
+   На телефоне линия под последним словом отмерена от низа строчного
+   поля: заголовки там прописными, выносных элементов нет, и .95em
+   проходит в трёх пикселях под буквами. На компьютере заголовки
+   строчные — у «реализуем» вниз уходят «р» и «у», и та же линия
+   резала бы их насквозь.
+
+   Поэтому глубину считаем для каждого заголовка отдельно. Метрики
+   берём у самого шрифта через canvas: fontBoundingBoxAscent даёт
+   базовую линию от верха строчного поля, actualBoundingBoxDescent —
+   насколько ниже неё опускаются буквы именно этого слова. Замер по
+   пикселям подтвердил: «реализуем» уходит на 1.12em, «обо всём.» —
+   на .89em, разница почти в четверть кегля.
+
+   Просвет под буквами держим тот же, что на телефоне, — .045 кегля.
+   Толщина линии — те же .044 кегля (1.5px при 34px), округлённые до
+   целого числа точек экрана.
+
+   Шрифт обязан быть загружен, иначе canvas вернёт метрики подменного
+   шрифта: пересчитываем после fonts.ready и по смене языка.      */
+(function () {
+  var caps = [].slice.call(document.querySelectorAll(
+    '.services .sec-head h2 .h-cap, #destinations .sec-head h2 .h-cap, ' +
+    '#concierge .sec-head h2 .h-cap, #request .sec-head h2 .h-cap'));
+  if (!caps.length) return;
+
+  var GAP = .045;            /* просвет под буквами, доля кегля      */
+  var WEIGHT = .044;         /* толщина линии, доля кегля            */
+  var ctx = null, on = false;
+
+  function measure(el) {
+    if (!ctx) {
+      var cv = document.createElement('canvas');
+      ctx = cv.getContext && cv.getContext('2d');
+      if (!ctx) return null;
+    }
+    var cs = getComputedStyle(el);
+    ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+    var m = ctx.measureText(el.textContent || '');
+    if (!m || m.fontBoundingBoxAscent == null) return null;
+    return m.fontBoundingBoxAscent + (m.actualBoundingBoxDescent || 0);
+  }
+
+  function place() {
+    if (window.innerWidth < 981) {
+      if (on) {
+        caps.forEach(function (c) {
+          c.style.removeProperty('--cap-top');
+          c.style.removeProperty('--cap-line');
+        });
+        on = false;
+      }
+      return;
+    }
+    on = true;
+    var dpr = window.devicePixelRatio || 1;
+    var q = function (v) { return Math.round(v * dpr) / dpr; };
+
+    caps.forEach(function (c) {
+      var fs = parseFloat(getComputedStyle(c).fontSize) || 0;
+      if (!fs) return;
+      var ink = measure(c);
+      if (ink == null) return;
+      /* Линия — низ фигуры высотой .70em, поэтому верх слоя это
+         «низ букв + просвет» минус её высота. */
+      c.style.setProperty('--cap-top',  q(ink + GAP * fs - .70 * fs) + 'px');
+      c.style.setProperty('--cap-line', q(Math.max(1, WEIGHT * fs)) + 'px');
+    });
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(place);
+    caps.forEach(function (c) { ro.observe(c); });
+  }
+})();
+
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
    Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
    рамки в полосу слогана меняется с высотой окна. Считаем зазор
