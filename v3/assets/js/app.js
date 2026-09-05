@@ -952,7 +952,7 @@
      нижней, поэтому целью остаётся .h-cap. */
   var caps = [].slice.call(document.querySelectorAll(
     '#services .sec-head h2, #destinations .sec-head h2, ' +
-    '#request .sec-head h2, #concierge .sec-head h2 .h-cap'));
+    '#request .sec-head h2, #concierge .sec-head h2'));
   if (!caps.length) return;
 
   var GAP = .045;            /* просвет под буквами, доля кегля      */

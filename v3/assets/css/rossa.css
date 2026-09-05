@@ -641,14 +641,26 @@ h2 .em{ background-image:linear-gradient(96deg,
   #services .sec-head h2,
   #destinations .sec-head h2,
   #request .sec-head h2{ font-size:clamp(30px, 4.55vw, 68px); }
-  #concierge .sec-head h2{ font-size:min(4.7vw, 47px); }
+  /* В одну строку заголовок втрое длиннее, поэтому кегль привязан к
+     ширине окна плотнее: доля подобрана так, чтобы строка помещалась
+     в колонку на любой ширине от 981 до 2560. */
+  #concierge .sec-head h2{ font-size:min(2.45vw, 47px); }
 
-  #concierge .sec-head h2 .h-cap{ position:relative; }
+  /* «Консьерж»: владелец попросил собрать заголовок в одну строку и
+     подчеркнуть целиком. Половинки набраны отдельными блоками с
+     запретом переноса — переводим их в строку, отбивку между ними
+     даём полем: пробела между тегами в разметке нет. */
+  #concierge .sec-head h2 .ln{ display:inline; }
+  #concierge .sec-head h2 .ln + .ln{ margin-left:.34em; }
+  #concierge .sec-head h2{
+    width:fit-content; margin-left:auto; margin-right:auto;
+    position:relative; white-space:nowrap;
+  }
 
   #services .sec-head h2::after,
   #destinations .sec-head h2::after,
   #request .sec-head h2::after,
-  #concierge .sec-head h2 .h-cap::after{
+  #concierge .sec-head h2::after{
     content:''; position:absolute; pointer-events:none;
     left:-.25em; right:-.25em;
     /* --cap-top считает скрипт: у каждого заголовка своя глубина
