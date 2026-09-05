@@ -278,3 +278,23 @@ html[lang="ru"] .hero-rail b{ font-family:"Playfair Display", Georgia, serif; }
 @media (min-width:981px){
   .hero-in .lockup{ translate:0 clamp(0px, calc((100svh - 700px) * .5), 2cm); }
 }
+
+/* ══════════ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА БЕЗ РАМКИ ══════════
+
+   У эталона язык в правом верхнем углу набран как обычная надпись:
+   «En» и маленькая галочка, без рамки, без подложки и без фиксированной
+   ширины. У нас он тянул за собой оформление второго варианта — рамку
+   в 1px и коробку шириной 118px, одинаковую с кнопкой связи.
+
+   Правило второго варианта записано как `.nav-right > .lang-btn`,
+   поэтому и здесь берём тот же вес селектора, иначе рамка не снимется.
+   Шрифт и цвет — те же, что у пунктов меню рядом.                */
+.nav-right > .lang-btn{
+  min-width:0; height:auto; padding:0 2px; margin-right:8px;
+  border:0; background:none; box-shadow:none;
+  font-family:var(--r-sans); font-weight:400; font-size:13.5px;
+  letter-spacing:.02em; text-transform:none;
+  color:var(--r-text);
+}
+.nav-right > .lang-btn:hover{ border:0; color:var(--r-white); }
+.nav-right > .lang-btn svg{ opacity:.85; }
