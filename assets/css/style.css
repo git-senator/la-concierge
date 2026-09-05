@@ -3345,3 +3345,12 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 @media (max-width:980px){
   .foot-brand{ color:#F0E3B4; }
 }
+
+/* На телефоне карточка Аргентина + Парагвай встаёт в тот же размер,
+   что и три бразильских: 16:10. Вертикальный кадр при этом режется
+   вдвое по высоте, поэтому окно сдвигаем вверх — так в кадре
+   остаются и верхушка обелиска, и дворец Лопесов.               */
+@media (max-width:720px){
+  #destinations .band-plate-arpy{ aspect-ratio:16/10; }
+  #destinations .band-plate-arpy .media{ object-position:center 17%; }
+}
