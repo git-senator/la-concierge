@@ -109,7 +109,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'The Concierge',
-    'sec.conc.h': '<span class="ln">One request is yours</span><span class="ln"><span class="h-cap">The rest is our business</span></span>',
+    'sec.conc.h': '<span class="ln">One request is yours</span> <span class="ln"><span class="h-cap">The rest is our business</span></span>',
 
     'conc.pull': 'One contact for anything you need in Brazil.',
     'conc.p1': 'From a simple everyday errand to a complex matter involving lawyers, brokers, drivers or other specialists — you never have to find the people or coordinate them yourself.',
@@ -351,7 +351,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Assunção',
     'sec.conc.label': 'O Concierge',
-    'sec.conc.h': '<span class="ln">Um pedido é seu</span><span class="ln"><span class="h-cap">O restante é conosco</span></span>',
+    'sec.conc.h': '<span class="ln">Um pedido é seu</span> <span class="ln"><span class="h-cap">O restante é conosco</span></span>',
 
     'conc.pull': 'Um único contato para qualquer necessidade no Brasil.',
     'conc.p1': 'De um pedido simples do dia a dia a uma questão complexa que envolve advogados, corretores, motoristas ou outros especialistas — você não precisa procurar os executores nem coordená-los sozinho.',
@@ -593,7 +593,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'El Conserje',
-    'sec.conc.h': '<span class="ln">Una petición es suya</span><span class="ln"><span class="h-cap">El resto es cosa nuestra</span></span>',
+    'sec.conc.h': '<span class="ln">Una petición es suya</span> <span class="ln"><span class="h-cap">El resto es cosa nuestra</span></span>',
 
     'conc.pull': 'Un solo contacto para cualquier asunto en Brasil.',
     'conc.p1': 'Desde una petición cotidiana hasta un asunto complejo que requiere abogados, corredores, choferes u otros especialistas — usted no tiene que buscar a los ejecutores ni coordinarlos.',
@@ -835,7 +835,7 @@
     'dest.ar.city': 'Buenos Aires',
     'dest.py.city': 'Asunción',
     'sec.conc.label': 'Il Concierge',
-    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span><span class="ln"><span class="h-cap">Il resto è affar nostro</span></span>',
+    'sec.conc.h': '<span class="ln">Una richiesta è vostra</span> <span class="ln"><span class="h-cap">Il resto è affar nostro</span></span>',
 
     'conc.pull': 'Un solo contatto per qualsiasi esigenza in Brasile.',
     'conc.p1': 'Da una richiesta quotidiana a una questione complessa che richiede avvocati, broker, autisti o altri specialisti — non deve cercare gli esecutori né coordinarli da solo.',

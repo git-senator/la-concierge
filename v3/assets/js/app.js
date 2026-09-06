@@ -960,6 +960,7 @@
         caps.forEach(function (c) {
           c.style.removeProperty('--cap-top');
           c.style.removeProperty('--cap-line');
+          c.style.removeProperty('font-size');
         });
         on = false;
       }
@@ -970,8 +971,19 @@
     var q = function (v) { return Math.round(v * dpr) / dpr; };
 
     caps.forEach(function (c) {
+      /* Страховка на чужой язык: доли vw в CSS посчитаны по русским
+         строкам, и если перевод окажется длиннее, заголовок вылезет
+         за колонку. Меряем и подрезаем кегль до 88% ширины шапки. */
+      c.style.removeProperty('font-size');
+      var host = c.parentElement;
+      var avail = host ? host.getBoundingClientRect().width : 0;
+      var wide  = c.getBoundingClientRect().width;
       var fs = parseFloat(getComputedStyle(c).fontSize) || 0;
       if (!fs) return;
+      if (avail > 0 && wide > avail * 0.88) {
+        fs = q(fs * (avail * 0.88) / wide);
+        c.style.fontSize = fs + 'px';
+      }
       var ink = measure(c);
       if (ink == null) return;
       /* Линия — низ фигуры высотой .70em, поэтому верх слоя это
