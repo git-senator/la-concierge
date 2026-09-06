@@ -949,7 +949,17 @@
     }
     var cs = getComputedStyle(el);
     ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
-    var m = ctx.measureText(el.textContent || '');
+    /* Мерить надо то, что видно на экране. textContent отдаёт исходную
+       строку — строчными, — а заголовки набраны прописными: у «Что мы
+       реализуем» в исходнике есть «у» и «р», и замер добавлял их
+       выносные там, где на экране одни капители. Из-за этого линия под
+       тремя заголовками уходила ниже, чем под «Консьержем», хотя шрифт
+       и кегль одни. Применяем ту же трансформацию, что и CSS. */
+    var txt = el.textContent || '';
+    var tt = cs.textTransform;
+    if (tt === 'uppercase') txt = txt.toUpperCase();
+    else if (tt === 'lowercase') txt = txt.toLowerCase();
+    var m = ctx.measureText(txt);
     if (!m || m.fontBoundingBoxAscent == null) return null;
     return m.fontBoundingBoxAscent + (m.actualBoundingBoxDescent || 0);
   }
@@ -970,6 +980,8 @@
     var dpr = window.devicePixelRatio || 1;
     var q = function (v) { return Math.round(v * dpr) / dpr; };
 
+    /* Первый проход — кегль и глубина букв у каждого заголовка */
+    var rows = [];
     caps.forEach(function (c) {
       /* Страховка на чужой язык: доли vw в CSS посчитаны по русским
          строкам, и если перевод окажется длиннее, заголовок вылезет
@@ -986,10 +998,27 @@
       }
       var ink = measure(c);
       if (ink == null) return;
+      rows.push({ el:c, fs:fs, ink:ink });
+    });
+    if (!rows.length) return;
+
+    /* Глубина у всех одна — по самому «низкому» заголовку.
+
+       В прописной кириллице ноги ниже строки есть у «Д»: в
+       «ГЕОГРАФИЯ НАШЕЙ ДЕЯТЕЛЬНОСТИ» и «ОСТАЛЬНОЕ НАШЕ ДЕЛО» буквы
+       уходят на .39 кегля, а в «ЧТО МЫ РЕАЛИЗУЕМ» и «ПОЗВОЛЬТЕ НАМ
+       ПОЗАБОТИТЬСЯ ОБО ВСЁМ» их нет и линия вставала на .26 — четыре
+       раздела выглядели набранными по-разному. Берём наибольшую долю
+       и отдаём всем: линия нигде не режет «Д» и везде идёт на одном
+       расстоянии от букв. */
+    var deep = 0;
+    rows.forEach(function (r) { deep = Math.max(deep, r.ink / r.fs); });
+
+    rows.forEach(function (r) {
       /* Линия — низ фигуры высотой .70em, поэтому верх слоя это
          «низ букв + просвет» минус её высота. */
-      c.style.setProperty('--cap-top',  q(ink + GAP * fs - .70 * fs) + 'px');
-      c.style.setProperty('--cap-line', q(Math.max(1, WEIGHT * fs)) + 'px');
+      r.el.style.setProperty('--cap-top',  q((deep + GAP - .70) * r.fs) + 'px');
+      r.el.style.setProperty('--cap-line', q(Math.max(1, WEIGHT * r.fs)) + 'px');
     });
   }
 
