@@ -24,6 +24,13 @@
   function scrollToId(id) {
     var target = document.getElementById(id);
     if (!target) return;
+    /* На компьютере раздел «Заявка» пуст — метка, заголовок, форма и
+       кнопки связи переехали на последний экран, и сам раздел спрятан.
+       Ссылка ведёт туда, где всё это теперь стоит. */
+    if (!target.getClientRects().length) {
+      target = document.querySelector('.final');
+      if (!target) return;
+    }
     var abs = target.getBoundingClientRect().top + window.pageYOffset;
     // Уйдёт ли шапка: она прячется только при движении вниз и только
     // ниже своей границы. Если уйдёт — отступ под неё не оставляем,
@@ -1216,6 +1223,12 @@
   var labNext = lab ? lab.nextSibling : null;
   var lock = fin.querySelector('.lockup');
 
+  /* Три кнопки связи встают под левую колонку формы, под строку
+     «Без предпочтений», и ростом равняются на неё. */
+  var dir = document.querySelector('#request .direct');
+  var dirHome = dir ? dir.parentNode : null;
+  var dirNext = dir ? dir.nextSibling : null;
+
   /* Подсказка внутри поля вместо подписи над ним — как у эталона.
      Текст берём из самой подписи, звёздочку обязательности убираем:
      она остаётся в разметке для читалок. У списков подсказка своя —
@@ -1247,12 +1260,17 @@
       if (lab) fin.insertBefore(lab, lock);
       if (say) fin.appendChild(say);
       fin.appendChild(mount);
+      if (dir) {
+        var rf = mount.querySelector('.rf');
+        if (rf) rf.appendChild(dir);
+      }
       fsec.classList.add('has-form');
       hints(true);
       moved = true;
     } else if (!wide && moved) {
       if (lab) labHome.insertBefore(lab, labNext);
       if (say) sayHome.insertBefore(say, sayNext);
+      if (dir) dirHome.insertBefore(dir, dirNext);
       home.insertBefore(mount, next);
       fsec.classList.remove('has-form');
       hints(false);

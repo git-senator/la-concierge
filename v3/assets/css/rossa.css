@@ -853,6 +853,29 @@ h2 .em{ background-image:linear-gradient(96deg,
 
    Только компьютер и только последний экран.                     */
 @media (min-width:981px){
+  /* Раздел «Заявка» на компьютере пуст: метка, заголовок, строка
+     «Оставьте заявку…», форма и три кнопки связи стоят на последнем
+     экране. Пустая полоса между «Консьержем» и знаком не нужна —
+     раздел спрятан целиком. На телефоне он остаётся как был. */
+  #request{ display:none; }
+
+  /* Три кнопки связи — под левой колонкой формы, ростом со строку */
+  .final-in .rf > .direct{
+    /* Четвёртая строка сетки — та же, где стоит кнопка отправки:
+       кнопки связи встают вровень с нею, сразу под «Без
+       предпочтений», а не ниже через пустую клетку. */
+    grid-column:1; grid-row:4; align-self:start;
+    display:flex; gap:13px; margin:0;
+  }
+  .final-in .rf > .direct .direct-btn{
+    flex:1 1 0; max-width:none; height:32px; border-radius:999px;
+    border-width:var(--hair, 1px);
+    box-shadow:inset 0 0 0 2px #0C0C0D,
+               inset 0 0 0 3px rgba(240,227,180,.55),
+               0 6px 16px rgba(0,0,0,.4);
+  }
+  .final-in .rf > .direct .direct-btn svg{ width:15px; height:15px; }
+
   /* Метка «IV · Заявка» — над знаком, по центру */
   .final-in > .label{
     justify-content:center;
