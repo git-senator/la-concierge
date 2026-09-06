@@ -1201,15 +1201,42 @@
   var next = mount.nextSibling;
   var moved = false;
 
+  /* Подсказка внутри поля вместо подписи над ним — как у эталона.
+     Текст берём из самой подписи, звёздочку обязательности убираем:
+     она остаётся в разметке для читалок. У списков подсказка своя —
+     первая строка («Выберите…», «Без предпочтений»), их не трогаем. */
+  function hints(on) {
+    [].forEach.call(mount.querySelectorAll('.rf-field'), function (f) {
+      var box = f.querySelector('input, textarea');
+      if (!box) return;
+      if (on) {
+        if (box.dataset.ph == null) box.dataset.ph = box.getAttribute('placeholder') || '';
+        if (!box.dataset.ph) {
+          var lab = f.querySelector('label');
+          if (lab) {
+            var t = lab.cloneNode(true);
+            var star = t.querySelector('.req');
+            if (star) star.remove();
+            box.setAttribute('placeholder', t.textContent.trim());
+          }
+        }
+      } else if (box.dataset.ph != null) {
+        box.setAttribute('placeholder', box.dataset.ph);
+      }
+    });
+  }
+
   function place() {
     var wide = window.innerWidth >= 981;
     if (wide && !moved) {
       fin.appendChild(mount);
       fsec.classList.add('has-form');
+      hints(true);
       moved = true;
     } else if (!wide && moved) {
       home.insertBefore(mount, next);
       fsec.classList.remove('has-form');
+      hints(false);
       moved = false;
     }
   }
