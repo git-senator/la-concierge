@@ -1201,6 +1201,21 @@
   var next = mount.nextSibling;
   var moved = false;
 
+  /* Вместе с формой вниз едет и строка «Оставьте заявку…»: владелец
+     попросил поставить её под рамку, над самой формой. Узел тот же,
+     дорога та же — запоминаем его прежнее место и возвращаем его
+     туда на телефоне. */
+  var say = document.querySelector('#request .req-say .sec-lede');
+  var sayHome = say ? say.parentNode : null;
+  var sayNext = say ? say.nextSibling : null;
+
+  /* Метка «IV · Заявка» встаёт над самим знаком — она объявляет
+     раздел, а раздел теперь начинается здесь. Дорога та же. */
+  var lab = document.querySelector('#request .sec-head .label');
+  var labHome = lab ? lab.parentNode : null;
+  var labNext = lab ? lab.nextSibling : null;
+  var lock = fin.querySelector('.lockup');
+
   /* Подсказка внутри поля вместо подписи над ним — как у эталона.
      Текст берём из самой подписи, звёздочку обязательности убираем:
      она остаётся в разметке для читалок. У списков подсказка своя —
@@ -1229,11 +1244,15 @@
   function place() {
     var wide = window.innerWidth >= 981;
     if (wide && !moved) {
+      if (lab) fin.insertBefore(lab, lock);
+      if (say) fin.appendChild(say);
       fin.appendChild(mount);
       fsec.classList.add('has-form');
       hints(true);
       moved = true;
     } else if (!wide && moved) {
+      if (lab) labHome.insertBefore(lab, labNext);
+      if (say) sayHome.insertBefore(say, sayNext);
       home.insertBefore(mount, next);
       fsec.classList.remove('has-form');
       hints(false);

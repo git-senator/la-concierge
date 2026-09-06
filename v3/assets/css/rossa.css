@@ -853,6 +853,19 @@ h2 .em{ background-image:linear-gradient(96deg,
 
    Только компьютер и только последний экран.                     */
 @media (min-width:981px){
+  /* Метка «IV · Заявка» — над знаком, по центру */
+  .final-in > .label{
+    justify-content:center;
+    margin:0 0 clamp(10px, 1.4vh, 18px);
+  }
+
+  /* Строка «Оставьте заявку…» стоит под рамкой, над формой */
+  .final-in .sec-lede{
+    margin:clamp(18px, 2.2vh, 30px) auto 0;
+    text-align:center; max-width:640px;
+  }
+  .final-in .sec-lede + .req-form{ margin-top:clamp(18px, 2.2vh, 30px); }
+
   .final-in .req-form{
     border:0; background:none; border-radius:0;
     /* Владелец попросил уменьшить блок в полтора раза: 1180 → 787,
