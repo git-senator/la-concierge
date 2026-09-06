@@ -840,26 +840,74 @@
   var claim = document.querySelector('.hero-in .lk-claim');
   if (!lock || !claim) return;
 
+  /* Последний экран владелец попросил сделать таким же, как первый:
+     то же золото, то же скругление рамки, тот же кегль. Всё это уже
+     описано для .hero-in двумя десятками правил, часть из которых
+     привязана к высоте окна, — переписывать их второй раз значит
+     заводить копию, которая разойдётся с оригиналом при первой же
+     правке. Поэтому знаку внизу просто выдаём тот же класс.
+
+     Выдаём его только на компьютере: у .hero-in есть и мобильные
+     правила (сдвиг знака, подложка под ним), а телефонная версия
+     последнего экрана меняться не должна. */
+  var last = document.querySelector('.final-in');
+  var lastLock  = last && last.querySelector('.lockup');
+  var lastClaim = last && last.querySelector('.lk-claim');
+
   var SHIFT = 76;            /* два сантиметра, приведённые к целому */
   var rules = [].slice.call(lock.querySelectorAll('.lk-sub i'));
+  var lastRules = lastLock ? [].slice.call(lastLock.querySelectorAll('.lk-sub i')) : [];
   var on = false;
+
+  function reset(cl, rl) {
+    if (cl) {
+      cl.style.removeProperty('translate');
+      cl.style.removeProperty('width');
+      cl.style.removeProperty('height');
+    }
+    rl.forEach(function (i) {
+      i.style.removeProperty('translate');
+      i.style.removeProperty('height');
+    });
+  }
 
   function clear() {
     lock.style.removeProperty('translate');
     document.documentElement.style.removeProperty('--hair');
-    claim.style.removeProperty('translate');
-    claim.style.removeProperty('width');
-    claim.style.removeProperty('height');
-    rules.forEach(function (i) {
-      i.style.removeProperty('translate');
-      i.style.removeProperty('height');
-    });
+    reset(claim, rules);
+    reset(lastClaim, lastRules);
+    if (last) last.classList.remove('hero-in');
     on = false;
+  }
+
+  /* Кладём рамку и волоски одного знака на сетку экрана */
+  function fit(cl, rl, q, hair) {
+    if (cl) {
+      cl.style.removeProperty('translate');
+      cl.style.removeProperty('width');
+      cl.style.removeProperty('height');
+      var r = cl.getBoundingClientRect();
+      cl.style.width  = q(r.width)  + 'px';
+      cl.style.height = q(r.height) + 'px';
+      var r2 = cl.getBoundingClientRect();
+      cl.style.translate = (q(r2.left) - r2.left).toFixed(4) + 'px '
+                         + (q(r2.top)  - r2.top ).toFixed(4) + 'px';
+    }
+    /* Волоски по бокам подписи: высота — целое число точек, верх —
+       на границе точки. Иначе линия в одну точку размазывается на
+       два ряда вполсилы и рядом со свечением читается грязной. */
+    rl.forEach(function (i) {
+      i.style.removeProperty('translate');
+      i.style.height = hair + 'px';
+      var ri = i.getBoundingClientRect();
+      i.style.translate = '0 ' + (q(ri.top) - ri.top).toFixed(4) + 'px';
+    });
   }
 
   function snap() {
     if (window.innerWidth < 981) { if (on) clear(); return; }
     on = true;
+    if (last) last.classList.add('hero-in');
 
     var dpr = window.devicePixelRatio || 1;
     var q = function (v) { return Math.round(v * dpr) / dpr; };
@@ -868,31 +916,13 @@
     var hair = Math.max(1, Math.round(dpr)) / dpr;
     document.documentElement.style.setProperty('--hair', hair + 'px');
 
-    /* Сдвиг знака: та же формула, что в CSS, но по сетке */
+    /* Сдвиг знака: та же формула, что в CSS, но по сетке.
+       Внизу сдвига нет — там знак стоит у верхнего края экрана. */
     var shift = Math.min(SHIFT, Math.max(0, (window.innerHeight - 700) / 2));
     lock.style.translate = '0 ' + q(shift) + 'px';
 
-    /* Рамка: сперва сброс, потом замер, потом округление */
-    claim.style.removeProperty('translate');
-    claim.style.removeProperty('width');
-    claim.style.removeProperty('height');
-    var r = claim.getBoundingClientRect();
-    claim.style.width  = q(r.width)  + 'px';
-    claim.style.height = q(r.height) + 'px';
-
-    var r2 = claim.getBoundingClientRect();
-    claim.style.translate = (q(r2.left) - r2.left).toFixed(4) + 'px '
-                          + (q(r2.top)  - r2.top ).toFixed(4) + 'px';
-
-    /* Волоски по бокам подписи: высота — целое число точек, верх —
-       на границе точки. Иначе линия в одну точку размазывается на
-       две ряда вполсилы и рядом со свечением читается грязной. */
-    rules.forEach(function (i) {
-      i.style.removeProperty('translate');
-      i.style.height = hair + 'px';
-      var ri = i.getBoundingClientRect();
-      i.style.translate = '0 ' + (q(ri.top) - ri.top).toFixed(4) + 'px';
-    });
+    fit(claim, rules, q, hair);
+    fit(lastClaim, lastRules, q, hair);
   }
 
   snap();
@@ -903,8 +933,11 @@
   if (window.ResizeObserver) {
     /* За высотой рамки следить нельзя — мы её сами задаём. Следим за
        строкой внутри: она меняется при смене языка и подгрузке шрифта. */
+    var ro = new ResizeObserver(snap);
     var line = claim.querySelector('b');
-    if (line) new ResizeObserver(snap).observe(line);
+    if (line) ro.observe(line);
+    var lastLine = lastClaim && lastClaim.querySelector('b');
+    if (lastLine) ro.observe(lastLine);
   }
 })();
 
