@@ -839,3 +839,55 @@ h2 .em{ background-image:linear-gradient(96deg,
   #request .req-grid{ grid-template-columns:1fr; }
   #request .req-say{ margin-inline:auto; }
 }
+
+/* ── Форма заявки в стиле эталона ────────────────────────────────
+   Владелец показал форму ROSSA и попросил не копировать, а
+   приспособить приём. Взял из неё две вещи: композицию в две колонки
+   — короткие поля стопкой слева, длинное сообщение и кнопка справа —
+   и сами поля в виде рамок со скруглением вместо подчёркиваний.
+
+   Что не брал: подписей у эталона нет, поле объясняет подсказка
+   внутри. У нас два поля из семи — списки («Услуга», «Место»), где
+   без подписи непонятно, что выбирают, поэтому подписи оставил.
+   Контакты и заголовок слева тоже не нужны: их роль здесь играет
+   знак MONTERO над формой.
+
+   Толщина канта — общая переменная --hair, целое число точек экрана.
+
+   Только компьютер и только на последнем экране: в «Заявке» на
+   телефоне форма остаётся прежней.                                */
+@media (min-width:981px){
+  .final-in .rf{
+    grid-template-columns:1fr 1fr;
+    column-gap:clamp(18px, 1.8vw, 30px);
+    row-gap:14px;
+    align-items:start;
+    padding:clamp(24px, 2.4vw, 36px);
+  }
+  /* Пары полей разворачиваем в стопку и ставим в левую колонку */
+  .final-in .rf > .rf-row{
+    grid-column:1; grid-template-columns:1fr; gap:14px 0;
+  }
+  /* «Что вам нужно» — во всю высоту правой колонки, кнопка под ним */
+  .final-in .rf > .rf-field{ grid-column:2; grid-row:1 / span 3; align-self:stretch; }
+  .final-in .rf-foot{ grid-column:2; }
+
+  .final-in .rf-field{ padding-block:0; gap:7px; }
+  .final-in .rf-field input,
+  .final-in .rf-field select,
+  .final-in .rf-field textarea{
+    border:var(--hair, 1px) solid rgba(240,227,180,.20);
+    border-radius:10px;
+    background:rgba(255,255,255,.035);
+    padding:11px 14px;
+    font-size:16px;
+  }
+  .final-in .rf-field textarea{ flex:1 1 auto; min-height:200px; resize:none; }
+  .final-in .rf-field input:focus,
+  .final-in .rf-field select:focus,
+  .final-in .rf-field textarea:focus{
+    border-color:#F0E3B4;
+    box-shadow:0 0 0 3px rgba(240,227,180,.10);
+  }
+  .final-in .rf-submit{ width:100%; border-radius:10px; }
+}
