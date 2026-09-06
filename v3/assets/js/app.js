@@ -1295,7 +1295,28 @@
   var slog  = document.querySelector('.lp-slogan');
   if (!band || !claim || !slog) return;
 
-  var GAP = 16, last = null;   /* было 34 — владелец просил ближе к рамке */
+  var last = null;
+
+  /* Верх стеклянных панелей витрины. Панели нарисованы
+     псевдоэлементами, и своих узлов у них нет — спрашиваем
+     вычисленный отступ прямо у ::before: он уже в пикселях. */
+  function panelTop() {
+    var best = null;
+    ['.lp-philosophy', '.lp-dest', '.lp-services .lp-list'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (!el) return;
+      var cs = getComputedStyle(el, '::before');
+      var off = parseFloat(cs.top);
+      if (!isFinite(off)) return;
+      var t = el.getBoundingClientRect().top + off;
+      if (best === null || t < best) best = t;
+    });
+    if (best === null) {
+      var g = document.querySelector('.lp-grid');
+      if (g) best = g.getBoundingClientRect().top;
+    }
+    return best;
+  }
 
   function place() {
     if (window.innerWidth < 981) {
@@ -1303,8 +1324,14 @@
       return;
     }
     band.style.setProperty('--band-y', '0px');
-    var y = Math.round(claim.getBoundingClientRect().bottom + GAP
-                       - slog.getBoundingClientRect().top);
+    var top = panelTop();
+    if (top == null) return;
+    /* Ровно посередине между нижней гранью рамки заявления и верхом
+       стеклянных панелей: считаем по самой стеклянной коробке
+       слогана, а не по строке текста — у коробки есть свои поля. */
+    var free = (claim.getBoundingClientRect().bottom + top) / 2;
+    var box  = band.getBoundingClientRect();
+    var y = Math.round(free - box.height / 2 - box.top);
     if (y === last) { band.style.setProperty('--band-y', y + 'px'); return; }
     last = y;
     band.style.setProperty('--band-y', y + 'px');
