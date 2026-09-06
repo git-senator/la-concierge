@@ -3,6 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ── Один адрес на оба вида ────────────────────────────────────────
+     Здесь живёт компьютерная версия. Если её открыли с телефона —
+     возвращаем на общий адрес, где лежит телефонная. Порог тот же,
+     981 пиксель; обратно сюда переводит только шире 981, поэтому
+     качелей между версиями быть не может. Счётчик за сеанс — не
+     больше двух переходов.
+
+     ?stay=1 — остаться здесь наперекор устройству.               -->
+<script>
+(function () {
+  try {
+    if (/[?&]stay=1/.test(location.search)) {
+      sessionStorage.setItem('mc-stay', '1');
+    }
+    if (sessionStorage.getItem('mc-stay') === '1') return;
+    var n = +(sessionStorage.getItem('mc-jump') || 0);
+    if (n >= 2) return;
+    if (window.matchMedia('(max-width:980px)').matches) {
+      sessionStorage.setItem('mc-jump', n + 1);
+      location.replace('../' + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 <title data-i18n="meta.title">Дом тихих договорённостей</title>
 <meta name="description" data-i18n-content="meta.desc" content="Частный консьерж по Бразилии и Латинской Америке. Одна просьба — всё устроено: транспорт, авиация, яхты, резиденции, охрана.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
