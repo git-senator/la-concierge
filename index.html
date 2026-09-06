@@ -3,6 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ── Один адрес на оба вида ────────────────────────────────────────
+     Компьютерная версия живёт в /v3/, телефонная — здесь. Посетителю
+     знать об этом незачем: с широкого экрана его сразу переводит на
+     /v3/, с телефона он остаётся тут.
+
+     Порог тот же, что у всей вёрстки, — 981 пиксель, и переходы
+     разведены (сюда возвращает только ниже 981), поэтому качелей
+     между версиями быть не может. На всякий случай стоит счётчик: за
+     сеанс не больше двух переходов.
+
+     Кто хочет остаться на этой версии наперекор устройству — адрес с
+     ?stay=1 ; выбор держится до конца сеанса.
+
+     Скрипт стоит первым и работает до отрисовки: замена адреса идёт
+     без мелькания страницы и без записи в историю, поэтому «назад»
+     ведёт туда, откуда человек пришёл.                            -->
+<script>
+(function () {
+  try {
+    if (/[?&]stay=1/.test(location.search)) {
+      sessionStorage.setItem('mc-stay', '1');
+    }
+    if (sessionStorage.getItem('mc-stay') === '1') return;
+    var n = +(sessionStorage.getItem('mc-jump') || 0);
+    if (n >= 2) return;
+    if (window.matchMedia('(min-width:981px)').matches) {
+      sessionStorage.setItem('mc-jump', n + 1);
+      location.replace('v3/' + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 <title data-i18n="meta.title">Дом тихих договорённостей</title>
 <meta name="description" data-i18n-content="meta.desc" content="Частный консьерж по Бразилии и Латинской Америке. Одна просьба — всё устроено: транспорт, авиация, яхты, резиденции, охрана.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
