@@ -1347,3 +1347,59 @@
     ro.observe(band); ro.observe(claim);
   }
 })();
+
+/* ── Номера шагов — вплотную к первому слову ──────────────────────
+   Заголовки шагов выключены по центру, а номера стояли у левого края
+   колонки: между цифрой и словом зияло больше сотни пикселей.
+   Владелец попросил подтянуть цифры к началу слов.
+
+   Числом это не задать: каждый заголовок своей длины, и его левая
+   грань зависит от того, сколько места занял набор. Меряем границы
+   самого набора диапазоном (Range) — прямоугольник элемента здесь
+   бесполезен, он равен всей ширине колонки, — и ставим цифру слева
+   от первой буквы с одинаковым просветом.
+
+   Только компьютер: на телефоне у шагов свой строй, номера там
+   стоят по-другому, и скрипт ниже 981 возвращает всё как было.   */
+(function () {
+  var steps = document.querySelector('#concierge .steps');
+  if (!steps) return;
+  var items = [].slice.call(steps.querySelectorAll('li'));
+  if (!items.length) return;
+
+  var GAP = 14, on = false;
+
+  function clear() {
+    if (!on) return;
+    items.forEach(function (li) {
+      var n = li.querySelector('.st-n');
+      if (n) n.style.removeProperty('left');
+    });
+    on = false;
+  }
+
+  function place() {
+    if (window.innerWidth < 981) { clear(); return; }
+    var dpr = window.devicePixelRatio || 1;
+    var q = function (v) { return Math.round(v * dpr) / dpr; };
+    items.forEach(function (li) {
+      var n = li.querySelector('.st-n');
+      var h = li.querySelector('h4');
+      if (!n || !h) return;
+      var r = document.createRange();
+      r.selectNodeContents(h);
+      var t = r.getBoundingClientRect();
+      if (!t.width) return;
+      var nw = n.getBoundingClientRect().width;
+      n.style.left = q(t.left - GAP - nw - li.getBoundingClientRect().left) + 'px';
+    });
+    on = true;
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+  document.addEventListener('langchange', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
+})();
