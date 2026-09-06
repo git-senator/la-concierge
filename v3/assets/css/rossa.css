@@ -950,8 +950,15 @@ h2 .em{ background-image:linear-gradient(96deg,
     color:var(--r-white);
     height:32px; padding:0 15px;
     border:0; border-radius:999px;
-    background:#2C3135;
-    box-shadow:none;
+    /* Стекло — то же, что под слоганом на первом экране и под
+       панелями витрины: холодный градиент, размытие фона, светлый
+       блик по верхней грани. */
+    background:linear-gradient(180deg,
+      rgba(126,146,166,.17) 0%, rgba(110,130,150,.10) 55%,
+      rgba(96,114,132,.07) 100%);
+    -webkit-backdrop-filter:blur(20px) saturate(1.18);
+            backdrop-filter:blur(20px) saturate(1.18);
+    box-shadow:inset 0 1px 0 rgba(214,226,238,.10);
     transition:background .3s var(--ease), box-shadow .3s var(--ease);
   }
   /* Окно письма — единственное поле, которому капсула не идёт:
@@ -974,14 +981,20 @@ h2 .em{ background-image:linear-gradient(96deg,
   .final-in .rf-field input:focus,
   .final-in .rf-field select:focus,
   .final-in .rf-field textarea:focus{
-    background:#343A3F;
-    box-shadow:0 0 0 var(--hair, 1px) #F0E3B4, 0 0 0 4px rgba(240,227,180,.12);
+    /* В работе стекло чуть плотнее — поле, в которое пишут, должно
+       быть заметно светлее соседних. */
+    background:linear-gradient(180deg,
+      rgba(146,166,186,.24) 0%, rgba(130,150,170,.16) 55%,
+      rgba(116,134,152,.12) 100%);
+    box-shadow:inset 0 1px 0 rgba(214,226,238,.14),
+               0 0 0 var(--hair, 1px) #F0E3B4, 0 0 0 4px rgba(240,227,180,.12);
   }
   /* Канта нет, поэтому ошибку показываем кольцом вокруг капсулы */
   .final-in .rf-field.has-error input,
   .final-in .rf-field.has-error select,
   .final-in .rf-field.has-error textarea{
-    box-shadow:0 0 0 var(--hair, 1px) var(--ember);
+    box-shadow:inset 0 1px 0 rgba(214,226,238,.10),
+               0 0 0 var(--hair, 1px) var(--ember);
   }
   .final-in .rf-error{ margin:4px 0 0 15px; font-size:10px; }
 
