@@ -840,7 +840,7 @@
   var claim = document.querySelector('.hero-in .lk-claim');
   if (!lock || !claim) return;
 
-  var SHIFT = 76;            /* два сантиметра, приведённые к целому */
+  var SHIFT = 0;            /* два сантиметра, приведённые к целому */
   var rules = [].slice.call(lock.querySelectorAll('.lk-sub i'));
   var on = false;
 
@@ -870,7 +870,7 @@
 
     /* Сдвиг знака: та же формула, что в CSS, но по сетке */
     var shift = Math.min(SHIFT, Math.max(0, (window.innerHeight - 700) / 2));
-    lock.style.translate = '0 ' + q(shift) + 'px';
+    lock.style.translate = '0 ' + q(shift) + 'px';   /* SHIFT = 0 */
 
     /* Рамка: сперва сброс, потом замер, потом округление */
     claim.style.removeProperty('translate');
