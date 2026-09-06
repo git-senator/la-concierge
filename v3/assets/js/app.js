@@ -1182,6 +1182,43 @@
   }
 })();
 
+/* -- Форма заявки на последнем экране ----------------------------
+   Владелец попросил перенести форму под знак MONTERO внизу страницы.
+   Переносим сам узел, а не копию: обработчики, поля и уже введённый
+   текст остаются теми же — событие живёт на элементе, а не на месте
+   в разметке.
+
+   Только на компьютере. На телефоне форма должна остаться в «Заявке»,
+   поэтому при переходе через 981 узел возвращается на прежнее место —
+   для этого запоминаем и родителя, и соседа справа.               */
+(function () {
+  var mount = document.getElementById('request-form-mount');
+  var fin   = document.querySelector('.final-in');
+  var fsec  = document.querySelector('.final');
+  if (!mount || !fin || !fsec) return;
+
+  var home = mount.parentNode;
+  var next = mount.nextSibling;
+  var moved = false;
+
+  function place() {
+    var wide = window.innerWidth >= 981;
+    if (wide && !moved) {
+      fin.appendChild(mount);
+      fsec.classList.add('has-form');
+      moved = true;
+    } else if (!wide && moved) {
+      home.insertBefore(mount, next);
+      fsec.classList.remove('has-form');
+      moved = false;
+    }
+  }
+
+  place();
+  window.addEventListener('resize', place, { passive:true });
+  window.addEventListener('load', place);
+})();
+
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
    Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
    рамки в полосу слогана меняется с высотой окна. Считаем зазор
