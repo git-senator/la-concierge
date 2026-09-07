@@ -175,7 +175,7 @@
 
     svc: [
 ['Armored Vehicle Rental','Armored · Driven · Discreet',
- 'An armored SUV at the hotel entrance at four in the morning, engine warm, driver already briefed. Plated in Brazil, papers in order, protection level to your requirement.',
+ 'An armored SUV at the hotel entrance at four in the morning, engine warm, driver already briefed. On domestic plates, papers in order, protection level to your requirement.',
  'Armored SUVs, sedans and vans','Protection levels B4 to B7',
  'Security-trained drivers','By the day, the week or the month','Request an armored vehicle'],
 ['Yacht & Boat Charter','Crewed · Provisioned · Private',
@@ -418,7 +418,7 @@
 
     svc: [
 ['Aluguel de blindados','Blindado · Com motorista · Discreto',
- 'Um SUV blindado na porta do hotel às quatro da manhã, motor quente, motorista já orientado. Emplacado no Brasil, documentação em ordem, nível de blindagem conforme a sua necessidade.',
+ 'Um SUV blindado na porta do hotel às quatro da manhã, motor quente, motorista já orientado. Com placas nacionais, documentação em ordem, nível de blindagem conforme a sua necessidade.',
  'SUVs, sedãs e vans blindados','Níveis de blindagem B4 a B7',
  'Motoristas com treinamento de segurança','Por dia, por semana ou por mês','Solicitar um blindado'],
 ['Iates e lanchas','Com tripulação · Abastecido · Privado',
@@ -661,7 +661,7 @@
 
     svc: [
 ['Vehículos blindados','Blindado · Con chofer · Discreto',
- 'Un SUV blindado en la puerta del hotel a las cuatro de la mañana, motor caliente, chofer ya informado. Matriculado en Brasil, papeles en regla, nivel de blindaje según su necesidad.',
+ 'Un SUV blindado en la puerta del hotel a las cuatro de la mañana, motor caliente, chofer ya informado. Con matrícula nacional, papeles en regla, nivel de blindaje según su necesidad.',
  'SUV, sedanes y vans blindados','Niveles de blindaje B4 a B7',
  'Choferes con formación en seguridad','Por día, por semana o por mes','Solicitar un blindado'],
 ['Yates y lanchas','Con tripulación · Aprovisionado · Privado',
@@ -904,7 +904,7 @@
 
     svc: [
 ['Auto blindate','Blindata · Con autista · Discreta',
- 'Un SUV blindato davanti all’hotel alle quattro del mattino, motore caldo, autista già istruito. Immatricolato in Brasile, documenti in regola, livello di blindatura secondo la sua esigenza.',
+ 'Un SUV blindato davanti all’hotel alle quattro del mattino, motore caldo, autista già istruito. Con targhe nazionali, documenti in regola, livello di blindatura secondo la sua esigenza.',
  'SUV, berline e van blindati','Livelli di blindatura da B4 a B7',
  'Autisti con formazione di sicurezza','A giornata, a settimana o a mese','Richiedere un’auto blindata'],
 ['Yacht e barche','Con equipaggio · Rifornito · Privato',
