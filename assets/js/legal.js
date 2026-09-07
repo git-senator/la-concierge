@@ -21,7 +21,7 @@
   'use strict';
 
   var CO = 'Montero Private Concierge';
-  var WA = '+55 21 97777 0800';
+  var WA = '+55 48 99986 9084';
   var TG = 't.me/ROSSA_CO';
 
   window.LEGAL = {
