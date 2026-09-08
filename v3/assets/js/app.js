@@ -679,6 +679,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   /* Раскладка витрины устаканивается не сразу: примерно через
      секунду после загрузки содержимое колонки сдвигается вниз на
@@ -765,6 +766,7 @@
       el.style.removeProperty('--sg-y');
     });
     list.style.removeProperty('--cg-y');
+    list.style.removeProperty('--cg-x');
   }
 
   function place() {
@@ -792,7 +794,25 @@
     var py = Math.round(top - pb.top), dy = Math.round(top - db.top);
     var cy = Math.round(top - lb.top);
 
-    var key = [w, h, px, py, dx, dy, cy].join('|');
+    /* Средняя панель — ровно посередине между боковыми.
+
+       Её поля заданы числами (12 слева, -28 справа) от списка, а центр
+       набора в средней колонке с центром страницы не совпадает: на 1920
+       слева до левой панели оставалось 158 точек, справа до правой —
+       197. Считаем середину просвета между боковыми панелями и сдвигаем
+       среднюю на разницу; ширина её при этом не меняется.
+
+       Сдвиг только когда три панели стоят в один ряд. На узком окне
+       «Направления» уходят под витрину, боковых соседей у средней нет и
+       равнять не с чем — там сдвиг нулевой.                          */
+    var cx = 0;
+    var lpR = pb.left + px + w;   /* правый край левой панели  */
+    var deL = db.left + dx;       /* левый край правой панели  */
+    if (lpR < lb.left && deL > lb.right) {
+      cx = Math.round((lpR + deL) / 2 - (lb.left + 12 + lb.right + 28) / 2);
+    }
+
+    var key = [w, h, px, py, dx, dy, cy, cx].join('|');
     if (key === last) return;
     last = key;
 
@@ -805,11 +825,13 @@
     de.style.setProperty('--sg-x', dx + 'px');
     de.style.setProperty('--sg-y', dy + 'px');
     list.style.setProperty('--cg-y', cy + 'px');
+    list.style.setProperty('--cg-x', cx + 'px');
   }
 
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   grid.addEventListener('transitionend', place);
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
@@ -1054,10 +1076,18 @@
     var deep = 0;
     rows.forEach(function (r) { deep = Math.max(deep, r.ink / r.fs); });
 
+    /* Английский набран Cormorant Garamond, и его буквенный ящик глубже
+       русского: та же формула опускала линию на десять точек ниже, под
+       «WHAT WE DELIVER» до строки под ним оставалось девять точек
+       против девятнадцати в русском — линия почти садилась на текст.
+       Владелец попросил приподнять её на половину этого просвета.
+       Русский не трогаем: там линия стоит так, как он её принял.   */
+    var LIFT = (document.documentElement.lang === 'en') ? 5 : 0;
+
     rows.forEach(function (r) {
       /* Линия — низ фигуры высотой .70em, поэтому верх слоя это
          «низ букв + просвет» минус её высота. */
-      r.el.style.setProperty('--cap-top',  q((deep + GAP - .70) * r.fs) + 'px');
+      r.el.style.setProperty('--cap-top',  q((deep + GAP - .70) * r.fs - LIFT) + 'px');
       r.el.style.setProperty('--cap-line', q(Math.max(1, WEIGHT * r.fs)) + 'px');
     });
   }
@@ -1065,6 +1095,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
   if (window.ResizeObserver) {
@@ -1181,6 +1212,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
   if (window.ResizeObserver) {
@@ -1281,6 +1313,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
 })();
 
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
@@ -1340,6 +1373,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
   if (window.ResizeObserver) {
@@ -1399,6 +1433,7 @@
   place();
   window.addEventListener('resize', place, { passive:true });
   window.addEventListener('load', place);
+  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
   document.addEventListener('langchange', place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
