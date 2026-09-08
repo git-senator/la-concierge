@@ -1402,6 +1402,11 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
 .rf-foot{ display:flex; margin-top:16px; padding-top:18px; border-top:1px solid var(--line); }
 .rf-submit{
   flex:1 1 auto; width:100%;
+  /* Владелец попросил набрать надпись плотнее — она главная на
+     странице и на светлом золоте лёгкие буквы теряются. Шаг один:
+     500 → 600 у иностранных, 600 → 700 у русского (у него свой
+     набор весов, правило ниже). */
+  font-weight:600;
   /* Главное действие страницы набрано золотом знака: тем же переходом
      от глубокого #A78239 к светлому блику, что и кольцо у эмблемы.
      Буквы тёмные — на золоте белое читается плохо.               */
@@ -1410,6 +1415,7 @@ h4{ font-size:clamp(19px,2vw,24px); letter-spacing:0; }
   border-color:transparent; color:#0C0C0D;
   box-shadow:0 10px 26px rgba(0,0,0,.45);
 }
+html[lang="ru"] .rf-submit{ font-weight:700; }
 .rf-submit:hover{
   background:linear-gradient(150deg, #F3E2AE 0%, #E0C179 22%, #D4AF52 48%,
                                      #F0DCA4 72%, #C39A46 100%);
