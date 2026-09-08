@@ -57,24 +57,25 @@ html[lang="ru"]{
 html[lang="ru"] .lk-name,
 html[lang="ru"] .lk-sub{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
 
-/* Английская версия набирается Playfair — так же, как русская
-   Libertinus'ом: одна гарнитура во всех трёх ролях. Владелец выбрал
-   его сам и поставил условие: подгонять шрифт под вёрстку, а не
-   вёрстку под шрифт. Ниже, по разделам, идут поправки кегля там, где
-   Playfair шире прежней пары Cormorant/Barlow и текст переставал
-   помещаться в свою рамку.
+/* Английская версия набирается Cormorant Garamond — той же
+   антиквой, что и прежде, но заголовки идут в 600. Владелец прислал
+   образец: гарнитура там та самая, а отличие — в насыщенности. На
+   сайте заголовки стояли в 400 и рядом с образцом читались бледно.
 
-   Логотип из этого исключён: MONTERO и Concierge Service одинаковы на
-   всех языках и остаются на Cinzel.
+   Опыт с Playfair владелец не принял — правило снято целиком.
 
-   Русский не затронут ничем: все правила ниже висят на lang="en". */
-html[lang="en"]{
-  --display:"Playfair","Cormorant Garamond",Georgia,serif;
-  --caps:"Playfair","Cormorant Garamond",Georgia,serif;
-  --sans:"Playfair",Georgia,"Times New Roman",serif;
-}
-html[lang="en"] .lk-name,
-html[lang="en"] .lk-sub{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
+   Насыщенность меняется только у заголовков. Основной текст, подписи
+   и логотип не тронуты: MONTERO и Concierge Service одинаковы на всех
+   языках и остаются на Cinzel.
+
+   Русского это не касается ничем: правила висят на lang="en".   */
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4,
+html[lang="en"] .svc-name,
+html[lang="en"] .lp-h,
+html[lang="en"] .lp-big b,
+html[lang="en"] .lp-foot-claim b{ font-weight:600; }
 
 /* Строки заявления в рамке набираются в одну строку каждая.
 
