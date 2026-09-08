@@ -43,7 +43,7 @@
   var SCHEMA = [
     { name:'fullName', label:'Имя', i18n:'form.fullName', type:'text', required:true, row:1,
       autocomplete:'name',        placeholder:'' },
-    { name:'whatsapp', label:'Номер WhatsApp/Telegram', i18n:'form.whatsapp', type:'tel', required:true, row:1,
+    { name:'whatsapp', label:'Номер WhatsApp | Telegram', i18n:'form.whatsapp', type:'tel', required:true, row:1,
       autocomplete:'tel',         placeholder:'',
       pattern:/^[+]?[\d\s().-]{7,20}$/, errI18n:'form.errPhone',
       patternMessage:'Укажите корректный номер с кодом страны.' },
