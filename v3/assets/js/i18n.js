@@ -146,7 +146,7 @@
     'lang.btn': 'Language',
 
     'form.fullName': 'Name',
-    'form.whatsapp': 'WhatsApp/Telegram number',
+    'form.whatsapp': 'WhatsApp | Telegram number',
     'form.email': 'Email',
     'form.country': 'Location',
     'form.service': 'Service',
@@ -389,7 +389,7 @@
     'lang.btn': 'Idioma',
 
     'form.fullName': 'Nome',
-    'form.whatsapp': 'Número de WhatsApp/Telegram',
+    'form.whatsapp': 'Número de WhatsApp | Telegram',
     'form.email': 'E-mail',
     'form.country': 'Localização',
     'form.service': 'Serviço',
@@ -632,7 +632,7 @@
     'lang.btn': 'Idioma',
 
     'form.fullName': 'Nombre',
-    'form.whatsapp': 'Número de WhatsApp/Telegram',
+    'form.whatsapp': 'Número de WhatsApp | Telegram',
     'form.email': 'Correo electrónico',
     'form.country': 'Ubicación',
     'form.service': 'Servicio',
@@ -875,7 +875,7 @@
     'lang.btn': 'Lingua',
 
     'form.fullName': 'Nome',
-    'form.whatsapp': 'Numero WhatsApp/Telegram',
+    'form.whatsapp': 'Numero WhatsApp | Telegram',
     'form.email': 'Email',
     'form.country': 'Località',
     'form.service': 'Servizio',
