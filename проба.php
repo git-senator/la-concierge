@@ -1,0 +1,1 @@
+<?php header("Cache-Control: no-store"); echo "метка ", time(), "-", rand(1000,9999);
