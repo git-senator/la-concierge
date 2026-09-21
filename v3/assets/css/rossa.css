@@ -753,7 +753,11 @@ h2 .em{ background-image:linear-gradient(96deg,
 @media (min-width:981px){
   #destinations .band-in{
     height:100%;
-    border:var(--hair, 1px) solid rgba(240,227,180,.22);
+    /* Кант взят с карточек brashouse: там он не золотой, а холодный
+       серый в одну точку экрана — #3A4048 при подложке #181B1E.
+       Цвет снят со снимка попиксельно, подложка у нас ровно та же,
+       поэтому берём его без пересчёта.                            */
+    border:var(--hair, 1px) solid #3A4048;
     border-radius:clamp(16px, 1.4vw, 26px);
     overflow:hidden;
   }
