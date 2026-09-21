@@ -128,6 +128,56 @@
     scrollToId(id);
   });
 
+  /* ── Кубик витрины открывает свою услугу ──────────────────────────
+     Владелец попросил, чтобы клик по кубику вёл не просто в раздел
+     услуг, а сразу к нужной: со снимком, описанием и списком.
+
+     Номер услуги написан в data-open — это ключ из реестра переводов
+     (svc.N.name), а не порядок строки: строки за лето переставляли и
+     две услуги удалили, порядок сместился бы. Ищем строку по ключу.
+
+     Сам переход к разделу делает обработчик data-scroll выше, он же
+     стоит на этих ссылках. Строку открываем, когда прокрутка уже
+     дошла: нажми мы кнопку сразу, реестр начал бы подводить карточку
+     под своё место и спорить с идущей прокруткой.                */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('a[data-open]');
+    if (!t) return;
+    var ключ = 'svc.' + t.getAttribute('data-open') + '.name';
+    var имя = document.querySelector('.svc-list [data-i18n="' + ключ + '"]');
+    var строка = имя && имя.closest('[data-svc]');
+    if (!строка) return;
+    var кнопка = строка.querySelector('.svc-head');
+    if (!кнопка) return;
+
+    /* Прокрутка по ссылке доводит только до начала раздела. Первым
+       строкам описи этого хватает — они там и стоят, — а нижние
+       остаются за кромкой: «Личная охрана» последняя, и её кубик
+       открывал услугу вслепую, ниже экрана. Поэтому после раскрытия
+       проверяем, видно ли строку, и при нужде ставим её под шапку.
+
+       Строку, которая и так на виду в верхней половине окна, не
+       трогаем: незачем дёргать страницу там, где всё в порядке.   */
+    function подвести(ещё) {
+      var г = кнопка.getBoundingClientRect();
+      var верх = nav.offsetHeight + 12;
+      if (г.top >= верх && г.top <= window.innerHeight * 0.55) return;
+      var цель = window.pageYOffset + г.top - верх;
+      var предел = document.documentElement.scrollHeight - window.innerHeight;
+      цель = Math.max(0, Math.min(цель, предел));
+      if (Math.abs(цель - window.pageYOffset) < 6) return;
+      window.scrollTo({ top: цель, behavior: reduced ? 'auto' : 'smooth' });
+      if (ещё) setTimeout(function () { подвести(0); }, 520);
+    }
+
+    setTimeout(function () {
+      if (кнопка.getAttribute('aria-expanded') !== 'true') кнопка.click();
+      /* Реестр после нажатия сам подводит страницу и делает это в два
+         захода, второй — через 520 мс. Вмешиваемся после него.    */
+      setTimeout(function () { подвести(1); }, 640);
+    }, 620);
+  });
+
   document.addEventListener('click', function (e) {
     var l = e.target.closest('a[data-legal]');
     if (!l) return;
@@ -1359,69 +1409,122 @@
 })();
 
 /* ── Слоган витрины под рамкой заявления ─────────────────────────
-   Знак с рамкой сдвинут вниз на два сантиметра, и величина захода
-   рамки в полосу слогана меняется с высотой окна. Считаем зазор
-   здесь: ставим полосу в ноль, меряем, и сдвигаем ровно настолько,
-   чтобы от нижней грани рамки до первой строки слогана осталось
-   тридцать четыре пикселя.                                        */
+   Скрипт, который двигал полосу со слоганом и часами, снят.
+
+   Он мерил рамку заявления и верх стеклянных панелей и ставил полосу
+   ровно посередине через transform. Считать это он мог только после
+   первой отрисовки, поэтому при каждом обновлении страницы блок
+   сначала стоял на своём месте по потоку, а через долю секунды
+   подпрыгивал — владелец это и видел. Панелей витрины больше нет,
+   середину между ними считать не от чего, и полоса теперь стоит там,
+   где её ставит вёрстка: неподвижно с первого кадра.
+
+   Часы идут как шли — их обновляет отдельный таймер ниже.        */
+
+/* ── Полоса со слоганом — ровно между рамкой и кубиками ──────────
+   Владелец попросил поставить её точно посередине: сверху до нижней
+   грани рамки заявления столько же, сколько снизу до первого ряда
+   кубиков.
+
+   В CSS этого не выразить. Верх отсчитывается от знака, который
+   центрируется в остатке экрана, низ — от сетки кубиков; обе
+   величины зависят от высоты окна по-разному, и перекос гуляет от
+   двух до сорока точек. Поэтому снова считаем скриптом.
+
+   Прыжка при обновлении, на который жаловался владелец, тут нет, и
+   вот почему. Пока середина не посчитана, полоса скрыта — а её
+   содержимое и так проявляется плавно, это .reveal. Считаем дважды:
+   сразу и после загрузки шрифтов (подменённый шрифт меняет высоту
+   набора, от неё зависит и середина). Оба раза блок невидим, и на
+   экране он появляется уже на своём месте. Если шрифты почему-то не
+   доехали, через 500 мс полосу показывает сторож.
+
+   Двигаем transform'ом: разметка не меняется, сетка кубиков от
+   пересчёта не съезжает, и накопления сдвига быть не может.     */
 (function () {
   var band  = document.querySelector('.lp-band-in');
   var claim = document.querySelector('.hero-in .lk-claim');
-  var slog  = document.querySelector('.lp-slogan');
-  if (!band || !claim || !slog) return;
+  var grid  = document.querySelector('.lp-grid');
+  if (!band || !claim || !grid) return;
 
-  var last = null;
+  var показан = false;
 
-  /* Верх стеклянных панелей витрины. Панели нарисованы
-     псевдоэлементами, и своих узлов у них нет — спрашиваем
-     вычисленный отступ прямо у ::before: он уже в пикселях. */
-  function panelTop() {
-    var best = null;
-    ['.lp-philosophy', '.lp-dest', '.lp-services .lp-list'].forEach(function (sel) {
-      var el = document.querySelector(sel);
-      if (!el) return;
-      var cs = getComputedStyle(el, '::before');
-      var off = parseFloat(cs.top);
-      if (!isFinite(off)) return;
-      var t = el.getBoundingClientRect().top + off;
-      if (best === null || t < best) best = t;
-    });
-    if (best === null) {
-      var g = document.querySelector('.lp-grid');
-      if (g) best = g.getBoundingClientRect().top;
+  /* Появление блоков идёт через transform (.reveal), и пока оно не
+     доиграло, рамка заявления и кубики стоят на два десятка точек
+     ниже своего настоящего места. Меряли бы как есть — середина
+     вышла бы кривой. Поэтому у каждой грани вычитаем сдвиги всех
+     родителей: получается положение, на котором набор остановится.
+
+     Собственный сдвиг знака задан свойством translate, а не
+     transform, и в этот счёт не попадает — он и должен остаться. */
+  function грань(el, край) {
+    var r = el.getBoundingClientRect()[край];
+    var узел = el;
+    while (узел && узел !== document.body) {
+      var t = getComputedStyle(узел).transform;
+      if (t && t !== 'none' && window.DOMMatrixReadOnly) {
+        try { r -= new DOMMatrixReadOnly(t).f; } catch (e) {}
+      }
+      узел = узел.parentElement;
     }
-    return best;
+    return r;
   }
 
-  function place() {
-    if (window.innerWidth < 981) {
-      if (last !== null) { band.style.removeProperty('--band-y'); last = null; }
-      return;
-    }
+  function показать() {
+    if (показан) return;
+    показан = true;
+    band.classList.add('готова');
+  }
+
+  function ровно(и_показать) {
+    if (window.innerWidth < 981) { band.style.removeProperty('--band-y'); показать(); return null; }
+
+
+    /* Свой сдвиг снимаем, меряем чистое положение, ставим новый. */
     band.style.setProperty('--band-y', '0px');
-    var top = panelTop();
-    if (top == null) return;
-    /* Ровно посередине между нижней гранью рамки заявления и верхом
-       стеклянных панелей: считаем по самой стеклянной коробке
-       слогана, а не по строке текста — у коробки есть свои поля. */
-    var free = (claim.getBoundingClientRect().bottom + top) / 2;
-    var box  = band.getBoundingClientRect();
-    var y = Math.round(free - box.height / 2 - box.top);
-    if (y === last) { band.style.setProperty('--band-y', y + 'px'); return; }
-    last = y;
+    var b = band.getBoundingClientRect();
+    var первая = grid.querySelector('.lp-tile') || grid;
+    var верх = грань(claim, 'bottom');
+    var низ  = грань(первая, 'top');
+    var y = Math.round((верх + низ) / 2 - (b.top + b.height / 2));
     band.style.setProperty('--band-y', y + 'px');
+    if (и_показать) показать();
+    return y;
   }
 
-  place();
-  window.addEventListener('resize', place, { passive:true });
-  window.addEventListener('load', place);
-  document.addEventListener('langchange', place);   /* другой язык — другая длина строк */
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
-  [400, 1200, 2500].forEach(function (ms) { setTimeout(place, ms); });
-  if (window.ResizeObserver) {
-    var ro = new ResizeObserver(place);
-    ro.observe(band); ro.observe(claim);
+  /* Показываем не по таймеру, а когда два счёта подряд дали одно и
+     то же: значит вёрстка устоялась — шрифты доехали, сетка кубиков
+     встала. Сторож на 900 мс показывает блок в любом случае, чтобы
+     он не остался скрытым, если что-то пойдёт не так.            */
+  var прошлый = null;
+
+  /* document.fonts.ready отвечает «готово» ещё до того, как начата
+     загрузка наших гарнитур — таблица Google Fonts в этот момент
+     сама ещё едет. Поэтому спрашиваем прямо про тот шрифт, которым
+     набран слоган: пока его нет, набор стоит запасной гарнитурой,
+     высоты другие, и середина посчиталась бы не туда.            */
+  function шрифтПришёл() {
+    try {
+      var slog = document.querySelector('.lp-slogan');
+      if (!slog || !document.fonts || !document.fonts.check) return true;
+      var c = getComputedStyle(slog);
+      return document.fonts.check(c.fontWeight + ' ' + c.fontSize + ' ' +
+                                  c.fontFamily.split(',')[0]);
+    } catch (e) { return true; }
   }
+
+  function проверить() {
+    var y = ровно(false);
+    if (y !== null && y === прошлый && шрифтПришёл()) показать();
+    прошлый = y;
+  }
+
+  проверить();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(проверить);
+  [80, 180, 320, 480, 680, 900].forEach(function (мс) { setTimeout(проверить, мс); });
+  setTimeout(показать, 1200);                              /* сторож */
+  window.addEventListener('resize', function () { ровно(false); }, { passive:true });
+  document.addEventListener('langchange', function () { ровно(false); });
 })();
 
 /* ── Номера шагов — вплотную к первому слову ──────────────────────
