@@ -162,7 +162,25 @@
       var г = кнопка.getBoundingClientRect();
       var верх = nav.offsetHeight + 12;
       if (г.top >= верх && г.top <= window.innerHeight * 0.55) return;
-      var цель = window.pageYOffset + г.top - верх;
+      var сдвиг = г.top - верх;          // столько нужно прокрутить, чтобы
+                                          // строка встала под шапку
+
+      /* Дальше конца раздела не уезжаем. Карточка со снимком и
+         описанием прилипшая: пока раздел идёт, она держится под
+         шапкой, а у последних строк описи упирается в низ раздела и
+         уходит вверх вместе с ним. «Строка под шапкой» для них
+         означала бы прокрутку за край — владелец видел один хвост
+         описания. Поэтому нижняя граница — низ раздела у нижней
+         кромки окна: там карточка стоит целиком, и последние строки
+         описи рядом с нею.                                        */
+      var раздел = строка.closest('section');
+      if (раздел) {
+        var рк = раздел.getBoundingClientRect();
+        var конец = рк.bottom - (window.innerHeight - 16);
+        if (сдвиг > конец) сдвиг = конец;
+      }
+
+      var цель = window.pageYOffset + сдвиг;
       var предел = document.documentElement.scrollHeight - window.innerHeight;
       цель = Math.max(0, Math.min(цель, предел));
       if (Math.abs(цель - window.pageYOffset) < 6) return;
