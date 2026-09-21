@@ -755,6 +755,19 @@
         if (q.bottom > b) b = q.bottom;
       }
     }
+    /* Кубики услуг — не текст. Их рамка шире набора внутри, и панель,
+       посчитанная по одним чернилам, срезала бы им углы. Берём
+       собственные границы плиток наравне со строками.             */
+    var tiles = root.querySelectorAll('.lp-tile');
+    for (var k = 0; k < tiles.length; k++) {
+      var tb = tiles[k].getBoundingClientRect();
+      if (!tb.width || !tb.height) continue;
+      if (tb.left   < l) l = tb.left;
+      if (tb.top    < t) t = tb.top;
+      if (tb.right  > r) r = tb.right;
+      if (tb.bottom > b) b = tb.bottom;
+    }
+
     return (l === Infinity) ? null : { l:l, t:t, r:r, b:b };
   }
 

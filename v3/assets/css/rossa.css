@@ -1264,3 +1264,222 @@ h2 .em{ background-image:linear-gradient(96deg,
   html:not([lang="ru"]) .svc-stage .svc-detail .svc-items{ gap:10.4px; }
   html:not([lang="ru"]) .svc-stage .svc-detail .svc-items li{ font-size:12.5px; line-height:1.35; }
 }
+
+
+/* ══════════ КУБИКИ УСЛУГ В ВИТРИНЕ ══════════
+
+   Владелец прислал макет: ряд стеклянных плиток с золотой иконкой,
+   названием и короткой подписью. Ими заменены два текстовых блока
+   витрины — «Ваше время. Ваша роскошь.» слева и «Один номер. Один
+   консьерж.» справа. По четыре плитки на место каждого, зазор между
+   ними оставлен намеренно: видно, что это отдельные кнопки.
+
+   Стекло здесь второго слоя. Под боковыми колонками уже лежат
+   стеклянные панели (их размер считает app.js), и плитка поверх них
+   светлее подложки — иначе на ровном фоне она сливалась бы. В зазорах
+   видна панель, и ряд читается как набор кнопок на одном подносе.
+
+   Тексты берутся из реестра услуг теми же ключами (svc.N.name и
+   svc.N.tag), поэтому переводы на четыре языка приходят сами, а
+   набор услуг не повторяет те шесть, что стоят в средней колонке.
+
+   Витрина на компьютере занимает ровно остаток экрана под первым
+   блоком, поэтому все размеры плитки заданы через min(vw, svh, px):
+   на низком окне они убавляются сами, как и весь набор рядом.     */
+.lp-tiles{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.lp-tile{
+  position:relative; overflow:hidden; min-width:0;
+  display:flex; flex-direction:column; gap:9px;
+  padding:12px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg,
+    rgba(232,240,248,.13) 0%, rgba(210,222,236,.075) 58%, rgba(196,210,226,.05) 100%);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+          backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 24px rgba(0,0,0,.28);
+  transition:transform .35s var(--ease), border-color .35s var(--ease),
+             background .35s var(--ease), box-shadow .35s var(--ease);
+}
+/* Золотая черта по нижней грани — она и на макете владельца, и под
+   кнопкой первого экрана: одна линия света, гаснущая к краям.    */
+.lp-tile::after{
+  content:''; position:absolute; left:14px; right:14px; bottom:0; height:2px;
+  background:linear-gradient(90deg,
+    transparent 0%, rgba(224,193,121,.55) 18%, #E0C179 50%,
+    rgba(224,193,121,.55) 82%, transparent 100%);
+  opacity:.8; pointer-events:none;
+}
+.lp-tile-ico{
+  width:32px; height:32px; border-radius:11px; flex:none;
+  display:grid; place-items:center; color:#0B0908;
+  background:linear-gradient(160deg,#F6EAC0 0%,#E0C179 48%,#C39A46 100%);
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
+.lp-tile-ico svg{ width:17px; height:17px; }
+.lp-tile-txt{ display:block; min-width:0; }
+.lp-tile-name{
+  display:block; font-family:var(--caps); font-weight:400;
+  font-size:12.5px; letter-spacing:.13em;
+  text-transform:uppercase; line-height:1.25; color:#FFFFFF;
+  overflow-wrap:anywhere;
+}
+/* Подпись держим в две строки: у части услуг она длинная, и без
+   ограничения плитки в ряду разъезжаются по высоте.              */
+.lp-tile-tag{
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  overflow:hidden; margin-top:4px; font-style:normal;
+  font-size:11px; line-height:1.4;
+  color:var(--parch-far); overflow-wrap:anywhere;
+}
+.lp-tile:hover{
+  transform:translateY(-2px);
+  border-color:rgba(224,193,121,.45);
+  background:linear-gradient(180deg,
+    rgba(240,247,255,.17) 0%, rgba(214,226,240,.10) 58%, rgba(200,214,230,.07) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 12px 30px rgba(0,0,0,.34);
+}
+.lp-tile:focus-visible{ outline:2px solid #E0C179; outline-offset:3px; }
+.lp-tile:active{ transform:translateY(0); }
+
+/* Правая колонка: плитки на месте блока прямой связи, под ними —
+   прежняя кнопка «Связаться 24/7».                               */
+.lp-quick .lp-one-btn{ margin-top:12px; }
+
+@media (prefers-reduced-motion:reduce){
+  .lp-tile{ transition:none; }
+  .lp-tile:hover{ transform:none; }
+}
+
+/* Компьютер: размеры считаются от высоты окна, чтобы витрина
+   по-прежнему кончалась ровно по нижнему краю экрана.            */
+@media (min-width:981px){
+  .lp-tiles{ gap:min(.62vw, 1.25svh, 10px); }
+  .lp-tile{
+    padding:min(.62vw, 1.24svh, 10px);
+    gap:min(.4vw, .8svh, 6px);
+    border-radius:min(1.15vw, 2.3svh, 18px);
+  }
+  .lp-tile-ico{
+    width:min(1.62vw, 3.24svh, 25px); height:min(1.62vw, 3.24svh, 25px);
+    border-radius:min(.7vw, 1.4svh, 11px);
+  }
+  .lp-tile-ico svg{ width:min(.88vw, 1.76svh, 14px); height:min(.88vw, 1.76svh, 14px); }
+  .lp-tile-name{ font-size:min(.72vw, 1.45svh, 12px); line-height:1.2; }
+  .lp-tile-tag{ font-size:min(.62vw, 1.24svh, 10.5px); line-height:1.3; margin-top:min(.18vw, .36svh, 3px); }
+  .lp-quick .lp-one-btn{ margin-top:min(.7vw, 1.4svh, 12px); }
+}
+
+/* ── Средняя колонка: те же кубики ──────────────────────────────
+
+   Владелец попросил и список 01–06 сделать плитками. Разметка
+   списка не тронута: ссылка внутри строки просто получает тот же
+   стеклянный вид, номер садится в золотой квадратик на место
+   иконки, название и подпись идут под ним.
+
+   Шесть плиток стоят в три колонки по две строки — средняя колонка
+   витрины шире боковых, и в два ряда они выходят той же высоты, что
+   и четвёрки по бокам. Все три группы начинаются с одной линии,
+   поэтому прежние сдвиги списка (translateY и опущенные первые
+   четыре строки) здесь сняты: они равняли текстовые строки по
+   нижней грани панели, а плиткам это не нужно.                  */
+@media (min-width:981px){
+  .lp-services{ justify-content:flex-start; }
+  .lp-services .lp-list{
+    grid-template-columns:repeat(3,1fr);
+    gap:min(.62vw, 1.25svh, 10px);
+    flex:0 0 auto; align-content:start;
+    margin-top:0; transform:none;
+  }
+  .lp-services .lp-list > li,
+  .lp-services .lp-list > li:nth-child(-n+4){
+    border-bottom:0; transform:none;
+  }
+  .lp-services .lp-list > li > a{
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+    gap:min(.4vw, .8svh, 6px);
+    padding:min(.62vw, 1.24svh, 10px);
+    border-radius:min(1.15vw, 2.3svh, 18px);
+    border:1px solid rgba(255,255,255,.14);
+    background:linear-gradient(180deg,
+      rgba(232,240,248,.13) 0%, rgba(210,222,236,.075) 58%, rgba(196,210,226,.05) 100%);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);
+            backdrop-filter:blur(14px) saturate(1.2);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 24px rgba(0,0,0,.28);
+    transition:transform .35s var(--ease), border-color .35s var(--ease),
+               background .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .lp-services .lp-list > li > a::after{
+    content:''; position:absolute; left:14px; right:14px; bottom:0; height:2px;
+    background:linear-gradient(90deg,
+      transparent 0%, rgba(224,193,121,.55) 18%, #E0C179 50%,
+      rgba(224,193,121,.55) 82%, transparent 100%);
+    opacity:.8; pointer-events:none;
+  }
+  .lp-services .lp-list > li > a:hover{
+    transform:translateY(-2px);
+    border-color:rgba(224,193,121,.45);
+    background:linear-gradient(180deg,
+      rgba(240,247,255,.17) 0%, rgba(214,226,240,.10) 58%, rgba(200,214,230,.07) 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 12px 30px rgba(0,0,0,.34);
+  }
+  .lp-services .lp-list > li > a:focus-visible{ outline:2px solid #E0C179; outline-offset:3px; }
+  /* Номер — в золотом квадратике, ровно там, где у соседних плиток
+     стоит иконка. Цифры остаются на виду: владелец зовёт эти услуги
+     по номерам.                                                   */
+  .lp-services .lp-num{
+    width:min(1.62vw, 3.24svh, 25px); height:min(1.62vw, 3.24svh, 25px);
+    border-radius:min(.7vw, 1.4svh, 11px); flex:none;
+    display:grid; place-items:center; padding-top:0;
+    font-family:var(--caps); font-size:min(.62vw, 1.24svh, 10.5px);
+    letter-spacing:.06em; color:#0B0908;
+    background:linear-gradient(160deg,#F6EAC0 0%,#E0C179 48%,#C39A46 100%);
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
+  }
+  .lp-services .lp-name{
+    white-space:normal; overflow-wrap:anywhere;
+    font-size:min(.72vw, 1.45svh, 12px); line-height:1.2;
+    letter-spacing:.13em; color:#FFFFFF;
+  }
+  .lp-services .lp-tag{
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden; margin-top:min(.18vw, .36svh, 3px);
+    font-size:min(.62vw, 1.24svh, 10.5px); line-height:1.3;
+    letter-spacing:0; color:var(--parch-far); overflow-wrap:anywhere;
+  }
+}
+
+/* Три группы плиток начинаются с одной линии.
+
+   Прежде колонки равнялись под текст: левая прижималась к нижней
+   черте (justify-content:flex-end), правую опускал padding-top,
+   подобранный под заголовок «Философия Montero». Заголовка нет, и
+   плиткам такие сдвиги только мешают — ряды разъезжались по высоте
+   на три десятка точек.                                          */
+@media (min-width:981px){
+  .lp-philosophy{ justify-content:flex-start; }
+  .lp-dest{ padding-top:0; }
+  /* Рубрика «Услуги» над списком и так была погашена — она держала
+     место под заголовок соседней колонки. Заголовков в витрине не
+     осталось, и этот пустой отступ сдвигал средний ряд на 26 точек
+     ниже боковых. Убираем совсем.                                */
+  .lp-services .lp-label{ display:none; }
+}
+
+/* Подносы из-под плиток сняты.
+
+   Три стеклянные панели — под левым блоком, под списком и под
+   правым — держали текст, который теперь заменён плитками. Стекло
+   поверх стекла давало мутный слой и съедало зазоры между кнопками:
+   владелец попросил оставить только сами плитки. Скрипт, считающий
+   размеры панелей, не трогаем — он просто больше ни на что не
+   влияет, а разметка и поведение прежние.                        */
+@media (min-width:981px){
+  .lp-philosophy::before,
+  .lp-dest::before,
+  .lp-services .lp-list::before{ display:none; }
+}
