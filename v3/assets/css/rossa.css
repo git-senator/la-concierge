@@ -928,7 +928,14 @@ h2 .em{ background-image:linear-gradient(96deg,
   .final-in .sec-lede{
     margin:clamp(18px, 2.2vh, 30px) auto 0;
     text-align:center; max-width:640px;
+    /* Владелец попросил набрать эту строку чуть крупнее: она стоит
+       одна между рамкой заявления и формой, и прежним кеглем (17 у
+       русского, 16 у остальных) терялась. Ступень примерно в пятую
+       часть — 20 и 19. Ширину строки не трогаем: в 640 точек она и
+       в крупном наборе идёт одной строкой на всех пяти языках.   */
+    font-size:19px;
   }
+  html[lang="ru"] .final-in .sec-lede{ font-size:20px; }
   .final-in .sec-lede + .req-form{ margin-top:clamp(18px, 2.2vh, 30px); }
 
   .final-in .req-form{
