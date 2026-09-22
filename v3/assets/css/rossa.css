@@ -193,7 +193,10 @@ html[lang="ru"] .hero-rail span,
 html[lang="ru"] .hero-rail em{
   font-family:"Manrope", system-ui, sans-serif;
 }
-html[lang="ru"] .hero-rail b{ font-family:"Playfair Display", Georgia, serif; }
+/* Цифры первого экрана идут той же гарнитурой, что и весь русский
+   набор: имя гарнитуры здесь не пишем, берём переменную — владелец
+   меняет её на пробу, и цифры не должны отставать от остального. */
+html[lang="ru"] .hero-rail b{ font-family:var(--display); }
 
 /* Золотая строка первого экрана залита градиентом по буквам, а тень
    текста досталась ей от v2: 0 0 60px янтарём. У обычного текста это
