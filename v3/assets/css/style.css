@@ -50,13 +50,18 @@
    ролях. Латинский логотип из этого исключён: MONTERO и Concierge
    Service одинаковы на всех языках и остаются на Cinzel.        */
 html[lang="ru"]{
-  /* Пробуем Golos Text: владелец смотрит гарнитуры по очереди, до
-     этого был Playfair Display. Прежний набор — Libertinus Serif —
-     оставлен в запасной цепочке: убрать первое имя из каждой
-     строки, и всё вернётся как было.                             */
-  --display:"Golos Text","Libertinus Serif","Cormorant Garamond",Georgia,serif;
-  --caps:"Golos Text","Libertinus Serif","Cormorant Garamond",Georgia,serif;
-  --sans:"Golos Text","Libertinus Serif",Georgia,"Times New Roman",serif;
+  /* Русская версия набрана Playfair Display — владелец выбрал его
+     из проб (до него смотрели Libertinus Serif и Golos Text).
+
+     Два исключения живут в rossa.css, чтобы не размазывать выбор
+     по файлу: заголовки разделов идут на Lora, а подписи под
+     названиями услуг остались на Libertinus Serif — как на проде.
+
+     Libertinus стоит следом в запасной цепочке: пока он нужен
+     подписям, он всё равно загружается.                          */
+  --display:"Playfair Display","Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --caps:"Playfair Display","Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --sans:"Playfair Display","Libertinus Serif",Georgia,"Times New Roman",serif;
 }
 html[lang="ru"] .lk-name,
 html[lang="ru"] .lk-sub{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
