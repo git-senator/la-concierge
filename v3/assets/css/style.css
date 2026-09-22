@@ -50,9 +50,13 @@
    ролях. Латинский логотип из этого исключён: MONTERO и Concierge
    Service одинаковы на всех языках и остаются на Cinzel.        */
 html[lang="ru"]{
-  --display:"Libertinus Serif","Cormorant Garamond",Georgia,serif;
-  --caps:"Libertinus Serif","Cormorant Garamond",Georgia,serif;
-  --sans:"Libertinus Serif",Georgia,"Times New Roman",serif;
+  /* Пробуем Playfair Display: владелец попросил посмотреть на нём
+     весь сайт целиком. Прежний набор — Libertinus Serif — оставлен
+     в запасной цепочке: если опыт не приживётся, достаточно убрать
+     Playfair из каждой строки, и всё вернётся как было.          */
+  --display:"Playfair Display","Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --caps:"Playfair Display","Libertinus Serif","Cormorant Garamond",Georgia,serif;
+  --sans:"Playfair Display","Libertinus Serif",Georgia,"Times New Roman",serif;
 }
 html[lang="ru"] .lk-name,
 html[lang="ru"] .lk-sub{ font-family:"Cinzel","Cormorant Garamond",Georgia,serif; }
