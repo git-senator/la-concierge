@@ -1049,6 +1049,7 @@
   function clear() {
     lock.style.removeProperty('translate');
     claim.style.removeProperty('padding-top');
+    claim.style.removeProperty('translate');
     var имя0 = lock.querySelector('.lk-name');
     if (имя0) имя0.style.removeProperty('translate');
     var ряд0 = document.querySelector('.lp-quad');
@@ -1139,6 +1140,19 @@
     var полеРамки = parseFloat(getComputedStyle(claim).paddingTop) || 0;
     var убрано = Math.min(УБАВКА, Math.max(0, полеРамки - ОСТАТОК));
     claim.style.paddingTop = (полеРамки - убрано) + 'px';
+
+    /* На узком окне поле рамки кончается раньше, чем набраны все
+       пятнадцать точек. Остаток добираем сдвигом самой рамки вверх,
+       но не ближе четырёх точек к строке CONCIERGE SERVICE. Сдвиг
+       идёт свойством translate: разметка не меняется, и ничего,
+       кроме рамки, с места не трогается. */
+    var ДО_ПОДСТРОЧНИКА = 4;
+    claim.style.translate = '';
+    var подстрочник = lock.querySelector('.lk-sub');
+    var зазор = подстрочник
+      ? claim.getBoundingClientRect().top - подстрочник.getBoundingClientRect().bottom
+      : 0;
+    var сдвигРамки = Math.max(0, Math.min(УБАВКА - убрано, зазор - ДО_ПОДСТРОЧНИКА));
 
     var hero  = lock.closest('.hero');
     var шапка = document.querySelector('header.nav');
@@ -1232,6 +1246,15 @@
 
     fit(claim, rules, q, hair);
     fit(lastClaim, lastRules, q, hair);
+
+    /* Сдвиг рамки кладём поверх того, что выставила посадка на
+       сетку: она правит доли точки, мы — целые. */
+    if (сдвигРамки) {
+      var части = (claim.style.translate || '0px 0px').split(/\s+/);
+      var гор = части[0] || '0px';
+      var верт = parseFloat(части[1] || '0') - сдвигРамки;
+      claim.style.translate = гор + ' ' + верт.toFixed(4) + 'px';
+    }
   }
 
   snap();
