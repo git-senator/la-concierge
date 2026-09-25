@@ -1251,7 +1251,17 @@
   window.addEventListener('resize', snap, { passive:true });
   window.addEventListener('load', snap);
   document.addEventListener('langchange', function () { setTimeout(snap, 60); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap);
+  /* Заслонку с первого экрана снимаем, когда он уже собран: шрифты
+     подгружены и замер прошёл поверх них. Будильник в разметке
+     подстрахует, если сюда почему-то не дойдёт. */
+  var открыть = function () {
+    document.documentElement.classList.remove('экран-ждёт');
+  };
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { snap(); открыть(); });
+  } else {
+    открыть();
+  }
   [400, 1200, 2500].forEach(function (ms) { setTimeout(snap, ms); });
   if (window.ResizeObserver) {
     /* За высотой рамки следить нельзя — мы её сами задаём. Следим за
