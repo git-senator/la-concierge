@@ -2441,6 +2441,11 @@ html[lang="ru"] .svc-tag{
     gap:12px;
     --квад-пад:12px; --квад-зазор:6.5px; --квад-бок:5px; --квад-низ:6px;
   }
+  /* Высоту и глубину свечения скрипт считал от окна — кубик из-за
+     этого на высоком экране вытягивался. Тоже прибиваем: 238 точек
+     и 99 на свет, как на утверждённом окне. */
+  .lp-quad .lp-cell{ height:238px; }
+  .lp-quad{ --квад-глубина:99px; }
   .lp-quad .lp-tile{ border-radius:18px; }
   .lp-quad .lp-tile-name{
     font-size:16.3px; line-height:19.5px; letter-spacing:1.3px;
