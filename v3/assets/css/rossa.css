@@ -2378,3 +2378,10 @@ html[lang="ru"] .svc-tag{
 @media (min-width:981px){
   .lp-quad .lp-tile-desc{ text-align:left; }
 }
+
+/* Строки внутри кубика раскладываем ровнее: браузер сам делит текст
+   так, чтобы длина строк была примерно одинаковой, и правый край
+   перестаёт рвать «лесенкой». Кто не умеет — покажет как раньше. */
+@media (min-width:981px){
+  .lp-quad .lp-tile-desc{ text-wrap:balance; }
+}
