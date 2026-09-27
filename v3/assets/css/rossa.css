@@ -2387,3 +2387,19 @@ html[lang="ru"] .svc-tag{
 @media (min-width:981px){
   .lp-quad .lp-tile-desc{ text-wrap:balance; }
 }
+
+/* ══════════ ОПИСАНИЕ В КУБИКАХ — НАБОР КАК У ROSSA & CO ══════════
+
+   Владелец показал абзац «Há mais de duas décadas…» с их страницы.
+   Снял оттуда по месту: Figtree, начертание 300, интерлиньяж 22 на
+   16 точек кегля — это 1.375. Гарнитура на странице уже есть, её
+   тянет второй набор шрифтов в шапке.
+
+   Кегль и цвет оставляем свои: он просил шрифт.                  */
+@media (min-width:981px){
+  .lp-quad .lp-tile-desc{
+    font-family:"Figtree","Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-weight:300;
+    line-height:1.375;
+  }
+}
