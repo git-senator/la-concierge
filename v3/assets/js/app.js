@@ -1058,6 +1058,7 @@
         эл.style.removeProperty('font-size');
       });
       ряд0.style.removeProperty('--квад-глубина');
+      ряд0.style.removeProperty('--ш');
       [].forEach.call(ряд0.querySelectorAll('.lp-tile'), function (эл) {
         эл.style.removeProperty('--квад-свет');
       });
@@ -1208,29 +1209,29 @@
          набор длиннее русского на четверть.                       */
       var тексты = [].slice.call(ряд.querySelectorAll('.lp-tile-desc'));
       if (тексты.length) {
-        /* Кегль задаёт таблица стилей — он растёт вместе с кубиком,
-           и переносы от окна не зависят. Скрипт в это не вмешивается:
-           он лишь страхует на низком окне, где текст иначе обрезало
-           бы. Потому потолок берём не числом, а тот, что вышел по
-           стилям, и уменьшаем только если не влезло.               */
+        /* Размеры кубика задаёт таблица стилей одной мерой --ш, и
+           переносы от окна не зависят. Скрипт в это не вмешивается —
+           он лишь страхует на редком широком и низком экране, где
+           текст иначе обрезало бы. И уменьшает не кегль, а саму
+           меру: тогда вместе с набором ужимается и ширина колонки, а
+           значит разбивка по строкам остаётся прежней.             */
+        ряд.style.removeProperty('--ш');
         тексты.forEach(function (эл) { эл.style.removeProperty('font-size'); });
-        var ОБРАЗЕЦ = parseFloat(getComputedStyle(тексты[0]).fontSize) || 16;
-        var влезСразу = тексты.every(function (эл) {
-          return эл.scrollHeight <= эл.clientHeight + 0.5;
-        });
-        var низК = 5, верхК = ОБРАЗЕЦ, лучший = влезСразу ? ОБРАЗЕЦ : низК;
-        for (var шаг = 0; !влезСразу && шаг < 7; шаг++) {
-          var проба = (низК + верхК) / 2;
-          тексты.forEach(function (эл) { эл.style.fontSize = проба + 'px'; });
-          var влез = тексты.every(function (эл) {
+        var влезает = function () {
+          return тексты.every(function (эл) {
             return эл.scrollHeight <= эл.clientHeight + 0.5;
           });
-          if (влез) { лучший = проба; низК = проба; } else { верхК = проба; }
+        };
+        if (!влезает()) {
+          var низМ = 8, верхМ = parseFloat(getComputedStyle(тексты[0]).fontSize) || 16;
+          var лучшая = низМ;
+          for (var шаг = 0; шаг < 7; шаг++) {
+            var проба = (низМ + верхМ) / 2;
+            ряд.style.setProperty('--ш', проба + 'px');
+            if (влезает()) { лучшая = проба; низМ = проба; } else { верхМ = проба; }
+          }
+          ряд.style.setProperty('--ш', (Math.floor(лучшая * 10) / 10) + 'px');
         }
-        тексты.forEach(function (эл) {
-          if (влезСразу) эл.style.removeProperty('font-size');
-          else эл.style.fontSize = (Math.floor(лучший * 10) / 10) + 'px';
-        });
       }
 
       /* Глубина свечения: владелец попросил ровно такую же, как в
