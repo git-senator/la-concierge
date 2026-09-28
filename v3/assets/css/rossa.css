@@ -2602,3 +2602,11 @@ html[lang="ru"] .svc-tag{
   .home-canvas .hero{ align-content:flex-start; }
   .hero-in .lk-claim b.hard{ margin-top:0; }
 }
+
+/* Значки в панелях: коробка 18 точек растягивалась до 34, и обводка
+   вместе с ней — линии выходили вдвое толще, чем на макете. Держим
+   коробку меньше и обводку тоньше: на макете линия волосяная.    */
+@media (min-width:981px){
+  .pnl-ico{ width:min(1.75vw, 29px); height:min(1.75vw, 29px); }
+  .pnl-ico svg{ stroke-width:1.15; }
+}
