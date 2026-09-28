@@ -1154,7 +1154,18 @@
 
     lock.style.translate = '0px';
 
-    if (hero && имя && ряд && сетка && столб) {
+    /* Витрина из плиток скрыта — значит, на странице новый первый
+       экран с панелями. Тогда знак ставим по месту полем сверху, а
+       высоту первого блока не трогаем вовсе: он тянется сам, панели
+       садятся на нижний край окна.                                 */
+    var новыйЭкран = сетка && getComputedStyle(сетка).display === 'none';
+    if (новыйЭкран && hero && имя) {
+      var кегль0 = parseFloat(getComputedStyle(имя).fontSize) || 0;
+      hero.style.paddingTop = q(Math.max(0, линия - кегль0 * 0.079)) + 'px';
+      hero.style.removeProperty('padding-bottom');
+      hero.style.removeProperty('height');
+      имя.style.removeProperty('translate');
+    } else if (hero && имя && ряд && сетка && столб) {
       /* Поле сверху: знак стоит не по центру первого блока, а под
          шапкой — верх букв в двух точках от её нижней грани. Коробка
          строки выше самих букв: у Cinzel пустое поле сверху равно
