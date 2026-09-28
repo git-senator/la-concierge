@@ -1164,7 +1164,9 @@
       hero.style.paddingTop = q(Math.max(0, линия - кегль0 * 0.079)) + 'px';
       hero.style.removeProperty('padding-bottom');
       hero.style.removeProperty('height');
-      имя.style.removeProperty('translate');
+      /* Спуск слова MONTERO на два десятка точек владелец просил
+         сохранить — на проде знак стоит именно так. */
+      имя.style.translate = '0 20px';
     } else if (hero && имя && ряд && сетка && столб) {
       /* Поле сверху: знак стоит не по центру первого блока, а под
          шапкой — верх букв в двух точках от её нижней грани. Коробка
