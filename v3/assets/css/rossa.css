@@ -2534,10 +2534,20 @@ html[lang="ru"] .svc-tag{
   .pnl-item:hover .pnl-name{ color:var(--parch); }
 
   /* Строка под знаком: рамку, сияние и точку снимаем — на макете
-     просто строка. Подтяжку нижней строки тоже: она была под две. */
-  .hero .lk-claim{
+     просто строка. Волосок рамки рисует ::before, сияние — box-shadow
+     с золотом; гасим и то и другое. Подтяжку нижней строки тоже: она
+     была рассчитана на две строки. Сверху даём воздух, иначе строка
+     садится на линию «CONCIERGE SERVICE». */
+  .hero-in .lk-claim{
     border:0; background:none; box-shadow:none; padding:0;
+    margin-top:min(2.2vh, 22px);
   }
-  .hero .lk-claim .lk-dot{ display:none; }
-  .hero .lk-claim b.hard{ margin-top:0; }
+  .hero-in .lk-claim::before,
+  .hero-in .lk-claim::after{ display:none; content:none; }
+  .hero-in .lk-claim .lk-dot{ display:none; }
+  .hero-in .lk-claim b.hard{ margin-top:0; }
+  .hero-in .lk-claim b{
+    font-weight:400; letter-spacing:.06em;
+    color:var(--parch-dim);
+  }
 }
